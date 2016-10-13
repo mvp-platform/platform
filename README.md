@@ -14,4 +14,4 @@ Documents for the Textbook Wiki project.
 
 ## Github Pages
 
-http://cs461-mvp.github.io/documents/
+http://cs461-mvp.github.io/mvp_platform/documents/
