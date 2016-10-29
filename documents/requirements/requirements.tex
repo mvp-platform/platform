@@ -640,125 +640,78 @@ by industry leaders such as Google's Material Design. The interface will allow
 users to not think about the technical specificities of the product, but moreso
 on the content they are using, the authors of the content, and how they are using it.
 
-\subsection[CONSTRAINTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-CONSTRAINTS}
-\noindent {\selectlanguage{english}\itshape\color{black}
-This subsection of the document should provide a general description of
-any other items that will limit the developer{\textquoteright}s
-options. \ These include: a) Regulatory policies; b) Hardware
-limitations (e.g., signal timing requirements); c) Interfaces to other
-applications; d) Parallel operation; e) Audit functions; f) Control
-functions; g) Higher-order language requirements; h) Signal handshake
-protocols; i) Reliability requirements; j) Criticality of the
-application; k) Safety and security considerations.}
+\subsection[CONSTRAINTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}CONSTRAINTS}
 
-\noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+A regular web browser will be the means of access for users. For the backend
+server, the main requirement is availability - as a web application, it has no
+safety- or life-critical components. A high (99.99%) availability should be provided,
+but otherwise availability, safety, and specific hardware are not main concerns.
 
-\subsection[ASSUMPTIONS AND
-DEPENDENCIES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+The software can, as a web application, be written in a high-level language, with
+minimal inter-application communication. In the case that the software is built
+on top of other applications such as git, inter-process communication should be
+handled in a generic way that provides a high-security barrier preventing malicious
+users from accessing other, non-specified applications.
+
+\subsection[ASSUMPTIONS AND DEPENDENCIES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 ASSUMPTIONS AND DEPENDENCIES}
-\noindent {\selectlanguage{english}\itshape\color{black}
-This subsection of the document should list each of the factors that
-affect the requirements stated in the document. \ These factors are not
-design constraints on the system and/or software but are, rather, any
-changes to them that can affect the requirements in the document. For
-example, an assumption may be that a speci[FB01?]c operating system
-will be available on the hardware designated for the software product.
-\ If, in fact, the operating system is not available, the document
-would then have to change accordingly.}
 
 \noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+The product will be designed to run on a generic Linux-with-web server environment.
+Ward Cunningham's Federated Wiki, a similar project being drawn upon for inspiration, can run
+on any system with Ruby and CouchDB (a popular NoSQL database). With the product
+being either partially or wholly based on the Federated Wiki, similar system
+requirements are anticipated.
 
 \subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL)
 REQUIREMENTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
-\noindent {\selectlanguage{english}\itshape\color{black}
-This subsection of the document should identify system level (whole, not
-functional) requirements that impact the construction, operation,
-packaging and delivery of the system and software.}
 
 \noindent \subsubsection[Site
 dependencies]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 Site dependencies}
  {\selectlanguage{english}\color{black}
-\foreignlanguage{english}
-{\textit{This paragraph shall specify
-site-dependent operational parameters and needs (such as parameters
-indicating operation-dependent targeting constants or data
-recording).}}
-\foreignlanguage{english}{
-}\foreignlanguage{english}
-{\textit{. \ The requirements shall include,
-as applicable, number of each type of equipment, type, size, capacity,
-and other required characteristics of processors, memory, input/output
-devices, auxiliary storage, communications/ network equipment, and
-other required equipment or software that must be used by, or
-incorporated into, the system. \ Examples include operating systems,
-database management systems, communications/ network software, utility
-software, input and equipment simulators, test software, and
-manufacturing software. \ The correct nomenclature, version, and
-documentation references of each such device or software item shall be
-provided.}}}
 
-\noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+As a web application, the product has no hard requirements other than high-speed
+network access and an instance of the CouchDB database management system.
+\begin{itemize}
+  \item Hardware: standard virtual machine(s) running on cloud provider (ex: Amazon EC2 t2.medium)
+  \item Database: CouchDB 2.0
+\end{itemize}
 
 \subsubsection[Safety, security and privacy
 requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 Safety, security and privacy requirements}
-{\selectlanguage{english}\itshape\color{black}
-This paragraph shall specify the system requirements, if any, concerned
-with maintaining safety, security and privacy. \ These requirements
-shall include, as applicable, the safety, security and privacy
-environment in which the system must operate, the type and degree of
-security or privacy to be provided, and the criteria that must be met
-for safety/security/privacy certification and/or accreditation.}
-
 \noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+Private information shall be held to any relevant security standards. For instance,
+any credit card information processed by the product in the textbook creation process
+will be held to PCI compliance standards. Passwords shall be stored in a securely hashed,
+non-reversible method such that infiltration of the product by an unauthorized
+third party will not be able to result in the theft of user passwords or other private
+information.
+}
 
 \subsubsection[Performance
 requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 Performance requirements}
-\noindent {\selectlanguage{english}\itshape\color{black}
-This paragraph should specify both the static and the dynamic numerical
-performance requirements placed on the soft ware or on human
-interaction as a whole. \ Static numerical requirements may include the
-following: a) The number of terminals to be supported; b) The number of
-simultaneous users to be supported; c) Amount and type of information
-to be handled. \ Dynamic numerical requirements may include, for
-example, the numbers of transactions and tasks and the amount of data
-to be processed within certain time periods for both normal and peak
-workload conditions. \ All of these requirements should be stated in
-measurable terms. For example, {\textquotedblleft}95\% of the
-transactions shall be processed in less than
-1msec.{\textquotedblright}}
+A standard user load shall be defined as 200 simultaneous users. User information
+will include things such as text documents, media uploads, and user account data.
 
-\noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+Under a standard load,
+\begin{itemize}
+  \item 95\% of save operations (excepting media upload time) shall take under 500ms;
+  \item 95\% of initial page loads shall take under three seconds;
+  \item 95\% of user account operations (login, creation, deletion, etc) shall take under 500ms
+\end{itemize}
 
 \subsubsection[System and software
 quality]{\selectlanguage{english}\rmfamily\bfseries\color{black} System
 and software quality}
-\noindent {\selectlanguage{english}\itshape\color{black}
-This paragraph shall specify the requirements, if any, concerned with
-hardware and software quality factors identified in the contract.
-\ Examples include quantitative requirements regarding the
-system{\textquoteright}s functionality (the ability to perform all
-required functions), reliability (the ability to perform with correct,
-consistent results), maintainability (the ability to be easily
-corrected), availability (the ability to be accessed and operated when
-needed), flexibility (the ability to be easily adapted to changing
-requirements), portability (the ability to be easily modified for a new
-environment), reusability (the ability to be used in multiple
-applications), testability (the ability to be easily and thoroughly
-tested), usability (the ability to be easily learned and used), and
-other attributes.}
 
-\noindent {\selectlanguage{english}\color{black}
-[ insert your text here ]}
+The software shall maintain 99.99% accessibility from any modern web browser.
+As a non-safety-critical product, reliability shall be pushed for but not promised
+to end users. Testing shall be handled through a suite of automated unit and integration testing, as well as
+through manual checking of newly written and critical features.
 
 \subsubsection[Packaging and delivery
 requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
