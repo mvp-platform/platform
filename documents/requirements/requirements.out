@@ -29,28 +29,11 @@
 \BOOKMARK [3][-]{subsubsection.3.1.3}{User Interfaces}{subsection.3.1}% 29
 \BOOKMARK [3][-]{subsubsection.3.1.4}{Other Communication Interfaces}{subsection.3.1}% 30
 \BOOKMARK [2][-]{subsection.3.2}{SYSTEM FEATURES}{section.3}% 31
-\BOOKMARK [3][-]{subsubsection.3.2.1}{ Use Case Diagrams}{subsection.3.2}% 32
-\BOOKMARK [3][-]{subsubsection.3.2.2}{System feature 1: [ General Website Features ]}{subsection.3.2}% 33
-\BOOKMARK [3][-]{subsubsection.3.2.3}{System feature 2: [ Compile a book ]}{subsection.3.2}% 34
-\BOOKMARK [3][-]{subsubsection.3.2.4}{System feature 3: [ Textbook Compilation Interface ]}{subsection.3.2}% 35
-\BOOKMARK [3][-]{subsubsection.3.2.5}{System feature 4: [ insert feature name here ]}{subsection.3.2}% 36
-\BOOKMARK [3][-]{subsubsection.3.2.6}{System feature 5: [ Publishing Interface ]}{subsection.3.2}% 37
-\BOOKMARK [3][-]{subsubsection.3.2.7}{System feature 6: [ Scrap Editor ]}{subsection.3.2}% 38
-\BOOKMARK [4][-]{paragraph.3.2.7.1}{Non-task feature description}{subsubsection.3.2.7}% 39
-\BOOKMARK [4][-]{paragraph.3.2.7.2}{ Introduction/Purpose of this feature}{subsubsection.3.2.7}% 40
-\BOOKMARK [4][-]{paragraph.3.2.7.3}{Input/Output sequence for this feature}{subsubsection.3.2.7}% 41
-\BOOKMARK [4][-]{paragraph.3.2.7.4}{Design constraints of this feature}{subsubsection.3.2.7}% 42
-\BOOKMARK [4][-]{paragraph.3.2.7.5}{Performance requirements of this feature}{subsubsection.3.2.7}% 43
-\BOOKMARK [4][-]{paragraph.3.2.7.6}{Detailed functional requirements of this feature}{subsubsection.3.2.7}% 44
-\BOOKMARK [4][-]{paragraph.3.2.7.7}{}{subsubsection.3.2.7}% 45
-\BOOKMARK [3][-]{subsubsection.3.2.8}{System feature 2: [ insert feature name here ]}{subsection.3.2}% 46
-\BOOKMARK [4][-]{paragraph.3.2.8.1}{Introduction/Purpose of this feature}{subsubsection.3.2.8}% 47
-\BOOKMARK [4][-]{paragraph.3.2.8.2}{Input/Output sequence for this feature}{subsubsection.3.2.8}% 48
-\BOOKMARK [4][-]{paragraph.3.2.8.3}{Design constraints of this feature}{subsubsection.3.2.8}% 49
-\BOOKMARK [4][-]{paragraph.3.2.8.4}{Performance requirements of this feature}{subsubsection.3.2.8}% 50
-\BOOKMARK [4][-]{paragraph.3.2.8.5}{Detailed functional requirements of this feature}{subsubsection.3.2.8}% 51
-\BOOKMARK [4][-]{paragraph.3.2.8.6}{ Introduction/Purpose of this feature}{subsubsection.3.2.8}% 52
-\BOOKMARK [4][-]{paragraph.3.2.8.7}{Input/Output sequence for this feature}{subsubsection.3.2.8}% 53
-\BOOKMARK [4][-]{paragraph.3.2.8.8}{Design constraints of this feature}{subsubsection.3.2.8}% 54
-\BOOKMARK [4][-]{paragraph.3.2.8.9}{Performance requirements of this feature}{subsubsection.3.2.8}% 55
-\BOOKMARK [4][-]{paragraph.3.2.8.10}{Detailed functional requirements of this feature}{subsubsection.3.2.8}% 56
+\BOOKMARK [3][-]{subsubsection.3.2.1}{System feature 1: [ General Website Features ]}{subsection.3.2}% 32
+\BOOKMARK [3][-]{subsubsection.3.2.2}{System feature 2: [ Compile a book ]}{subsection.3.2}% 33
+\BOOKMARK [3][-]{subsubsection.3.2.3}{System feature 3: [ Textbook Compilation Interface ]}{subsection.3.2}% 34
+\BOOKMARK [3][-]{subsubsection.3.2.4}{System feature 4: [ insert feature name here ]}{subsection.3.2}% 35
+\BOOKMARK [3][-]{subsubsection.3.2.5}{System feature 5: [ Publishing Interface ]}{subsection.3.2}% 36
+\BOOKMARK [3][-]{subsubsection.3.2.6}{System feature 6: [ Scrap Editor ]}{subsection.3.2}% 37
+\BOOKMARK [1][-]{section.4}{APPENDIX A. \040Gantt Chart}{}% 38
+\BOOKMARK [1][-]{section.5}{APPENDIX B. \040UML Diagram}{}% 39
