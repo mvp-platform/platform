@@ -226,26 +226,129 @@
 \select@language {english}
 \contentsline {subsection}{\numberline {3.2}SYSTEM FEATURES}{1}{subsection.3.2}
 \select@language {english}
-\select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.1}System feature 1: [ General Website Features {]}}{1}{subsubsection.3.2.1}
-\select@language {english}
-\select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.2}System feature 2: [ Compile a book {]}}{1}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.1}\ Use Case Diagrams}{1}{subsubsection.3.2.1}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.3}System feature 3: [ Textbook Compilation Interface {]}}{1}{subsubsection.3.2.3}
+\select@language {english}
+\contentsline {subsubsection}{\numberline {3.2.2}System feature 1: [ General Website Features {]}}{1}{subsubsection.3.2.2}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.4}System feature 4: [ insert feature name here {]}}{1}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.3}System feature 2: [ Compile a book {]}}{1}{subsubsection.3.2.3}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.5}System feature 5: [ Publishing Interface {]}}{1}{subsubsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.4}System feature 3: [ Textbook Compilation Interface {]}}{1}{subsubsection.3.2.4}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.6}System feature 6: [ Scrap Editor {]}}{1}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.5}System feature 4: [ insert feature name here {]}}{1}{subsubsection.3.2.5}
 \select@language {english}
 \select@language {english}
-\contentsline {section}{\numberline {4}APPENDIX A. \ Gantt Chart}{1}{section.4}
+\contentsline {subsubsection}{\numberline {3.2.6}System feature 5: [ Publishing Interface {]}}{1}{subsubsection.3.2.6}
 \select@language {english}
 \select@language {english}
-\contentsline {section}{\numberline {5}APPENDIX B. \ UML Diagram}{1}{section.5}
+\contentsline {subsubsection}{\numberline {3.2.7}System feature 6: [ Scrap Editor {]}}{1}{subsubsection.3.2.7}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.1}Non{}-task feature description}{2}{paragraph.3.2.7.1}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.2}\ Introduction/Purpose of this feature}{2}{paragraph.3.2.7.2}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.3}Input/Output sequence for this feature}{2}{paragraph.3.2.7.3}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.4}Design constraints of this feature}{2}{paragraph.3.2.7.4}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.5}Performance requirements of this feature}{2}{paragraph.3.2.7.5}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.6}Detailed functional requirements of this feature}{2}{paragraph.3.2.7.6}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.7.7}}{2}{paragraph.3.2.7.7}
+\select@language {english}
+\select@language {english}
+\contentsline {subsubsection}{\numberline {3.2.8}System feature 2: [ insert feature name here {]}}{2}{subsubsection.3.2.8}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.1}Introduction/Purpose of this feature}{2}{paragraph.3.2.8.1}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.2}Input/Output sequence for this feature}{2}{paragraph.3.2.8.2}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.3}Design constraints of this feature}{2}{paragraph.3.2.8.3}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.4}Performance requirements of this feature}{2}{paragraph.3.2.8.4}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.5}Detailed functional requirements of this feature}{2}{paragraph.3.2.8.5}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.6}\ Introduction/Purpose of this feature}{2}{paragraph.3.2.8.6}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.7}Input/Output sequence for this feature}{2}{paragraph.3.2.8.7}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.8}Design constraints of this feature}{2}{paragraph.3.2.8.8}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.9}Performance requirements of this feature}{2}{paragraph.3.2.8.9}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\contentsline {paragraph}{\numberline {3.2.8.10}Detailed functional requirements of this feature}{2}{paragraph.3.2.8.10}
+\select@language {english}
+\select@language {english}
