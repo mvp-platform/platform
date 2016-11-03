@@ -227,22 +227,22 @@
 \contentsline {subsection}{\numberline {3.2}SYSTEM FEATURES}{1}{subsection.3.2}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.1}System feature 1: [ General Website Features {]}}{1}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.1}System feature 1: General Website Features}{1}{subsubsection.3.2.1}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.2}System feature 2: [ Compile a book {]}}{1}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2}System feature 2: Compile a book}{1}{subsubsection.3.2.2}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.3}System feature 3: [ Textbook Compilation Interface {]}}{1}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3}System feature 3: Textbook Compilation Interface}{1}{subsubsection.3.2.3}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.4}System feature 4: [ insert feature name here {]}}{1}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.4}System feature 4: Search Feature}{1}{subsubsection.3.2.4}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.5}System feature 5: [ Publishing Interface {]}}{1}{subsubsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.5}System feature 5: Publishing Interface}{1}{subsubsection.3.2.5}
 \select@language {english}
 \select@language {english}
-\contentsline {subsubsection}{\numberline {3.2.6}System feature 6: [ Scrap Editor {]}}{1}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.6}System feature 6: Scrap Editor}{1}{subsubsection.3.2.6}
 \select@language {english}
 \select@language {english}
 \contentsline {section}{\numberline {4}APPENDIX A. \ Gantt Chart}{1}{section.4}

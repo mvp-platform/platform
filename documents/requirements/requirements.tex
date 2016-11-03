@@ -122,7 +122,7 @@
 
 \bigskip
 
-\clearpage{\centering\selectlanguage{english}\bfseries\color{black}
+\clearpage{\centering\selectlanguage{english}\bfseries\color{black}\LARGE
 SYSTEMS AND SOFTWARE \ REQUIREMENTS SPECIFICATION (SSRS) FOR
 \par}
 
@@ -409,8 +409,7 @@ DELETED}}
 \end{comment}
 
 \clearpage{\centering\selectlanguage{english}\bfseries\color{black}
-\foreignlanguage{english}{\MakeUppercase{\ }}\foreignlanguage{english}{\MakeUppercase{[insert
-your project name] SSRS}}
+\foreignlanguage{english}{\MakeUppercase{\ }}\foreignlanguage{english}{\MakeUppercase{Many Voices Publishing Platform SSRS}}
 \par}
 
 {\centering\selectlanguage{english}\bfseries\color{black}
@@ -450,10 +449,10 @@ IDENTIFICATION}
 \noindent {\selectlanguage{english}\color{black}
 The software system being considered for development is referred to as the Many Voices
 Publishing Platform. \ The customer providing specifications
-for the system is Dr. Carlos Jensen that is reachable at his email cjensen528@gmail.com. \
+for the system is Dr. Carlos Jensen that is reachable at his email cjensen\#\#\#@gmail.com. \
 The ultimate customer, or end-user, of the system will be any user that wants an easier
-way to combine materials into a book. \ This is a new {\textbar}  project effort, so the
-version under development is version 0.5 release 0.}
+way to combine materials into a book. \ This is a new project effort, so the
+version under development is version 0.5 release 0. If the code base of Ward Cunningham's Federated Wiki, then the project will have a substantial head start, signified by the 0.5 version number.}
 
 \subsection[PURPOSE]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 PURPOSE}
@@ -480,7 +479,7 @@ SCOPE}
 \noindent {\selectlanguage{english}\color{black}
 This new project is sponsored by Dr. Carlos Jensen, being developed by Josh Matteson,
 Steven Powers, and Evan Tschuy for completion of CS461 Senior capstone project class. This
-project is planned to be operated via a website for wide use.}
+product is to be operated via a website for wide availability and use.}
 
 \subsection[DEFINITIONS, ACRONYMS, AND
 ABBREVIATIONS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
@@ -502,10 +501,10 @@ Acronym &
 Definition\\\hline
 \selectlanguage{english}\color{black} Alpha test &
 \selectlanguage{english}\color{black} Limited release(s) to selected,
-outside testers\\\hline
+outside testers (Friends and Family)\\\hline
 \selectlanguage{english}\color{black} Beta test &
 \selectlanguage{english}\color{black} Limited release(s) to cooperating
-customers wanting early access to developing systems\\\hline
+customers wanting early access to developing systems (Professors or other educators)\\\hline
 \selectlanguage{english}\color{black} Final test &
 \selectlanguage{english}\color{black} aka, Acceptance test, release of
 full functionality to customer for approval\\\hline
@@ -520,12 +519,12 @@ Specification\\\hline
 \selectlanguage{english}\color{black} SSRS &
 \selectlanguage{english}\color{black} System and Software Requirements
 Specification\\\hline
-\selectlanguage{english}\color{black} Chapter &
-\selectlanguage{english}\color{black} An ordered collection of Sections and Scraps\\\hline
-\selectlanguage{english}\color{black} Section &
-\selectlanguage{english}\color{black} An ordered collection of Scraps belonging to a chapter\\\hline
 \selectlanguage{english}\color{black} Scrap &
 \selectlanguage{english}\color{black} A section of a textbook, which can contain formatted text (markdown or latex), and media\\\hline
+\selectlanguage{english}\color{black} Section &
+\selectlanguage{english}\color{black} An ordered collection of Scraps belonging to a chapter\\\hline
+\selectlanguage{english}\color{black} Chapter &
+\selectlanguage{english}\color{black} An ordered collection of Sections and Scraps\\\hline
 \selectlanguage{english}\color{black} Media &
 \selectlanguage{english}\color{black} A standalone image, figure, or video. Can be embedded in a Scrap\\\hline
 \selectlanguage{english}\color{black} Internet Application &
@@ -560,7 +559,7 @@ OVERVIEW AND RESTRICTIONS}
 \noindent {\selectlanguage{english}\color{black}
 This document is for limited release only to Oregon State University professors and
 associated staff of D. Kevin McGrath, Dr. Kirsten Winters, and Jon Dodge, personnel
-working on the project and the client Dr. Carlos Jensen.}
+working on the project, and the client, Dr. Carlos Jensen.}
 
 
 \bigskip
@@ -627,9 +626,9 @@ The main differentiator from traditional textbook publication methods are the pr
 micro-writing abilities. A traditional textbook is written by one expert, using a defined
 curriculum that fits the needs of the author. The curriculum is a generic version of a
 multitude of classes that is somewhat useful for many professors, rather than very useful
-for few professors. Instead, the platform gives individual professors working with their
-own curriculum to create the textbook they need from the same kinds of components. This
-allows for textbooks that more closely track the intricacies of how classes are taught by
+for few professors. Instead, the platform will give the tools necessary for individual 
+professors to create the textbook they need to match the curriculum desired. This allows 
+for textbooks that more closely track the intricacies of how classes are taught by 
 different individuals.}
 
 \subsection[PRODUCT
@@ -646,11 +645,11 @@ PRODUCT FUNCTIONS}
 %logical relationships among variables.}
 
 \noindent {\selectlanguage{english}\color{black}
-The product is a document construction service. The most basic usage is the creation
-of a textbook out of pre-existing chapters, by searching and selecting from a list.
-Alternatively, chapters can created using pre-existing sections and media.
+The product will be a document construction service. The most basic usage will be the 
+creation of a textbook out of pre-existing chapters, by searching and selecting from a 
+list. Alternatively, chapters can created using pre-existing sections and media.
 A chapter or section can be created using a simple to use input interface that
-allows input of text and latex markup, along with the upload of media like image or
+allows input of text and LaTeX markup, along with the upload of media like image or
 perhaps video content.}
 
 \subsection[USER CHARACTERISTICS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
@@ -665,9 +664,9 @@ USER CHARACTERISTICS}
 
 \noindent {\selectlanguage{english}\color{black}
 The average user of the service will be a professor. Professors in general have
-decent but by no means high technical skills. Thus, the interface of the product
+decent, but by no means high technical skills. Thus, the interface of the product
 will be highly graphically driven, using modern interface paradigms as defined
-by industry leaders such as Google's Material Design. The interface will allow
+by industry leaders, such as Google's Material Design. The interface will allow
 users to not think about the technical specificities of the product, but more-so
 on the content they are using, the authors of the content, and how they are using it.}
 
@@ -676,15 +675,15 @@ CONSTRAINTS}
 
 \noindent A regular web browser will be the means of access for users. For the backend
 server, the main requirement is availability - as a web application, it has no
-safety- or life-critical components. A high (99.99%) availability should be provided,
+safety- or life-critical components. A high (99.99\%) availability should be provided,
 but otherwise availability, safety, and specific hardware are not main concerns.
 
 \bigskip
 
 \noindent The software can, as a web application, be written in a high-level language, with
 minimal inter-application communication. In the case that the software is built
-on top of other applications such as git, inter-process communication should be
-handled in a generic way that provides a high-security barrier preventing malicious
+on top of other applications, such as Git, inter-process communication should be
+handled in a generic way that provides a high-security barrier, preventing malicious
 users from accessing other, non-specified applications.
 
 \subsection[ASSUMPTIONS AND DEPENDENCIES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
@@ -709,8 +708,9 @@ Site dependencies}
 As a web application, the product has no hard requirements other than high-speed
 network access and an instance of the CouchDB database management system.
 \begin{itemize}
-  \item Hardware: standard virtual machine(s) running on cloud provider (ex: Amazon EC2 t2.medium)
-  \item Database: CouchDB 2.0
+  \item Hardware: standard virtual machine(s) running on cloud provider (ex: Amazon EC2 
+  t2.medium)
+  \item Possible Database: CouchDB 2.0
 \end{itemize}
 
 \subsubsection[Safety, security and privacy
@@ -720,7 +720,7 @@ Safety, security and privacy requirements}
 Private information shall be held to any relevant security standards. For instance,
 any credit card information processed by the product in the textbook creation process
 will be held to PCI compliance standards. Passwords shall be stored in a securely hashed,
-non-reversible method such that infiltration of the product by an unauthorized
+non-reversible method, such that infiltration of the product by an unauthorized
 third party will not be able to result in the theft of user passwords or other private
 information.
 }
@@ -729,21 +729,24 @@ information.
 requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
 Performance requirements}
 
-A standard user load shall be defined as 200 simultaneous users. User information
+A standard user load shall be defined as up to 100 simultaneous users. User information
 will include things such as text documents, media uploads, and user account data.
 
 Under a standard load,
 \begin{itemize}
-  \item 95\% of save operations (excepting media upload time) shall take under 500ms;
-  \item 95\% of initial page loads shall take under three seconds;
-  \item 95\% of user account operations (login, creation, deletion, etc) shall take under 500ms
+  \item 95\% of save operations (excepting media upload time) shall be responsive in 
+  nature.
+  \item 95\% of initial page loads shall shall be responsive in 
+  nature.
+  \item 95\% of user account operations (login, creation, deletion, etc) shall be 
+  responsive in nature.
 \end{itemize}
 
 \subsubsection[System and software
 quality]{\selectlanguage{english}\rmfamily\bfseries\color{black} System
 and software quality}
 
-The software shall maintain 99.99\% accessibility from any modern web browser.
+The software shall maintain 99.99\% accessibility from the major modern web browsers, including Mozilla FireFox, Google Chrome, and Microsoft Edge.
 As a non-safety-critical product, reliability shall be pushed for but not promised
 to end users. Testing shall be handled through a suite of automated unit and integration testing, as well as
 through manual checking of newly written and critical features.
@@ -796,7 +799,7 @@ Training-related requirements}
 %system.}}\foreignlanguage{english}{ \ \ }}
 
 \noindent {\selectlanguage{english}\color{black}
-No training materials or expectations are tied to this project other
+No training materials or expectations will be tied to this project other
 than the limited help screens built into the software and the
 accompanying user manual.}
 
@@ -1246,11 +1249,10 @@ Case Diagrams}}
 [insert 1+ use case diagrams here]}
 \end{comment}
 
-\subsubsection[System feature 1: [ General Website Features
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} General website features
+\subsubsection[System feature 1: General Website Features]{\selectlanguage{english}\rmfamily\bfseries\color{black} General website features
 }
 \begin{itemize}
-\item These may come free if we fork the federated wiki
+\item These may come free if we fork the Federated Wiki
 \item Material/otherwise nice looking design template
 \item User account management
 \item Create new account
@@ -1258,8 +1260,7 @@ Case Diagrams}}
 \item Login/logout functionality
 \end{itemize}
 
-\subsubsection[System feature 2: [ Compile a book
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} Compile a book:
+\subsubsection[System feature 2: Compile a book]{\selectlanguage{english}\rmfamily\bfseries\color{black} Compile a Book:
 }
 \begin{itemize}
 \item Search functionality for finding existing textbooks
@@ -1267,8 +1268,7 @@ Case Diagrams}}
 \item Add a new blank textbook
 \end{itemize}
 
-\subsubsection[System feature 3: [ Textbook Compilation Interface
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} Textbook compilation interface
+\subsubsection[System feature 3: Textbook Compilation Interface]{\selectlanguage{english}\rmfamily\bfseries\color{black} Textbook compilation interface
 }
 \begin{itemize}
 \item Table of Contents view, with access to New Chapter and Edit Chapter
@@ -1278,8 +1278,7 @@ Case Diagrams}}
 \item User-friendly interface to add Section/Scrap to desired location in Chapter
 \end{itemize}
 
-\subsubsection[System feature 4: [ insert feature name here
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} Search
+\subsubsection[System feature 4: Search Feature]{\selectlanguage{english}\rmfamily\bfseries\color{black} Search
 }
 \begin{itemize}
 \item By keyword, author, tag, field; ranked by relevance and/or community voting
@@ -1287,8 +1286,7 @@ Case Diagrams}}
 \item Textbook search
 \end{itemize}
 
-\subsubsection[System feature 5: [ Publishing Interface
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} Publishing Interface
+\subsubsection[System feature 5: Publishing Interface]{\selectlanguage{english}\rmfamily\bfseries\color{black} Publishing Interface
 }
 \begin{itemize}
 \item Indicate number of copies/digital access for students, determine price
@@ -1296,8 +1294,7 @@ Case Diagrams}}
 \item Save textbook as PDF/send to printer
 \end{itemize}
 
-\subsubsection[System feature 6: [ Scrap Editor
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black}  Scrap Editor}
+\subsubsection[System feature 6: Scrap Editor]{\selectlanguage{english}\rmfamily\bfseries\color{black} Scrap Editor}
 \begin{itemize}
 \item "Pretty" view for adding formatted text, media, etc to a scrap
 \item "Raw" view for managing
@@ -1871,7 +1868,7 @@ APPENDIX A. \ Gantt Chart}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=110mm]{gantt_chart.png}
+\includegraphics[width=160mm]{gantt_chart.png}
 \caption{A simple preliminary Gantt Chart}
 \end{figure}
 
@@ -1886,8 +1883,8 @@ APPENDIX B. \ Unified Modeling Language Diagram}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=150mm]{UML_Diagram.png}
-\caption{A preliminary UML Diagram}
+\includegraphics[width=150mm]{usage_diagram.png}
+\caption{A preliminary Usage Diagram}
 \end{figure}
 
 \bigskip
