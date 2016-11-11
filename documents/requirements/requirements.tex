@@ -186,34 +186,7 @@ Approved\\\hline
  &
 ~
 \\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
+
 \end{supertabular}
 \end{flushleft}
 {\color{black}
@@ -290,7 +263,10 @@ and other educators)\\ \hline
 Final Test & Release of full functionality to customer for approval \\ \hline
 SDD & Software Design Document \\ \hline
 SSRS & System and Software Requirements Specification \\ \hline
+PDF & Portable Document Format, that is able to combine text, graphics, and other information into a single document \\ \hline
 PCI & Payment Card Industry, is a proprietary information security standard for credit cards in an effort to reduce credit card fraud \\ \hline
+Federated & Individual parts that stand as an individual but can be combined into a single unit \\ \hline
+Wiki & A collaborative content editing platform \\ \hline
 Scrap & A section of a textbook, which can contain formatted text (markdown or latex), and media \\ \hline
 Section & An ordered collection of Scraps belonging to a chapter\\ \hline
 Chapter & An ordered collection of Sections and Scraps\\ \hline
@@ -550,7 +526,7 @@ Git, email, comments}
 \subsubsection[System feature 1: General Website Features]{\rmfamily\bfseries\color{black} General Website Features}
 
 \begin{itemize}
-\item These may come free if we fork the Federated Wiki.
+\item These may come free if we duplicate and edit the Federated Wiki.
 \item Material/otherwise nice looking design template
 \item User account management
 \item Create new account
@@ -567,8 +543,8 @@ Git, email, comments}
 
 \subsubsection[System feature 3: Textbook Compilation Interface]{\rmfamily\bfseries\color{black} Textbook Compilation Interface}
 \begin{itemize}
-\item Table of Contents view, with access to New Chapter and Edit Chapter
 \item Edit/New Chapter:
+\item Table of Contents view, with access to New Chapter and Edit Chapter
 \item Button to Add New Section/Scrap
 \item Button to Search Sections/Scraps
 \item User-friendly interface to add Section/Scrap to desired location in Chapter
@@ -583,15 +559,16 @@ Git, email, comments}
 
 \subsubsection[System feature 5: Publishing Interface]{\rmfamily\bfseries\color{black} Publishing Interface}
 \begin{itemize}
-\item Indicate number of copies/digital access for students, determine price
+%Need to talk to Carlos about this
+%\item Indicate number of copies/digital access for students, determine price
 \item Save textbook as PDF/send to printer
 \item Optional future feature: payment processor integration
 \end{itemize}
 
 \subsubsection[System feature 6: Scrap Editor]{\rmfamily\bfseries\color{black} Scrap Editor}
 \begin{itemize}
-%\item "Pretty" view for adding formatted text, media, etc to a scrap
-\item "Raw" view for managing
+\item "Pretty" view for adding formatted text, media, etc to a scrap
+\item "Raw" view for managing scrap ordering
 \item Tag management (add, delete, search? tags)
 %\item Price management
 \end{itemize}
@@ -741,410 +718,6 @@ feature]{\rmfamily\bfseries\color{black}
 Detailed functional requirements of this feature}
 \noindent {\color{black}
 [ insert your text here ]}
-
-\end{comment}
-
-
-%Requirements Tracability Section
-\begin{comment}
-\clearpage
-\setcounter{page}{1}%\pagestyle{Convertvi}
-\section[REQUIREMENTS TRACEABILITY]{\rmfamily\bfseries\color{black} REQUIREMENTS TRACEABILITY}
-\noindent {\itshape\color{black}
-This section shall contain traceability information from each system
-requirement in this specification to the system (or subsystem, if
-applicable) requirements it addresses. \ A tabular form is preferred,
-but not mandatory.}
-
-
-\bigskip
-
-\begin{flushleft}
-\tablehead{\hline
-\multicolumn{1}{|m{0.9212598in}|}{\centering
-\bfseries\color{black} Feature Name} &
-\centering \bfseries\color{black} Req No. &
-\centering \bfseries\color{black} Requirement
-Description &
-\centering \bfseries\color{black} Priority &
-\centering \bfseries\color{black} SDD &
-\multicolumn{2}{m{1.2872598in}|}{\centering
-\bfseries\color{black} Alpha Release} &
-\multicolumn{2}{m{1.3587599in}|}{\centering
-\bfseries\color{black} Beta Release} &
-\multicolumn{2}{m{1.3795599in}|}{\centering
-\bfseries\color{black} Final Test}\\\hline
- &
- &
- &
- &
- &
-\centering \bfseries\color{black} Test Case(s) &
-\centering \bfseries\color{black} Test Res. &
-\centering \bfseries\color{black} Test Case(s) &
-\centering \bfseries\color{black} Test Res. &
-\centering \bfseries\color{black} Test Case(s) &
-\bfseries\color{black} Test
-Res.\\\hhline{~~~~~------}}
-\begin{supertabular}{m{0.9212598in}|m{0.42125985in}|m{1.9212599in}|m{0.39275986in}|m{0.7587598in}|m{0.6622598in}|m{0.5462598in}|m{0.6712598in}|m{0.6087598in}|m{0.6712598in}|m{0.6295598in}|}
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} 1.1 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
- &
-\centering \color{black} 1.2 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} {\dots} &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} 1.[n] &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} 2.1 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
- &
-\centering \color{black} 2.2 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} {\dots} &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} 2.[n] &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} 3.1 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
- &
-\centering \color{black} 3.2 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} {\dots} &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
- &
-\centering \color{black} 3.[n] &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
-\multicolumn{1}{|m{0.9212598in}|}{\color{black}
-{\dots}} &
-\centering \color{black} {\dots} &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} [m].1 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
- &
-\centering \color{black} [m].2 &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{~----------}
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} {\dots} &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-\multicolumn{1}{|m{0.9212598in}|}{~
-} &
-\centering \color{black} [m.n] &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-\end{supertabular}
-\end{flushleft}
-{\color{black}
-Priorities are: \textbf{M}andatory, \textbf{L}ow, \textbf{H}igh}
-
-{\color{black}
-SDD link is version and page number or function name.}
-
-{\color{black}
-Test cases and results are file names and \textbf{P}ass/\textbf{F}ail or
-\% passing.}
 
 \end{comment}
 
