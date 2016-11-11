@@ -38,3 +38,4 @@
 \contentsline {subsubsection}{\numberline {3.2.6}System feature 6: Scrap Editor}{7}{subsubsection.3.2.6}
 \contentsline {section}{\numberline {4}APPENDIX A. \ Gantt Chart}{8}{section.4}
 \contentsline {section}{\numberline {5}APPENDIX B. \ UML Diagram}{9}{section.5}
+\contentsline {section}{References}{10}{section*.2}

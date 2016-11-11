@@ -10,6 +10,7 @@
 \usepackage{supertabular}
 \usepackage{hhline}
 \usepackage{hyperref}
+\usepackage{url}
 \usepackage{fancyhdr}
 \def\name{Steven Powers, Josh Matteson, Evan Tschuy}
 \hypersetup{
@@ -98,93 +99,35 @@
 
 
 \bigskip
-
-
 \bigskip
-
 \clearpage
-
 {\centering\bfseries\color{black}\huge
 MANY VOICES PUBLISHING PLATFORM
 \par}
-
-
 \bigskip
-
 \bigskip
-
-
 {\centering\bfseries\color{black}\Large
 SYSTEMS AND SOFTWARE \ REQUIREMENTS SPECIFICATION (SSRS)
 \par}
-
-
 \bigskip
-
-
 \bigskip
-
-
 \bigskip
-
-
 \bigskip
-
-
 \bigskip
-
-{\centering\bfseries\color{black}
-Version 0.5
-\par}
-
-{\centering\bfseries\color{black}
-October 27, 2016
-\par}
-
-
+{\centering\bfseries\color{black}Version 0.5\par}
+{\centering\bfseries\color{black}October 27, 2016\par}
 \bigskip
-
-
 \bigskip
-
-{\centering\bfseries\color{black}
-Prepared for:
-\par}
-
-{\centering\bfseries\color{black}
-Dr. Carlos Jensen, D. Kevin McGrath, and Dr. Kirsten Winters
-\par}
-
-{\centering\bfseries\color{black}
-CS461 Senior Capstone
-\par}
-
-
+{\centering\bfseries\color{black}Prepared for:\par}
+{\centering\bfseries\color{black}Dr. Carlos Jensen, D. Kevin McGrath, and Dr. Kirsten Winters\par}
+{\centering\bfseries\color{black}CS461 Senior Capstone\par}
 \bigskip
-
-
 \bigskip
-
-{\centering\bfseries\color{black}
-Prepared by:
-\par}
-
-{\centering\bfseries\color{black}
-Commix
-\par}
-
-{\centering\bfseries\color{black}
-Josh Matteson, Steven Powers, and Evan Tschuy
-\par}
-
-{\centering\bfseries\color{black}
-Oregon State University
-\par}
-
-{\centering\bfseries\color{black}
-Corvallis, OR \ 97330
-\par}
-
+{\centering\bfseries\color{black}Prepared by:\par}
+{\centering\bfseries\color{black}Commix\par}
+{\centering\bfseries\color{black}Josh Matteson, Steven Powers, and Evan Tschuy\par}
+{\centering\bfseries\color{black}Oregon State University\par}
+{\centering\bfseries\color{black}Corvallis, OR \ 97330\par}
 \bigskip
 
 \begin{abstract}
@@ -194,20 +137,10 @@ Corvallis, OR \ 97330
 
 
 \begin{comment}
-\clearpage{\centering\bfseries\color{black}
-Many Voices Publishing Platform SSRS
-\par}
-
-
+\clearpage{\centering\bfseries\color{black}Many Voices Publishing Platform SSRS\par}
 \bigskip
-
-{\centering\bfseries\color{black}
-RECORD OF CHANGES
-\par}
-
-
+{\centering\bfseries\color{black}RECORD OF CHANGES\par}
 \bigskip
-
 \begin{flushleft}
 \tablehead{}
 \begin{supertabular}{|m{0.47685984in}|m{0.6087598in}|m{1.3587599in}|m{0.23375985in}|m{2.0462599in}|m{0.7337598in}|m{0.6330598in}|}
@@ -322,7 +255,7 @@ for the system is Dr. Carlos Jensen that is reachable at his email jensenca@engr
 The ultimate customer, or end-user, of the system will be any user that wants an easier
 way to combine materials into a book. \ This is a new project effort, so the
 version under development is version 0.5 release 0. As the system may be based off of Ward Cunningham's 
-Federated Wiki, the project will have a substantial head start, signified by the 0.5 version number.}
+Federated Wiki, the project will have a substantial head start, signified by the 0.5 version number \cite{Federated}.}
 
 \subsection[PURPOSE]{\rmfamily\bfseries\color{black} PURPOSE}
 
@@ -357,6 +290,7 @@ and other educators)\\ \hline
 Final Test & Release of full functionality to customer for approval \\ \hline
 SDD & Software Design Document \\ \hline
 SSRS & System and Software Requirements Specification \\ \hline
+PCI & Payment Card Industry, is a proprietary information security standard for credit cards in an effort to reduce credit card fraud \\ \hline
 Scrap & A section of a textbook, which can contain formatted text (markdown or latex), and media \\ \hline
 Section & An ordered collection of Scraps belonging to a chapter\\ \hline
 Chapter & An ordered collection of Sections and Scraps\\ \hline
@@ -429,7 +363,7 @@ The main differentiator from traditional textbook publication methods are the pr
 micro-writing abilities. A traditional textbook is written by one expert, using a defined
 curriculum that fits the needs of the author. The curriculum is a generic version of a
 multitude of classes that is somewhat useful for many professors, rather than very useful
-for few professors. Instead, the platform will give the tools necessary for individual 
+for few professors. Instead, our solution will give the tools necessary for individual 
 professors to create the textbook they need to match the curriculum desired. This allows 
 for textbooks that more closely track the intricacies of how classes are taught by 
 different individuals.}
@@ -440,19 +374,19 @@ different individuals.}
 The product will be a document construction service. The most basic usage will be the 
 creation of a textbook out of pre-existing chapters, by searching and selecting from a 
 list. Alternatively, chapters can created using pre-existing sections and media.
-A chapter or section can be created using a simple to use input interface that
-allows input of text and LaTeX markup, along with the upload of media like image or
+A chapter or section can be created using a simple input interface that
+accepts text and LaTeX markup, along with the upload of media like image or
 perhaps video content.}
 
 \subsection[USER CHARACTERISTICS]{\rmfamily\bfseries\color{black} USER CHARACTERISTICS}
 
 {\noindent 
-The average user of the service will be a professor. Professors in general have
-decent, but by no means high technical skills. Thus, the interface of the product
+The expected user of the service will be a professor. Professors, in general, have
+decent means technical skills. Thus, the interface of the product
 will be highly graphically driven, using modern interface paradigms as defined
-by industry leaders, such as Google's Material Design. The interface will allow
-users to not think about the technical specificities of the product, but more-so
-on the content they are using, the authors of the content, and how they are using it.}
+by industry leaders, such as Google's Material Design \cite{GoogleMaterial}. 
+The interface will allow users to not think about the technical specificities of the product, 
+but more-so on the content they are using, the authors of the content, and how they are using it.}
 
 \subsection[CONSTRAINTS]{\rmfamily\bfseries\color{black} CONSTRAINTS}
 
@@ -476,9 +410,9 @@ users from accessing other, non-specified applications.}
 {\noindent
 The product will be designed to run on a generic Linux-with-web server environment.
 Ward Cunningham's Federated Wiki, a similar project being drawn upon for inspiration, can run
-on any system with Ruby and CouchDB (a popular NoSQL database). With the product
-being either partially or wholly based on the Federated Wiki, similar system
-requirements are anticipated.
+on any system with Ruby and CouchDB (a popular NoSQL database) \cite{Federated}. 
+With the product being either partially or wholly based on the Federated Wiki, similar system
+requirements are anticipated \cite{Federated}.
 
 \subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL) REQUIREMENTS]{\rmfamily\bfseries\color{black} SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
 
@@ -520,15 +454,16 @@ Under a standard load:
 
 \subsubsection[System and Software Quality]{\rmfamily\bfseries\color{black} System and Software Quality}
 
-The software shall maintain 99.99\% accessibility from the major modern web browsers, including Mozilla FireFox, Google Chrome, and Microsoft Edge.
-As a non-safety-critical product, reliability shall be pushed for but not promised
+The software shall maintain 99.99\% accessibility from the major modern web browsers, including Mozilla FireFox, 
+Google Chrome, and Microsoft Edge.
+As a non-safety-critical product, reliability shall be attempted but not promised
 to end users. Testing shall be handled through a suite of automated unit and integration testing, as well as
 through manual checking of newly written and critical features.
 
 \subsubsection[Packaging and Delivery Requirements]{\rmfamily\bfseries\color{black} Packaging and Delivery Requirements}
 
 {\noindent 
-The executable system and all associated documentation (i.e., SSRS, SDD,
+The executable system and all associated documentation (i.e., SSRS,
 code listing, test plan (data and results), and user manual) will be
 delivered to the customer on CD{\textquoteright}s and/or via email, as
 specified by the customer at time of delivery. \ Although document
@@ -615,18 +550,18 @@ Git, email, comments}
 \subsubsection[System feature 1: General Website Features]{\rmfamily\bfseries\color{black} General Website Features}
 
 \begin{itemize}
-\item These may come free if we fork the Federated Wiki
+\item These may come free if we fork the Federated Wiki.
 \item Material/otherwise nice looking design template
 \item User account management
 \item Create new account
 \item Edit existing account
-\item Login/logout functionality
+\item Login / logout functionality
 \end{itemize}
 
 \subsubsection[System feature 2: Compile a book]{\rmfamily\bfseries\color{black} Compile a Book}
 \begin{itemize}
 \item Search functionality for finding existing textbooks
-\item Ability to fork existing textbooks
+\item Ability to duplicate and edit existing textbooks
 \item Add a new blank textbook
 \end{itemize}
 
@@ -1225,7 +1160,7 @@ APPENDIX A. \ Gantt Chart}
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=160mm]{gantt_chart.png}
-\caption{A simple preliminary Gantt Chart}
+\caption{A simple preliminary Gantt Chart that outlines a rough sketch of our anticipated working time line}
 \end{figure}
 
 \clearpage
@@ -1241,10 +1176,14 @@ APPENDIX B. \ Unified Modeling Language Diagram}
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=150mm]{usage_diagram.png}
-\caption{A preliminary Usage Diagram}
+\caption{A preliminary UML Diagram that outlines the basic flow of information}
 \end{figure}
 
 \bigskip
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{requirements}
 
 \newpage
 \centerline{\sc \large Signature Page}
