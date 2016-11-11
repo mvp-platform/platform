@@ -10,13 +10,16 @@
 \usepackage{supertabular}
 \usepackage{hhline}
 \usepackage{hyperref}
+\usepackage{fancyhdr}
 \def\name{Steven Powers, Josh Matteson, Evan Tschuy}
-\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdfauthor = {\name},
+\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdfauthor = {\name},
   pdfkeywords = {cs461 ``senior capstone'' requirements},
   pdftitle = {CS 461 Requirements Document},
   pdfsubject = {CS 461 Requirements Document},
   pdfpagemode = UseNone}
 \usepackage[pdftex]{graphicx}
+
 % Outline numbering
 \setcounter{secnumdepth}{5}
 \renewcommand\thesection{\arabic{section}}
@@ -41,57 +44,34 @@
 % Footnote rule
 \setlength{\skip\footins}{0.0469in}
 \renewcommand\footnoterule{\vspace*{-0.0071in}\setlength\leftskip{0pt}\setlength\rightskip{0pt plus 1fil}\noindent\textcolor{black}{\rule{0.25\columnwidth}{0.0071in}}\vspace*{0.0398in}}
+
 % Pages styles
+
 \makeatletter
-\newcommand\ps@Standard{
-  \renewcommand\@oddhead{\selectlanguage{english}\rmfamily\color{black}Admix - Many Voices Publishing Platform\hfill \hfill }
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{\foreignlanguage{english}{\textcolor{black}{SSRS Page }}\foreignlanguage{english}{\textcolor{black}{\thepage{}}}}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertviii{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertvii{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertvi{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertv{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertiv{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
-\newcommand\ps@Convertii{
-  \renewcommand\@oddhead{}
-  \renewcommand\@evenhead{\@oddhead}
-  \renewcommand\@oddfoot{}
-  \renewcommand\@evenfoot{\@oddfoot}
-  \renewcommand\thepage{\arabic{page}}
-}
+%\newcommand\ps@Standard{
+%  \renewcommand\@oddhead{\rmfamily\color{black}Many Voices Publishing Platform\hfill \hfill }
+%  \renewcommand\@evenhead{\@oddhead}
+%  \renewcommand\@oddfoot{}%{\textcolor{black}{SSRS Page }}{\textcolor{black}{\thepage{}}}}
+%  \renewcommand\@evenfoot{\@oddfoot}
+%  \renewcommand\thepage{\arabic{page}}
+%}
+
+\pagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Many Voices Publishing Platform}
+
+\lfoot{SSRS}
+\cfoot{Page}
+\rfoot{\thepage}
+
+%\newcommand\ps@Convertviii{
+%  \renewcommand\@oddhead{}
+%  \renewcommand\@evenhead{\@oddhead}
+%  \renewcommand\@oddfoot{}
+%  \renewcommand\@evenfoot{\@oddfoot}
+%  \renewcommand\thepage{\arabic{page}}
+%}
+
 \newcommand\ps@FirstPage{
   \renewcommand\@oddhead{}
   \renewcommand\@evenhead{\@oddhead}
@@ -100,7 +80,7 @@
   \renewcommand\thepage{\arabic{page}}
 }
 \makeatother
-\pagestyle{Standard}
+%\pagestyle{Standard}
 \setlength\tabcolsep{1mm}
 \renewcommand\arraystretch{1.3}
 % footnotes configuration
@@ -113,7 +93,7 @@
 
 
 \begin{document}
-\clearpage\setcounter{page}{1}\pagestyle{Standard}
+\clearpage\setcounter{page}{1}%\pagestyle{Standard}
 \thispagestyle{FirstPage}
 
 
@@ -124,7 +104,7 @@
 
 \clearpage
 
-{\centering\selectlanguage{english}\bfseries\color{black}\huge
+{\centering\bfseries\color{black}\huge
 MANY VOICES PUBLISHING PLATFORM
 \par}
 
@@ -134,7 +114,7 @@ MANY VOICES PUBLISHING PLATFORM
 \bigskip
 
 
-{\centering\selectlanguage{english}\bfseries\color{black}\Large
+{\centering\bfseries\color{black}\Large
 SYSTEMS AND SOFTWARE \ REQUIREMENTS SPECIFICATION (SSRS)
 \par}
 
@@ -153,11 +133,11 @@ SYSTEMS AND SOFTWARE \ REQUIREMENTS SPECIFICATION (SSRS)
 
 \bigskip
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Version 0.5
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 October 27, 2016
 \par}
 
@@ -167,15 +147,15 @@ October 27, 2016
 
 \bigskip
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Prepared for:
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Dr. Carlos Jensen, D. Kevin McGrath, and Dr. Kirsten Winters
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 CS461 Senior Capstone
 \par}
 
@@ -185,41 +165,43 @@ CS461 Senior Capstone
 
 \bigskip
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Prepared by:
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Commix
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Josh Matteson, Steven Powers, and Evan Tschuy
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Oregon State University
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 Corvallis, OR \ 97330
 \par}
 
 \bigskip
 
-%\abstract{AAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract Here}
+\begin{abstract}
+\noindent Abstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract HereAbstract Here
+\end{abstract}
 
 
 
 \begin{comment}
-\clearpage{\centering\selectlanguage{english}\bfseries\color{black}
+\clearpage{\centering\bfseries\color{black}
 Many Voices Publishing Platform SSRS
 \par}
 
 
 \bigskip
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering\bfseries\color{black}
 RECORD OF CHANGES
 \par}
 
@@ -232,30 +214,30 @@ RECORD OF CHANGES
 \hline
 ~
 
-\centering \selectlanguage{english}\color{black} Change number &
+\centering \color{black} Change number &
 ~
 
-\centering \selectlanguage{english}\color{black} Date completed &
+\centering \color{black} Date completed &
 ~
 
-\centering \selectlanguage{english}\color{black} Location of change
+\centering \color{black} Location of change
 (e.g., page or figure \#) &
-\centering \selectlanguage{english}\bfseries\color{black} A\newline
+\centering \bfseries\color{black} A\newline
 M\newline
 D &
 ~
 
 ~
 
-\centering \selectlanguage{english}\color{black} Brief description of
+\centering \color{black} Brief description of
 change &
 ~
 
-\centering \selectlanguage{english}\color{black} Approved by (initials)
+\centering \color{black} Approved by (initials)
 &
 ~
 
-\centering\arraybslash \selectlanguage{english}\color{black} Date
+\centering\arraybslash \color{black} Date
 Approved\\\hline
 ~
  &
@@ -299,278 +281,105 @@ Approved\\\hline
  &
 ~
 \\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hline
 \end{supertabular}
 \end{flushleft}
-{\selectlanguage{english}\color{black}
-\foreignlanguage{english}{*}\foreignlanguage{english}{\textbf{A}}\foreignlanguage{english}{
+{\color{black}
+{*}{\textbf{A}}{
 - ADDED
-\ }\foreignlanguage{english}{\textbf{M}}\foreignlanguage{english}{ -
+\ }{\textbf{M}}{ -
 MODIFIED
-\ }\foreignlanguage{english}{\textbf{D}}\foreignlanguage{english}{ -
+\ }{\textbf{D}}{ -
 DELETED}}
 \end{comment}
 
-\clearpage{\centering\selectlanguage{english}\bfseries\color{black}
-\foreignlanguage{english}{\MakeUppercase{\ }}\foreignlanguage{english}{\MakeUppercase{Many Voices Publishing Platform SSRS}}
+\clearpage
+{\centering
+{\MakeUppercase{\ }}{\MakeUppercase{Many Voices Publishing Platform SSRS}}
 \par}
 
-{\centering\selectlanguage{english}\bfseries\color{black}
+{\centering
 TABLE OF CONTENTS
 \par}
 
-
-\bigskip
-
-{\selectlanguage{english}\bfseries\color{black}
-Section\ \ Page}
-
 \setcounter{tocdepth}{9}
-\renewcommand\contentsname{}
+%\renewcommand\contentsname{}
 \tableofcontents
 
-\bigskip
+%\medskip
 
-\clearpage\clearpage\setcounter{page}{1}\pagestyle{Convertii}
-\section[Introduction]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Introduction}
+\clearpage
 
-\noindent %{\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\textit{This section the document should
-%introduce the project, customer, audience, etc., without delving into
-%too much detail, because those details are provided in subsequent
-%sections.}}\foreignlanguage{english}{ \ }}
+\setcounter{page}{1}\pagestyle{fancy}
+\section[Introduction]{\rmfamily\bfseries\color{black} Introduction}
 
-\subsection[IDENTIFICATION]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-IDENTIFICATION}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall contain a full identification of the system and the
-%software to which this document applies, including, as applicable,
-%identification number(s), title(s), abbreviation(s), version number(s),
-%and release number(s).}
+\subsection[IDENTIFICATION]{\rmfamily\bfseries\color{black} IDENTIFICATION}
 
-\noindent {\selectlanguage{english}\color{black}
+
+{\noindent
 The software system being considered for development is referred to as the Many Voices
 Publishing Platform. \ The customer providing specifications
-for the system is Dr. Carlos Jensen that is reachable at his email cjensen\#\#\#@gmail.com. \
+for the system is Dr. Carlos Jensen that is reachable at his email jensenca@engr.orst.edu \
 The ultimate customer, or end-user, of the system will be any user that wants an easier
 way to combine materials into a book. \ This is a new project effort, so the
-version under development is version 0.5 release 0. As the system may be based off of Ward Cunningham's Federated Wiki, the project will have a substantial head start, signified by the 0.5 version number.}
+version under development is version 0.5 release 0. As the system may be based off of Ward Cunningham's 
+Federated Wiki, the project will have a substantial head start, signified by the 0.5 version number.}
 
-\subsection[PURPOSE]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-PURPOSE}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall contain a brief statement on the purpose of the
-%system and software being developed, and the intended audience for this
-%document.}
+\subsection[PURPOSE]{\rmfamily\bfseries\color{black} PURPOSE}
 
-\noindent {\selectlanguage{english}\color{black}The purpose of the system under
+{\noindent 
+The purpose of the system under
 development is to provide a collaborative authoring platform that allows for users to
 combine various materials into a book. \ While the system will be used by professors and
 instructors in majority, this document is intended to be read and understood by software
 designers and coders. \ The document will also be vetted or
 approved by Dr. Carlos Jensen, D. Kevin McGrath, and Dr. Kirsten Winters.}
 
-\subsection[SCOPE]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-SCOPE}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall briefly summarize the history of system
-%development, operation, and maintenance; identify the project sponsor,
-%acquirer, user, developer, and support agencies; identify current and
-%planned operating sites; and list other relevant documents.}
+\subsection[SCOPE]{\rmfamily\bfseries\color{black} SCOPE}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent 
 The project is sponsored by Dr. Carlos Jensen, being developed by Josh Matteson,
 Steven Powers, and Evan Tschuy for completion of CS461 Senior capstone project class.
 The product is to be operated via a website for wide availability and use.}
 
-\subsection[DEFINITIONS, ACRONYMS, AND
-ABBREVIATIONS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-DEFINITIONS, ACRONYMS, AND ABBREVIATIONS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This section shall list and define all special terms, acronyms and
-%abbreviations used throughout this document. \ A tabular form is
-%preferable, but not mandatory.}
+\subsection[DEFINITIONS, ACRONYMS, AND ABBREVIATIONS]{\rmfamily\bfseries\color{black} DEFINITIONS, ACRONYMS, AND ABBREVIATIONS}
 
 \bigskip
 
-\begin{flushleft}
+\begin{center}
+
 \tablehead{}
-\begin{supertabular}{|m{1.3587599in}|m{5.00806in}|}
+\begin{supertabular}{|p{3cm}|p{12cm}|}
 \hline
-\centering \selectlanguage{english}\bfseries\color{black} Term or
-Acronym &
-\centering\arraybslash \selectlanguage{english}\bfseries\color{black}
-Definition\\\hline
-\selectlanguage{english}\color{black} Alpha test &
-\selectlanguage{english}\color{black} Limited release(s) to selected,
-outside testers (Friends and Family)\\\hline
-\selectlanguage{english}\color{black} Beta test &
-\selectlanguage{english}\color{black} Limited release(s) to cooperating
-customers wanting early access to developing systems (Professors or other educators)\\\hline
-\selectlanguage{english}\color{black} Final test &
-\selectlanguage{english}\color{black} also known as acceptance testing; release of
-full functionality to customer for approval\\\hline
-\selectlanguage{english}\color{black} DFD &
-\selectlanguage{english}\color{black} Data Flow Diagram\\\hline
-\selectlanguage{english}\color{black} SDD &
-\selectlanguage{english}\color{black} Software Design Document, aka SDS,
-Software Design Specification\\\hline
-\selectlanguage{english}\color{black} SRS &
-\selectlanguage{english}\color{black} Software Requirements
-Specification\\\hline
-\selectlanguage{english}\color{black} SSRS &
-\selectlanguage{english}\color{black} System and Software Requirements
-Specification\\\hline
-\selectlanguage{english}\color{black} Scrap &
-\selectlanguage{english}\color{black} A section of a textbook, which can contain formatted text (markdown or latex), and media\\\hline
-\selectlanguage{english}\color{black} Section &
-\selectlanguage{english}\color{black} An ordered collection of Scraps belonging to a chapter\\\hline
-\selectlanguage{english}\color{black} Chapter &
-\selectlanguage{english}\color{black} An ordered collection of Sections and Scraps\\\hline
-\selectlanguage{english}\color{black} Media &
-\selectlanguage{english}\color{black} A standalone image, figure, or video. Can be embedded in a Scrap\\\hline
-\selectlanguage{english}\color{black} Internet Application &
-\selectlanguage{english}\color{black} An interactive program that can be accessed and is based through a web server instead of being stored on a user's desktop\\\hline
-\selectlanguage{english}\color{black} Source Control &
-\selectlanguage{english}\color{black} An element of software design management, version control, and is the management of changes to documents, large web sites, computer programs, and other collections of data\\\hline
-\selectlanguage{english}\color{black} User Interface (UI) &
-\selectlanguage{english}\color{black} The means by which the user and a computer system interact, in particular the use of input devices and software\\\hline
-%\\\hline
+Term or Acronym & Definition\\\hline
+Alpha Test & Limited release(s) to selected, outside testers (Friends and Family)\\ \hline
+Beta Test & Limited release(s) to cooperating customers wanting early access to developing systems (Professors 
+and other educators)\\ \hline
+Final Test & Release of full functionality to customer for approval \\ \hline
+SDD & Software Design Document \\ \hline
+SSRS & System and Software Requirements Specification \\ \hline
+Scrap & A section of a textbook, which can contain formatted text (markdown or latex), and media \\ \hline
+Section & An ordered collection of Scraps belonging to a chapter\\ \hline
+Chapter & An ordered collection of Sections and Scraps\\ \hline
+Media & A standalone image, figure, or video. Can be embedded in a Scrap\\ \hline
+Web Application & An interactive program that can be accessed and is based through a web server instead of 
+being stored on a user's desktop\\ \hline
+Source Control & An element of software design management, version control, and is the 
+management of changes to documents, large web sites, computer programs, and other 
+collections of data \\ \hline
+User Interface (UI)  & The means by which the user and a computer system interact, in particular the use of 
+input devices and software\\ \hline
 \end{supertabular}
-\end{flushleft}
-\subsection[REFERENCES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-REFERENCES}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This section shall list full bibliographic citations of all documents
-%referenced in this report. \ This section shall also identify the
-%source for all materials not available in printed form (e.g., web-based
-%information) and list the complete URL along with owner, author,
-%posting date, and date last visited.}
 
-\noindent {\selectlanguage{english}\color{black}
-[1]C.  Jeffery, Systems and Software Requirements Specification (SSRS) Template, 2nd ed. Moscow: University of Idaho, 2016, pp. 1-22.}
+\end{center}
+\subsection[REFERENCES]{\rmfamily\bfseries\color{black} REFERENCES}
 
-\subsection[OVERVIEW AND
-RESTRICTIONS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-OVERVIEW AND RESTRICTIONS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall describe the organization of this document and
-%shall describe any security or privacy considerations associated with
-%its use.}
+{\noindent
+[1] C.  Jeffery, Systems and Software Requirements Specification (SSRS) Template, 2nd ed. Moscow: University of Idaho, 2016, pp. 1-22.}
 
-\noindent {\selectlanguage{english}\color{black}
+\subsection[OVERVIEW AND RESTRICTIONS]{\rmfamily\bfseries\color{black} OVERVIEW AND RESTRICTIONS}
+
+
+{\noindent
 This document is for limited release only to Oregon State University professors and
 associated staff of D. Kevin McGrath, Dr. Kirsten Winters, and Jon Dodge, personnel
 working on the project, and the client, Dr. Carlos Jensen.}
@@ -578,7 +387,7 @@ working on the project, and the client, Dr. Carlos Jensen.}
 
 \bigskip
 
-%\noindent {\selectlanguage{english}\color{black}
+%\noindent {\color{black}
 %Section 2 of this document describes the system under development from a
 %holistic point of view. \ Functions, characteristics, constraints,
 %assumptions, dependencies, and overall requirements are defined from
@@ -587,7 +396,7 @@ working on the project, and the client, Dr. Carlos Jensen.}
 
 \bigskip
 
-%\noindent {\selectlanguage{english}\color{black}
+%\noindent {\color{black}
 %Section 3 of this document describes the specific requirements of the
 %system being developed. \ Interfaces, features, and specific
 %requirements are enumerated and described to a degree sufficient for a
@@ -598,7 +407,7 @@ working on the project, and the client, Dr. Carlos Jensen.}
 \bigskip
 
 
-%\noindent {\selectlanguage{english}\color{black}
+%\noindent {\color{black}
 %Section 4 provides the requirements traceability information for the
 %project. \ Each feature of the system is indexed by the SSRS
 %requirement number and linked to its SDD and test references.}
@@ -606,36 +415,16 @@ working on the project, and the client, Dr. Carlos Jensen.}
 
 \bigskip
 
-%\noindent {\selectlanguage{english}\color{black}
+%\noindent {\color{black}
 %Sections 5 and up are appendices including original information and
 %communications used to create this document.}
 
-\clearpage\section[OVERALL
-DESCRIPTION]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-OVERALL DESCRIPTION}
-%\noindent {\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\textit{This section of the document should
-%describe the general factors that affect the product and its
-%requirements. \ This section does not state specific requirements.
-%\ Instead, it provides the background for those requirements, which are
-%defined in detail in Section 3.}}\foreignlanguage{english}{ \ }}
+\clearpage
+\section[OVERALL DESCRIPTION]{\rmfamily\bfseries\color{black} OVERALL DESCRIPTION}
 
-\subsection[PRODUCT
-PERSPECTIVE]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-PRODUCT PERSPECTIVE}
-%\noindent {\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\textit{This subsection of the document should
-%put the product into perspective with other related products. \ If the
-%product \ is independent and totally self-contained, it should be so
-%stated here. If the document de[FB01?]nes a product that is a component
-%of a larger system, then this subsection should relate the requirements
-%of \ that larger system to functionality of the software and should
-%identify interfaces between that system and the software. \ A block
-%diagram showing the major components of the larger system,
-%interconnections, and external interfaces can be
-%helpful.}}\foreignlanguage{english}{\textbf{\textit{ }}}}
+\subsection[PRODUCT PERSPECTIVE]{\rmfamily\bfseries\color{black} PRODUCT PERSPECTIVE}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent
 The main differentiator from traditional textbook publication methods are the products'
 micro-writing abilities. A traditional textbook is written by one expert, using a defined
 curriculum that fits the needs of the author. The curriculum is a generic version of a
@@ -645,20 +434,9 @@ professors to create the textbook they need to match the curriculum desired. Thi
 for textbooks that more closely track the intricacies of how classes are taught by 
 different individuals.}
 
-\subsection[PRODUCT
-FUNCTIONS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-PRODUCT FUNCTIONS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This subsection of the document should provide a summary of the major
-%functions that the software will perform. \ For the sake of clarity The
-%functions should be organized in a way that makes the list of functions
-%understandable to the \ customer or to anyone else reading the document
-%for the first time. \ Textual or graphical methods can be used to show
-%the different functions and their relationships. \ Such a diagram is
-%not intended to show a design of a product, but simply shows the
-%logical relationships among variables.}
+\subsection[PRODUCT FUNCTIONS]{\rmfamily\bfseries\color{black} PRODUCT FUNCTIONS}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent 
 The product will be a document construction service. The most basic usage will be the 
 creation of a textbook out of pre-existing chapters, by searching and selecting from a 
 list. Alternatively, chapters can created using pre-existing sections and media.
@@ -666,17 +444,9 @@ A chapter or section can be created using a simple to use input interface that
 allows input of text and LaTeX markup, along with the upload of media like image or
 perhaps video content.}
 
-\subsection[USER CHARACTERISTICS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-USER CHARACTERISTICS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This subsection of the document should describe those general
-%characteristics of the intended users of the product including
-%educational level, experience, and technical expertise. \ It should not
-%be used to state speci[FB01?]c requirements, but rather should provide
-%the reasons why certain speci[FB01?]c requirements are later
-%speci[FB01?]ed in Section 3 of this document.}
+\subsection[USER CHARACTERISTICS]{\rmfamily\bfseries\color{black} USER CHARACTERISTICS}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent 
 The average user of the service will be a professor. Professors in general have
 decent, but by no means high technical skills. Thus, the interface of the product
 will be highly graphically driven, using modern interface paradigms as defined
@@ -684,41 +454,36 @@ by industry leaders, such as Google's Material Design. The interface will allow
 users to not think about the technical specificities of the product, but more-so
 on the content they are using, the authors of the content, and how they are using it.}
 
-\subsection[CONSTRAINTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-CONSTRAINTS}
+\subsection[CONSTRAINTS]{\rmfamily\bfseries\color{black} CONSTRAINTS}
 
-\noindent A regular web browser will be the means of access for users. For the backend
+{\noindent 
+A regular web browser will be the means of access for users. For the backend
 server, the main requirement is availability - as a web application, it has no
 safety- or life-critical components. A high (99.99\%) availability should be provided,
-but otherwise availability, safety, and specific hardware are not main concerns.
+but otherwise availability, safety, and specific hardware are not main concerns.}
 
 \bigskip
 
-\noindent The software can, as a web application, be written in a high-level language, with
+{\noindent 
+The software can, as a web application, be written in a high-level language, with
 minimal inter-application communication. In the case that the software is built
 on top of other applications, such as Git, inter-process communication should be
 handled in a generic way that provides a high-security barrier, preventing malicious
-users from accessing other, non-specified applications.
+users from accessing other, non-specified applications.}
 
-\subsection[ASSUMPTIONS AND DEPENDENCIES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-ASSUMPTIONS AND DEPENDENCIES}
+\subsection[ASSUMPTIONS AND DEPENDENCIES]{\rmfamily\bfseries\color{black} ASSUMPTIONS AND DEPENDENCIES}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent
 The product will be designed to run on a generic Linux-with-web server environment.
 Ward Cunningham's Federated Wiki, a similar project being drawn upon for inspiration, can run
 on any system with Ruby and CouchDB (a popular NoSQL database). With the product
 being either partially or wholly based on the Federated Wiki, similar system
 requirements are anticipated.
 
-\subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL)
-REQUIREMENTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
+\subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL) REQUIREMENTS]{\rmfamily\bfseries\color{black} SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
 
-\noindent \subsubsection[Site
-dependencies]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Site dependencies}
-{\selectlanguage{english}\color{black}
 
+\subsubsection[Site Dependencies]{\rmfamily\bfseries\color{black} Site Dependencies}
 As a web application, the product has no hard requirements other than high-speed
 network access and an instance of the CouchDB database management system.
 \begin{itemize}
@@ -727,26 +492,23 @@ network access and an instance of the CouchDB database management system.
   \item Possible Database: CouchDB 2.0
 \end{itemize}
 
-\subsubsection[Safety, security and privacy
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Safety, security and privacy requirements}
-\noindent {\selectlanguage{english}\color{black}
+\subsubsection[Safety, Security and Privacy Requirements]{\rmfamily\bfseries\color{black} Safety, Security and Privacy Requirements}
+
+{\noindent 
 Private information shall be held to any relevant security standards. For instance,
 any credit card information processed by the product in the textbook creation process
 will be held to PCI compliance standards. Passwords shall be stored in a securely hashed,
 non-reversible method, such that infiltration of the product by an unauthorized
 third party will not be able to result in the theft of user passwords or other private
-information.
-}
+information.}
 
-\subsubsection[Performance
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Performance requirements}
+\subsubsection[Performance Requirements]{\rmfamily\bfseries\color{black} Performance Requirements}
 
+{\noindent
 A standard user load shall be defined as up to 100 simultaneous users. User information
 will include things such as text documents, media uploads, and user account data.
 
-Under a standard load,
+Under a standard load:
 \begin{itemize}
   \item 95\% of save operations (excepting media upload time) shall be responsive in 
   nature.
@@ -754,26 +516,18 @@ Under a standard load,
   nature.
   \item 95\% of user account operations (login, creation, deletion, etc) shall be 
   responsive in nature.
-\end{itemize}
+\end{itemize}}
 
-\subsubsection[System and software
-quality]{\selectlanguage{english}\rmfamily\bfseries\color{black} System
-and software quality}
+\subsubsection[System and Software Quality]{\rmfamily\bfseries\color{black} System and Software Quality}
 
 The software shall maintain 99.99\% accessibility from the major modern web browsers, including Mozilla FireFox, Google Chrome, and Microsoft Edge.
 As a non-safety-critical product, reliability shall be pushed for but not promised
 to end users. Testing shall be handled through a suite of automated unit and integration testing, as well as
 through manual checking of newly written and critical features.
 
-\subsubsection[Packaging and delivery
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Packaging and delivery requirements}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall specify the requirements, if any, for packaging,
-%labeling, handling and delivery of the system being developed to the
-%customer.}
+\subsubsection[Packaging and Delivery Requirements]{\rmfamily\bfseries\color{black} Packaging and Delivery Requirements}
 
-\noindent {\selectlanguage{english}\color{black}
+{\noindent 
 The executable system and all associated documentation (i.e., SSRS, SDD,
 code listing, test plan (data and results), and user manual) will be
 delivered to the customer on CD{\textquoteright}s and/or via email, as
@@ -783,489 +537,83 @@ system development process, the final, edited version of the above
 documents will accompany the final, accepted version of the executable
 system.}
 
-\subsubsection[Personnel{}-related
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Personnel-related requirements}
-%\noindent {\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\textit{This paragraph shall specify the
-%system requirements, if any, included to accommodate the number, skill
-%levels, duty cycles, training needs, or other information about the
-%personnel who will use or support the system under development. \ These
-%requirements shall include, as applicable, considerations for the
-%capabilities and limitations of humans; foreseeable human errors under
-%both normal and extreme conditions; and specific areas where the
-%effects of human error would be particularly serious. \ Examples
-%include requirements for color and duration of error messages, physical
-%placement of critical indicators or keys, and use of auditory
-%signals.}}\foreignlanguage{english}{ }}
+\subsubsection[Personnel{}-related requirements]{\rmfamily\bfseries\color{black} Personnel-related requirements} 
 
-\noindent {\selectlanguage{english}\color{black}
-The system under development has no special personnel-related
-characteristics. }
+{\noindent
+The system under development has no special personnel-related characteristics. }
 
 \subsubsection[Training{}-related
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+requirements]{\rmfamily\bfseries\color{black}
 Training-related requirements}
-%\noindent {\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\textit{This paragraph shall specify the
+%\noindent {\color{black}
+%{\textit{This paragraph shall specify the
 %system requirements, if any, pertaining to training. \ Examples include
 %training software, tutorials, or help information to be included in the
-%system.}}\foreignlanguage{english}{ \ \ }}
+%system.}}{ \ \ }}
 
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 No training materials or expectations will be tied to this project other
 than the limited help screens built into the software and the
 accompanying user manual.}
 
-\subsubsection[Logistics{}-related
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Logistics-related requirements}
+\subsubsection[Logistics{}-Related Requirements]{\rmfamily\bfseries\color{black} Logistics-Related Requirements}
 
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 The software shall run on a standard Amazon Web Services backend instance with
 another standard instance serving as the database.
 
-%\subsubsection[]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-% }
-\subsubsection[Other
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Other requirements}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall specify additional system level requirements, if
-%any, not covered in the previous paragraphs.}
 
-\noindent {\selectlanguage{english}\color{black}No other system requirements are anticipated.}
+\subsubsection[Other Requirements]{\rmfamily\bfseries\color{black} Other Requirements}
 
-\subsubsection[Precedence and criticality of
-requirements]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Precedence and criticality of requirements}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This paragraph shall specify, if applicable, the order of precedence,
-%criticality, or assigned weights indicating the relative importance of
-%the requirements in this specification. \ Examples include identifying
-%those requirements deemed critical to safety, to security, or to
-%privacy for purposes of singling them out for special treatment. \ If
-%all requirements have equal weight, this paragraph shall so state. }
+{\noindent No other system requirements are anticipated.}
 
-\noindent {\selectlanguage{english}\color{black}The main critical requirements of the system are those relating to payment processing secrecy.}
+\subsubsection[Precedence and Criticality of Requirements]{\rmfamily\bfseries\color{black} Precedence and Criticality of Requirements}
 
-\clearpage\section[SPECIFIC
-REQUIREMENTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-SPECIFIC REQUIREMENTS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This section of the document should contain all of the software
-%requirements to a level of detail sufficient to enable designers to
-%design a system to satisfy those requirements, and testers to test that
-%the system satisfies those requirements. \ Throughout this section,
-%every stated requirement should be externally perceivable by users,
-%operators, or other external systems. \ These requirements should
-%include at a minimum a description of every input \ into the system,
-%every output from the system, and all functions performed by the system
-%in response to an input or in support of an output. \ As this is often
-%the largest and most important part of the document, all requirements
-%should be uniquely identifiable and careful attention should be given
-%to organizing the requirements to maximize readability.}
+{\noindent The main critical requirements of the system are those relating to payment processing secrecy.}
 
-\subsection[EXTERNAL INTERFACE
-REQUIREMENTS]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-EXTERNAL INTERFACE REQUIREMENTS}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%This subsection should be a detailed description of all inputs into and
-%outputs from the software system. \ It should complement the
-%constraints and dependencies defined in earlier sections, but not
-%repeat that information. \ Hardware, software, user, and other
-%communication interfaces need to be specified. \ Use the four
-%subsections listed below or the table on the next page, or some
-%combination of both.}
+\clearpage
 
 
+%Section 3
+\section[SPECIFIC REQUIREMENTS]{\rmfamily\bfseries\color{black} SPECIFIC REQUIREMENTS}
 
-\subsubsection[Hardware
-Interfaces]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Hardware Interfaces}
-\noindent {\selectlanguage{english}\color{black}
-\foreignlanguage{english}{\ }\foreignlanguage{english}{User should have a basic computer 
+
+\subsection[EXTERNAL INTERFACE REQUIREMENTS]{\rmfamily\bfseries\color{black} EXTERNAL INTERFACE REQUIREMENTS}
+
+\subsubsection[Hardware Interfaces]{\rmfamily\bfseries\color{black} Hardware Interfaces}
+{\noindent 
+User should have a basic computer 
 with no extensive requirements. The project should be able to run on a standard virtual machine 
-instance.}}
+instance.}
 
-\subsubsection[Software
-Interfaces]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Software Interfaces}
-\noindent {\selectlanguage{english}\color{black}
-\foreignlanguage{english}{\ }\foreignlanguage{english}{Web frontend using JavaScript.}}
+\subsubsection[Software Interfaces]{\rmfamily\bfseries\color{black} Software Interfaces}
+{\noindent 
+Web front-end using JavaScript or JavaScript variant.}
 
-\subsubsection[User
-Interfaces]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-User Interfaces}
-\noindent {\selectlanguage{english}\color{black}
-\foreignlanguage{english}{\ }\foreignlanguage{english}{Angular2 - Single Page Application, or other}}
+\subsubsection[User Interfaces]{\rmfamily\bfseries\color{black} User Interfaces}
+{\noindent 
+Angular2 - Single Page Application, or other similar variant}
 
-\subsubsection[Other Communication
-Interfaces]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-Other Communication Interfaces}
-\noindent {\selectlanguage{english}\color{black}
-\foreignlanguage{english}{\ }\foreignlanguage{english}{Git, email, comments}}
+\subsubsection[Other Communication Interfaces]{\rmfamily\bfseries\color{black} Other Communication Interfaces}
+{\noindent 
+Git, email, comments}
 
 
 \bigskip
-
-
-\bigskip
-
-\begin{comment}
-\bigskip
-
-\clearpage\setcounter{page}{1}\pagestyle{Convertiv}
-
-\bigskip
-
-\begin{flushleft}
-\tablehead{}
-\begin{supertabular}{|m{0.7337598in}|m{1.4212599in}|m{2.7337599in}|m{1.0462599in}|m{1.4837599in}|m{1.1087599in}m{-0.054440156in}|}
-\multicolumn{6}{m{8.92126in}}{\centering
-{\selectlanguage{english}\bfseries\color{black} External Interface
-Requirements}\par
-
-~
-
-\centering \selectlanguage{english}\bfseries\color{black} Hardware
-Interfaces} &
-\multicolumn{1}{m{-0.054440156in}}{~
-}\\\hline
-\centering \selectlanguage{english}\bfseries\color{black} Name &
-\centering \selectlanguage{english}\bfseries\color{black}
-Source/Destination &
-\centering \selectlanguage{english}\bfseries\color{black} Description &
-\centering \selectlanguage{english}\bfseries\color{black} Type/range &
-\centering \selectlanguage{english}\bfseries\color{black} Dependencies &
-\multicolumn{2}{m{1.1330599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Formats}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-\multicolumn{6}{m{8.92126in}}{~
-
-\centering \selectlanguage{english}\bfseries\color{black} Software
-Interfaces} &
-\multicolumn{1}{m{-0.054440156in}}{~
-}\\\hline
-\centering \selectlanguage{english}\bfseries\color{black} Name &
-\centering \selectlanguage{english}\bfseries\color{black}
-Source/Destination &
-\centering \selectlanguage{english}\bfseries\color{black} Description &
-\centering \selectlanguage{english}\bfseries\color{black} Type/range &
-\centering \selectlanguage{english}\bfseries\color{black} Dependencies &
-\multicolumn{2}{m{1.1330599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Formats}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-\multicolumn{6}{m{8.92126in}}{~
-
-\centering \selectlanguage{english}\bfseries\color{black} User
-Interfaces} &
-\multicolumn{1}{m{-0.054440156in}}{~
-}\\\hline
-\centering \selectlanguage{english}\bfseries\color{black} Name &
-\centering \selectlanguage{english}\bfseries\color{black}
-Source/Destination &
-\centering \selectlanguage{english}\bfseries\color{black} Description &
-\centering \selectlanguage{english}\bfseries\color{black} Type/range &
-\centering \selectlanguage{english}\bfseries\color{black} Dependencies &
-\multicolumn{2}{m{1.1330599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Formats}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-\multicolumn{6}{m{8.92126in}}{~
-
-\centering \selectlanguage{english}\bfseries\color{black} Other
-Communication Interfaces} &
-\multicolumn{1}{m{-0.054440156in}}{~
-}\\\hline
-\centering \selectlanguage{english}\bfseries\color{black} Name &
-\centering \selectlanguage{english}\bfseries\color{black}
-Source/Destination &
-\centering \selectlanguage{english}\bfseries\color{black} Description &
-\centering \selectlanguage{english}\bfseries\color{black} Type/range &
-\centering \selectlanguage{english}\bfseries\color{black} Dependencies &
-\multicolumn{2}{m{1.1330599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Formats}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{1.1330599in}|}{~
-}\\\hline
-\end{supertabular}
-\end{flushleft}
-
-
-\end{comment}
-
 
 \clearpage
 %\setcounter{page}{1}\pagestyle{Convertv}
-\subsection[SYSTEM
-FEATURES]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-SYSTEM FEATURES}
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%Functional requirements should define the fundamental actions (i.e.,
-%features) \ that must take place in the software in accepting and
-%processing the inputs and in processing and generating the outputs.
-%These requirements are given in the form of \textbf{Use Cases} where
-%possible, denoting a concrete use (discrete user-performable task) of
-%the system. Use case diagrams are followed by use case descriptions,
-%followed by any non-task features. Non-task features are generally
-%listed as {\textquotedblleft}shall{\textquotedblright} statements
-%starting with {\textquotedblleft}The system
-%shall{\dots}{\textquotedblright} \ These include: a) Validity checks on
-%the inputs; b) Exact sequence of operations; c) Responses to abnormal
-%situations, including error detection, handling and recovery; d)
-%Parameter specification and usage; e) Relationship of outputs to
-%inputs, including formulas for input to output conversion. \newline
-%\newline
-%It may be appropriate to partition the functional requirements into sub
-%functions or subprocesses, but that decomposition (here) does not imply
-%that the software design will also be partitioned that way. \ You
-%should repeat subsections 3.2.i for every specified feature defined for
-%the system or software.}
+\subsection[SYSTEM FEATURES]{\rmfamily\bfseries\color{black} SYSTEM FEATURES}
+
 
 \begin{comment}
-\subsubsection[\ Use Case
-Diagrams]{\foreignlanguage{english}{\ }\foreignlanguage{english}{Use
-Case Diagrams}}
-{\selectlanguage{english}\color{black}
+\subsubsection[\ Use Case Diagrams]{{\ }{Use Case Diagrams}}
+{\noindent 
 [insert 1+ use case diagrams here]}
 \end{comment}
 
-\subsubsection[System feature 1: General Website Features]{\selectlanguage{english}\rmfamily\bfseries\color{black} General website features
-}
+\subsubsection[System feature 1: General Website Features]{\rmfamily\bfseries\color{black} General Website Features}
+
 \begin{itemize}
 \item These may come free if we fork the Federated Wiki
 \item Material/otherwise nice looking design template
@@ -1275,16 +623,14 @@ Case Diagrams}}
 \item Login/logout functionality
 \end{itemize}
 
-\subsubsection[System feature 2: Compile a book]{\selectlanguage{english}\rmfamily\bfseries\color{black} Compile a Book:
-}
+\subsubsection[System feature 2: Compile a book]{\rmfamily\bfseries\color{black} Compile a Book}
 \begin{itemize}
 \item Search functionality for finding existing textbooks
 \item Ability to fork existing textbooks
 \item Add a new blank textbook
 \end{itemize}
 
-\subsubsection[System feature 3: Textbook Compilation Interface]{\selectlanguage{english}\rmfamily\bfseries\color{black} Textbook compilation interface
-}
+\subsubsection[System feature 3: Textbook Compilation Interface]{\rmfamily\bfseries\color{black} Textbook Compilation Interface}
 \begin{itemize}
 \item Table of Contents view, with access to New Chapter and Edit Chapter
 \item Edit/New Chapter:
@@ -1293,23 +639,21 @@ Case Diagrams}}
 \item User-friendly interface to add Section/Scrap to desired location in Chapter
 \end{itemize}
 
-\subsubsection[System feature 4: Search Feature]{\selectlanguage{english}\rmfamily\bfseries\color{black} Search
-}
+\subsubsection[System feature 4: Search Feature]{\rmfamily\bfseries\color{black} Search}
 \begin{itemize}
 \item By keyword, author, tag, field; ranked by relevance and/or community voting
 \item Scrap/Section search
 \item Textbook search
 \end{itemize}
 
-\subsubsection[System feature 5: Publishing Interface]{\selectlanguage{english}\rmfamily\bfseries\color{black} Publishing Interface
-}
+\subsubsection[System feature 5: Publishing Interface]{\rmfamily\bfseries\color{black} Publishing Interface}
 \begin{itemize}
 \item Indicate number of copies/digital access for students, determine price
 \item Save textbook as PDF/send to printer
 \item Optional future feature: payment processor integration
 \end{itemize}
 
-\subsubsection[System feature 6: Scrap Editor]{\selectlanguage{english}\rmfamily\bfseries\color{black} Scrap Editor}
+\subsubsection[System feature 6: Scrap Editor]{\rmfamily\bfseries\color{black} Scrap Editor}
 \begin{itemize}
 %\item "Pretty" view for adding formatted text, media, etc to a scrap
 \item "Raw" view for managing
@@ -1319,12 +663,14 @@ Case Diagrams}}
 
 \bigskip
 
+
+%Use Cases To Add
 \begin{comment}
 \bigskip
-\noindent {\selectlanguage{english}\color{black}
-\foreignlanguage{english}{\textit{For each feature, you should either
+\noindent {\color{black}
+{\textit{For each feature, you should either
 provide a Use Case Description
-}}\foreignlanguage{english}{\textbf{\textit{or}}}\foreignlanguage{english}{\textit{
+}}{\textbf{\textit{or}}}{\textit{
 a Non-task feature description, whichever is more appropriate.}}}
 
 
@@ -1335,138 +681,141 @@ a Non-task feature description, whichever is more appropriate.}}}
 \tablehead{}
 \begin{supertabular}{|m{3.17056in}|m{3.1740599in}|}
 \hline
-\selectlanguage{english}\bfseries\color{black} Use Case Description &
+\bfseries\color{black} Use Case Description & 
 \paragraph[Non{}-task feature
-description]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+description]{\rmfamily\bfseries\color{black}
 Non-task feature description}
 \\\hline
-{\selectlanguage{english}\bfseries\color{black} Name}
+{\bfseries\color{black} Name}
 
-{\selectlanguage{english}\color{black} Actors}
+{\color{black} Actors}
 
-{\selectlanguage{english}\color{black} Goals}
+{\color{black} Goals}
 
-{\selectlanguage{english}\color{black} Preconditions}
+{\color{black} Preconditions}
 
-{\selectlanguage{english}\bfseries\color{black} Summary}
+{\bfseries\color{black} Summary}
 
-{\selectlanguage{english}\color{black} Related use cases}
+{\color{black} Related use cases}
 
-{\selectlanguage{english}\bfseries\color{black} Steps}
+{\bfseries\color{black} Steps}
 
-{\selectlanguage{english}\color{black} \ \ \ 1. ...}
+{\color{black} \ \ \ 1. ...}
 
-{\selectlanguage{english}\color{black} \ \ \ 2. ...}
+{\color{black} \ \ \ 2. ...}
 
-{\selectlanguage{english}\color{black} Alternatives}
+{\color{black} Alternatives}
 
-{\selectlanguage{english}\color{black} Postconditions}
+{\color{black} Postconditions}
 
 ~
  &
 \paragraph[\ Introduction/Purpose of this
-feature]{\foreignlanguage{english}{\ }\foreignlanguage{english}{Introduction/Purpose
+feature]{{\ }{Introduction/Purpose
 of this feature}}
-{\selectlanguage{english}\color{black} [ insert your text here ]}
+{\color{black} [ insert your text here ]}
 
 \paragraph[Input/Output sequence for this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Input/Output sequence for this feature}
-{\selectlanguage{english}\color{black} [ insert your text here ]}
+{\color{black} [ insert your text here ]}
 
 \paragraph[Design constraints of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black} Design
+feature]{\rmfamily\bfseries\color{black} Design
 constraints of this feature}
-{\selectlanguage{english}\color{black} [ insert your text here ]}
+{\color{black} [ insert your text here ]}
 
 \paragraph[Performance requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Performance requirements of this feature}
-{\selectlanguage{english}\color{black} [ insert your text here ]}
+{\color{black} [ insert your text here ]}
 
 \paragraph[Detailed functional requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Detailed functional requirements of this feature}
 
 
 
 
-\paragraph[]{\selectlanguage{english}\rmfamily\bfseries\color{black} }
+\paragraph[]{\rmfamily\bfseries\color{black} }
 
-\selectlanguage{english}\color{black} [ insert your text here ]\\\hline
+\color{black} [ insert your text here ]\\\hline
 \end{supertabular}
 \end{flushleft}
 
 \bigskip
 \end{comment}
+
+
 \begin{comment}
 
 \subsubsection[System feature 2: [ insert feature name here
-{]}]{\selectlanguage{english}\rmfamily\bfseries\color{black} System
+{]}]{\rmfamily\bfseries\color{black} System
 feature 2: [ insert feature name here ]}
 \paragraph[Introduction/Purpose of this feature]
-{\selectlanguage{english}\rmfamily\bfseries\color{black}Introduction/Purpose of this feature}
-\noindent {\selectlanguage{english}\color{black}
+{\rmfamily\bfseries\color{black}Introduction/Purpose of this feature}
+\noindent {\color{black}
 [ insert your text here ]}
 
-\paragraph[Input/Output sequence for this feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}Input/Output sequence for this feature}
-\noindent {\selectlanguage{english}\color{black}
+\paragraph[Input/Output sequence for this feature]{\rmfamily\bfseries\color{black}Input/Output sequence for this feature}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Design constraints of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black} Design
+feature]{\rmfamily\bfseries\color{black} Design
 constraints of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Performance requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Performance requirements of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Detailed functional requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Detailed functional requirements of this feature}
 
 
-{\selectlanguage{english}\rmfamily\bfseries\color{black} System
+{\rmfamily\bfseries\color{black} System
 feature [m]: [ insert feature name here ]}
 
-\paragraph[\ Introduction/Purpose of this feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}Introduction/Purpose of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\paragraph[\ Introduction/Purpose of this feature]{\rmfamily\bfseries\color{black}Introduction/Purpose of this feature}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Input/Output sequence for this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Input/Output sequence for this feature}
 
 \paragraph[Design constraints of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black} Design
+feature]{\rmfamily\bfseries\color{black} Design
 constraints of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Performance requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Performance requirements of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \paragraph[Detailed functional requirements of this
-feature]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+feature]{\rmfamily\bfseries\color{black}
 Detailed functional requirements of this feature}
-\noindent {\selectlanguage{english}\color{black}
+\noindent {\color{black}
 [ insert your text here ]}
 
 \end{comment}
 
+
+%Requirements Tracability Section
 \begin{comment}
-\clearpage\setcounter{page}{1}\pagestyle{Convertvi}
-\section[REQUIREMENTS
-TRACEABILITY]{\selectlanguage{english}\rmfamily\bfseries\color{black}
-REQUIREMENTS TRACEABILITY}
-\noindent {\selectlanguage{english}\itshape\color{black}
+\clearpage
+\setcounter{page}{1}%\pagestyle{Convertvi}
+\section[REQUIREMENTS TRACEABILITY]{\rmfamily\bfseries\color{black} REQUIREMENTS TRACEABILITY}
+\noindent {\itshape\color{black}
 This section shall contain traceability information from each system
 requirement in this specification to the system (or subsystem, if
 applicable) requirements it addresses. \ A tabular form is preferred,
@@ -1478,34 +827,34 @@ but not mandatory.}
 \begin{flushleft}
 \tablehead{\hline
 \multicolumn{1}{|m{0.9212598in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Feature Name} &
-\centering \selectlanguage{english}\bfseries\color{black} Req No. &
-\centering \selectlanguage{english}\bfseries\color{black} Requirement
+\bfseries\color{black} Feature Name} &
+\centering \bfseries\color{black} Req No. &
+\centering \bfseries\color{black} Requirement
 Description &
-\centering \selectlanguage{english}\bfseries\color{black} Priority &
-\centering \selectlanguage{english}\bfseries\color{black} SDD &
+\centering \bfseries\color{black} Priority &
+\centering \bfseries\color{black} SDD &
 \multicolumn{2}{m{1.2872598in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Alpha Release} &
+\bfseries\color{black} Alpha Release} &
 \multicolumn{2}{m{1.3587599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Beta Release} &
+\bfseries\color{black} Beta Release} &
 \multicolumn{2}{m{1.3795599in}|}{\centering
-\selectlanguage{english}\bfseries\color{black} Final Test}\\\hline
+\bfseries\color{black} Final Test}\\\hline
  &
  &
  &
  &
  &
-\centering \selectlanguage{english}\bfseries\color{black} Test Case(s) &
-\centering \selectlanguage{english}\bfseries\color{black} Test Res. &
-\centering \selectlanguage{english}\bfseries\color{black} Test Case(s) &
-\centering \selectlanguage{english}\bfseries\color{black} Test Res. &
-\centering \selectlanguage{english}\bfseries\color{black} Test Case(s) &
-\selectlanguage{english}\bfseries\color{black} Test
+\centering \bfseries\color{black} Test Case(s) &
+\centering \bfseries\color{black} Test Res. &
+\centering \bfseries\color{black} Test Case(s) &
+\centering \bfseries\color{black} Test Res. &
+\centering \bfseries\color{black} Test Case(s) &
+\bfseries\color{black} Test
 Res.\\\hhline{~~~~~------}}
 \begin{supertabular}{m{0.9212598in}|m{0.42125985in}|m{1.9212599in}|m{0.39275986in}|m{0.7587598in}|m{0.6622598in}|m{0.5462598in}|m{0.6712598in}|m{0.6087598in}|m{0.6712598in}|m{0.6295598in}|}
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} 1.1 &
+\centering \color{black} 1.1 &
 ~
  &
 ~
@@ -1525,7 +874,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hline
  &
-\centering \selectlanguage{english}\color{black} 1.2 &
+\centering \color{black} 1.2 &
 ~
  &
 ~
@@ -1545,7 +894,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} {\dots} &
+\centering \color{black} {\dots} &
 ~
  &
 ~
@@ -1565,7 +914,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} 1.[n] &
+\centering \color{black} 1.[n] &
 ~
  &
 ~
@@ -1586,7 +935,7 @@ Res.\\\hhline{~~~~~------}}
 \\\hhline{~----------}
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} 2.1 &
+\centering \color{black} 2.1 &
 ~
  &
 ~
@@ -1606,7 +955,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hline
  &
-\centering \selectlanguage{english}\color{black} 2.2 &
+\centering \color{black} 2.2 &
 ~
  &
 ~
@@ -1626,7 +975,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} {\dots} &
+\centering \color{black} {\dots} &
 ~
  &
 ~
@@ -1646,7 +995,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} 2.[n] &
+\centering \color{black} 2.[n] &
 ~
  &
 ~
@@ -1667,7 +1016,7 @@ Res.\\\hhline{~~~~~------}}
 \\\hhline{~----------}
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} 3.1 &
+\centering \color{black} 3.1 &
 ~
  &
 ~
@@ -1687,7 +1036,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hline
  &
-\centering \selectlanguage{english}\color{black} 3.2 &
+\centering \color{black} 3.2 &
 ~
  &
 ~
@@ -1707,7 +1056,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} {\dots} &
+\centering \color{black} {\dots} &
 ~
  &
 ~
@@ -1727,7 +1076,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hhline{~----------}
  &
-\centering \selectlanguage{english}\color{black} 3.[n] &
+\centering \color{black} 3.[n] &
 ~
  &
 ~
@@ -1746,9 +1095,9 @@ Res.\\\hhline{~~~~~------}}
  &
 ~
 \\\hhline{~----------}
-\multicolumn{1}{|m{0.9212598in}|}{\selectlanguage{english}\color{black}
+\multicolumn{1}{|m{0.9212598in}|}{\color{black}
 {\dots}} &
-\centering \selectlanguage{english}\color{black} {\dots} &
+\centering \color{black} {\dots} &
 ~
  &
 ~
@@ -1769,7 +1118,7 @@ Res.\\\hhline{~~~~~------}}
 \\\hline
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} [m].1 &
+\centering \color{black} [m].1 &
 ~
  &
 ~
@@ -1789,7 +1138,7 @@ Res.\\\hhline{~~~~~------}}
 ~
 \\\hline
  &
-\centering \selectlanguage{english}\color{black} [m].2 &
+\centering \color{black} [m].2 &
 ~
  &
 ~
@@ -1810,7 +1159,7 @@ Res.\\\hhline{~~~~~------}}
 \\\hhline{~----------}
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} {\dots} &
+\centering \color{black} {\dots} &
 ~
  &
 ~
@@ -1831,7 +1180,7 @@ Res.\\\hhline{~~~~~------}}
 \\\hline
 \multicolumn{1}{|m{0.9212598in}|}{~
 } &
-\centering \selectlanguage{english}\color{black} [m.n] &
+\centering \color{black} [m.n] &
 ~
  &
 ~
@@ -1852,13 +1201,13 @@ Res.\\\hhline{~~~~~------}}
 \\\hline
 \end{supertabular}
 \end{flushleft}
-{\selectlanguage{english}\color{black}
+{\color{black}
 Priorities are: \textbf{M}andatory, \textbf{L}ow, \textbf{H}igh}
 
-{\selectlanguage{english}\color{black}
+{\color{black}
 SDD link is version and page number or function name.}
 
-{\selectlanguage{english}\color{black}
+{\color{black}
 Test cases and results are file names and \textbf{P}ass/\textbf{F}ail or
 \% passing.}
 
@@ -1867,20 +1216,11 @@ Test cases and results are file names and \textbf{P}ass/\textbf{F}ail or
 
 \clearpage
 %\setcounter{page}{1}\pagestyle{Convertvii}
-\section[APPENDIX A. \ Gantt Chart]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+\section[APPENDIX A. \ Gantt Chart]{\rmfamily\bfseries\color{black}
 APPENDIX A. \ Gantt Chart}
 
 \bigskip
 
-%\noindent {\selectlanguage{english}\itshape\color{black}
-%Include copies of specifications, mockups, prototypes, etc. supplied or
-%derived from the customer. \ Appendices are labeled A, B, {\dots}n.
-%\ \ Reference each appendix as appropriate in the text of the document.
-%}
-
-%\noindent {\selectlanguage{english}\color{black}
-%\foreignlanguage{english}{\ }\foreignlanguage{english}{[ insert appendix
-%A here ]}}
 
 \begin{figure}[ht!]
 \centering
@@ -1890,12 +1230,12 @@ APPENDIX A. \ Gantt Chart}
 
 \clearpage
 %\setcounter{page}{1}\pagestyle{Convertviii}
-\section[APPENDIX B. \ UML Diagram]{\selectlanguage{english}\rmfamily\bfseries\color{black}
+\section[APPENDIX B. \ UML Diagram]{\rmfamily\bfseries\color{black}
 APPENDIX B. \ Unified Modeling Language Diagram}
 
 \bigskip
 
-%\noindent {\selectlanguage{english}\color{black}
+%\noindent {\color{black}
 %[ insert appendix B here ]}
 
 \begin{figure}[ht!]
