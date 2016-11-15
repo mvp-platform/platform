@@ -23,6 +23,7 @@
 \usepackage{color}
 \usepackage[doublespacing]{setspace}
 \usepackage{supertabular}
+\usepackage{url}
 \usepackage{fancyhdr}
 
 %\setlength{\parindent}{4em}
@@ -43,8 +44,8 @@
 
 % The following metadata will show up in the PDF properties
 \hypersetup{
-  colorlinks=true, linkcolor=blue,citecolor=blue, filecolor=blue, urlcolor=blue
-  urlcolor = black, pdfauthor = {\name},
+  colorlinks=true, linkcolor=blue,citecolor=blue, filecolor=blue, 
+  urlcolor=blue, pdfauthor = {\name},
   pdfkeywords = {cs461 ``senior capstone'' technology review},
   pdftitle = {CS 461 Technology Review},
   pdfsubject = {CS 461 Technology Review},
@@ -82,10 +83,9 @@
 
 \vspace{1pc}
 \section{Technology Review}
-\vspace{2pc}
+%\vspace{2pc}
 
-
-
+\begin{comment}
 I. Introduction to entire tech review, including authorship of each section
 
 II.  Technologies 1-9 (each person responsible for 3)
@@ -137,12 +137,12 @@ f.        Selection of best option based on criteria
 III.                Conclusion
 
 IV.                Bibliography
-
+\end{comment}
 \vspace{1pc}
 \subsection{Introduction}
 \vspace{1pc}
 
-{\noindent The MVP Platform is being developed for the purpose of fixing the problems currently associated with the textbook market. We will accomplish this by giving the MVP Platform an easy to use interface, a search bar with a built in results pane, source control, and many other features. Authorship is divided by subsection header.\par}
+{\noindent The Many Voices Publishing Platform is being developed for the purpose of fixing the problems currently associated with the textbook market. We will accomplish this by giving the MVP Platform an easy to use interface, a search bar with a built in results pane, source control, and many other features. Authorship is divided by subsection header.\par}
 
 
 
@@ -194,8 +194,7 @@ IV.                Bibliography
 {\noindent Option Comparison \par}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
-\hline
-& React & Aurelia & Ember & Angular 2\\ \hline
+\hline \cite{Eisenberg} & React \cite{React} & Aurelia \cite{Aurelia} & Ember \cite{Ember} & Angular 2 \cite{Angular2}\\ \hline
 Ease of Use & Substantial setup required for working system, lots of documentation and tutorials. & Simple setup using NPM and installation     & Simple setup using NPM and installation & Substantial setup required for working system, lots of documentation and tutorials. \\ \hline
 File Size & 156kb to ???kb, due to added frameworks & 323kb & 435kb                                   & 1023kb \\ \hline
 Features & View rendering engine with plugin frameworks & Router, Animation, HTTP Client & Router, HTTP Client & Router, HTTP Client                                                                 \\ \hline
@@ -231,6 +230,7 @@ License & BSD & MIT & MIT & MIT \\ \hline
 
 
 %\vspace{1pc}
+\newpage
 \subsection{Josh}
 \vspace{1pc}
 
@@ -270,27 +270,9 @@ License & BSD & MIT & MIT & MIT \\ \hline
 \medskip
 
 
-
-\begin{comment}
 \newpage
+\bibliographystyle{IEEEtran}
+\bibliography{techreview}
 
-\centerline{\sc \large Signature Page}
-\vspace{5pc}
-
-
-\centering
-
-\begin{tabular}{lllll}
-Dr. Carlos Jensen, Client    & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\
-                         &                                                                                  &      &                                            &  \\ \\
-Steven Powers, Developer & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
-                         &                                                                                  &      &                                            &  \\ \\
-Josh Matteson, Developer & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
-                         &                                                                                  &      &                                            &  \\ \\
-Evan Tschuy, Developer   & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
-                         &                                                                                  &      &                                            & 
-\end{tabular}
-
-\end{comment}
 
 \end{document}
