@@ -39,4 +39,14 @@ Ember, ``A framework for creating ambitious web applications,''
 \bibitem{Angular2}
 Google, ``Our framework,'' \url{http://angular.io/}.
 
+\bibitem{Mocha}
+MochaJs, ``Mocha, simple, flexible, fun,'' \url{https://mochajs.org/}.
+
+\bibitem{QUnit}
+QUnit, ``Qunit: A javascript unit testing framework,''
+  \url{https://qunitjs.com/}.
+
+\bibitem{Jasmine}
+Jasmine, ``Jasmine,'' \url{https://jasmine.github.io/2.0/introduction.html}.
+
 \end{thebibliography}
