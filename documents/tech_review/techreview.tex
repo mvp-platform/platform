@@ -226,7 +226,7 @@ License & BSD & MIT & MIT & MIT \\ \hline
 
 \medskip
 {\noindent Option 2 - Dozuki \cite{Dozuki} \par}
-{\noindent Integrates revisions, approval, and documentation into a single system that allows for efficient workflows for creating customizable and centrally managed documentation. \par}
+{\noindent Integrates revisions, approval, and documentation into a single system that allows for efficient work-flows for creating customizable and centrally managed documentation. \par}
 
 \medskip
 {\noindent Option 3 - LaTeX \cite{Latex} \par}
@@ -350,11 +350,13 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 
 \medskip
 
+\newpage
 \subsubsection{User Authentication}
 {\noindent \par}
 
 \medskip
 
+\newpage
 \subsubsection{Database}
 {\noindent \par}
 
@@ -365,10 +367,10 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 \newpage
 \subsection{Evan}
 \vspace{1pc}
-\subsubsection{Server Backend}
+\subsubsection{Server Back-end}
 {\noindent Option 1 - NodeJS \par}
-{\noindent NodeJS is a modern web backend framework developed by the Node Foundation,
-primarily led by Joyent. By using Javascript its language of choice, Node allows
+{\noindent NodeJS is a modern web back-end framework developed by the Node Foundation,
+primarily led by Joyent. By using JavaScript its language of choice, Node allows
 developers to use the language's unique concurrency paradigms to quickly develop
 scalable applications. \par}
 {\noindent Option 2 - Django \par}
@@ -376,11 +378,11 @@ scalable applications. \par}
 included". The Framework includes everything from geo-libraries to support for four different kinds of
 databases, meaning a large initial learning curve but a large payoff. \par}
 {\noindent Option 3 - Flask \par}
-{\noindent Flask is a microframework. It comes with the bare minimum needed to do HTTP handling, leaving
+{\noindent Flask is a micro-framework. It comes with the bare minimum needed to do HTTP handling, leaving
 what other frameworks come with to an array of choices from third party developers. This means the core
 framework is quick to learn, but can quickly leave a developer feeling constrained. \par}
 {\noindent Option 4 - Ruby on Rails \par}
-{\noindent Ruby on Rails is the old standguard of web frameworks. It was the original batteries included
+{\noindent Ruby on Rails is the old standard of web frameworks. It was the original batteries included
 framework, and has over the years been known for its ease of use. However, the framework is quite old
 and shows some signs of age, using sometimes outdated paradigms and generally being less friendly to beginners
 than more modern frameworks. \par}
@@ -393,34 +395,38 @@ of text to include headings, bold/italic/underline/etc, bullets, and numbered li
 things like images, videos, or links; Markdown has various "flavors", or implementations, that sometimes
 allow for such things. \par}
 {\noindent Option 2 - Restructured Text \par}
-{\noindent Restructured Text is a markup language written in Python for writing documetnation, simple websites,
+{\noindent Restructured Text is a markup language written in Python for writing documentation, simple websites,
 etc. It allows for highly varied but still restricted markup; it allows for image embeds, fancy linking,
 titles, etc. It does not allow users to embed arbitrary elements. \par}
 {\noindent Option 3 - Raw HTML \par}
-{\noindent Storing simply raw HTML allows the greatest flexibiity, as it is literally the same elements
+{\noindent Storing simply raw HTML allows the greatest flexibility, as it is literally the same elements
 rendered in browser. Raw HTML allows for things like scripting, video embeds, etc., and as such must
 be filtered to a restricted subset to be suitable for use in a public-facing scenario. \par}
 
 \medskip
 \subsubsection{Password Storage}
 {\noindent \par}
-{\noindent Option 1 - bcrypt \par}
+{\noindent Option 1 - Bcrypt \par}
 {\noindent Bcrypt is a password hashing function that takes a very large amount of time to crack
 an individual password -- it is designed to be slow. This means a hacker cannot simply crack
 a database worth of passwords in one sitting, as with older hashes like MD5. \par}
-{\noindent Option 2 - scrypt \par}
+{\noindent Option 2 - Scrypt \par}
 {\noindent Scrypt is designed to take up large amounts of time, and large amounts of RAM,
 when hashing. This ensures that a hacker cannot simply buy a powerful CPU and crack passwords with
-pure power. However, scrypt, being designed moreso for computer hard disk passwords, can take
+pure power. However, scrypt, being designed more-so for computer hard disk passwords, can take
 multiple seconds and hundreds of megabytes of RAM to process. \par}
 {\noindent Option 3 - pbkdf2 \par}
-{\noindent PBKDF2 is a function that repeatedly hashes a passwording using the HMAC, or "keyed-hash
+{\noindent PBKDF2 is a function that repeatedly hashes a password using the HMAC, or "keyed-hash
 message authentication code", function. For a CPU, cracking a large number of passwords using pbkdf2
 is difficult, as it takes a large amount of time to crack an individual password. Using a GPU,
 however, a large number of hashes can be run in parallel, making it quick to crack with high end hardware. \par}
 {\noindent Option 4 - raw storage \par}
 {\noindent text \par}
 
+
+\newpage
+\subsection{Conclusion}
+{\noindent  The Many Voices Publishing Platform is a combination of User Interfaces, Documentation, User Centered Design, Testing, User Authentication, Databases, Server Back-end, Text Formatting, Password Storage, and the users themselves. Determining the technologies behind these parts and pieces is a difficult task to accomplish, as many choices can satisfy the requirements of the project. Finding the best solution however is the goal of this document, to provide a clear path forward for the platform as a whole. \par}
 
 \newpage
 \bibliographystyle{IEEEtran}
