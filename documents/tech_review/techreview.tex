@@ -153,19 +153,19 @@ IV.                Bibliography
 \vspace{1pc}
 
 {\subsubsection{User Interface}
-{\noindent Option 1 - React \par}
+{\noindent Option 1 - React \cite{React} \par}
 {\noindent React is a JavaScript rendering engine that is developed by Facebook. Originally used with Instagram, React is often paired with Redux for added functionality. React is a popular JavaScript library meant for building user interfaces that is component based. \par}
 
 \medskip
-{\noindent Option 2 - Aurelia \par}
+{\noindent Option 2 - Aurelia \cite{Aurelia} \par}
 {\noindent Aurelia is a newer JavaScript client framework for mobile, desktop, and the web, by using simplistic integration.  \par}
 
 \medskip
-{\noindent Option 3 - Ember \par}
+{\noindent Option 3 - Ember \cite{Ember} \par}
 {\noindent Ember uses web components and templates to increase productivity.  \par}
 
 \medskip
-{\noindent Option 4 - Angular2 \par}
+{\noindent Option 4 - Angular2 \cite{Angular2} \par}
 {\noindent Angular2 is a project started by Google for their internal Green Tea project. Angular2 is a widely documented JavaScript cross-platform library that is used to create native mobile and desktop web applications. \par}
 
 \medskip
@@ -196,7 +196,7 @@ IV.                Bibliography
 {\noindent Option Comparison \par}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
-\hline \cite{Eisenberg} & React \cite{React} & Aurelia \cite{Aurelia} & Ember \cite{Ember} & Angular 2 \cite{Angular2}\\ \hline
+\hline \cite{Eisenberg} & React & Aurelia  & Ember  & Angular 2 \\ \hline
 Ease of Use & Substantial setup required for working system, lots of documentation and tutorials. & Simple setup using NPM and installation     & Simple setup using NPM and installation & Substantial setup required for working system, lots of documentation and tutorials. \\ \hline
 File Size & 156kb to ???kb, due to added frameworks & 323kb & 435kb                                   & 1023kb \\ \hline
 Features & View rendering engine with plugin frameworks & Router, Animation, HTTP Client & Router, HTTP Client & Router, HTTP Client                                                                 \\ \hline
@@ -221,9 +221,58 @@ License & BSD & MIT & MIT & MIT \\ \hline
 
 \newpage
 \subsubsection{Documentation}
-{\noindent \par}
+{\noindent Option 1 - Microsoft Word \cite{Word} \par}
+{\noindent  Microsoft Word is a fairly powerful and widespread software that is often used for documentation outside of higher education and the technology industry. \par}
 
 \medskip
+{\noindent Option 2 - Dozuki \cite{Dozuki} \par}
+{\noindent Integrates revisions, approval, and documentation into a single system that allows for efficient workflows for creating customizable and centrally managed documentation. \par}
+
+\medskip
+{\noindent Option 3 - LaTeX \cite{Latex} \par}
+{\noindent  LaTeX, hereby known as Latex, is a document preparation system often used in the technical and scientific fields for documentation, and is the de facto standard for communication and publication of scientific documents \cite{Latex}. \par}
+
+\medskip
+{\noindent Goals \par}
+{\noindent An efficient documentation solution that is able to provide the ability to create beautiful and useful documentation of  the platform. This documentation will assist the end user with operation of the various parts of the platform.\par}
+
+\medskip
+\newpage
+{\noindent Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item Ease of Use
+\item File Size
+\item Features
+\item Performance
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent Option Comparison \par}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline  & Microsoft Word & Dozuki & LaTeX\\ \hline
+Ease of Use & Microsoft Word is easy to use for most cases, but can be difficult to use when attempting certain formatting requests, such as creating a table of contents. & Dozuki is a newer documentation solution that spawned from iFixit, Dozuki prides itself on being easy to learn and use, while providing centralized   & Latex is able to take a lot of the tediousness one would find in Microsoft Word, allowing the user to focus on the document contents instead of appearance. "Steep learning curve, but not very high" \cite{McGrath} \\ \hline
+File Size & Small to Large, depending on embedded images or graphics & Unknown & Often very small due to only text \\ \hline
+Features & Moderately customizable, and can be 'pretty' & Highly customizable with CSS and HTML & Highly customizable and 'pretty' \\ \hline
+Performance & Can become bogged down by long documents & Web interface limitation, exact performance unknown & Easily handles complex and length documents  \\ \hline
+Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 Additional Per User & Free \\ \hline
+
+\end{supertabular}
+
+\newpage
+{\noindent Discussion \par}
+{\noindent While we are highly experienced using Microsoft Word, the documents become bloated, and sometimes the software is prone to crashes when dealing with very large documents. Dozuki seems like a very nice documentation solution, that is used by Intel and other technology companies. Having a centralized management system allows management to verify everyone is looking at the most updated documentation. This would be a very nice solution, though the cost is very prohibitive, at over \$3500 / year. Latex is free, and is able to create highly structured documentation that is also easy to style. Latex is used throughout the science field for ease of use.\par}
+
+\medskip
+{\noindent Selection \par}
+{\noindent Latex seems to be the best solution of the three, due to current experience using the software, as well as ease of use when creating large documents with multiple sections and headings. \par}
+
 \newpage
 \subsubsection{Inclusive Design}
 {\noindent \par}
@@ -316,21 +365,61 @@ License & BSD & MIT & MIT & MIT \\ \hline
 \newpage
 \subsection{Evan}
 \vspace{1pc}
+\subsubsection{Server Backend}
+{\noindent Option 1 - NodeJS \par}
+{\noindent NodeJS is a modern web backend framework developed by the Node Foundation,
+primarily led by Joyent. By using Javascript its language of choice, Node allows
+developers to use the language's unique concurrency paradigms to quickly develop
+scalable applications. \par}
+{\noindent Option 2 - Django \par}
+{\noindent The Django framework is a massive web framework developed in Python that comes "batteries
+included". The Framework includes everything from geo-libraries to support for four different kinds of
+databases, meaning a large initial learning curve but a large payoff. \par}
+{\noindent Option 3 - Flask \par}
+{\noindent Flask is a microframework. It comes with the bare minimum needed to do HTTP handling, leaving
+what other frameworks come with to an array of choices from third party developers. This means the core
+framework is quick to learn, but can quickly leave a developer feeling constrained. \par}
+{\noindent Option 4 - Ruby on Rails \par}
+{\noindent Ruby on Rails is the old standguard of web frameworks. It was the original batteries included
+framework, and has over the years been known for its ease of use. However, the framework is quite old
+and shows some signs of age, using sometimes outdated paradigms and generally being less friendly to beginners
+than more modern frameworks. \par}
 
-\subsubsection{Technology 1}
+\subsubsection{Text Formatting}
 {\noindent \par}
+{\noindent Option 1 - Markdown \par}
+{\noindent Markdown is a highly lightweight markup language that allows easy, human-readable markup
+of text to include headings, bold/italic/underline/etc, bullets, and numbered lists. The original markdown does not support
+things like images, videos, or links; Markdown has various "flavors", or implementations, that sometimes
+allow for such things. \par}
+{\noindent Option 2 - Restructured Text \par}
+{\noindent Restructured Text is a markup language written in Python for writing documetnation, simple websites,
+etc. It allows for highly varied but still restricted markup; it allows for image embeds, fancy linking,
+titles, etc. It does not allow users to embed arbitrary elements. \par}
+{\noindent Option 3 - Raw HTML \par}
+{\noindent Storing simply raw HTML allows the greatest flexibiity, as it is literally the same elements
+rendered in browser. Raw HTML allows for things like scripting, video embeds, etc., and as such must
+be filtered to a restricted subset to be suitable for use in a public-facing scenario. \par}
 
 \medskip
-
-\subsubsection{Technology 2}
+\subsubsection{Password Storage}
 {\noindent \par}
-
-\medskip
-
-\subsubsection{Technology 3}
-{\noindent \par}
-
-\medskip
+{\noindent Option 1 - bcrypt \par}
+{\noindent Bcrypt is a password hashing function that takes a very large amount of time to crack
+an individual password -- it is designed to be slow. This means a hacker cannot simply crack
+a database worth of passwords in one sitting, as with older hashes like MD5. \par}
+{\noindent Option 2 - scrypt \par}
+{\noindent Scrypt is designed to take up large amounts of time, and large amounts of RAM,
+when hashing. This ensures that a hacker cannot simply buy a powerful CPU and crack passwords with
+pure power. However, scrypt, being designed moreso for computer hard disk passwords, can take
+multiple seconds and hundreds of megabytes of RAM to process. \par}
+{\noindent Option 3 - pbkdf2 \par}
+{\noindent PBKDF2 is a function that repeatedly hashes a passwording using the HMAC, or "keyed-hash
+message authentication code", function. For a CPU, cracking a large number of passwords using pbkdf2
+is difficult, as it takes a large amount of time to crack an individual password. Using a GPU,
+however, a large number of hashes can be run in parallel, making it quick to crack with high end hardware. \par}
+{\noindent Option 4 - raw storage \par}
+{\noindent text \par}
 
 
 \newpage
