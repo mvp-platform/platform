@@ -22,10 +22,19 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage[doublespacing]{setspace}
+\usepackage{supertabular}
+\usepackage{fancyhdr}
 
 %\setlength{\parindent}{4em}
 %\linespread{1.1}
 
+\pagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Many Voices Publishing Platform}
+
+\lfoot{TR}
+\cfoot{Page}
+\rfoot{\thepage}
 
 \def\name{Steven Powers, Josh Matteson, Evan Tschuy}
 
@@ -41,6 +50,8 @@
   pdfsubject = {CS 461 Technology Review},
   pdfpagemode = UseNone
 }
+
+
 
 
 
@@ -66,6 +77,8 @@
 \tableofcontents
 
 \newpage
+
+\setcounter{page}{1}\pagestyle{fancy}
 
 \vspace{1pc}
 \section{Technology Review}
@@ -129,7 +142,7 @@ IV.                Bibliography
 \subsection{Introduction}
 \vspace{1pc}
 
-{\noindent Introduction to entire tech review, including authorship of each section \par}
+{\noindent The MVP Platform is being developed for the purpose of fixing the problems currently associated with the textbook market. We will accomplish this by giving the MVP Platform an easy to use interface, a search bar with a built in results pane, source control, and many other features. Authorship is divided by subsection header.\par}
 
 
 
@@ -138,15 +151,79 @@ IV.                Bibliography
 \vspace{1pc}
 
 {\subsubsection{User Interface}
-{\noindent \par}
+{\noindent Option 1 - React \par}
+{\noindent React is a JavaScript rendering engine that is developed by Facebook. Originally used with Instagram, React is often paired with Redux for added functionality. React is a popular JavaScript library meant for building user interfaces that is component based. \par}
 
 \medskip
+{\noindent Option 2 - Aurelia \par}
+{\noindent Aurelia is a newer JavaScript client framework for mobile, desktop, and the web, by using simplistic integration.  \par}
 
+\medskip
+{\noindent Option 3 - Ember \par}
+{\noindent Ember uses web components and templates to increase productivity.  \par}
+
+\medskip
+{\noindent Option 4 - Angular2 \par}
+{\noindent Angular2 is a project started by Google for their internal Green Tea project. Angular2 is a widely documented JavaScript cross-platform library that is used to create native mobile and desktop web applications. \par}
+
+\medskip
+{\noindent Goals \par}
+{\noindent The use of this technology will aid in the development of the user interface. Having a beautiful and scalable user interface will help users interact with the platform more easily, on whatever device they choose to use it on. \par}
+
+\medskip
+\newpage
+{\noindent Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item Ease of Use
+\item File Size
+\item Features
+\item Performance
+\item Standards Compliance
+\item Non-Compliance
+\item Release 
+\item License
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent Option Comparison \par}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+& React & Aurelia & Ember & Angular 2\\ \hline
+Ease of Use & Substantial setup required for working system, lots of documentation and tutorials. & Simple setup using NPM and installation     & Simple setup using NPM and installation & Substantial setup required for working system, lots of documentation and tutorials. \\ \hline
+File Size & 156kb to ???kb, due to added frameworks & 323kb & 435kb                                   & 1023kb \\ \hline
+Features & View rendering engine with plugin frameworks & Router, Animation, HTTP Client & Router, HTTP Client & Router, HTTP Client                                                                 \\ \hline
+Performance (Paints per Second) & 45-50 & 90-150 (Higher end with additional plugins) & 60-100 & 80-130 (Higher end with additional plugins) \\ \hline
+Standards Compliance & ES 2015 & HTML, ES 2016, Web Components & HTML, ES 2015                           & ES 2016\\ \hline
+Non-Compliance & JSX                                                                                 & N/A & N/A & NG2 Markup, Dart \\ \hline
+Release & 15.x & Beta & 2.x  & Release Candidate \\ \hline
+License & BSD & MIT & MIT & MIT \\ \hline
+\end{supertabular}
+
+\newpage
+{\noindent Discussion \par}
+{\noindent All of the chosen options have their pros and cons for our web application. All of them however would be a learning and research experience. Angular2 and React have the benefit of being created by large software companies, Google and Facebook respectively. This means that there will be large adoption and documentation / tutorials available. Aurelia and Ember seem to be easier to implement however, they are much newer products and they have a smaller adoption population. This could prove troublesome if we run into problems. If our implementation ends up being a fork of Ward Cunningham's Federated Wiki, then this decision will be null most likely. \par}
+
+\medskip
+{\noindent Selection \par}
+{\noindent Initially we were set on using Angular2 as part of the team has experience using this JavaScript library, before meeting with our client. Angular2 has a wide adoption and is used by Google for internal projects so the longevity of the framework is expected to last. With this in mind, we plan to use Angular2 if we need to use a JavaScript framework for our user interface. \par}
+
+
+
+%\end{center}
+
+\newpage
 \subsubsection{Documentation}
 {\noindent \par}
 
 \medskip
-
+\newpage
 \subsubsection{Inclusive Design}
 {\noindent \par}
 
