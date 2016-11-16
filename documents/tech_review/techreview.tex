@@ -152,7 +152,7 @@ IV.                Bibliography
 \subsection{Steven}
 \vspace{1pc}
 
-{\subsubsection{User Interface}
+{\subsubsection{User Interface Tools}
 {\noindent Option 1 - React \cite{React} \par}
 {\noindent React is a JavaScript rendering engine that is developed by Facebook. Originally used with Instagram, React is often paired with Redux for added functionality. React is a popular JavaScript library meant for building user interfaces that is component based. \par}
 
@@ -169,12 +169,12 @@ IV.                Bibliography
 {\noindent Angular2 is a project started by Google for their internal Green Tea project. Angular2 is a widely documented JavaScript cross-platform library that is used to create native mobile and desktop web applications. \par}
 
 \medskip
-{\noindent Goals \par}
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
 {\noindent The use of this technology will aid in the development of the user interface. Having a beautiful and scalable user interface will help users interact with the platform more easily, on whatever device they choose to use it on. \par}
 
 \medskip
 \newpage
-{\noindent Evaluation Criteria \par}
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
 {\noindent The options are evaluated on 
 
 \begin{itemize}
@@ -193,7 +193,8 @@ IV.                Bibliography
 %\begin{center}
 
 \newpage
-{\noindent Option Comparison \par}
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \hline \cite{Eisenberg} & React & Aurelia  & Ember  & Angular 2 \\ \hline
@@ -208,17 +209,17 @@ License & BSD & MIT & MIT & MIT \\ \hline
 \end{supertabular}
 
 \newpage
-{\noindent Discussion \par}
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
 {\noindent All of the chosen options have their pros and cons for our web application. All of them however would be a learning and research experience. Angular2 and React have the benefit of being created by large software companies, Google and Facebook respectively. This means that there will be large adoption and documentation / tutorials available. Aurelia and Ember seem to be easier to implement however, they are much newer products and they have a smaller adoption population. This could prove troublesome if we run into problems. If our implementation ends up being a fork of Ward Cunningham's Federated Wiki, then this decision will be null most likely. \par}
 
 \medskip
-{\noindent Selection \par}
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
 {\noindent Initially we were set on using Angular2 as part of the team has experience using this JavaScript library, before meeting with our client. Angular2 has a wide adoption and is used by Google for internal projects so the longevity of the framework is expected to last. With this in mind, we plan to use Angular2 if we need to use a JavaScript framework for our user interface. \par}
 
 
 
 %\end{center}
-
+\begin{comment}
 \newpage
 \subsubsection{Documentation}
 {\noindent Option 1 - Microsoft Word \cite{Word} \par}
@@ -233,12 +234,12 @@ License & BSD & MIT & MIT & MIT \\ \hline
 {\noindent  LaTeX, hereby known as Latex, is a document preparation system often used in the technical and scientific fields for documentation, and is the de facto standard for communication and publication of scientific documents \cite{Latex}. \par}
 
 \medskip
-{\noindent Goals \par}
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
 {\noindent An efficient documentation solution that is able to provide the ability to create beautiful and useful documentation of  the platform. This documentation will assist the end user with operation of the various parts of the platform.\par}
 
 \medskip
 \newpage
-{\noindent Evaluation Criteria \par}
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
 {\noindent The options are evaluated on 
 
 \begin{itemize}
@@ -254,7 +255,8 @@ License & BSD & MIT & MIT & MIT \\ \hline
 %\begin{center}
 
 \newpage
-{\noindent Option Comparison \par}
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
 \hline  & Microsoft Word & Dozuki & LaTeX\\ \hline
@@ -267,18 +269,128 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 \end{supertabular}
 
 \newpage
-{\noindent Discussion \par}
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
 {\noindent While we are highly experienced using Microsoft Word, the documents become bloated, and sometimes the software is prone to crashes when dealing with very large documents. Dozuki seems like a very nice documentation solution, that is used by Intel and other technology companies. Having a centralized management system allows management to verify everyone is looking at the most updated documentation. This would be a very nice solution, though the cost is very prohibitive, at over \$3500 / year. Latex is free, and is able to create highly structured documentation that is also easy to style. Latex is used throughout the science field for ease of use.\par}
 
 \medskip
-{\noindent Selection \par}
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
 {\noindent Latex seems to be the best solution of the three, due to current experience using the software, as well as ease of use when creating large documents with multiple sections and headings. \par}
 
+\end{comment}
+
 \newpage
-\subsubsection{Inclusive Design}
-{\noindent \par}
+\subsubsection{User Login \& Authentication}
+{\noindent Option 1 - OpenID Connect \par}
+{\noindent OpenID Connect allows for clients of all types, including browser-based JavaScript and native mobile apps, to launch sign-in flows and receive verifiable assertions about the identity of signed-in users \cite{OpenID}. \par}
 
 \medskip
+{\noindent Option 2 - Facebook  \par}
+{\noindent Facebook Login for Apps is a fast and convenient way for people to create accounts and log into your app across multiple platforms \cite{Facebook}. \par}
+
+\medskip
+{\noindent Option 3 - PHP \& SQL\par}
+{\noindent Using PHP and SQL to compare submitted usernames and passwords against stored data on a database.\par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
+{\noindent An efficient and secure method for allowing for users to login and continue editing their documents from any computer or device they choose.\par}
+
+\medskip
+%\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item Ease of Use
+\item Features
+\item Security
+
+\end{itemize}
+
+ \par}
+
+\vspace{2pc}
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline  & OpenID & Facebook Login & PHP \& SQL\\ \hline
+Ease of Use & Requires Credentials with Corresponding Login Providers, Lots of available libraries  & Requires Credentials with Facebook and an App ID with Facebook & Easy to implement, but if setup incorrectly can lead to problems\\ \hline
+Security & Relies on credential host and user security & Relies on Facebook and user security & Relies on password protection implementation and user security\\ \hline
+Features & Easily log in with OpenID partner credential hosts (Google, Microsoft, Yahoo, etc) & Easily log in with Facebook credentials & Easily log in with user created account and password \\ \hline
+
+\end{supertabular}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent The ideal user authentication system would be a combination of all three of the above implementations. While logging in with Facebook would make it easier to determine who is using the service, preventing unauthorized users from accessing unreleased copyrighted material, not everyone has a Facebook. Additionally using an OpenID login system would be reliant on other platform holders that use OAuth 2.0. Finally, using a self created account is often the easiest and can allow users to not be tied to a given account and also prevent private information from being retrieved from user accounts.\par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent For our implementation, we plan on using initially a PHP and SQL system to validate user account information on our database. Additionally, we will look into adding both OpenID and Facebook Login down the road. \par}
+
+\newpage
+\subsubsection{Interface Design}
+{\noindent Option 1 - User Centered Design \par}
+{\noindent A deep understanding of the target audience is able to provide insights into how to design and develop your application to suit your intended users \cite{Usability}. \par}
+
+\medskip
+{\noindent Option 2 - Activity-Centered Design  \par}
+{\noindent Instead of focusing on research about intended users, the design and development are focused around making a given activity logically designed \cite{AListApart}. \par}
+
+\medskip
+{\noindent Option 3 - Self Design \par}
+{\noindent The designer is responsible for representing the target audience. Though this can be a poor representation of the intended audience \cite{AListApart}.\par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
+{\noindent A design principle that allows for user interfaces that lead to user interfaces that are accepted by users and are easy to understand.\par}
+
+\medskip
+%\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item Ease of Use
+\item Strengths
+\item Weaknesses
+
+\end{itemize}
+
+\par}
+
+\vspace{2pc}
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline  & User Centered Design & Activity-Centered Design & Self Design\\ \hline
+Ease of Use & Long process, that takes a lot of data gathering to provide insights into a target audience. & Easier to design an activity when not trying to cater a specific audience. & Very easy to design what works well for you as a designer. \\ \hline
+Strengths & Allows for the designer to understand what makes a user think the way they do. This allows for an interface design to be molded to an expected user. & Allows the designer to design a user interface based around an activity that a user will be performing instead of designing to a users wants and desires. & Allows for easy creation of user interface of how the designers see fit. Perfect for a target audience that is just like the designer. \\ \hline
+Weaknesses & Takes a long time to gather enough information to be able to design a good solution that feels natural to a target audience user. & Designed interface might work well for an intended activity, but could be antagonistic to a target audience. & Interface could be intended for an entirely different audience, leaving a confusing experience.\\ \hline
+
+\end{supertabular}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent The MVP Platform is highly user focused, which initially led the team to decided on User Centered Design. Activity-Centered Design or Self Design would greatly reduce the burden of research and discovery into what our target audience would like to see or be comfortable with naturally. Activity-Centered Design, if performed properly would result in interfaces that clearly work as intended, though might be off putting to our users. Self Design would allow for one of the team members to decide how a certain element shall look, but again can fall into an interface that does not satisfy our users.\par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent For our implementation, we plan on using User Centered Design. This is because users are our very important for our project. If our users do not like our user interface, then they will be less likely to use our software. \par}
+
+
+
+
+
+
 
 
 %\vspace{1pc}
@@ -301,12 +413,12 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 {\noindent Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests. \cite{Jasmine}  \par}
 
 \medskip
-{\noindent Goals \par}
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
 {\noindent Using this technology will aid in proper functionality and minimize errors. Without properly testing code, a number of problems can occur that can disrupt and slow down progress in a team. In extreme cases, not properly testing could lead to failure of the application. \par}
 
 \medskip
 \newpage
-{\noindent Evaluation Criteria \par}
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
 {\noindent The options are evaluated on 
 
 \begin{itemize}
@@ -325,7 +437,7 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 %\begin{center}
 
 \newpage
-{\noindent Option Comparison \par}
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \hline
@@ -333,14 +445,14 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 \end{supertabular}
 
 \newpage
-{\noindent Discussion \par}
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
 {\noindent It is well known that an application that ensures proper functionality supersedes other applications and, more importantly, competitors. Quality assurance is acknowledged as highly distinguished, and therefore, an attribute deserving of notable consideration. Having this in mind, we will be considering three different testing frameworks: Mocha, QUnit, and Jasmine. \par}
 {\noindent Mocha (more info to come) \par}
 {\noindent QUnit (more info to come) \par}
 {\noindent The Jasmine testing framework is the most common of the three, and considerably so. (more info to come) \par}
 
 \medskip
-{\noindent Selection \par}
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
 {\noindent Mocha? \par}
 
 
@@ -352,7 +464,7 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 \medskip
 
 \newpage
-\subsubsection{User Authentication}
+\subsubsection{Version Control}
 {\noindent \par}
 
 \medskip
@@ -362,6 +474,12 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 {\noindent \par}
 
 \medskip
+
+
+
+
+
+
 
 
 %\vspace{1pc}

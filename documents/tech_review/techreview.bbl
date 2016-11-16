@@ -39,20 +39,21 @@ Google, ``Our framework,'' \url{http://angular.io/}.
 R.~Eisenberg, ``Choosing a javascript framework,''
   \url{https://www.youtube.com/watch?v=6I_GwgoGm1w}.
 
-\bibitem{Word}
-Microsoft, ``Microsoft word | document and word processing software,''
-  \url{https://products.office.com/en-us/word}.
+\bibitem{OpenID}
+OpenID, ``Openid the internet identity layer,''
+  \url{http://openid.net/connect/faq/}.
 
-\bibitem{Dozuki}
-Dozuki, ``Visual documentation for a paperless future,''
-  \url{http://www.dozuki.com/}.
+\bibitem{Facebook}
+Facebook, ``Facebook login for apps,''
+  \url{https://developers.facebook.com/docs/facebook-login/overview}.
 
-\bibitem{Latex}
-T.~L. Project, ``Latex - a document preparation system,''
-  \url{http://www.latex-project.org/}.
+\bibitem{Usability}
+U.~D. of~Health \& Human~Services, ``User-centered design basics,''
+  \url{https://www.usability.gov/what-and-why/user-centered-design.html}.
 
-\bibitem{McGrath}
-D.~K. McGrath, ``Latex learning curve.''
+\bibitem{AListApart}
+C.~Bowles, ``Looking beyond user-centered design,''
+  \url{http://alistapart.com/column/looking-beyond-user-centered-design}.
 
 \bibitem{Mocha}
 MochaJs, ``Mocha, simple, flexible, fun,'' \url{https://mochajs.org/}.
