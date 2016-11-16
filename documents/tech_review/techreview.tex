@@ -1,11 +1,11 @@
 \documentclass[letterpaper, 10pt, draftclsnofoot, compsoc, onecolumn]{IEEEtran}
 
-\usepackage{graphicx}                                        
-%\usepackage{amssymb}                                         
-%\usepackage{amsmath}                                         
-%\usepackage{amsthm}                                          
+\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+%\usepackage{amsthm}
 
-\usepackage{alltt}                                           
+\usepackage{alltt}
 \usepackage{float}
 \usepackage{url}
 
@@ -44,7 +44,7 @@
 
 % The following metadata will show up in the PDF properties
 \hypersetup{
-  colorlinks=true, linkcolor=blue,citecolor=blue, filecolor=blue, 
+  colorlinks=true, linkcolor=blue,citecolor=blue, filecolor=blue,
   urlcolor=blue, pdfauthor = {\name},
   pdfkeywords = {cs461 ``senior capstone'' technology review},
   pdftitle = {CS 461 Technology Review},
@@ -70,7 +70,7 @@
 {\vspace{10mm}}
 
 \begin{abstract}
-\noindent The Many Voices Publishing Platform uses a variety of technologies to handle different aspects of the project, from the user interface to the backend database operations. These technologies enable to the Many Voices Publishing Platform to succeed in delivering a working platform for textbook collaboration. 
+\noindent The Many Voices Publishing Platform uses a variety of technologies to handle different aspects of the project, from the user interface to the backend database operations. These technologies enable to the Many Voices Publishing Platform to succeed in delivering a working platform for textbook collaboration.
 \end{abstract}
 
 \end{titlepage}
@@ -175,7 +175,7 @@ IV.                Bibliography
 \medskip
 \newpage
 {\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on 
+{\noindent The options are evaluated on
 
 \begin{itemize}
 \item Ease of Use
@@ -184,7 +184,7 @@ IV.                Bibliography
 \item Performance
 \item Standards Compliance
 \item Non-Compliance
-\item Release 
+\item Release
 \item License
 \end{itemize}
 
@@ -240,7 +240,7 @@ License & BSD & MIT & MIT & MIT \\ \hline
 \medskip
 \newpage
 {\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on 
+{\noindent The options are evaluated on
 
 \begin{itemize}
 \item Ease of Use
@@ -298,7 +298,7 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 \medskip
 %\newpage
 {\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on 
+{\noindent The options are evaluated on
 
 \begin{itemize}
 \item Ease of Use
@@ -352,7 +352,7 @@ Features & Easily log in with OpenID partner credential hosts (Google, Microsoft
 \medskip
 %\newpage
 {\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on 
+{\noindent The options are evaluated on
 
 \begin{itemize}
 \item Ease of Use
@@ -419,7 +419,7 @@ Weaknesses & Takes a long time to gather enough information to be able to design
 \medskip
 \newpage
 {\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on 
+{\noindent The options are evaluated on
 
 \begin{itemize}
 \item Ease of Use
@@ -505,12 +505,79 @@ framework, and has over the years been known for its ease of use. However, the f
 and shows some signs of age, using sometimes outdated paradigms and generally being less friendly to beginners
 than more modern frameworks. \par}
 
+\medskip
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on
+
+\begin{itemize}
+\item Ease of use
+\item Language
+\item Features
+\item Ecosystem
+\item License
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline & NodeJS & Django  & Flask  & Ruby on Rails \\ \hline
+Ease of Use
+  & Javascript backend shares language with frontend; super quick iteration
+  & Large framework containing all needs within, with a large learning curve
+  & Microframework containing only minimal needs; requires finding external packages
+  & Old framework with massive, but aging, ecosystem \\ \hline
+Language
+  & Javascript
+  & Python
+  & Python
+  & Ruby \\ \hline
+Features
+  & Minimal HTTP interaction, massive external ecosystem for extras
+  & Massive built-ins
+  & Minimal with external ecosystem for extras
+  & Massive built-ins \\ \hline
+Ecosystem
+  & Massively popular today with expansive and growing ecosystem
+  & Decently large ecosystem with built-ins for most tasks
+  & Decently large ecosystem
+  & Large ecosystem but fairly old \\ \hline
+Release
+  & 7.1.0
+  & 1.10.3
+  & 0.11
+  & 5.0.0.1 \\ \hline
+License
+  & MIT
+  & BSD
+  & BSD
+  & MIT \\ \hline
+\end{supertabular}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent
+All backends listed are popular within their respective communities. However, more new projects are being created using NodeJS, as its modern paradigms and sharing of a language with frontend development allow developers familiar with it to iterate quicker and write more expressive code. Django's built-ins allow for a quicker initial development time but mean being isolated from the rapidly expanding ecosystem around NodeJS.
+Ruby on Rails is a rather old backend, and has not shown to have the modern flexibility of Node.
+ \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent As NodeJS has the most expansive ecosystem, and allows us to share a common language between the front and backennds of the project, we will be using it over the other options considered. Additionally, Ward Cunningham's Federated Wiki uses it as one of its backends, and if we fork it, we can continue to use its NodeJS backend. \par}
+
+\newpage
 \subsubsection{Text Formatting}
 {\noindent \par}
 {\noindent Option 1 - Markdown \par}
 {\noindent Markdown is a highly lightweight markup language that allows easy, human-readable markup
 of text to include headings, bold/italic/underline/etc, bullets, and numbered lists. The original markdown does not support
-things like images, videos, or links; Markdown has various "flavors", or implementations, that sometimes
+things like images or videos; Markdown has various "flavors", or implementations, that sometimes
 allow for such things. \par}
 {\noindent Option 2 - Restructured Text \par}
 {\noindent Restructured Text is a markup language written in Python for writing documentation, simple websites,
@@ -521,6 +588,68 @@ titles, etc. It does not allow users to embed arbitrary elements. \par}
 rendered in browser. Raw HTML allows for things like scripting, video embeds, etc., and as such must
 be filtered to a restricted subset to be suitable for use in a public-facing scenario. \par}
 
+\medskip
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on
+
+\begin{itemize}
+\item Ease of use for end-users
+\item Markup options
+\item Compile language
+\item Security
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+  & Markdown
+  & ReStructured Text
+  & HTML \\ \hline
+Ease of Use
+  & Easy to use, with minimal options and human-readable markup; different implementations have slight differences leading to confusion
+  & Relatively human-readable markup but with massive number of options
+  & Essentially infinite options but not very human-readable/human-writeable  \\ \hline
+Markup
+  & Options readable in single-page document, not allowing for high flexibility
+  & Highly featureful with well-defined language
+  & Allows for infinite options along; can use CSS to fine-tune display \\ \hline
+Compile Language
+  & Dozens of different libraries for different languages, each with slightly different interpretation of the markup
+  & Python
+  & No compilation needed to display but some backend processing needed for security \\ \hline
+Security
+  & Small language leads to minimal exploits
+  & Well-defined with real-world-tested libraries
+  & Needs careful processing to stop end-users from inputting harmful raw input (including scripts)
+  \\ \hline
+\end{supertabular}
+
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent
+All languages listed allow users to do simple things like bold text and link to other pages. However,
+HTML offers the most flexibility and allows users to be able to do anything they want.
+Allowing this while maintaining ease-of-use would require a frontend library
+that can allow users to interact with the document in "what you see is what you get",
+or WYSIWYG, mode.
+ \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent
+The Federated Wiki uses HTML with minimal security processing. If we fork the Federated Wiki, we will use
+HTML with some added processing to increase its security. Otherwise, for ease of implementation, we will
+use Markdown for its backend language support, but implemented in such a way as to allow easy
+replacement of the code with some other markup language as wanted.
+\par}
+
+\newpage
 \medskip
 \subsubsection{Password Storage}
 {\noindent \par}
@@ -539,8 +668,68 @@ message authentication code", function. For a CPU, cracking a large number of pa
 is difficult, as it takes a large amount of time to crack an individual password. Using a GPU,
 however, a large number of hashes can be run in parallel, making it quick to crack with high end hardware. \par}
 {\noindent Option 4 - raw storage \par}
-{\noindent text \par}
+{\noindent Another option for password storage is to store the passwords in plain text. This allows
+users to recover their passwords directly through a password reminder email. However, this comes with
+the major downside that compromising the database allows a hacker to be able to access any
+accounts on unrelated services where users use the same username and password (a common pattern
+in non-technical and technical users alike). \par}
 
+\medskip
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on
+
+\begin{itemize}
+\item Cracking
+\item Storage
+\item Resistance to Hacking
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\vspace{1pc}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+  & Bcrypt
+  & Scrypt
+  & pbkdf2
+  & plain text \\ \hline
+Cracking
+  & Bcrypt is highly resistant to cracking on CPUs and GPUs, but can be cracked quickly using specialized FPGAs.
+  & Scrypt is highly resistant to cracking on CPUs, GPUs, etc but takes a large amount of time to verify a valid password.
+  & pbkdf2 is highly resistant to cracking on CPUs but can be easily cracked on a GPU.
+  & A plaintext password does not need to be cracked as it is already stored as a raw password. \\ \hline
+Storage
+  & can be stored in a database without issue.
+  & can be stored in a database without issue.
+  & can be stored in a database without issue.
+  & Plain passwords must be stored in a way that ensures they can never be hacked, which is impossible. \\ \hline
+Resistance to Hacking
+  & A bcrypt password hash must be cracked before it can be used elsewhere.
+  & Scrypt hashes must be cracked before use elsewhere.
+  & pbkdf2 hashes must be cracked before use elsewhere.
+  & A plain password, once retrieved from a database, can be used along with the username/email associated to hack other sites. \\ \hline
+\end{supertabular}
+
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent
+Password storage is a tradeoff between ease of use and difficulty of reversing. Scrypt is too slow for use on a website with many users,
+whereas plain text passwords are too insecure as a hacker can reuse the password immediately without cracking. pbkdf2 and bcrypt do a good
+job defending against CPU cracking, but as pbkdf2 can be cracked using a GPU, bcrypt is left remaining as the best tradeoff between speed and
+cracking.
+ \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent
+As mentioned above, bcrypt-hashed passwords present a good tradeoff between cracking ability and verification speed.
+As such, the Many Voices Platform will use bcrypt to securely verify any password used with the system.
+\par}
 
 \newpage
 \subsection{Conclusion}
