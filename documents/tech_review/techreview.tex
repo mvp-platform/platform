@@ -399,8 +399,6 @@ Weaknesses & Takes a long time to gather enough information to be able to design
 \vspace{1pc}
 
 \subsubsection{Testing}
-{\noindent \par}
-
 {\noindent Option 1 - Mocha \par}
 {\noindent Mocha is a JavaScript testing framework, loaded with features. It runs on Node.js and also in the browser, making asynchronous testing simple and easy to use. Mocha tests run serially, allowing for flexible and accurate reporting, while mapping uncaught exceptions to the correct test cases. \cite{Mocha} \par}
 
@@ -437,8 +435,7 @@ Weaknesses & Takes a long time to gather enough information to be able to design
 {\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
-\hline
-Mocha & QUnit & Jasmine\\ \hline
+\hline & Mocha & QUnit & Jasmine\\ \hline
 Language is like spoken language, which makes for easier to understand & Not as friendly, language is similiar to other basic Unit testing frameworks & Language is like spoken English, fairly easy to understand\\ \hline
 Rich in features: Spys, mocks, stubs, callbacks, etc. Most features & Most testing is done through assertions only, not as many features & Rich in features: Spys, mocks, stubs, callbacks, etc. Lacks Assertions, but can be implemented with library\\ \hline
 Fairly common, moderate amount of documentation & Not well documented & Most popular, abundant documentation \\ \hline
@@ -454,23 +451,111 @@ Moderate difficulty to set up & Easiest to set up & Moderate difficulty to set u
 {\noindent\rmfamily\bfseries\color{black} Selection \par}
 {\noindent Jasmine, even though more difficult to integrate and set up, would be most feasible. Jasmine has many features that win out over Mocha and QUnit, as well as thorough documenation. The test are easily grouped through describe blocks, which makes it easy to identify where certain problems are. There is familiarity with Jasmine over the other testing frameworks, which means less time learning for the team.\par}
 
-
-
 %\end{center}
-
-\newpage
 
 \medskip
 
 \newpage
 \subsubsection{Version Control}
+{\noindent Further information is needed to begin planning built in source control. \par}
+
+{\noindent Option 1 - Git \par}
+{\noindent \par}
+
+\medskip
+{\noindent Option 2 - \par}
+{\noindent \par}
+
+\medskip
+{\noindent Option 3 - \par}
+{\noindent \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
+{\noindent \par}
+
+\medskip
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item API
+\item License
+\item Integration
+\item Other
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline & Option 1 & Option 2 & Option 3\\ \hline
+\end{supertabular}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent  \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
 {\noindent \par}
 
 \medskip
 
 \newpage
 \subsubsection{Database}
-{\noindent \par}
+{\noindent Option 1 - SQL Server \par}
+{\noindent SQL Server is owned by Microsoft, and is known for its scalable, hybrid database platform. Being owned by Microsoft, this database is well known. \cite{SQL Server} \par}
+
+\medskip
+{\noindent Option 2 - MongoDB \par}
+{\noindent MongoDB is a document based database, with an Expressive Query Language and Secondary Indexes. \cite{MongoDB}  \par}
+
+\medskip
+{\noindent Option 3 - MySQL \par}
+{\noindent Many of the worlds largest companies rely on MySQL, such as Facebook, Google, and others. It is a relational database. \cite{MySQL}  \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Goals \par}
+{\noindent Having an understandable, well built database can aid in the flow of building an application as well as delivery. This in mind, we want to balance cost with effectiveness. \par}
+
+\medskip
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+{\noindent The options are evaluated on 
+
+\begin{itemize}
+\item Cost
+\item Type
+\item Ease of Use
+\end{itemize}
+
+ \par}
+
+%\begin{center}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\tablehead{}
+\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline & SQL Server & MongoDB & MySQL\\ \hline
+Enterprise: \$12,256, Standard: \$3717, Developer: Free & OpenSource, but essential periphery software can range from \$45 a month to as much as \$5225 a month & Enterprise: \$5000, Standard: \$2000, Community Edition: Free \\ \hline
+\hline Structured Query Language & Expressive Query Language & Structured Query Language\\ \hline
+\hline Uses Queries to gather information & EQL data access and manipulation in sophisticated ways, supporting operational and analytical applications \cite{ibmbpnetwork} & Uses Queries to gather information \\ \hline
+\end{supertabular}
+
+\newpage
+{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+{\noindent The most obvious and transparent qualities for a database are the cost and type, however, databases that come with a free edition allow for us to test and experiment while developing. This is imperative to the development process, and shouldn't be overlooked. Allowing for an easy transition from the free edition to a standard or express edition is important as well. A non relational database like MongoDB could be beneficial when not knowing the type of data that will be stored.' \par}
+
+\medskip
+{\noindent\rmfamily\bfseries\color{black} Selection \par}
+{\noindent All things considered, SQL Server would be considered our top pick. Experience using an SQL based database before aids in the difficulty of using a query. Having a free edition contributes a moderate amount into the decision as well.\par}
 
 \medskip
 
