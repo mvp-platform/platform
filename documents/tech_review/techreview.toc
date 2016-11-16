@@ -6,11 +6,11 @@
 \contentsline {subsubsection}{\numberline {1.2.3}Interface Design}{8}{subsubsection.1.2.3}
 \contentsline {subsection}{\numberline {1.3}Josh}{11}{subsection.1.3}
 \contentsline {subsubsection}{\numberline {1.3.1}Testing}{11}{subsubsection.1.3.1}
-\contentsline {subsubsection}{\numberline {1.3.2}Version Control}{15}{subsubsection.1.3.2}
-\contentsline {subsubsection}{\numberline {1.3.3}Database}{16}{subsubsection.1.3.3}
-\contentsline {subsection}{\numberline {1.4}Evan}{17}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Server Back-end}{17}{subsubsection.1.4.1}
-\contentsline {subsubsection}{\numberline {1.4.2}Text Formatting}{17}{subsubsection.1.4.2}
-\contentsline {subsubsection}{\numberline {1.4.3}Password Storage}{18}{subsubsection.1.4.3}
-\contentsline {subsection}{\numberline {1.5}Conclusion}{19}{subsection.1.5}
-\contentsline {section}{References}{20}{section*.2}
+\contentsline {subsubsection}{\numberline {1.3.2}Version Control}{16}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Database}{20}{subsubsection.1.3.3}
+\contentsline {subsection}{\numberline {1.4}Evan}{25}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Server Back-end}{25}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Text Formatting}{25}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}Password Storage}{26}{subsubsection.1.4.3}
+\contentsline {subsection}{\numberline {1.5}Conclusion}{27}{subsection.1.5}
+\contentsline {section}{References}{28}{section*.2}
