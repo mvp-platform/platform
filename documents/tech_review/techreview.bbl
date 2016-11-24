@@ -65,4 +65,18 @@ QUnit, ``Qunit: A javascript unit testing framework,''
 \bibitem{Jasmine}
 Jasmine, ``Jasmine,'' \url{https://jasmine.github.io/2.0/introduction.html}.
 
+\bibitem{SQLServer}
+Microsoft, ``Platform for intelligent applications,''
+  \url{https://www.microsoft.com/en-us/sql-server/}.
+
+\bibitem{MongoDB}
+MongoDB, ``Mongodb | for giant ideas,'' \url{https://www.mongodb.com/}.
+
+\bibitem{MySQL}
+MySQL, ``Mysql,'' \url{http://www.mysql.com/}.
+
+\bibitem{ibmbpnetwork}
+I.~B. Network, ``Why are we excited to talk about mongodb?''
+  \url{http://www.ibmbpnetwork.com/linux-blog/excited-about-mongodb}.
+
 \end{thebibliography}

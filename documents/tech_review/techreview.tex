@@ -7,7 +7,7 @@
 
 \usepackage{alltt}
 \usepackage{float}
-\usepackage{url}
+
 
 \usepackage{balance}
 \usepackage[TABBOTCAP, tight]{subfigure}
@@ -18,8 +18,10 @@
 \usepackage{geometry}
 
 \usepackage{comment}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 
-\usepackage{listings}
+%\usepackage{listings}
 \usepackage{color}
 \usepackage[doublespacing]{setspace}
 \usepackage{supertabular}
@@ -28,6 +30,8 @@
 
 %\setlength{\parindent}{4em}
 %\linespread{1.1}
+
+
 
 \pagestyle{empty}
 \renewcommand{\headrulewidth}{0pt}
@@ -84,62 +88,6 @@
 \vspace{1pc}
 \section{Technology Review}
 
-\begin{comment}
-
-
-I. Introduction to entire tech review, including authorship of each section
-
-II.  Technologies 1-9 (each person responsible for 3)
-
-(1)     Technology 1
-
-a.       Options 1, 2, and 3
-
-b.       Goals for use in design
-
-c.       Criteria being evaluated (e.g., cost, availability, speed, security, etc)
-
-d.       Table comparing option 1, option 2, option 3 based on criteria
-
-e.       Discussion
-
-f.        Selection of best option based on criteria
-
-(2)     Technology 2
-
-a.       Options 1, 2, and 3
-
-b.       Goals for use in design
-
-c.       Criteria being evaluated (e.g., cost, availability, speed, security, etc)
-
-d.       Table comparing option 1, option 2, option 3 based on criteria
-
-e.       Discussion
-
-f.        Selection of best option based on criteria
-
-(3)     Technology 3
-
-a.       Options 1, 2, and 3
-
-b.       Goals
-
-c.       Criteria
-
-d.       Table
-
-e.       Discussion
-
-f.        Selection of best option based on criteria
-
-(4)     ….etc….
-
-III.                Conclusion
-
-IV.                Bibliography
-
-\end{comment}
 \vspace{1pc}
 \subsection{Introduction}
 \vspace{1pc}
@@ -149,7 +97,7 @@ IV.                Bibliography
 
 
 
-\subsection{Steven}
+\subsection{Steven Powers}
 \vspace{1pc}
 
 {\subsubsection{User Interface Tools}
@@ -169,12 +117,12 @@ IV.                Bibliography
 {\noindent Angular2 is a project started by Google for their internal Green Tea project. Angular2 is a widely documented JavaScript cross-platform library that is used to create native mobile and desktop web applications. \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent The use of this technology will aid in the development of the user interface. Having a beautiful and scalable user interface will help users interact with the platform more easily, on whatever device they choose to use it on. \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -193,7 +141,7 @@ IV.                Bibliography
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
@@ -209,74 +157,16 @@ License & BSD & MIT & MIT & MIT \\ \hline
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent All of the chosen options have their pros and cons for our web application. All of them however would be a learning and research experience. Angular2 and React have the benefit of being created by large software companies, Google and Facebook respectively. This means that there will be large adoption and documentation / tutorials available. Aurelia and Ember seem to be easier to implement however, they are much newer products and they have a smaller adoption population. This could prove troublesome if we run into problems. If our implementation ends up being a fork of Ward Cunningham's Federated Wiki, then this decision will be null most likely. \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent Initially we were set on using Angular2 as part of the team has experience using this JavaScript library, before meeting with our client. Angular2 has a wide adoption and is used by Google for internal projects so the longevity of the framework is expected to last. With this in mind, we plan to use Angular2 if we need to use a JavaScript framework for our user interface. \par}
 
 
 
 %\end{center}
-\begin{comment}
-\newpage
-\subsubsection{Documentation}
-{\noindent Option 1 - Microsoft Word \cite{Word} \par}
-{\noindent  Microsoft Word is a fairly powerful and widespread software that is often used for documentation outside of higher education and the technology industry. \par}
-
-\medskip
-{\noindent Option 2 - Dozuki \cite{Dozuki} \par}
-{\noindent Integrates revisions, approval, and documentation into a single system that allows for efficient work-flows for creating customizable and centrally managed documentation. \par}
-
-\medskip
-{\noindent Option 3 - LaTeX \cite{Latex} \par}
-{\noindent  LaTeX, hereby known as Latex, is a document preparation system often used in the technical and scientific fields for documentation, and is the de facto standard for communication and publication of scientific documents \cite{Latex}. \par}
-
-\medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
-{\noindent An efficient documentation solution that is able to provide the ability to create beautiful and useful documentation of  the platform. This documentation will assist the end user with operation of the various parts of the platform.\par}
-
-\medskip
-\newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
-{\noindent The options are evaluated on
-
-\begin{itemize}
-\item Ease of Use
-\item File Size
-\item Features
-\item Performance
-\item Cost
-\end{itemize}
-
- \par}
-
-%\begin{center}
-
-\newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
-\vspace{1pc}
-\tablehead{}
-\begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
-\hline  & Microsoft Word & Dozuki & LaTeX\\ \hline
-Ease of Use & Microsoft Word is easy to use for most cases, but can be difficult to use when attempting certain formatting requests, such as creating a table of contents. & Dozuki is a newer documentation solution that spawned from iFixit, Dozuki prides itself on being easy to learn and use, while providing centralized   & Latex is able to take a lot of the tediousness one would find in Microsoft Word, allowing the user to focus on the document contents instead of appearance. "Steep learning curve, but not very high" \cite{McGrath} \\ \hline
-File Size & Small to Large, depending on embedded images or graphics & Unknown & Often very small due to only text \\ \hline
-Features & Moderately customizable, and can be 'pretty' & Highly customizable with CSS and HTML & Highly customizable and 'pretty' \\ \hline
-Performance & Can become bogged down by long documents & Web interface limitation, exact performance unknown & Easily handles complex and length documents  \\ \hline
-Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 Additional Per User & Free \\ \hline
-
-\end{supertabular}
-
-\newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
-{\noindent While we are highly experienced using Microsoft Word, the documents become bloated, and sometimes the software is prone to crashes when dealing with very large documents. Dozuki seems like a very nice documentation solution, that is used by Intel and other technology companies. Having a centralized management system allows management to verify everyone is looking at the most updated documentation. This would be a very nice solution, though the cost is very prohibitive, at over \$3500 / year. Latex is free, and is able to create highly structured documentation that is also easy to style. Latex is used throughout the science field for ease of use.\par}
-
-\medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
-{\noindent Latex seems to be the best solution of the three, due to current experience using the software, as well as ease of use when creating large documents with multiple sections and headings. \par}
-
-\end{comment}
 
 \newpage
 \subsubsection{User Login \& Authentication}
@@ -292,12 +182,12 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 {\noindent Using PHP and SQL to compare submitted usernames and passwords against stored data on a database.\par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent An efficient and secure method for allowing for users to login and continue editing their documents from any computer or device they choose.\par}
 
 \medskip
 %\newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -313,7 +203,7 @@ Cost & \$149 for Office Home \& Student 2016 & \$299 / month for 10 users, \$10 
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
@@ -337,11 +227,11 @@ Features
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent The ideal user authentication system would be a combination of all three of the above implementations. While logging in with Facebook would make it easier to determine who is using the service, preventing unauthorized users from accessing unreleased copyrighted material, not everyone has a Facebook. Additionally using an OpenID login system would be reliant on other platform holders that use OAuth 2.0. Finally, using a self created account is often the easiest and can allow users to not be tied to a given account and also prevent private information from being retrieved from user accounts.\par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent For our implementation, we plan on using initially a PHP and SQL system to validate user account information on our database. Additionally, we will look into adding both OpenID and Facebook Login down the road. \par}
 
 \newpage
@@ -358,12 +248,12 @@ Features
 {\noindent The designer is responsible for representing the target audience. Though this can be a poor representation of the intended audience \cite{AListApart}.\par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent A design principle that allows for user interfaces that lead to user interfaces that are accepted by users and are easy to understand.\par}
 
 \medskip
 %\newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -379,7 +269,7 @@ Features
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
@@ -397,11 +287,11 @@ Weaknesses
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent The MVP Platform is highly user focused, which initially led the team to decided on User Centered Design. Activity-Centered Design or Self Design would greatly reduce the burden of research and discovery into what our target audience would like to see or be comfortable with naturally. Activity-Centered Design, if performed properly would result in interfaces that clearly work as intended, though might be off putting to our users. Self Design would allow for one of the team members to decide how a certain element shall look, but again can fall into an interface that does not satisfy our users.\par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent For our implementation, we plan on using User Centered Design. This is because users are our very important for our project. If our users do not like our user interface, then they will be less likely to use our software. \par}
 
 
@@ -413,7 +303,7 @@ Weaknesses
 
 %\vspace{1pc}
 \newpage
-\subsection{Josh}
+\subsection{Josh Matteson}
 \vspace{1pc}
 
 \subsubsection{Testing}
@@ -429,12 +319,12 @@ Weaknesses
 {\noindent Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests. \cite{Jasmine}  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent Using this technology will aid in proper functionality and minimize errors. Without properly testing code, a number of problems can occur that can disrupt and slow down progress in a team. In extreme cases, not properly testing could lead to failure of the application. \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -450,7 +340,7 @@ Weaknesses
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \hline 
@@ -467,11 +357,11 @@ Other & & & Familiar\\ \hline
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent It is well known that an application that ensures proper functionality supersedes other applications and, more importantly, competitors. Quality assurance is acknowledged as highly distinguished, and therefore, an attribute deserving of notable consideration. Having this in mind, we will be considering these mentioned testing frameworks: Mocha, QUnit, and Jasmine. \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent Jasmine, even though more difficult to integrate and set up, would be most feasible. Jasmine has many features that win out over Mocha and QUnit, as well as thorough documenation. The test are easily grouped through describe blocks, which makes it easy to identify where certain problems are. There is familiarity with Jasmine over the other testing frameworks, which means less time learning for the team.\par}
 
 %\end{center}
@@ -494,12 +384,12 @@ Other & & & Familiar\\ \hline
 {\noindent \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on 
 
 \begin{itemize}
@@ -514,18 +404,18 @@ Other & & & Familiar\\ \hline
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \hline & Option 1 & Option 2 & Option 3\\ \hline
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent \par}
 
 \medskip
@@ -533,7 +423,7 @@ Other & & & Familiar\\ \hline
 \newpage
 \subsubsection{Database}
 {\noindent Option 1 - SQL Server \par}
-{\noindent SQL Server is owned by Microsoft, and is known for its scalable, hybrid database platform. Being owned by Microsoft, this database is well known. \cite{SQL Server} \par}
+{\noindent SQL Server is owned by Microsoft, and is known for its scalable, hybrid database platform. Being owned by Microsoft, this database is well known. \cite{SQLServer} \par}
 
 \medskip
 {\noindent Option 2 - MongoDB \par}
@@ -544,12 +434,12 @@ Other & & & Familiar\\ \hline
 {\noindent Many of the worlds largest companies rely on MySQL, such as Facebook, Google, and others. It is a relational database. \cite{MySQL}  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Goals \par}
+\paragraph{Goals}
 {\noindent Having an understandable, well built database can aid in the flow of building an application as well as delivery. This in mind, we want to balance cost with effectiveness. \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on 
 
 \begin{itemize}
@@ -563,21 +453,21 @@ Other & & & Familiar\\ \hline
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \hline & SQL Server & MongoDB & MySQL\\ \hline
-& Cost & Enterprise: \$12,256, Standard: \$3717, Developer: Free & OpenSource, but essential periphery software can range from \$45 a month to as much as \$5225 a month & Enterprise: \$5000, Standard: \$2000, Community Edition: Free \\ \hline
-& Type & Structured Query Language & Expressive Query Language & Structured Query Language\\ \hline
-& Ease of Use & Uses Queries to gather information & EQL data access and manipulation in sophisticated ways, operational and analytical applications \cite{ibmbpnetwork} & Uses Queries to gather information \\ \hline
+Cost & Enterprise: \$12,256, Standard: \$3717, Developer: Free & OpenSource, but essential periphery software can range from \$45 a month to as much as \$5225 a month & Enterprise: \$5000, Standard: \$2000, Community Edition: Free \\ \hline
+Type & Structured Query Language & Expressive Query Language & Structured Query Language\\ \hline
+Ease of Use & Uses Queries to gather information & EQL data access and manipulation in sophisticated ways, operational and analytical applications \cite{ibmbpnetwork} & Uses Queries to gather information \\ \hline
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent The most obvious and transparent qualities for a database are the cost and type, however, databases that come with a free edition allow for us to test and experiment while developing. This is imperative to the development process, and shouldn't be overlooked. Allowing for an easy transition from the free edition to a standard or express edition is important as well. A non relational database like MongoDB could be beneficial when not knowing the type of data that will be stored.' \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent All things considered, SQL Server would be considered our top pick. Experience using an SQL based database before aids in the difficulty of using a query. Having a free edition contributes a moderate amount into the decision as well.\par}
 
 \medskip
@@ -591,7 +481,7 @@ Other & & & Familiar\\ \hline
 
 %\vspace{1pc}
 \newpage
-\subsection{Evan}
+\subsection{Evan Tschuy}
 \vspace{1pc}
 \subsubsection{Server Back-end}
 {\noindent Option 1 - NodeJS \par}
@@ -615,7 +505,7 @@ than more modern frameworks. \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -631,7 +521,7 @@ than more modern frameworks. \par}
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
@@ -669,14 +559,14 @@ License
 \end{supertabular}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent
 All backends listed are popular within their respective communities. However, more new projects are being created using NodeJS, as its modern paradigms and sharing of a language with frontend development allow developers familiar with it to iterate quicker and write more expressive code. Django's built-ins allow for a quicker initial development time but mean being isolated from the rapidly expanding ecosystem around NodeJS.
 Ruby on Rails is a rather old backend, and has not shown to have the modern flexibility of Node.
  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent As NodeJS has the most expansive ecosystem, and allows us to share a common language between the front and backennds of the project, we will be using it over the other options considered. Additionally, Ward Cunningham's Federated Wiki uses it as one of its backends, and if we fork it, we can continue to use its NodeJS backend. \par}
 
 \newpage
@@ -698,7 +588,7 @@ be filtered to a restricted subset to be suitable for use in a public-facing sce
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -712,10 +602,10 @@ be filtered to a restricted subset to be suitable for use in a public-facing sce
 
 %\begin{center}
 
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
-\begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\begin{supertabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
 \hline
   & Markdown
   & ReStructured Text
@@ -739,7 +629,9 @@ Security
   \\ \hline
 \end{supertabular}
 
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\vspace{2mm}
+
+\paragraph{Discussion} ~\\
 {\noindent
 All languages listed allow users to do simple things like bold text and link to other pages. However,
 HTML offers the most flexibility and allows users to be able to do anything they want.
@@ -749,7 +641,7 @@ or WYSIWYG, mode.
  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent
 The Federated Wiki uses HTML with minimal security processing. If we fork the Federated Wiki, we will use
 HTML with some added processing to increase its security. Otherwise, for ease of implementation, we will
@@ -784,7 +676,7 @@ in non-technical and technical users alike). \par}
 
 \medskip
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Evaluation Criteria \par}
+\paragraph{Evaluation Criteria} ~\\
 {\noindent The options are evaluated on
 
 \begin{itemize}
@@ -798,7 +690,7 @@ in non-technical and technical users alike). \par}
 %\begin{center}
 
 \newpage
-{\noindent\rmfamily\bfseries\color{black} Option Comparison \par}
+\paragraph{Option Comparison} ~\\
 \vspace{1pc}
 \tablehead{}
 \begin{supertabular}{|p{2cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
@@ -821,10 +713,10 @@ Resistance to Hacking
   & A bcrypt password hash must be cracked before it can be used elsewhere.
   & Scrypt hashes must be cracked before use elsewhere.
   & pbkdf2 hashes must be cracked before use elsewhere.
-  & A plain password, once retrieved from a database, can be used along with the username/email associated to hack other sites. \\ \hline
+  & A plain password, once retrieved from a database, can be used along with the username/email associated to hack other sites. \\ \hline 
 \end{supertabular}
 
-{\noindent\rmfamily\bfseries\color{black} Discussion \par}
+\paragraph{Discussion} ~\\
 {\noindent
 Password storage is a tradeoff between ease of use and difficulty of reversing. Scrypt is too slow for use on a website with many users,
 whereas plain text passwords are too insecure as a hacker can reuse the password immediately without cracking. pbkdf2 and bcrypt do a good
@@ -833,7 +725,7 @@ cracking.
  \par}
 
 \medskip
-{\noindent\rmfamily\bfseries\color{black} Selection \par}
+\paragraph{Selection} ~\\
 {\noindent
 As mentioned above, bcrypt-hashed passwords present a good tradeoff between cracking ability and verification speed.
 As such, the Many Voices Platform will use bcrypt to securely verify any password used with the system.
