@@ -1,4 +1,4 @@
- \documentclass[letterpaper, 10pt, draftclsnofoot, onecolumn]{IEEEtran}
+ \documentclass[letterpaper, 10pt, draftclsnofoot, onecolumn, compsoc]{IEEEtran}
 
 \usepackage{graphicx}                                        
 \usepackage{amssymb}                                         
@@ -14,17 +14,27 @@
 \usepackage[TABBOTCAP, tight]{subfigure}
 \usepackage{enumitem}
 \usepackage{pstricks, pst-node}
+\usepackage{supertabular}
+\usepackage{url}
+\usepackage{fancyhdr}
 
 \usepackage{hyperref}
 \usepackage{geometry}
 
 \usepackage{listings}
 \usepackage{color}
-\usepackage[doublespacing]{setspace}
+%\usepackage[doublespacing]{setspace}
 
 %\setlength{\parindent}{4em}
 %\linespread{1.1}
 
+\pagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Many Voices Publishing Platform}
+
+\lfoot{PS}
+\cfoot{Page}
+\rfoot{\thepage}
 
 \def\name{Steven Powers, Josh Matteson, Evan Tschuy}
 
@@ -33,8 +43,8 @@
 
 % The following metadata will show up in the PDF properties
 \hypersetup{
-  colorlinks = true,
-  urlcolor = black,
+  colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue,
+  urlcolor=blue,
   pdfauthor = {\name},
   pdfkeywords = {cs461 ``senior capstone'' problem statement},
   pdftitle = {CS 461 Problem Statement},
@@ -56,7 +66,7 @@
 {\large Steven Powers, Josh Matteson, Evan Tschuy\par}
 {\vspace{10mm}}
 
-\abstract{\noindent The purpose of the Many Voices Publishing Platform 
+\begin{abstract}\noindent The purpose of the Many Voices Publishing Platform 
 project is to remedy problems associated with the current textbook market 
 and standard expectations that come with textbooks. 
 The Many Voices Publishing Platform was developed to alleviate 
@@ -64,25 +74,34 @@ costs of textbooks for students and provide instructors with the ability
 to create their own. Instructors can use the open platform for 
 collaboration between content creators, and other instructors in order 
 to choose the specific focus of their course materials. 
-This platform was created using Ward Cunningham's federated 
-wiki as a project base and was expanded upon to provide 
-the ability to implement a collaborative platform for authoring.}
+This platform was created using Ward Cunningham's Federated 
+Wiki as a project base and was expanded upon to provide 
+the ability to implement a collaborative platform for authoring \cite{Federated}.
+\end{abstract}
 
 \end{titlepage}
 
+\tableofcontents
+
+\newpage
+
+\setcounter{page}{1}\pagestyle{fancy}
+
 \vspace{1pc}
 \section{Problem Statement}
-\vspace{2pc}
+%\vspace{2pc}
 
 \vspace{1pc}
 \subsection{Problem Definition}
 \vspace{1pc}
 
-{\noindent Today, the textbook industry is filled with yearly updates that 
+{\noindent Today, textbooks are filled with yearly updates that 
 are often released with the minimum number of changes needed to 
-justify a new edition. These textbooks are repeatedly in the range of 
+justify a new edition. These textbooks repeatedly cost in the range of 
 hundreds of dollars and are often filled with poor or even incorrect 
 information. 
+Students are often left with poor to understand information that is often more
+complicated than previous versions of the textbook.
 In the United States, most textbook materials are decided by a few 
 states that choose what will appear in textbooks published nation wide. 
 Most professors will simply choose the book provided to them for 
@@ -104,14 +123,22 @@ If a professor chooses a book through a catalog or one provided for
 them, the pre-written textbooks often contain unnecessary chapters, 
 or can even be missing key sections on topics viewed as critical. 
 This problem can further result in additional class materials being 
-purchased by students to supplement the missing information. \par}
+purchased by students to supplement the missing information. 
+Students and professors are left with inadequate materials, damaging 
+the scholastic environment. \par}
 
 %\vspace{1pc}
 \subsection{Proposed Solutions}
 \vspace{1pc}
 
-{\noindent The Many Voices platform instead allows professors to create 
-their own textbooks by using crowd-sourced content. 
+{\noindent The Many Voices platform, instead, allows professors to create 
+their own textbooks by using crowd-sourced content. These created textbooks
+will reduce the costs of publishing, allowing students to purchase, or 
+otherwise receive the textbook at a reduced cost. This monetary benefit
+will allow professors to update their courses more frequently without 
+passing on large costs to the students. This benefit can take the form of 
+a professor that previously would not create their own course textbooks, or 
+reducing the costs of available textbooks that the professor might choose.
 Content creators are able to submit materials of all different formats, 
 including: images, small pieces of text, pages, or even entire chapters. 
 The submitted materials are able to be reviewed by editors and 
@@ -130,14 +157,14 @@ for any purpose they desire.
 These materials are able to be hosted on a version control website such 
 as GitHub, that allow for users to fork and branch their changes to 
 satisfy their goals.
-Additionally the platform will feature a way for editors to review 
+Additionally, the platform features a way for editors to review 
 content, and moderate changes in a manner similar to the approach 
 Wikipedia has for high conflict pages, restricting who can edit for very 
 popular pages. \par}
 
 \medskip
 
-{\noindent The platform will also feature a way to search for and find 
+{\noindent The platform also features a way to search for and find 
 documents relevant to the users interests. 
 Through a variety of search criteria, the requested topic or subject will
 turn up results prioritized by relevance and credibility. By default, the 
@@ -155,25 +182,33 @@ contribute their customizations back to other professors. \par}
 \vspace{1pc}
 
 {\noindent The platform will be viewed as a success if the platform 
-allows instructors to submit, edit, publish, and compile materials for 
+allows professors to submit, edit, publish, and compile materials for 
 the creation of textbooks and other instructional materials. 
 Our goal is to ensure the platform meets our client's project 
-expectations, the defined needs, and functions as according to our 
-development plan. 
-We will, in our best efforts, plan to meet at minimum every two weeks 
+expectations, which includes the ability to combine different materials
+into a textbook, in addition to the defined needs, 
+and functions as according to our development plan. 
+
+\noindent We will, in our best efforts, plan to meet at minimum every two weeks 
 with our client to discuss current progress of project goals and 
 proposed functionality for the application. 
 Finally, before beginning work on major project milestones and certain 
 aspects of the platform, we will discuss the overall status of the 
-project. 
-We will further inquire as to whether our client has any additional 
+project. We will further inquire as to whether our client has any additional 
 insight to assist in meeting project expectations as desired. 
 After reaching a reasonable agreement, we will continue to adjust and 
 shape the platform where necessary. 
 We will further ensure that the development taking place on the platform 
-is to the best of our abilities. \par}
+is to the best of our abilities.
+
+\noindent A successful implementation of the platform will include the ability 
+to combine materials of various types into a full document for use as a textbook.\par}
 
 \medskip
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{problemstatement}
 
 \newpage
 \centerline{\sc \large Signature Page}
