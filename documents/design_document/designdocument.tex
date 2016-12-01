@@ -34,7 +34,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \lhead{Many Voices Publishing Platform}
 
-\lfoot{DD}
+\lfoot{SDD}
 \cfoot{Page}
 \rfoot{\thepage}
 
@@ -63,10 +63,10 @@
 \begin{titlepage}
 \centering
 {\huge Many Voices Publishing Platform\par}
-{\LARGE Design Document\par}
+{\LARGE Software Design Document\par}
 {\vspace{5mm}}
 {\large D. Kevin McGrath \& Dr. Kirsten Winters -  CS461 Fall 2016\par}
-{\large Commix\par}
+{\large Commix, Team 61\par}
 {\large Steven Powers, Josh Matteson, Evan Tschuy\par}
 {\vspace{10mm}}
 
@@ -84,114 +84,130 @@
 
 
 
+%Section 0
+%\vspace{1pc}
+%\section{Introduction}
+
+
 %Section 1
 \vspace{1pc}
-\section{Introduction}
+\section{Overview}
+{\noindent The Software Design Document is a document to provide aid 
+for the software development process by providing detailed information 
+on how the software should be built. Additionally providing information 
+on interactions between different pieces of software and users through 
+use cases, UML diagrams, and other supporting information. \par}
+
+\subsection{Scope}
+{\noindent This Software Design Document is used to record design 
+information and communicate design information to project stakeholders. 
+This Software Design Document also provides the details of required 
+functionality for the Many Voices Publishing Platform, a textbook creation 
+platform for publishing textbooks.
+\par}
+
+\subsection{Purpose}
+{\noindent The purpose of this document is to describe the implementation of the Many Voices Publishing Platform (MVP Platform) software. The Many Voices Publishing platform is designed to allow for the creation of textbooks by College and University professors or any person interested in creating their own textbook.\par}
 
 
 %Section 2
-\vspace{1pc}
-\section{Overview}
+\section{Definitions}
+\begin{center}
 
-\vspace{1pc}
-\subsection{Scope}
-\vspace{1pc}
 
-{\noindent \par}
+\begin{supertabular}{p{3cm}p{12cm}}
 
-\vspace{1pc}
-\subsection{Purpose}
-\vspace{1pc}
-{\noindent \par}
+Aurelia & A JavaScript client framework for mobile, desktop and web leveraging 
+	simple conventions and empowering creativity \cite{Aurelia}. \\
 
-\vspace{1pc}
-\subsection{Intended audience}
-\vspace{1pc}
-{\noindent \par}
+Alpha Test & Limited release(s) to selected, outside testers (Friends and Family)\\ 
 
-\vspace{1pc}
-\subsection{Conformance}
-\vspace{1pc}
-{\noindent \par}
+Beta Test & Limited release(s) to cooperating customers wanting early 
+	access to developing systems (Professors and other educators)\\ 
+	
+Federated & Individual parts that stand as an individual but can be combined into a single unit \\ 
 
+Final Test & Release of full functionality to customer for approval \\ 
+
+PDF & Portable Document Format, that is able to combine text, 
+	graphics, and other information into a single document \\ 
+	
+PCI & Payment Card Industry, is a proprietary information security 
+standard for credit cards in an effort to reduce credit card fraud \\ 
+
+Scrap & A section of a textbook, which can contain formatted text (markdown or latex), and media \\ 
+
+Section & An ordered collection of Scraps belonging to a chapter\\ 
+
+Chapter & An ordered collection of Sections and Scraps\\ 
+
+SDD & Software Design Document \\ 
+
+SSRS & System and Software Requirements Specification \\ 
+
+Source Control & An element of software design management, version control, and is the 
+management of changes to documents, large web sites, computer programs, and other 
+collections of data \\ 
+
+Media & A standalone image, figure, or video. Can be embedded in a Scrap\\
+
+Node & A JavaScript runtime designed to build scalable network applications\\ 
+
+User Interface (UI)  & The means by which the user and a computer system interact, 
+	in particular the use of input devices and software\\
+
+Web Application & An interactive program that can be accessed and is based through a web server instead of 
+being stored on a user's desktop\\
+
+Wiki & A collaborative content editing platform \\ 
+\end{supertabular}
+
+\end{center}
 
 
 
 %Section 3
-\vspace{1pc}
-\section{Definitions}
+\section{Conceptual model for software design descriptions}
+{\noindent Use Cases \par}
 
+
+\subsection{Software design in context}
+{\noindent \par}
+
+\subsection{Software design descriptions within the life cycle}
+{\noindent \par}
 
 
 
 %Section 4
-\vspace{1pc}
-\section{Conceptual model for software design descriptions}
-\vspace{1pc}
-{\noindent \par}
-
-
-\vspace{1pc}
-\subsection{Software design in context}
-\vspace{1pc}
-{\noindent \par}
-
-\vspace{1pc}
-\subsection{Software design descriptions within the life cycle}
-\vspace{1pc}
-{\noindent \par}
-
-
-
-%Section 5
-\vspace{1pc}
 \section{Design description information content}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Introduction}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{SDD identification}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design stakeholders and their concerns}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design views}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design viewpoints}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design elements}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design overlays}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design rationale}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Design languages}
-\vspace{1pc}
 {\noindent \par}
 
 
@@ -200,87 +216,57 @@
 
 
 %Section 6
-\vspace{1pc}
 \section{Design viewpoints}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Introduction}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Context viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Composition viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Logical viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Dependency viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Information viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Patterns use viewpoints}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Interface viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{State dynamics viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Algorithm viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
-\vspace{1pc}
 \subsection{Resource viewpoint}
-\vspace{1pc}
 {\noindent \par}
 
 
 
 %Section 7
-\vspace{1pc}
 \section{Annex A - (information Bibliography}
-\vspace{1pc}
 
 \bibliographystyle{IEEEtran}
 %\bibliography{designdocument}
 
 
 %Section 8
-\vspace{1pc}
 \section{Annex B - Conforming design language description}
-\vspace{1pc}
 {\noindent \par}
 
 %Section 9
-\vspace{1pc}
 \section{Annex C - Templates for an SDD}
-\vspace{1pc}
 {\noindent \par}
 
 
