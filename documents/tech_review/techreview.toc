@@ -26,7 +26,7 @@
 \contentsline {paragraph}{\numberline {1.3.1.3}Option Comparison}{13}{paragraph.1.3.1.3}
 \contentsline {paragraph}{\numberline {1.3.1.4}Discussion}{14}{paragraph.1.3.1.4}
 \contentsline {paragraph}{\numberline {1.3.1.5}Selection}{14}{paragraph.1.3.1.5}
-\contentsline {subsubsection}{\numberline {1.3.2}Version Control}{15}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.2}Revision Control Software}{15}{subsubsection.1.3.2}
 \contentsline {paragraph}{\numberline {1.3.2.1}Goals}{15}{paragraph.1.3.2.1}
 \contentsline {paragraph}{\numberline {1.3.2.2}Evaluation Criteria}{16}{paragraph.1.3.2.2}
 \contentsline {paragraph}{\numberline {1.3.2.3}Option Comparison}{17}{paragraph.1.3.2.3}
