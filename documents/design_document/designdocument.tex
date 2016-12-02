@@ -451,6 +451,13 @@ the Textbooks.
 built — the interaction layer between the frontend and the revision control system. \par}
 
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{backend.png}
+\caption{An example backend handling flow. The application determines which function
+to call, and the function handles the request and sends any necessary file operations
+to the git module.}
+\end{figure}
 
 
 
@@ -507,6 +514,11 @@ manipulation.
 {\noindent  \par}
 
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{formatting.png}
+\caption{A document is divided into chapters (which are included under a table of contents) and snippets (which are parts of a chapter).}
+\end{figure}
 
 
 \subsection{Viewpoint: Password Storage}
@@ -544,6 +556,11 @@ This component provides the functionality of secure password storage.
 {\noindent  \par}
 
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{password.png}
+\caption{Passwords will either be securely hashed, if the user is not using external authentication, or not needed at all, if the user is using external authentication.}
+\end{figure}
 
 
 
@@ -556,18 +573,18 @@ This component provides the functionality of secure password storage.
 {\noindent By: Josh Matteson \par}
 
 \subsubsection{Information}
-{\noindent Testing is one of the most substantial parts when considering the success and thoroughness of an application. 
+{\noindent Testing is one of the most substantial parts when considering the success and thoroughness of an application.
 If not properly tested, the application will contain numerous bugs resulting in: faulty functionality, unpredictable behavior, and the pages not loading. \par}
 
 \subsubsection{Design Concerns}
-{\noindent The main concerns with working with a testing framework is the level of complexity and with that the learning curve. 
-Jasmine, existing for almost a decade, has had numerous contributors to its documenation. This ensures that, while making progress, 
+{\noindent The main concerns with working with a testing framework is the level of complexity and with that the learning curve.
+Jasmine, existing for almost a decade, has had numerous contributors to its documenation. This ensures that, while making progress,
 we won't be short of useful information in the furthest reaches of the internet. \par}
 
 \subsubsection{Design Elements}
-{\noindent Jasmine is open source, and therefore, will be used as the main testing framework for application. 
-It will be one of the developer dependencies and will mostly interact with the existing javascript/typescript of our application. 
-Jasmine will be ran through our node express backend, and will come with a coverage report for our app. Whether this is from Jasmine or 
+{\noindent Jasmine is open source, and therefore, will be used as the main testing framework for application.
+It will be one of the developer dependencies and will mostly interact with the existing javascript/typescript of our application.
+Jasmine will be ran through our node express backend, and will come with a coverage report for our app. Whether this is from Jasmine or
 from another testing framework that works closely with it. \par}
 
 \subsubsection{Function Attribute}
