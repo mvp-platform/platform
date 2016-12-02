@@ -327,14 +327,8 @@ Additionally the tools will provide great interact-ability for the user.\par}
 Handles display of information and provides the interface for input.  \par}
 
 \subsubsection{Relationship}
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=140mm]{user_interface_tools.png}
-\caption{A preliminary UML diagram of how the user interface tool of 
-	Aurelia will enable transmission of data to the screen or from the screen, up to date as of Fall term}
-\end{figure}
 
-\newpage
+
 \subsection{Viewpoint: User Login \& Authentication}
 {\noindent By: Steven Powers  \par}
 
@@ -399,15 +393,8 @@ use of time as well as successful design choices to best suit our users. \par}
 {\noindent Provides methodologies for improving Interface Design to assist
 users and developers. \par}
 
-\newpage
 \subsubsection{Relationship}
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=120mm]{interface_design.png}
-\caption{A preliminary UML diagram of how user centered design \& user research can 
-improve a UI for increased affordance and usability for the target 
-audience, up to date as of Fall term}
-\end{figure}
+
 
 
 
@@ -418,51 +405,25 @@ audience, up to date as of Fall term}
 \subsection{Viewpoint: Server Back-end}
 {\noindent By: Evan Tschuy \par}
 
-\subsubsection{Backend}
-{\noindent
-A standard web application follows more or less a standard design flow. When a
-request is received, a URL parser parses the URL and passes it to the appropriate
-function, along with all of its parameters. The function then operates on the data
-somehow, and returns either the result of a template render or a block of data
-in JSON/XML to be returned to the client. Inside the function, the heavy lifting
-of data manipulation, storage, etc. takes place.
-\par}
+\subsubsection{ViewpointName}
+{\noindent  \par}
 
 \subsubsection{Design Concerns}
-The main concern for the backend of the project is how the back end will communicate
-with the version control system. For instance, building on top of Git, it is
-necessary to also verify that the backend language chosen has a library that can
-be used to easily interact with Git. Then, it will be necessary to build an internal
-library that can be placed on top of Git that exposes only the operations needed
-for the textbook project.
 {\noindent  \par}
 
 \subsubsection{Design Elements}
-{\noindent
-The backend design, especially the layer interacting with Git, will play a critical
-role in speed of development. By implementing a Snippet and Textbook super-layer
-on top of the existing Git library, we can eliminate having to think about Git
-as early as possible, and spend our time instead on interacting with Snippets and
-the Textbooks.
-\par}
+{\noindent  \par}
 
 \subsubsection{Function Attribute}
-{\noindent This function provides the base on which the rest of the project is
-built — the interaction layer between the frontend and the revision control system. \par}
+{\noindent  \par}
 
 \subsubsection{Relationship}
-
-
-
-
 
 
 \subsection{Viewpoint: Text Formatting}
 {\noindent By: Evan Tschuy \par}
 
-\subsubsection{Formatting}
-Users expect to be able to add things to documents like bolded text, tables, etc.
-
+\subsubsection{ViewpointName}
 {\noindent  \par}
 
 \subsubsection{Design Concerns}
