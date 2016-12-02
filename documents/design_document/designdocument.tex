@@ -362,8 +362,6 @@ third party login system, such as Login with Facebook or Google.  \par}
 {\noindent This component provides the functionality of user login process
 and user authentication within the software.\par}
 
-\subsubsection{Relationship}
-
 
 
 \subsection{Viewpoint: Interface Design}
@@ -635,19 +633,21 @@ from themselves or other users. \par}
 \subsection{Viewpoint: Database}
 {\noindent By: Josh Matteson \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Database}
+{\noindent While understanding what a database does is more common even among non computer science majors, the aspects of its relation
+to other components of our application are not self explanatory. The database's most important role consist of storing user information,
+and ensuring that information does get misplaced or skewed a long the way to the user. \par}
 
 \subsubsection{Design Concerns}
-{\noindent  \par}
+{\noindent As with most databases, one of the main design concerns is the complexity of the calls to it. Some databases use a query structure,
+other ones use explicit calls. SQL Server, as is part of the name, will be using query calls to receive information. \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent Our backend components, being Node.js and Express, will be doing the calls to the database. Front end functions will call general purpose
+functions in the backend, which will then make a call to the database. This will then go back up the ladder to the user. \par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
-
-\subsubsection{Relationship}
+{\noindent The database stores all important information about the user and their revisions, passwords, and preferences. \par}
 
 
 
