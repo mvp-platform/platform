@@ -1,5 +1,6 @@
 \documentclass[letterpaper, 10pt, draftclsnofoot, compsoc, onecolumn]{IEEEtran}
 
+
 \usepackage{graphicx}
 %\usepackage{amssymb}
 %\usepackage{amsmath}
@@ -53,10 +54,6 @@
   pdfpagemode = UseNone
 }
 
-
-
-
-
 \begin{document}
 
 
@@ -71,7 +68,11 @@
 {\vspace{10mm}}
 
 \begin{abstract}
-\noindent The Many Voices Publishing Platform uses a variety of technologies to handle different aspects of the project, from the user interface to the backend database operations. These technologies enable to the Many Voices Publishing Platform to succeed in delivering a working platform for textbook collaboration.
+\noindent The Many Voices Publishing Platform uses a variety of technologies 
+to handle different aspects of the project, from the user interface to the 
+backend database operations. This document covers these technologies and follows the process 
+that enable to the Many Voices Publishing Platform to succeed in delivering 
+a working platform for textbook collaboration.
 \end{abstract}
 
 \end{titlepage}
@@ -107,8 +108,18 @@ platform for publishing textbooks.
 \par}
 
 \subsection{Purpose}
-{\noindent The purpose of this document is to describe the implementation of the Many Voices Publishing Platform (MVP Platform) software. The Many Voices Publishing platform is designed to allow for the creation of textbooks by College and University professors or any person interested in creating their own textbook.\par}
+{\noindent The purpose of this document is to describe the implementation 
+of the Many Voices Publishing Platform (MVP Platform) software. 
+The Many Voices Publishing platform is designed to allow for the creation 
+of textbooks by College and University professors or any person interested 
+in creating their own textbook.\par}
 
+\subsection{Intended Audience}
+{\noindent This document is intended for Professor D. Kevin McGrath, 
+Dr. Kirsten M. Winters, and PhD Student Jonathan Dodge of Oregon State 
+University for curriculum grading purposes. 
+Additionally this document is intended for Dr. Carlos Jensen for the 
+purpose of client information and senior capstone project purposes.\par}
 
 %Section 2
 \section{Definitions}
@@ -153,7 +164,9 @@ Media & A standalone image, figure, or video. Can be embedded in a Scrap\\
 
 Node & A JavaScript runtime designed to build scalable network applications\\ 
 
-User Interface (UI)  & The means by which the user and a computer system interact, 
+UML & Unified Modeling Language -- A general purpose, development modeling language in the field of computer science\\ 
+
+UI  & User Interface -- The means by which the user and a computer system interact, 
 	in particular the use of input devices and software\\
 
 Web Application & An interactive program that can be accessed and is based through a web server instead of 
@@ -168,106 +181,363 @@ Wiki & A collaborative content editing platform \\
 
 %Section 3
 \section{Conceptual model for software design descriptions}
-{\noindent Use Cases \par}
+%{\noindent  \par}
 
 
-\subsection{Software design in context}
-{\noindent \par}
+%\subsection{Software design in context}
+%{\noindent  \par}
 
 \subsection{Software design descriptions within the life cycle}
-{\noindent \par}
-
+{\noindent The Software Design Description (SDD) is based in large part upon 
+the System and Software Requirements Specification (SSRS) document. 
+Requirements listed within the SSRS influence details within the SDD and 
+the SDD may influence the SSRS details.\par}
 
 
 %Section 4
-\section{Design description information content}
+\section{Design Description}
 {\noindent \par}
 
 \subsection{Introduction}
-{\noindent \par}
+{\noindent When designing software to handle the creation of a textbook, 
+the technologies in the background are equally as necessary as those in the foreground. 
+The creation of a textbook requires various systems and technologies to handle 
+the storing and presentation of data to allow the user to create their project.\par}
 
-\subsection{SDD identification}
-{\noindent \par}
+%\subsection{SDD identification}
+%{\noindent \par}
 
-\subsection{Design stakeholders and their concerns}
-{\noindent \par}
+\subsection{Design Stakeholders}
+{\noindent The stakeholders consist of Dr. Carlos Jensen, members of the Oregon 
+State University senior capstone educational team, including Professor D. Kevin McGrath, 
+Dr. Kirsten M. Winters, and PhD student Jonathan Dodge. 
+Additional stakeholders include the development team consisting of Steven Powers, 
+Evan Tschuy, and Josh Matteson.\par}
 
-\subsection{Design views}
-{\noindent \par}
+\subsection{Design Concerns}
+{\noindent The design concerns for this project include the building of a User Interface 
+with a functional JavaScript framework that allows for ease of use for users and developers. 
 
-\subsection{Design viewpoints}
-{\noindent \par}
+User login and authentication will also be a design concern for this project, 
+as preventing unintended access to another users work is very important.
 
-\subsection{Design elements}
-{\noindent \par}
+Another concern consists of the usability of the interface and being able 
+to inform the user of actions they expect to perform and can perform to 
+complete their task of creating a textbook. \par}
 
-\subsection{Design overlays}
-{\noindent \par}
+\subsection{Design Views}
+{\noindent The SDD will use UML diagrams to describe and visualize aspects of the design. \par}
 
-\subsection{Design rationale}
-{\noindent \par}
+\subsection{Design Viewpoints}
+{\noindent This SDD will cover a number of different viewpoints, including: 
+context, composition, logical, dependency, information, interface, and interaction viewpoints.
 
-\subsection{Design languages}
-{\noindent \par}
+Context viewpoints cover the relationships, dependencies, and 
+interactions between the system and its environment \cite{viewpoints}. 
+
+Composition viewpoints cover what information will be handled by the software. 
+
+Logical viewpoints cover what purpose the software will serve and how the software will achieve this purpose. 
+
+Dependency viewpoints cover outside elements that need to be integrated 
+into the software in some way, as the implementation will depend on these outside elements. 
+
+Information viewpoints cover data that is present within the software or managed by the software in some way. 
+
+Interface viewpoints cover how designers and developers will be using the software, 
+detailing the internal and external interfaces of the software. 
+
+Interaction viewpoints cover the interactions between different entities or elements within the software. \par}
+
+\subsection{Design Elements}
+{\noindent Design elements within our software will include a variety of different 
+features that are often considered standard elements within software. 
+These elements include buttons, text boxes, search boxes, menus, and clickable links just to name a few. 
+The menus of the system will be limited for user convenience and will provide a meaningful icon or text representation
+for quick affordability for the user. Within the text editing area, the user will be able to arrange 
+text how they would like it to appear in a finalized---compiled version.
+
+The text area will also allow users to specify other documents to include, 
+which will be handled by the software in the background at time of compilation. 
+Each included document or file will be stored as a separate document with version control capabilities. \par}
+
+%\subsection{Design Overlays}
+%{\noindent \par}
+
+\subsection{Design Rationale}
+{\noindent For this project, design choices are made based on client specifications as well as development concerns 
+due to technology availability and adaptability to the current system. 
+Our client Dr. Carlos Jensen wants the project to allow for the easy creation of 
+textbooks through what is called the Many Voices Publishing Platform. 
+Design choices will be made to accommodate this requirement.\par}
+
+\subsection{Design Timeline}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{gantt_chart.png}
+\caption{A preliminary Gantt Chart that outlines a rough sketch of our anticipated working time line as of Fall term}
+\end{figure}
+
+\subsection{Design Languages}
+{\noindent This document will use UML as the design language.\par}
 
 
 
 
 
-
+\clearpage
 %Section 6
-\section{Design viewpoints}
-{\noindent \par}
+\section{Design Viewpoints}
 
 \subsection{Introduction}
-{\noindent \par}
+{\noindent This section will cover: context, composition, logical, dependency, information, interface, and interaction viewpoints. \par}
 
-\subsection{Context viewpoint}
-{\noindent \par}
-
-\subsection{Composition viewpoint}
-{\noindent \par}
-
-\subsection{Logical viewpoint}
-{\noindent \par}
-
-\subsection{Dependency viewpoint}
-{\noindent \par}
-
-\subsection{Information viewpoint}
-{\noindent \par}
-
-\subsection{Patterns use viewpoints}
-{\noindent \par}
-
-\subsection{Interface viewpoint}
-{\noindent \par}
-
-\subsection{State dynamics viewpoint}
-{\noindent \par}
-
-\subsection{Algorithm viewpoint}
-{\noindent \par}
-
-\subsection{Resource viewpoint}
-{\noindent \par}
+{\noindent Steven Powers is covering User Interface Tools, User Login \& Authentication, and Interface Design.  \par}
+{\noindent Evan Tschuy is covering Server Back-end, Text Formatting, and Password Storage.  \par}
+{\noindent Josh Matteson is covering Testing, Revision Control Software, and Database.  \par}
 
 
+%Steven's Section
+
+\subsection{Viewpoint: User Interface Tools}
+{\noindent By: Steven Powers \par}
+
+\subsubsection{Interface}
+{\noindent The user interface is one of the most important parts to the Many 
+Voices Publishing Platform. An easy to use UI can make the difference between 
+two competing software solutions. The Many Voices Publishing Platform will be 
+interacted through a website that will display a users documents and their current
+document. The User Interface Tools will allow for a high quality user experience
+with a high number of screen repaints per second, further increasing the ease of use
+with the software through a fluid user interface \cite{Eisenberg}.\par}
+
+\subsubsection{Design Concerns}
+{\noindent A poorly implemented UI can result in users choosing a competing 
+product or simply deciding not to use any software for their intended purpose. 
+Users are often impatient and quick to abandon software, 
+further proving the need for a robust and easy to use User Interface Toolset.  \par}
+
+\subsubsection{Design Elements}
+{\noindent The User Interface Tools will allow for scalability when it comes to 
+using the software on different platforms, including mobile, and desktop environments. 
+Additionally the tools will provide great interact-ability for the user.\par}
+
+\subsubsection{Function Attribute}
+{\noindent This component provides the user interface for users to interact with while using the software. 
+Handles display of information and provides the interface for input.  \par}
+
+\subsubsection{Relationship}
+
+
+\subsection{Viewpoint: User Login \& Authentication}
+{\noindent By: Steven Powers  \par}
+
+\subsubsection{Context--Dependency}
+{\noindent A user login system is standard affair for most websites on the Internet. 
+How these user logins take place and authenticate users can vary quite 
+significantly depending on the implementation. 
+User login security is important for protecting the customer as well as 
+the reputation of the software and company. User Login \& Authentication 
+are dependent on Evan Tschuy's section on Password Storage section. \par}
+
+\subsubsection{Design Concerns}
+{\noindent Handling user logins and user authentication can be quite a painstaking process, 
+as any mistake can cost you customers and any reputation that was present 
+before the mistake was exploited. Authentication, or the matching of user submitted 
+data with our stored credentials can be exploited though a simple MySQL command, 
+if our servers are not secured properly. In house solutions can be buggy, or not as secure.
+Third party solutions require an account with those services and has security in their hands. \par}
+
+\subsubsection{Design Elements}
+{\noindent A way to login securely, through created credentials or through a 
+third party login system, such as Login with Facebook or Google.  \par}
+
+\subsubsection{Function Attribute}
+{\noindent This component provides the functionality of user login process 
+and user authentication within the software.\par}
+
+\subsubsection{Relationship}
+
+
+
+\subsection{Viewpoint: Interface Design}
+{\noindent By: Steven Powers \par}
+
+\subsubsection{Information}
+{\noindent The approach for user interface design is quite different 
+than that of the tools being used. Interface Design refers to the 
+methodologies employed to create the UI. This often takes the form of 
+user studies, and demoing of prototypes and release candidate mockups 
+for feedback. For our software, our target audience is professors, 
+especially those interested in publishing their own book currently or 
+in the near future. Using the target audience as a design requirement, 
+the designer is able to gleam a lot of information about how to best 
+serve this user. 
+Methodologies include user centered design, activity centered design, 
+and self design principles to list a few common disciplines.   \par}
+
+\subsubsection{Design Concerns}
+{\noindent Interface Design is an often overlooked portion of any software product. 
+For some software products it would be no surprise that the software is never 
+used in house, we are trying to avoid this feeling. 
+User centered design, while often the standard for the Computer Science industry, it
+very costly, both in terms of time and money. There is a large amount of time into 
+user research studies and live demos. Self design, while much faster, 
+and easier to perform, can lead to results that do not satisfy your users expectations.\par}
+
+\subsubsection{Design Elements}
+{\noindent An Interface Design methodology that allows for efficient 
+use of time as well as successful design choices to best suit our users. \par}
+
+\subsubsection{Function Attribute}
+{\noindent Provides methodologies for improving Interface Design to assist 
+users and developers. \par}
+
+\subsubsection{Relationship}
+
+
+
+
+
+
+%Evan's Section
+\newpage
+\subsection{Viewpoint: Server Back-end}
+{\noindent By: Evan Tschuy \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+\subsection{Viewpoint: Text Formatting}
+{\noindent By: Evan Tschuy \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+\subsection{Viewpoint: Password Storage}
+{\noindent By: Evan Tschuy \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+
+
+
+
+%Josh's Section
+\newpage
+\subsection{Viewpoint: Testing}
+{\noindent By: Josh Matteson \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+\subsection{Viewpoint: Revision Control Software}
+{\noindent By: Josh Matteson \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+\subsection{Viewpoint: Database}
+{\noindent By: Josh Matteson \par}
+
+\subsubsection{ViewpointName}
+{\noindent  \par}
+
+\subsubsection{Design Concerns}
+{\noindent  \par}
+
+\subsubsection{Design Elements}
+{\noindent  \par}
+
+\subsubsection{Function Attribute}
+{\noindent  \par}
+
+\subsubsection{Relationship}
+
+
+
+
+
+
+
+\newpage
 
 %Section 7
 \section{Annex A - (information Bibliography}
 
+\nocite{*}
 \bibliographystyle{IEEEtran}
-%\bibliography{designdocument}
+\bibliography{designdocument}
 
 
 %Section 8
-\section{Annex B - Conforming design language description}
-{\noindent \par}
+%\section{Annex B - Conforming design language description}
+%{\noindent \par}
 
 %Section 9
-\section{Annex C - Templates for an SDD}
-{\noindent \par}
+%\section{Annex C - Templates for an SDD}
+%{\noindent \par}
 
 
 %Section 10
@@ -275,9 +545,31 @@ Wiki & A collaborative content editing platform \\
 \section{Conclusion}
 {\noindent  The Many Voices Publishing Platform is a combination of User Interfaces, Documentation, User Centered Design, Testing, User Authentication, Databases, Server Back-end, Text Formatting, Password Storage, and the users themselves. Determining the technologies behind these parts and pieces is a difficult task to accomplish, as many choices can satisfy the requirements of the project. Finding the best solution however is the goal of this document, to provide a clear path forward for the platform as a whole. \par}
 
-%\newpage
-%\bibliographystyle{IEEEtran}
-%\bibliography{designdocument}
 
+\newpage
+\section{Signature Page}
+\vspace{5pc}
+
+
+\centering
+
+\begin{tabular}{lllll}
+Dr. Carlos Jensen, Client    
+& \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+& Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\
+& & & &  \\ \\
+Steven Powers, Developer 
+& \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+& Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
+& & & &  \\ \\
+Josh Matteson, Developer 
+& \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+& Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
+& & & &  \\ \\
+Evan Tschuy, Developer   
+& \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+& Date & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &  \\ 
+& & & & 
+\end{tabular}
 
 \end{document}
