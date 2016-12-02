@@ -458,7 +458,7 @@ built — the interaction layer between the frontend and the revision control sy
 to call, and the function handles the request and sends any necessary file operations
 to the git module.}
 \end{figure}
-
+\pagebreak
 
 
 
@@ -519,7 +519,7 @@ manipulation.
 \includegraphics[scale=0.5]{formatting.png}
 \caption{A document is divided into chapters (which are included under a table of contents) and snippets (which are parts of a chapter).}
 \end{figure}
-
+\pagebreak
 
 \subsection{Viewpoint: Password Storage}
 {\noindent By: Evan Tschuy \par}
@@ -561,7 +561,7 @@ This component provides the functionality of secure password storage.
 \includegraphics[scale=0.5]{password.png}
 \caption{Passwords will either be securely hashed, if the user is not using external authentication, or not needed at all, if the user is using external authentication.}
 \end{figure}
-
+\pagebreak
 
 
 
@@ -590,26 +590,47 @@ from another testing framework that works closely with it. \par}
 \subsubsection{Function Attribute}
 {\noindent Assist in development and thoroughness of the application. Will drastically reduce bugs. \par}
 
+\newpage
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{Testing.png}
+\caption{A preliminary UML diagram demonstrating the flow of testing with Jasmine}
+\end{figure}
 
-
+\newpage
 \subsection{Viewpoint: Revision Control Software}
 {\noindent By: Josh Matteson \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Revision Control}
+{\noindent One of the more important elements of our application, the revision control will let the user have full control
+over their current work and back ups. If the user realizes that a section they wrote conflicts with something someone else wrote,
+they can then backup from a previous version. This will all be done with Git as the background technology, which in essence, is
+the backbone of major web platforms like Github. This component will give users endless control with branches, previous versions,
+and much more. \par}
 
 \subsubsection{Design Concerns}
-{\noindent  \par}
+{\noindent One of the main design concerns is properly integrating Git with the rest of the application.
+Ensuring that the flow from user to Git then to database will require well force all parts of the app to be working.
+ \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent Git will act as middleware in between the front end and the backend, this will be taken into mind when moving forward.
+The user will use one of the front end functions, which will request an action of Git, and finally perform database operations. \par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
+{\noindent The overarching purpose of Git is to give users free reign to write whatever they want with little to no consequences
+from themselves or other users. \par}
 
+\newpage
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{Revision_Control.png}
+\caption{A preliminary UML diagram demonstrating the relationship of Git to the request of the user}
+\end{figure}
 
+\newpage
 
 \subsection{Viewpoint: Database}
 {\noindent By: Josh Matteson \par}
