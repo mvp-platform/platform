@@ -3,12 +3,14 @@
 \usepackage{url}
 \usepackage{setspace}
 \usepackage{comment}
-
+\usepackage{bigstrut}
 \usepackage{geometry}
+\usepackage{tabu}
+
 \geometry{textheight=9.5in, textwidth=7in}
 
 % 1. Fill in these details
-\def \CapstoneTeamName{		Commix}
+\def \CapstoneTeamName{		Remix}
 \def \CapstoneTeamNumber{		61}
 \def \GroupMemberOne{			Josh Matteson}
 \def \GroupMemberTwo{			Steven Powers}
@@ -31,7 +33,7 @@
 \par\vspace{-12pt} \textit{\tiny\noindent
 \makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
 % 3. If the document is not to be signed, uncomment the RENEWcommand below
-%\renewcommand{\NameSigPair}[1]{#1}
+\renewcommand{\NameSigPair}[1]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -68,11 +70,7 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-        	This document is written using one sentence per line.
-        	This allows you to have sensible diffs when you use \LaTeX with version control, 
-        	as well as giving a quick visual test to see if sentences are too short/long.
-        	If you have questions, ``The Not So Short Guide to LaTeX'' is a great resource 
-        	(\url{https://tobi.oetiker.ch/lshort/lshort.pdf})
+        	this is our abstract.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -84,22 +82,23 @@
 %\listoftables
 \clearpage
 
+
 % 8. now you write!
 \section{Project Purpose}
-A modern textbook is updated frequently, perhaps even yearly, and can cost in the range of hundreds of dollars. 
+\noindent A modern textbook is updated frequently, perhaps even yearly, and can cost in the range of hundreds of dollars. 
 Students are often left to attempt to understand poorly worded, even incorrect information from a textbook 
 often chosen from those sent to a professor for review by the publisher. This can lead to better works with 
 less aggressive sales tactics not being made available, or even known. Another choice would be for a 
 professor to write their own textbook. However, this is a process that takes months of endless research 
-and time spent, and on top of that will require peer review and publishing before it can be released.
+and time spent, and on top of that will require peer review and publishing before it can be released. \\
 
-The Many Voices platform offers to put an end to this massive, slow, expensive cycle.  
+\noindent The Many Voices platform offers to put an end to this massive, slow, expensive cycle.  
 Instead of a textbook being a single document written by one professor, we seek to re-imagine 
 the textbook as instead a collection of content written by professors from around the world 
 that are useful for a particular class. A knowledgeable professor can contribute a few chapters 
-on their specialty, without needing to write an entire textbook around it.
+on their specialty, without needing to write an entire textbook around it. \\
 
-Professors wishing to use this content can then modify it for their uses in the classroom. 
+\noindent Professors wishing to use this content can then modify it for their uses in the classroom. 
 The material will be hosted in such a way as to provide the ability to \"fork\" content, or 
 create content based off of it. The platform will provide a way to search for and find content, 
 prioritized by relevance and credibility as determined by other users; the most popular material 
@@ -167,9 +166,9 @@ at noon, when we turned in a satisfactory document.
 Week 9 was mainly spent with our respective families, and as a short break from 
 the march towards project completion. We made the strategic decision to focus 
 on getting rested and well-fed in an attempt to mentally prepare ourselves for 
-the last two main parts of the Fall-term requirements. 
-
-Week 10 began with work towards finishing our design document. After a few false 
+the last two main parts of the Fall-term requirements. \\
+ 
+\noindent Week 10 began with work towards finishing our design document. After a few false 
 starts and a night of less sleep than desired, the final design document was turned 
 in on time. Unfortunately, we were unable to get our client's signature in time; 
 we will be providing a signed copy to be graded as soon as possible. Later in Week 10, 
@@ -226,11 +225,57 @@ We will be emailing Carlos. With the new term we hope to set up a weekly meeting
 \hline
 \end{tabular}
 
+\section{Retrospective}
+
+\begin{tabular}{|p{0.3\linewidth}||p{0.3\linewidth}|p{0.3\linewidth}|}
+\hline
+Positives & Deltas & Actions \\ \hline
+
+Team came together on planning and design &
+Client communication &
+We will talk to our client via email about possible meeting times, either in person or remote, that may possibly work for everyone. \\ \hline
+
+Learned a lot about the software development process &
+Documentation / Development Confusion &
+If we are confused and blocked by something in the class that could be helped by asking a question of either our TA Jon Dodge or Professors D. Kevin McGrath or Dr. Kirsten M. Winters, we will. \\[0.000001cm] \hline
+
+Learned a lot about Latex and the writing of technical documents. &
+Team Communication &
+Solved: Problems with communication were solved by transition to Slack \& Email communication \\[1pt]  \hline
+
+&
+Team Meeting Time &
+Need to compare our schedules and find a time that will work for all of us to get together. \\ \hline
+
+\hline
+\end{tabular}
+
 \section{Current Project Status}
 
+Thus far we have written documentation detailing the technical and design requirements of the project.
+Now, we are beginning to move into the technical development phase.
+To begin, we are finishing coalescing a unified vision of what the project is, and how we will go about architecting and building it.
+We are planning on beginning to build our initial prototype over winter break, based on the basic skeleton laid out in the documentation. \\
+
+\noindent Moving forward, we expect to spend the majority of time doing individual development work, with weekly team development sessions to keep ourselves on the same track.
+In doing so we will be able to progress even when one individual team member is blocked on either something relating to the project, or on other work.
+To do this, we have split the project into chunks, which we will then work on either solo or in a pair. 
 
 \section{Impending Problems}
 
+For Fall term, client communication was a problem that impeded our progress at a few points.
+Due to busy schedules of the team and the client, communication slipped from where we expected it to be.
+This caused problems with project requirements and other questions the team had about moving forward.
+For Winter term and beyond, the team plans on having a weekly meeting with our client and additionally providing a weekly email detailing our progress of the week. \\ 
 
+\noindent Additionally, finding time for the team to come together to work on the project proved difficult.
+Our schedules had many conflicting times with classes and work times that made it difficult to spend large portions of time together.
+This resulted in a lot of remote development of the planning and documentation, resulting in less detailed documentation and lower scores on grading.
+In the recent weeks, the team has spent more time working together, which has led to more cohesive development.
+For Winter term and beyond, the team has schedules that align more cohesively, allowing for more time to be spent discussing and developing the platform together.
+
+\section{Conclusion}
+
+The Many Voices Publishing Platform has been a great project to work on, bringing each team member outside their comfort zone. A lot of planning has taken place over Fall term, sometimes resulting in shifts in direction of how to manage and develop the platform. The Remix team feels more comfortable moving into Winter term, and for development to begin on the platform. Part of this comfort comes from the planning of weekly meetings with the client, and weekly emails to detail the current project status.
 
 \end{document}
