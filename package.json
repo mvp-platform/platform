@@ -1,0 +1,10 @@
+{
+  "name": "scrapjs",
+  "version": "0.0.0",
+  "description": "",
+  "dependencies": {
+    "json-stable-stringify": "^1.0.1",
+    "nodegit": "^0.16.0",
+    "uuid": "^3.0.1"
+  },
+}
