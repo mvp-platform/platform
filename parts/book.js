@@ -11,7 +11,7 @@ var Book = function(bookName) {
   this.name = bookName;
   this.chapters = [];
   this.isNew = true;
-  this.hash = uuidV4();
+  this.uuid = uuidV4();
 };
 
 Book.prototype.addChapter = function(chapterName) {
@@ -38,7 +38,7 @@ Book.prototype.save = function(reason) {
   u.email = "test@test.com";
   u.username = "testuser";
   var commitMessage = reason;
-  var dir = u.username + '/' + this.hash;
+  var dir = u.username + '/book/' + this.uuid;
 
   var book = this;
 
@@ -64,21 +64,8 @@ Book.prototype.getBySha = function(hash) {
   // TODO
 }
 
-var book1 = new Book("All About Headphones");
-book1.addChapter("abc123");
-book1.addChapter("fed987");
-console.log(book1.isNew);
+Book.prototype.fork = function(newUser) {
+  // fork book to another user's directory
+}
 
-book1.save("initial book commit")
-.then(function(data) {
-  console.log('saved book: ', data);
-
-  // once we've saved the initial repo, add some stuff and save again
-  book1.addChapter("adsfjklas");
-  book1.addChapter("asdjflajkds");
-
-  book1.save("added more")
-  .then(function(data) { console.log('saved book: ', data); })
-  .catch(console.error);
-})
-.catch(console.error);
+module.exports = Book;

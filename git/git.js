@@ -37,6 +37,7 @@ var addAndCommit = function(repo, user, msg) {
 };
 
 module.exports = {
+  // opens the repo, gets the HEAD commit
   commit: function(dir, user, msg) {
     return nodegit.Repository.open(path.resolve(dir, ".git"))
     .then(function(repoResult) {
@@ -51,6 +52,7 @@ module.exports = {
   },
 
   createRepo: function(dir, user, msg) {
+    // creates the directory, initializes the repo
     parents = [];
     return fse.ensureDir(dir)
     .then(function() {
