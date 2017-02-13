@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "description": "",
   "dependencies": {
+    "es6-promisify": "^5.0.0",
+    "fs-extra": "^2.0.0",
     "json-stable-stringify": "^1.0.1",
+    "mustache": "^2.3.0",
     "nodegit": "^0.16.0",
     "uuid": "^3.0.1"
-  },
+  }
 }

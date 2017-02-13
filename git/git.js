@@ -1,15 +1,17 @@
 var nodegit = require("nodegit");
 var path = require("path");
-var promisify = require("promisify-node");
-var fse = promisify(require("fs-extra"));
-
-fse.ensureDir = promisify(fse.ensureDir);
+var promisify = require("es6-promisify");
+var fs = require("fs-extra");
+fs
+console.log(fs.ensureDir)
+var ensureDir = promisify(fs.mkdirs);
 
 var index;
 var parents = [];
 
 
 var addAndCommit = function(repo, user, msg) {
+  console.log(repo)
   return repo.refreshIndex()
     .then(function(idx) {
       index = idx;
@@ -51,15 +53,25 @@ module.exports = {
     });
   },
 
-  createRepo: function(dir, user, msg) {
+  createRepo: async function(dir, user, msg) {
     // creates the directory, initializes the repo
     parents = [];
-    return fse.ensureDir(dir)
+    console.log(ensureDir(dir))
+    return
+    var d = await ensureDir(dir)
+    console.log("LOUD NOISES")
+    console.log(d)
+    console.log("SOFT NOISES")
+    return ensureDir(dir)
     .then(function() {
+      console.log('initting')
       return nodegit.Repository.init(dir, 0);
     })
     .then(function(repo) {
+      console.log('adding and committing')
       return addAndCommit(repo, user, msg);
+    }).catch(function(e) {
+      console.log("error creating repo:", e);
     });
   }
 }

@@ -1,25 +1,64 @@
+'use strict';
+
 var git = require("../git/git");
+var scrap = require("./scrap");
 var path = require("path");
-var promisify = require("promisify-node");
+var promisify = require("es6-promisify");
 var stringify = require('json-stable-stringify');
-var fs = require('fs');
-var fse = promisify(require("fs-extra"));
+var fs = require('fs-extra');
+var ensureDir = promisify(fs.mkdirs);
+var writeFile = promisify(fs.writeFile);
+var readFile = promisify(fs.readFile);
 
 const uuidV4 = require('uuid/v4');
 
-var Chapter = function(chapterName) {
+var Chapter = function(chapterName, authorName, uuid, scraps) {
   this.name = chapterName;
-  this.scraps = [];
+  this.author = authorName;
+  this.head = undefined;
   this.isNew = true;
-  this.uuid = uuidV4();
+  if (uuid === undefined) {
+    this.uuid = uuidV4();
+  } else {
+    this.uuid = uuid;
+  }
+  if (scraps === undefined) {
+    this.scraps = [];
+  } else {
+    this.scraps = scraps;
+  }
+}
+
+Chapter.prototype.getText = function() {
+  var sequence = Promise.resolve();
+  console.log(this)
+  var runningText = "\\section{" + this.name + "}\n\n";
+  console.log("STARTING CHAPTER.GETTEXT", runningText)
+  this.scraps.forEach(function(s) {
+    sequence = sequence.then(function() {
+      return scrap.reconstitute(s[0], s[1]);
+    }).then(function(ns) {
+        runningText = runningText + ns.getText() + "\n\n";
+        console.log("CH:runningText is", runningText)
+        return runningText;
+    });
+  });
+
+  return sequence.then(function(seqval) {
+    console.log("seqval:" ,seqval);
+    return seqval;
+  }); // eww
+}
+
+Chapter.prototype.addScrap = function(scrap, sha) {
+  if (sha == undefined) {
+    sha = scrap.head
+  }
+  this.scraps.push([scrap.author, scrap.uuid, sha]);
 };
 
-Chapter.prototype.addScrap = function(scrapName) {
-  this.scraps.push(scrapName);
-};
-
-Chapter.prototype.removeScrap = function(scrapName) {
-  var index = this.scraps.indexOf(scrapName);
+Chapter.prototype.removeScrap = function(scrap) {
+  var index = this.scraps.indexOf(scrap);
   this.scraps.splice(index, 1);
 };
 
@@ -36,18 +75,19 @@ Chapter.prototype.save = function(reason) {
   // save new version with commit message `reason`
   var u = {};
   u.email = "test@test.com";
-  u.username = "testuser";
+  u.username = this.author;
   var commitMessage = reason;
-  var dir = u.username + '/chapter/' + this.uuid;
+  var dir = '/tmp/mvp/' + u.username + '/chapter/' + this.uuid;
 
   var chapter = this;
+  console.log('/tmp/mvp/' + u.username + '/chapter/' + this.uuid);
 
   // TODO sane place to chapter chapters
   dir = path.resolve(process.env.PWD, dir)
 
-  return fse.ensureDir(dir)
+  return ensureDir(dir)
   .then(function() {
-    return fse.writeFile(path.join(dir, "info.json"), stringify(chapter, {space: '  '}))
+    return writeFile(path.join(dir, "info.json"), stringify(chapter, {space: '  '}));
   }).then(function() {
     if (chapter.isNew) {
       chapter.isNew = false;
@@ -68,4 +108,36 @@ Chapter.prototype.fork = function(newUser) {
   // fork chapter to another user's directory
 }
 
-module.exports = Chapter;
+
+module.exports = {
+  Chapter: Chapter,
+  reconstitute: async function(author, uuid, sha) {
+    try {
+      var rf = await readFile('/tmp/mvp/' + author + '/chapter/' + uuid + '/info.json', 'utf8');
+      var data = JSON.parse(rf);
+      console.log("ABC123", data)
+      return new Chapter(data.name, data.author, data.uuid, data.scraps);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }
+}
+
+var tmpl = `
+\\documentclass[12pt]{article}
+\\usepackage[utf8]{inputenc}
+\\title{ {{title}} }
+\\author{ {{author}} }
+\\date{ }
+
+\\begin{document}
+
+\\maketitle
+
+\\tableofcontents
+
+{{ body }}
+
+\\end{document}
+`
