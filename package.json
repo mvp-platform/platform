@@ -9,5 +9,11 @@
     "mustache": "^2.3.0",
     "nodegit": "^0.16.0",
     "uuid": "^3.0.1"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "devDependencies": {
+    "xo": "^0.17.1"
   }
 }

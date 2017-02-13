@@ -22,57 +22,14 @@ var Book = function(bookName, authorName) {
   this.uuid = uuidV4();
 };
 
-Book.prototype.getText = function() {
-  var book = this;
-  var sequence = Promise.resolve();
-  var runningText = "";
-  this.chapters.forEach(function(c) {
-    sequence = sequence.then(function() {
-      return chapter.reconstitute(c[0], c[1]);
-    }).then(function(nc) {
-      return nc.getText();
-    }).then(function(cText) {
-      console.log("text from nc:", cText)
-      console.log(cText)
-      runningText = runningText + cText + "\n\n";
-      console.log(runningText);
-      console.log("sequence: returning", runningText)
-      return runningText;
-    }).catch(function(e) {
-      console.log("OH NOES")
-      console.log(e);
-    });
-
-  });
-
-  console.log('sequence is', sequence);
-  sequence.then(function(t) {
-    console.log('val', t)
-  }).catch(function(e) {
-    console.log("WAT")
-    console.log(e)
-  })
-
-  // sequence.then(function(chText) {
-  //   console.log('happening')
-  //   return fs.readFile('./templates/book.tex.tmpl', 'utf8');
-  // }).then(function(f) {
-  //   console.log("HERE");
-  //   var info = {
-  //     title: book.name,
-  //     author: book.author,
-  //     body: chText
-  //   }
-  //   var doc = mustache.render(f, info);
-  //   console.log(doc);
-  //   return doc;
-  //
-  // }).catch(function(e) {
-  //   console.log("ERROR", e);
-  // });
-  //
-  // console.log("RETURN")
-  return sequence;
+Book.prototype.getText = async function() {
+  let runningText = "";
+  for (let c of this.chapters) {
+    let nc = await chapter.reconstitute(c[0], c[1]);
+    let cText = await nc.getText();
+    runningText = runningText + cText + "\n";
+  }
+  return runningText;
 }
 
 Book.prototype.addChapter = function(chapter, sha) {

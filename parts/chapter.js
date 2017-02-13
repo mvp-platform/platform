@@ -1,6 +1,5 @@
 'use strict';
 
-var git = require("../git/git");
 var scrap = require("./scrap");
 var path = require("path");
 var promisify = require("es6-promisify");
@@ -9,8 +8,8 @@ var fs = require('fs-extra');
 var ensureDir = promisify(fs.mkdirs);
 var writeFile = promisify(fs.writeFile);
 var readFile = promisify(fs.readFile);
-
 const uuidV4 = require('uuid/v4');
+var git = require("../git/git");
 
 var Chapter = function(chapterName, authorName, uuid, scraps) {
   this.name = chapterName;
@@ -29,25 +28,13 @@ var Chapter = function(chapterName, authorName, uuid, scraps) {
   }
 }
 
-Chapter.prototype.getText = function() {
-  var sequence = Promise.resolve();
-  console.log(this)
-  var runningText = "\\section{" + this.name + "}\n\n";
-  console.log("STARTING CHAPTER.GETTEXT", runningText)
-  this.scraps.forEach(function(s) {
-    sequence = sequence.then(function() {
-      return scrap.reconstitute(s[0], s[1]);
-    }).then(function(ns) {
-        runningText = runningText + ns.getText() + "\n\n";
-        console.log("CH:runningText is", runningText)
-        return runningText;
-    });
-  });
-
-  return sequence.then(function(seqval) {
-    console.log("seqval:" ,seqval);
-    return seqval;
-  }); // eww
+Chapter.prototype.getText = async function() {
+  var runningText = "\\newpage\n\\section{" + this.name + "}\n\n";
+  for (let s of this.scraps) {
+    let ns = await scrap.reconstitute(s[0], s[1]);
+    runningText = runningText + ns.getText() + "\n\\newline\n";
+  }
+  return runningText;
 }
 
 Chapter.prototype.addScrap = function(scrap, sha) {
@@ -80,7 +67,6 @@ Chapter.prototype.save = function(reason) {
   var dir = '/tmp/mvp/' + u.username + '/chapter/' + this.uuid;
 
   var chapter = this;
-  console.log('/tmp/mvp/' + u.username + '/chapter/' + this.uuid);
 
   // TODO sane place to chapter chapters
   dir = path.resolve(process.env.PWD, dir)
@@ -93,7 +79,6 @@ Chapter.prototype.save = function(reason) {
       chapter.isNew = false;
       return git.createRepo(dir, u, commitMessage);
     } else {
-      console.log(chapter.isNew);
       return git.commit(dir, u, commitMessage);
     }
   });
@@ -115,7 +100,6 @@ module.exports = {
     try {
       var rf = await readFile('/tmp/mvp/' + author + '/chapter/' + uuid + '/info.json', 'utf8');
       var data = JSON.parse(rf);
-      console.log("ABC123", data)
       return new Chapter(data.name, data.author, data.uuid, data.scraps);
     } catch (e) {
       console.log(e);
@@ -123,21 +107,3 @@ module.exports = {
     }
   }
 }
-
-var tmpl = `
-\\documentclass[12pt]{article}
-\\usepackage[utf8]{inputenc}
-\\title{ {{title}} }
-\\author{ {{author}} }
-\\date{ }
-
-\\begin{document}
-
-\\maketitle
-
-\\tableofcontents
-
-{{ body }}
-
-\\end{document}
-`
