@@ -1,0 +1,658 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{comment}
+\usepackage{bigstrut}
+\usepackage{geometry}
+\usepackage{supertabular}
+\usepackage{tabu}
+
+\usepackage{hyperref}
+\usepackage{url}
+\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue,
+  pdfkeywords = {cs461 ``senior capstone'' requirements},
+  pdftitle = {CS 461 Requirements Document},
+  pdfsubject = {CS 461 Requirements Document}}
+
+
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Remix}
+\def \CapstoneTeamNumber{		61}
+\def \GroupMemberOne{			Josh Matteson}
+\def \GroupMemberTwo{			Steven Powers}
+\def \GroupMemberThree{			Evan Tschuy}
+\def \CapstoneProjectName{		Many Voices Platform}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Carlos Jensen}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{
+				%Abstract
+		        %Problem Statement
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            \CapstoneTeamName\par
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract
+		\noindent An overview of the requirements for the Many Voices Publishing Platform.
+		Introduces the Many Voices Publishing Platform, describes in detail the purpose,
+		product functions, user characteristics, assumptions and dependencies,
+		and system level (non-functional) requirements and lists specific requirements
+		that are outside of the platform, system features, and an overview of the
+		development life cycle.
+        \end{abstract}
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+
+% 8. now you write!
+\section{Revision Log}
+\begin{flushleft}
+\tablehead{}
+\begin{supertabular}{|p{3cm}|p{3cm}|p{3cm}|p{7cm}|}
+\hline
+Name & Change Number & Date & Description of Change  
+\\\hline
+Steven Powers & 1 & 2/13/2017 & Updated document to clarify  that we will not be using Ward Cunningham's Federated Wiki as the base, but instead as inspiration.
+\\ \hline
+
+\end{supertabular}
+\end{flushleft}
+
+
+
+\section[Introduction]{Introduction}
+
+\subsection[IDENTIFICATION]{IDENTIFICATION}
+
+
+{\noindent
+The software system being considered for development is referred to as the Many Voices
+Publishing Platform. \ The customer providing specifications
+for the system is Dr. Carlos Jensen that is reachable at his email jensenca@engr.orst.edu \
+The ultimate customer, or end-user, of the system will be any user that wants an easier
+way to combine materials into a book. \ This is a new project effort, so the
+version under development is version 0.5 release 0.}
+
+\subsection[PURPOSE]{PURPOSE}
+
+{\noindent
+The purpose of the system under
+development is to provide a collaborative authoring platform that allows for users to
+combine various materials into a book. \ While the system will be used by professors and
+instructors in majority, this document is intended to be read and understood by software
+designers and coders. \ The document will also be vetted or
+approved by Dr. Carlos Jensen, D. Kevin McGrath, and Dr. Kirsten Winters.}
+
+\subsection[SCOPE]{SCOPE}
+
+{\noindent
+The project is sponsored by Dr. Carlos Jensen, being developed by Josh Matteson,
+Steven Powers, and Evan Tschuy for completion of CS461 Senior capstone project class.
+The product is to be operated via a website for wide availability and use.}
+
+\subsection[DEFINITIONS, ACRONYMS, AND ABBREVIATIONS]{DEFINITIONS, ACRONYMS, AND ABBREVIATIONS}
+
+\bigskip
+
+\begin{center}
+
+\tablehead{}
+\begin{supertabular}{|p{3cm}|p{12cm}|}
+\hline
+Term or Acronym & Definition\\\hline
+Alpha Test & Limited release(s) to selected, outside testers (Friends and Family)\\ \hline
+Beta Test & Limited release(s) to cooperating customers wanting early access to developing systems (Professors
+and other educators)\\ \hline
+Final Test & Release of full functionality to customer for approval \\ \hline
+SDD & Software Design Document \\ \hline
+SSRS & System and Software Requirements Specification \\ \hline
+PDF & Portable Document Format, that is able to combine text, graphics, and other information into a single document \\ \hline
+PCI & Payment Card Industry, is a proprietary information security standard for credit cards in an effort to reduce credit card fraud \\ \hline
+Scrap & A section of a textbook, which can contain formatted text (markdown or latex), and media \\ \hline
+Section & An ordered collection of Scraps belonging to a chapter\\ \hline
+Chapter & An ordered collection of Sections and Scraps\\ \hline
+Media & A standalone image, figure, or video. Can be embedded in a Scrap\\ \hline
+Web Application & An interactive program that can be accessed and is based through a web server instead of
+being stored on a user's desktop\\ \hline
+Source Control & An element of software design management, version control, and is the
+management of changes to documents, large web sites, computer programs, and other
+collections of data \\ \hline
+User Interface (UI)  & The means by which the user and a computer system interact, in particular the use of
+input devices and software\\ \hline
+\end{supertabular}
+
+\end{center}
+\subsection[REFERENCES]{REFERENCES}
+
+{\noindent
+[1] C.  Jeffery, Systems and Software Requirements Specification (SSRS) Template, 2nd ed. Moscow: University of Idaho, 2016, pp. 1-22.}
+
+\subsection[OVERVIEW AND RESTRICTIONS]{OVERVIEW AND RESTRICTIONS}
+
+
+{\noindent
+This document is for limited release only to Oregon State University professors and
+associated staff of D. Kevin McGrath, Dr. Kirsten Winters, and Jon Dodge, personnel
+working on the project, and the client, Dr. Carlos Jensen.}
+
+
+\bigskip
+
+%\noindent
+%Section 2 of this document describes the system under development from a
+%holistic point of view. \ Functions, characteristics, constraints,
+%assumptions, dependencies, and overall requirements are defined from
+%the system-level perspective.}
+
+
+\bigskip
+
+%\noindent
+%Section 3 of this document describes the specific requirements of the
+%system being developed. \ Interfaces, features, and specific
+%requirements are enumerated and described to a degree sufficient for a
+%knowledgeable designer or coder to begin crafting an architectural
+%solution to the proposed system.}
+
+
+\bigskip
+
+
+%\noindent
+%Section 4 provides the requirements traceability information for the
+%project. \ Each feature of the system is indexed by the SSRS
+%requirement number and linked to its SDD and test references.}
+
+
+\bigskip
+
+%\noindent
+%Sections 5 and up are appendices including original information and
+%communications used to create this document.}
+
+\clearpage
+\section[OVERALL DESCRIPTION]{OVERALL DESCRIPTION}
+
+\subsection[PRODUCT PERSPECTIVE]{PRODUCT PERSPECTIVE}
+
+{\noindent
+The main differentiator from traditional textbook publication methods are the products'
+micro-writing abilities. A traditional textbook is written by one expert, using a defined
+curriculum that fits the needs of the author. The curriculum is a generic version of a
+multitude of classes that is somewhat useful for many professors, rather than very useful
+for few professors. Instead, our solution will give the tools necessary for individual
+professors to create the textbook they need to match the curriculum desired. This allows
+for textbooks that more closely track the intricacies of how classes are taught by
+different individuals.}
+
+\subsection[PRODUCT FUNCTIONS]{PRODUCT FUNCTIONS}
+
+{\noindent
+The product will be a document construction service. The most basic usage will be the
+creation of a textbook out of pre-existing chapters, by searching and selecting from a
+list. Alternatively, chapters can created using pre-existing sections and media.
+A chapter or section can be created using a simple input interface that
+accepts text and LaTeX markup, along with the upload of media like image or
+perhaps video content.}
+
+\subsection[USER CHARACTERISTICS]{USER CHARACTERISTICS}
+
+{\noindent
+The expected user of the service will be a professor. Professors, in general, have
+decent means technical skills. Thus, the interface of the product
+will be highly graphically driven, using modern interface paradigms as defined
+by industry leaders, such as Google's Material Design \cite{GoogleMaterial}.
+The interface will allow users to not think about the technical specificities of the product,
+but more-so on the content they are using, the authors of the content, and how they are using it.}
+
+\subsection[CONSTRAINTS]{CONSTRAINTS}
+
+{\noindent
+A regular web browser will be the means of access for users. For the backend
+server, the main requirement is availability - as a web application, it has no
+safety- or life-critical components. A high (99.99\%) availability should be provided,
+but otherwise availability, safety, and specific hardware are not main concerns.}
+
+\bigskip
+
+{\noindent
+The software can, as a web application, be written in a high-level language, with
+minimal inter-application communication. In the case that the software is built
+on top of other applications, such as Git, inter-process communication should be
+handled in a generic way that provides a high-security barrier, preventing malicious
+users from accessing other, non-specified applications.}
+
+\subsection[ASSUMPTIONS AND DEPENDENCIES]{ASSUMPTIONS AND DEPENDENCIES}
+
+{\noindent
+The product will be designed to run on a generic Linux-with-web server environment.
+Ward Cunningham's Federated Wiki, a similar project being drawn upon for inspiration, can run
+on any system with Ruby and CouchDB (a popular NoSQL database) \cite{Federated}.
+With the product being either partially or wholly based on the Federated Wiki, similar system
+requirements are anticipated \cite{Federated}.
+
+\subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL) REQUIREMENTS]{SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
+
+
+\subsubsection[Site Dependencies]{Site Dependencies}
+As a web application, the product has no hard requirements other than high-speed
+network access and an instance of the CouchDB database management system.
+\begin{itemize}
+  \item Hardware: standard virtual machine(s) running on cloud provider (ex: Amazon EC2
+  t2.medium)
+  \item Possible Database: CouchDB 2.0
+\end{itemize}
+
+\subsubsection[Safety, Security and Privacy Requirements]{Safety, Security and Privacy Requirements}
+
+{\noindent
+Private information shall be held to any relevant security standards. For instance,
+any credit card information processed by the product in the textbook creation process
+will be held to PCI compliance standards. Passwords shall be stored in a securely hashed,
+non-reversible method, such that infiltration of the product by an unauthorized
+third party will not be able to result in the theft of user passwords or other private
+information.}
+
+\subsubsection[Performance Requirements]{Performance Requirements}
+
+{\noindent
+A standard user load shall be defined as up to 100 simultaneous users. User information
+will include things such as text documents, media uploads, and user account data.
+
+Under a standard load:
+\begin{itemize}
+  \item 95\% of save operations (excepting media upload time) shall be responsive in
+  nature.
+  \item 95\% of initial page loads shall shall be responsive in
+  nature.
+  \item 95\% of user account operations (login, creation, deletion, etc) shall be
+  responsive in nature.
+\end{itemize}}
+
+\subsubsection[System and Software Quality]{System and Software Quality}
+
+The software shall maintain 99.99\% accessibility from the major modern web browsers, including Mozilla FireFox,
+Google Chrome, and Microsoft Edge.
+As a non-safety-critical product, reliability shall be attempted but not promised
+to end users. Testing shall be handled through a suite of automated unit and integration testing, as well as
+through manual checking of newly written and critical features.
+
+\subsubsection[Packaging and Delivery Requirements]{Packaging and Delivery Requirements}
+
+{\noindent
+The executable system and all associated documentation (i.e., SSRS,
+code listing, test plan (data and results), and user manual) will be
+delivered to the customer on CD{\textquoteright}s and/or via email, as
+specified by the customer at time of delivery. \ Although document
+{\textquotedblleft}drops{\textquotedblright} will occur throughout the
+system development process, the final, edited version of the above
+documents will accompany the final, accepted version of the executable
+system.}
+
+\subsubsection[Personnel{}-related requirements]{Personnel-related requirements}
+
+{\noindent
+The system under development has no special personnel-related characteristics. }
+
+\subsubsection[Training{}-related
+requirements]{
+Training-related requirements}
+%\noindent
+%{\textit{This paragraph shall specify the
+%system requirements, if any, pertaining to training. \ Examples include
+%training software, tutorials, or help information to be included in the
+%system.}}{ \ \ }}
+
+\noindent No training materials or expectations will be tied to this project other
+than the limited help screens built into the software and the
+accompanying user manual.
+
+\subsubsection[Logistics{}-Related Requirements]{Logistics-Related Requirements}
+
+\noindent
+The software shall run on a standard Amazon Web Services backend instance with
+another standard instance serving as the database.
+
+
+\subsubsection[Other Requirements]{Other Requirements}
+
+{\noindent No other system requirements are anticipated.}
+
+\subsubsection[Precedence and Criticality of Requirements]{Precedence and Criticality of Requirements}
+
+{\noindent The main critical requirements of the system are those relating to payment processing secrecy.}
+
+\clearpage
+
+
+%Section 3
+\section[SPECIFIC REQUIREMENTS]{SPECIFIC REQUIREMENTS}
+
+
+\subsection[EXTERNAL INTERFACE REQUIREMENTS]{EXTERNAL INTERFACE REQUIREMENTS}
+
+\subsubsection[Hardware Interfaces]{Hardware Interfaces}
+{\noindent
+User should have a basic computer
+with no extensive requirements. The project should be able to run on a standard virtual machine
+instance.}
+
+\subsubsection[Software Interfaces]{Software Interfaces}
+{\noindent
+Web front-end using JavaScript or JavaScript variant.}
+
+\subsubsection[User Interfaces]{User Interfaces}
+{\noindent
+Angular2 - Single Page Application, or other similar variant}
+
+\subsubsection[Other Communication Interfaces]{Other Communication Interfaces}
+{\noindent
+Git, email, comments}
+
+
+\bigskip
+
+\clearpage
+%\setcounter{page}{1}\pagestyle{Convertv}
+\subsection[SYSTEM FEATURES]{SYSTEM FEATURES}
+
+
+\begin{comment}
+\subsubsection[\ Use Case Diagrams]{{\ }{Use Case Diagrams}}
+{\noindent
+[insert 1+ use case diagrams here]}
+\end{comment}
+
+\subsubsection[System feature 1: General Website Features]{General Website Features}
+
+\begin{itemize}
+\item These may come free if we duplicate and edit the Federated Wiki.
+\item Material/otherwise nice looking design template
+\item User account management
+\item Create new account
+\item Edit existing account
+\item Login / logout functionality
+\end{itemize}
+
+\subsubsection[System feature 2: Compile a book]{Compile a Book}
+\begin{itemize}
+\item Search functionality for finding existing textbooks
+\item Ability to duplicate and edit existing textbooks
+\item Add a new blank textbook
+\end{itemize}
+
+\subsubsection[System feature 3: Textbook Compilation Interface]{Textbook Compilation Interface}
+\begin{itemize}
+\item Edit/New Chapter:
+\item Table of Contents view, with access to New Chapter and Edit Chapter
+\item Button to Add New Section/Scrap
+\item Button to Search Sections/Scraps
+\item User-friendly interface to add Section/Scrap to desired location in Chapter
+\end{itemize}
+
+\subsubsection[System feature 4: Search Feature]{Search}
+\begin{itemize}
+\item By keyword, author, tag, field; ranked by relevance and/or community voting
+\item Scrap/Section search
+\item Textbook search
+\end{itemize}
+
+\subsubsection[System feature 5: Publishing Interface]{Publishing Interface}
+\begin{itemize}
+%Need to talk to Carlos about this
+%\item Indicate number of copies/digital access for students, determine price
+\item Save textbook as PDF/send to printer
+\item Optional future feature: payment processor integration
+\end{itemize}
+
+\subsubsection[System feature 6: Scrap Editor]{Scrap Editor}
+\begin{itemize}
+\item "Pretty" view for adding formatted text, media, etc to a scrap
+\item "Raw" view for managing scrap ordering
+\item Tag management (add, delete, search? tags)
+%\item Price management
+\end{itemize}
+
+\bigskip
+
+
+%Use Cases To Add
+\begin{comment}
+\bigskip
+\noindent
+{\textit{For each feature, you should either
+provide a Use Case Description
+}}{\textbf{\textit{or}}}{\textit{
+a Non-task feature description, whichever is more appropriate.}}}
+
+
+
+\bigskip
+
+\begin{flushleft}
+\tablehead{}
+\begin{supertabular}{|m{3.17056in}|m{3.1740599in}|}
+\hline
+\bfseries\color{black} Use Case Description &
+\paragraph[Non{}-task feature
+description]{
+Non-task feature description}
+\\\hline
+{\bfseries\color{black} Name}
+
+ Actors}
+
+ Goals}
+
+ Preconditions}
+
+{\bfseries\color{black} Summary}
+
+ Related use cases}
+
+{\bfseries\color{black} Steps}
+
+ \ \ \ 1. ...}
+
+ \ \ \ 2. ...}
+
+ Alternatives}
+
+ Postconditions}
+
+~
+ &
+\paragraph[\ Introduction/Purpose of this
+feature]{{\ }{Introduction/Purpose
+of this feature}}
+ [ insert your text here ]}
+
+\paragraph[Input/Output sequence for this
+feature]{
+Input/Output sequence for this feature}
+ [ insert your text here ]}
+
+\paragraph[Design constraints of this
+feature]{Design
+constraints of this feature}
+ [ insert your text here ]}
+
+\paragraph[Performance requirements of this
+feature]{
+Performance requirements of this feature}
+ [ insert your text here ]}
+
+\paragraph[Detailed functional requirements of this
+feature]{
+Detailed functional requirements of this feature}
+
+
+
+
+\paragraph[]{}
+
+\color{black} [ insert your text here ]\\\hline
+\end{supertabular}
+\end{flushleft}
+
+\bigskip
+\end{comment}
+
+
+\begin{comment}
+
+\subsubsection[System feature 2: [ insert feature name here
+{]}]{System
+feature 2: [ insert feature name here ]}
+\paragraph[Introduction/Purpose of this feature]
+{Introduction/Purpose of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Input/Output sequence for this feature]{Input/Output sequence for this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Design constraints of this
+feature]{Design
+constraints of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Performance requirements of this
+feature]{
+Performance requirements of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Detailed functional requirements of this
+feature]{
+Detailed functional requirements of this feature}
+
+
+{System
+feature [m]: [ insert feature name here ]}
+
+\paragraph[\ Introduction/Purpose of this feature]{Introduction/Purpose of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Input/Output sequence for this
+feature]{
+Input/Output sequence for this feature}
+
+\paragraph[Design constraints of this
+feature]{Design
+constraints of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Performance requirements of this
+feature]{
+Performance requirements of this feature}
+\noindent
+[ insert your text here ]}
+
+\paragraph[Detailed functional requirements of this
+feature]{
+Detailed functional requirements of this feature}
+\noindent
+[ insert your text here ]}
+
+\end{comment}
+
+
+\clearpage
+%\setcounter{page}{1}\pagestyle{Convertvii}
+\section[APPENDIX A. \ Gantt Chart]{
+APPENDIX A. \ Gantt Chart}
+
+\bigskip
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{gantt_chart.png}
+\caption{A simple preliminary Gantt Chart that outlines a rough sketch of our anticipated working time line}
+\end{figure}
+
+\clearpage
+%\setcounter{page}{1}\pagestyle{Convertviii}
+\section[APPENDIX B. \ UML Diagram]{
+APPENDIX B. \ Unified Modeling Language Diagram}
+
+\bigskip
+
+%\noindent
+%[ insert appendix B here ]}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{usage_diagram.png}
+\caption{A preliminary UML Diagram that outlines the basic flow of information}
+\end{figure}
+
+\bigskip
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{requirements}
+
+
+
+
+\end{document}

@@ -1,0 +1,75 @@
+\contentsline {section}{\numberline {1}Overview}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Scope}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Purpose}{1}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Intended Audience}{1}{subsection.1.3}
+\contentsline {section}{\numberline {2}Definitions}{1}{section.2}
+\contentsline {section}{\numberline {3}Conceptual model for software design descriptions}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Software design descriptions within the life cycle}{3}{subsection.3.1}
+\contentsline {section}{\numberline {4}Design Description}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Introduction}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Design Stakeholders}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Design Concerns}{3}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Design Views}{4}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Design Viewpoints}{4}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Design Elements}{4}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Design Rationale}{5}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.8}Design Timeline}{5}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.9}Design Languages}{5}{subsection.4.9}
+\contentsline {section}{\numberline {5}Design Viewpoints}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}Introduction}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Viewpoint: User Interface Tools}{6}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Interface}{6}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Design Concerns}{6}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Design Elements}{6}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Function Attribute}{7}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Relationship}{7}{subsubsection.5.2.5}
+\contentsline {subsection}{\numberline {5.3}Viewpoint: User Login \& Authentication}{8}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Context--Dependency}{8}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Design Concerns}{8}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Design Elements}{8}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Function Attribute}{8}{subsubsection.5.3.4}
+\contentsline {subsection}{\numberline {5.4}Viewpoint: Interface Design}{8}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Information}{9}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Design Concerns}{9}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}Design Elements}{9}{subsubsection.5.4.3}
+\contentsline {subsubsection}{\numberline {5.4.4}Function Attribute}{9}{subsubsection.5.4.4}
+\contentsline {subsubsection}{\numberline {5.4.5}Relationship}{10}{subsubsection.5.4.5}
+\contentsline {subsection}{\numberline {5.5}Viewpoint: Server Back-end}{11}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.5.1}Backend}{11}{subsubsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.2}Design Concerns}{11}{subsubsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.3}Design Elements}{11}{subsubsection.5.5.3}
+\contentsline {subsubsection}{\numberline {5.5.4}Function Attribute}{11}{subsubsection.5.5.4}
+\contentsline {subsubsection}{\numberline {5.5.5}Relationship}{11}{subsubsection.5.5.5}
+\contentsline {subsection}{\numberline {5.6}Viewpoint: Text Formatting}{12}{subsection.5.6}
+\contentsline {subsubsection}{\numberline {5.6.1}Formatting}{12}{subsubsection.5.6.1}
+\contentsline {subsubsection}{\numberline {5.6.2}Design Concerns}{13}{subsubsection.5.6.2}
+\contentsline {subsubsection}{\numberline {5.6.3}Design Elements}{13}{subsubsection.5.6.3}
+\contentsline {subsubsection}{\numberline {5.6.4}Function Attribute}{13}{subsubsection.5.6.4}
+\contentsline {subsubsection}{\numberline {5.6.5}Relationship}{13}{subsubsection.5.6.5}
+\contentsline {subsection}{\numberline {5.7}Viewpoint: Password Storage}{14}{subsection.5.7}
+\contentsline {subsubsection}{\numberline {5.7.1}Password hashing}{14}{subsubsection.5.7.1}
+\contentsline {subsubsection}{\numberline {5.7.2}Design Concerns}{14}{subsubsection.5.7.2}
+\contentsline {subsubsection}{\numberline {5.7.3}Design Elements}{15}{subsubsection.5.7.3}
+\contentsline {subsubsection}{\numberline {5.7.4}Function Attribute}{15}{subsubsection.5.7.4}
+\contentsline {subsubsection}{\numberline {5.7.5}Relationship}{15}{subsubsection.5.7.5}
+\contentsline {subsection}{\numberline {5.8}Viewpoint: Testing}{16}{subsection.5.8}
+\contentsline {subsubsection}{\numberline {5.8.1}Information}{16}{subsubsection.5.8.1}
+\contentsline {subsubsection}{\numberline {5.8.2}Design Concerns}{16}{subsubsection.5.8.2}
+\contentsline {subsubsection}{\numberline {5.8.3}Design Elements}{16}{subsubsection.5.8.3}
+\contentsline {subsubsection}{\numberline {5.8.4}Function Attribute}{16}{subsubsection.5.8.4}
+\contentsline {subsubsection}{\numberline {5.8.5}Relationship}{17}{subsubsection.5.8.5}
+\contentsline {subsection}{\numberline {5.9}Viewpoint: Revision Control Software}{18}{subsection.5.9}
+\contentsline {subsubsection}{\numberline {5.9.1}Revision Control}{18}{subsubsection.5.9.1}
+\contentsline {subsubsection}{\numberline {5.9.2}Design Concerns}{18}{subsubsection.5.9.2}
+\contentsline {subsubsection}{\numberline {5.9.3}Design Elements}{18}{subsubsection.5.9.3}
+\contentsline {subsubsection}{\numberline {5.9.4}Function Attribute}{18}{subsubsection.5.9.4}
+\contentsline {subsubsection}{\numberline {5.9.5}Relationship}{19}{subsubsection.5.9.5}
+\contentsline {subsection}{\numberline {5.10}Viewpoint: Database}{20}{subsection.5.10}
+\contentsline {subsubsection}{\numberline {5.10.1}Database}{20}{subsubsection.5.10.1}
+\contentsline {subsubsection}{\numberline {5.10.2}Design Concerns}{20}{subsubsection.5.10.2}
+\contentsline {subsubsection}{\numberline {5.10.3}Design Elements}{20}{subsubsection.5.10.3}
+\contentsline {subsubsection}{\numberline {5.10.4}Function Attribute}{20}{subsubsection.5.10.4}
+\contentsline {section}{\numberline {6}Annex A - (information Bibliography}{21}{section.6}
+\contentsline {section}{References}{21}{section*.2}
+\contentsline {section}{\numberline {7}Conclusion}{22}{section.7}
+\contentsline {section}{\numberline {8}Signature Page}{23}{section.8}

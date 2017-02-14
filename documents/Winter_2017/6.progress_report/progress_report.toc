@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Project Purpose}{2}
+\contentsline {section}{\numberline {2}Weekly Updates}{2}
+\contentsline {subsection}{\numberline {2.1}Week 3}{2}
+\contentsline {subsection}{\numberline {2.2}Week 4}{2}
+\contentsline {subsection}{\numberline {2.3}Week 5}{2}
+\contentsline {subsection}{\numberline {2.4}Week 6}{3}
+\contentsline {subsection}{\numberline {2.5}Week 7 \& 8}{3}
+\contentsline {subsection}{\numberline {2.6}Week 9 \& 10}{3}
+\contentsline {section}{\numberline {3}Weekly Summary}{4}
+\contentsline {section}{\numberline {4}Retrospective}{5}
+\contentsline {section}{\numberline {5}Current Project Status}{5}
+\contentsline {section}{\numberline {6}Impending Problems}{5}
+\contentsline {section}{\numberline {7}Conclusion}{6}
