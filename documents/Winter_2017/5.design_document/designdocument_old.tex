@@ -327,8 +327,14 @@ Additionally the tools will provide great interact-ability for the user.\par}
 Handles display of information and provides the interface for input.  \par}
 
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=140mm]{user_interface_tools.png}
+\caption{A preliminary UML diagram of how the user interface tool of
+	Aurelia will enable transmission of data to the screen or from the screen, up to date as of Fall term}
+\end{figure}
 
-
+\newpage
 \subsection{Viewpoint: User Login \& Authentication}
 {\noindent By: Steven Powers  \par}
 
@@ -355,8 +361,6 @@ third party login system, such as Login with Facebook or Google.  \par}
 \subsubsection{Function Attribute}
 {\noindent This component provides the functionality of user login process
 and user authentication within the software.\par}
-
-\subsubsection{Relationship}
 
 
 
@@ -393,8 +397,15 @@ use of time as well as successful design choices to best suit our users. \par}
 {\noindent Provides methodologies for improving Interface Design to assist
 users and developers. \par}
 
+\newpage
 \subsubsection{Relationship}
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{interface_design.png}
+\caption{A preliminary UML diagram of how user centered design \& user research can
+improve a UI for increased affordance and usability for the target
+audience, up to date as of Fall term}
+\end{figure}
 
 
 
@@ -405,56 +416,150 @@ users and developers. \par}
 \subsection{Viewpoint: Server Back-end}
 {\noindent By: Evan Tschuy \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Backend}
+{\noindent
+A standard web application follows more or less a standard design flow. When a
+request is received, a URL parser parses the URL and passes it to the appropriate
+function, along with all of its parameters. The function then operates on the data
+somehow, and returns either the result of a template render or a block of data
+in JSON/XML to be returned to the client. Inside the function, the heavy lifting
+of data manipulation, storage, etc. takes place.
+\par}
 
 \subsubsection{Design Concerns}
+The main concern for the backend of the project is how the back end will communicate
+with the version control system. For instance, building on top of Git, it is
+necessary to also verify that the backend language chosen has a library that can
+be used to easily interact with Git. Then, it will be necessary to build an internal
+library that can be placed on top of Git that exposes only the operations needed
+for the textbook project.
 {\noindent  \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent
+The backend design, especially the layer interacting with Git, will play a critical
+role in speed of development. By implementing a Snippet and Textbook super-layer
+on top of the existing Git library, we can eliminate having to think about Git
+as early as possible, and spend our time instead on interacting with Snippets and
+the Textbooks.
+\par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
+{\noindent This function provides the base on which the rest of the project is
+built — the interaction layer between the frontend and the revision control system. \par}
 
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{backend.png}
+\caption{An example backend handling flow. The application determines which function
+to call, and the function handles the request and sends any necessary file operations
+to the git module.}
+\end{figure}
+\pagebreak
+
+
+
 
 
 \subsection{Viewpoint: Text Formatting}
 {\noindent By: Evan Tschuy \par}
 
-\subsubsection{ViewpointName}
+\subsubsection{Formatting}
+The front end of the platform lets users interact with "snippets" of documents —
+a block of text that, paired with potentially dozens of other snippets, can make
+a chapter. Then, chapters need to be combined together to make a full textbook.
+Using a LaTeX backend, snippets can be related to an \begin{verbatim}\input{}\end{verbatim} command, which takes
+the raw commands of a document and puts them into another document. Chapters can
+be related to \begin{verbatim}\include{}\end{verbatim} commands, which start a new page and add the new section.
+In this way, we can have one file for the table of contents, which controls which
+chapters are included in which order, and one file for each chapter, which controls
+which snippets are included in which order.
+\iffalse
+Users expect to be able to add things to documents like bolded text, tables, etc.
+From a design perspective, this means adding an intermediary step between what
+a user can use as input, and how that gets stored as plain text in a raw document
+on the backend. Already today many web-based LaTeX and Markdown editors exist, and
+so the goal for the platform will be to integrate an existing editor into the
+user interface in a friendly way.
+\fi
 {\noindent  \par}
 
 \subsubsection{Design Concerns}
+The files referenced are all stored in version control, as discussed below.
+Therefore we need to relate the files to a specific version as stored. Additionally,
+it needs to be entirely invisible to users how the text is being split — the users
+should not know whether the backend is written in LaTeX using include and input
+statements, or in Markdown with string concatenation, or any other possible
+implementation.
+\iffalse
+A user cannot know how their text is being transformed between what they can
+interact with on the front end and how it is being stored in the back end. This
+means the user should only ever have to deal with a "rich text" editor, like those
+found in Microsoft Word or Google Docs, with the ability to do all text manipulation
+with convenient nearby buttons.
+\fi
 {\noindent  \par}
 
 \subsubsection{Design Elements}
+An abstraction of snippets and chapters into LaTeX documents in such a way as to
+make manipulation of them individually and as a whole simple.
 {\noindent  \par}
 
 \subsubsection{Function Attribute}
+This component provides the functionality of document generation, storage, and
+manipulation.
 {\noindent  \par}
 
 \subsubsection{Relationship}
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{formatting.png}
+\caption{A document is divided into chapters (which are included under a table of contents) and snippets (which are parts of a chapter).}
+\end{figure}
+\pagebreak
 
 \subsection{Viewpoint: Password Storage}
 {\noindent By: Evan Tschuy \par}
 
-\subsubsection{ViewpointName}
+\subsubsection{Password hashing}
+Any time a password is being requested from a user, it should be securely and
+irreversibly hashed. By securely hashing a password, it becomes impossible for
+hackers with access to the user database to use stored credentials to compromise
+user accounts on other sites even if users reuse passwords between sites. A well
+designed cryptographic hash, such as bcrypt, includes a salt value, which is
+simply added to the beginning of the password at hash time, stored in the
+database in plain text, so that two uses of the same password result in
+different hashes.
 {\noindent  \par}
 
 \subsubsection{Design Concerns}
+A secure password storage system always hashes passwords, and requires hackers
+to crack each password individually by guessing passwords one by one. Another
+alternative to storing user passwords at all is, as discussed above in the user
+authentication section, to use a third-party user authentication service such as
+those offered by Google, Facebook, etc. For a platform used by professors, who
+may not all have a Google or Facebook account, however, it should always be
+possible to create an account that does not require a third-party account.
 {\noindent  \par}
 
 \subsubsection{Design Elements}
+A well-designed, secure system in which any password stored cannot be reversed
+without a slow cracking process. Preferably, users would not store any passwords
+at all with the service and instead would use third-party authentication.
 {\noindent  \par}
 
 \subsubsection{Function Attribute}
+This component provides the functionality of secure password storage.
 {\noindent  \par}
 
 \subsubsection{Relationship}
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{password.png}
+\caption{Passwords will either be securely hashed, if the user is not using external authentication, or not needed at all, if the user is using external authentication.}
+\end{figure}
+\pagebreak
 
 
 
@@ -465,55 +570,84 @@ users and developers. \par}
 \subsection{Viewpoint: Testing}
 {\noindent By: Josh Matteson \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Information}
+{\noindent Testing is one of the most substantial parts when considering the success and thoroughness of an application.
+If not properly tested, the application will contain numerous bugs resulting in: faulty functionality, unpredictable behavior, and the pages not loading. \par}
 
 \subsubsection{Design Concerns}
-{\noindent  \par}
+{\noindent The main concerns with working with a testing framework is the level of complexity and with that the learning curve.
+Jasmine, existing for almost a decade, has had numerous contributors to its documenation. This ensures that, while making progress,
+we won't be short of useful information in the furthest reaches of the internet. \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent Jasmine is open source, and therefore, will be used as the main testing framework for application.
+It will be one of the developer dependencies and will mostly interact with the existing javascript/typescript of our application.
+Jasmine will be ran through our node express backend, and will come with a coverage report for our app. Whether this is from Jasmine or
+from another testing framework that works closely with it. \par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
+{\noindent Assist in development and thoroughness of the application. Will drastically reduce bugs. \par}
 
+\newpage
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{Testing.png}
+\caption{A preliminary UML diagram demonstrating the flow of testing with Jasmine}
+\end{figure}
 
-
+\newpage
 \subsection{Viewpoint: Revision Control Software}
 {\noindent By: Josh Matteson \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Revision Control}
+{\noindent One of the more important elements of our application, the revision control will let the user have full control
+over their current work and back ups. If the user realizes that a section they wrote conflicts with something someone else wrote,
+they can then backup from a previous version. This will all be done with Git as the background technology, which in essence, is
+the backbone of major web platforms like Github. This component will give users endless control with branches, previous versions,
+and much more. \par}
 
 \subsubsection{Design Concerns}
-{\noindent  \par}
+{\noindent One of the main design concerns is properly integrating Git with the rest of the application.
+Ensuring that the flow from user to Git then to database will require well force all parts of the app to be working.
+ \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent Git will act as middleware in between the front end and the backend, this will be taken into mind when moving forward.
+The user will use one of the front end functions, which will request an action of Git, and finally perform database operations. \par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
+{\noindent The overarching purpose of Git is to give users free reign to write whatever they want with little to no consequences
+from themselves or other users. \par}
 
+\newpage
 \subsubsection{Relationship}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=120mm]{Revision_Control.png}
+\caption{A preliminary UML diagram demonstrating the relationship of Git to the request of the user}
+\end{figure}
 
+\newpage
 
 \subsection{Viewpoint: Database}
 {\noindent By: Josh Matteson \par}
 
-\subsubsection{ViewpointName}
-{\noindent  \par}
+\subsubsection{Database}
+{\noindent While understanding what a database does is more common even among non computer science majors, the aspects of its relation
+to other components of our application are not self explanatory. The database's most important role consist of storing user information,
+and ensuring that information does get misplaced or skewed a long the way to the user. \par}
 
 \subsubsection{Design Concerns}
-{\noindent  \par}
+{\noindent As with most databases, one of the main design concerns is the complexity of the calls to it. Some databases use a query structure,
+other ones use explicit calls. SQL Server, as is part of the name, will be using query calls to receive information. \par}
 
 \subsubsection{Design Elements}
-{\noindent  \par}
+{\noindent Our backend components, being Node.js and Express, will be doing the calls to the database. Front end functions will call general purpose
+functions in the backend, which will then make a call to the database. This will then go back up the ladder to the user. \par}
 
 \subsubsection{Function Attribute}
-{\noindent  \par}
-
-\subsubsection{Relationship}
+{\noindent The database stores all important information about the user and their revisions, passwords, and preferences. \par}
 
 
 
