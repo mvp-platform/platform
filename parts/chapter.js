@@ -75,12 +75,7 @@ Chapter.prototype.save = function(reason) {
   .then(function() {
     return writeFile(path.join(dir, "info.json"), stringify(chapter, {space: '  '}));
   }).then(function() {
-    if (chapter.isNew) {
-      chapter.isNew = false;
-      return git.createRepo(dir, u, commitMessage);
-    } else {
-      return git.commit(dir, u, commitMessage);
-    }
+    return git.createAndCommit(dir, u, commitMessage);
   });
 }
 
@@ -93,6 +88,9 @@ Chapter.prototype.fork = function(newUser) {
   // fork chapter to another user's directory
 }
 
+Chapter.prototype.getHead = function() {
+  return git.getHead('/tmp/mvp/' + this.author + '/chapter/' + this.uuid);
+}
 
 module.exports = {
   Chapter: Chapter,

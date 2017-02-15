@@ -2,67 +2,91 @@ var path = require('path');
 var nodegit = require('nodegit');
 var promisify = require('es6-promisify');
 var fs = require('fs-extra');
+var lockFile = require('lockfile');
 
 var ensureDir = promisify(fs.mkdirs);
+var stat = promisify(fs.stat);
+var readFile = promisify(fs.readFile);
 
-var index;
-var parents = [];
+var addAndCommit = async function (repo, user, msg) {
+	var parents = [];
+	try {
+		var head = await nodegit.Reference.nameToId(repo, 'HEAD');
+		var parent = await repo.getCommit(head);
+		parents = [parent]
+	} catch (err) {}
 
-var addAndCommit = function (repo, user, msg) {
-	return repo.refreshIndex()
-    .then(function (idx) {
-	index = idx;
-}).then(function () {
-      // the entire directory is always managed by software so we can safely
-      // always add everything
-	return index.addAll();
-})
-    .then(function () {
-	return index.write();
-})
-    .then(function () {
-	return index.writeTree();
-})
-    .then(function (oid) {
+	let index = await repo.refreshIndex();
+	await index.addAll();
+	await index.write();
+	let oid = await index.writeTree();
+
 	var sig = nodegit.Signature.now(user.username, user.email);
-
-      // Since we're creating an inital commit, it has no parents. Note that unlike
-      // normal we don't get the head either, because there isn't one yet.
-	return repo.createCommit('HEAD', sig, sig, msg, oid, parents);
-})
-    .then(function (commitId) {
+ 	let commitId = await repo.createCommit('HEAD', sig, sig, msg, oid, parents);
 	return commitId;
-});
 };
 
-var repo;
+var commit = async function (dir, user, msg) {
+	var repo = await nodegit.Repository.open(path.resolve(dir, '.git'));
+	return addAndCommit(repo, user, msg);
+}
+
+var getFileFromCommit = async function (dir, filename, sha) {
+	// get the info.json file from the dir given a certain sha
+	let fileContents = {};
+	try {
+		let repo = await nodegit.Repository.open(path.resolve(dir, '.git'));
+		let err = await repo.setHeadDetached(sha);
+	  let ref = await repo.getCurrentBranch();
+		console.log("On " + ref.toString() + " " + ref.target());
+		var rf = await readFile(dir + filename, 'utf8');
+		fileContents = JSON.parse(rf);
+	} finally {
+		// reset HEAD to master
+		let err = await repo.setHead('master');
+		return fileContents;
+	}
+}
+
+var getHead = async function (dir) {
+	var repo = await nodegit.Repository.open(path.resolve(dir, '.git'));
+	var head = await nodegit.Reference.nameToId(repo, 'HEAD');
+	var parent = await repo.getCommit(head);
+	return parent;
+}
+
+var createRepo = async function (dir, user, msg) {
+	// creates the directory, initializes the repo
+	return ensureDir(dir)
+	.then(function () {
+		return nodegit.Repository.init(dir, 0);
+	})
+	.then(function (repo) {
+		return addAndCommit(repo, user, msg);
+	}).catch(function (err) {
+		console.log('error creating repo:', err);
+	});
+}
 
 module.exports = {
   // opens the repo, gets the HEAD commit
-	commit: function (dir, user, msg) {
-		return nodegit.Repository.open(path.resolve(dir, '.git'))
-    .then(function (repoResult) {
-	repo = repoResult;
-	return nodegit.Reference.nameToId(repo, 'HEAD');
-}).then(function (head) {
-	return repo.getCommit(head);
-}).then(function (parent) {
-	parents = [parent];
-	return addAndCommit(repo, user, msg);
-});
-	},
+	commit: commit,
+	getFileFromCommit: getFileFromCommit,
+	createRepo: createRepo,
+	getHead: getHead,
 
-	createRepo: async function (dir, user, msg) {
-    // creates the directory, initializes the repo
-		parents = [];
-		return ensureDir(dir)
-    .then(function () {
-	return nodegit.Repository.init(dir, 0);
-})
-    .then(function (repo) {
-	return addAndCommit(repo, user, msg);
-}).catch(function (err) {
-	console.log('error creating repo:', err);
-});
+	createAndCommit: async function (dir, user, msg) {
+		if (msg === undefined) {
+			msg = 'update repository'
+		}
+		let stats;
+		try {
+			stats = await stat(dir + '/.git');
+			// if stat doesn't throw, the git directory already exists
+			return commit(dir, user, msg);
+		} catch (err) {
+			// else, create the new repo and commit
+			return createRepo(dir, user, msg);
+		}
 	}
 };
