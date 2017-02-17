@@ -70,7 +70,11 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-This document summaries the progress that the Remix team has made on the Many Voices Publishing Platform for the client Dr. Carlos Jensen. Additionally this document provides a week by week summary of work performed, as well as what is needed to be changed to improve effectiveness in building the MVP platform.
+		\noindent This document summaries the progress that the Remix team 
+		has made on the Many Voices Publishing Platform for the client 
+		Dr. Carlos Jensen. Additionally this document provides a week by 
+		week summary of work performed, as well as what is needed to 
+		be changed to improve effectiveness in building the MVP platform.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -85,24 +89,31 @@ This document summaries the progress that the Remix team has made on the Many Vo
 
 % 8. now you write!
 \section{Project Purpose}
-\noindent A modern textbook is updated frequently, perhaps even yearly, and can cost in the range of hundreds of dollars. 
-Students are often left to attempt to understand poorly worded, even incorrect information from a textbook 
-often chosen from those sent to a professor for review by the publisher. This can lead to better works with 
-less aggressive sales tactics not being made available, or even known. Another choice would be for a 
-professor to write their own textbook. However, this is a process that takes months of endless research 
-and time spent, and on top of that will require peer review and publishing before it can be released. \\
+\noindent A modern textbook is updated frequently, perhaps even yearly, 
+and can cost in the range of hundreds of dollars. Students are often left 
+to attempt to understand poorly worded, even incorrect information from a textbook 
+often chosen from those sent to a professor for review by the publisher. 
+This can lead to better works with less aggressive sales tactics not being 
+made available, or even known. 
+Another choice would be for a professor to write their own textbook. 
+However, this is a process that takes months of endless research and 
+time spent, and on top of that will require peer review and publishing 
+before it can be released. \\
 
-\noindent The Many Voices platform offers to put an end to this massive, slow, expensive cycle.  
-Instead of a textbook being a single document written by one professor, we seek to re-imagine 
-the textbook as instead a collection of content written by professors from around the world 
-that are useful for a particular class. A knowledgeable professor can contribute a few chapters 
-on their specialty, without needing to write an entire textbook around it. \\
+\noindent The Many Voices platform offers to put an end to this massive, 
+slow, expensive cycle.  Instead of a textbook being a single document 
+written by one professor, we seek to re-imagine the textbook as instead 
+a collection of content written by professors from around the world 
+that are useful for a particular class. A knowledgeable professor can 
+contribute a few chapters on their specialty, without needing to write 
+an entire textbook around it. \\
 
-\noindent Professors wishing to use this content can then modify it for their uses in the classroom. 
-The material will be hosted in such a way as to provide the ability to \"fork\" content, or 
-create content based off of it. The platform will provide a way to search for and find content, 
-prioritized by relevance and credibility as determined by other users; the most popular material 
-will be shown with the most prominence. 
+\noindent Professors wishing to use this content can then modify it for 
+their uses in the classroom. The material will be hosted in such a way 
+as to provide the ability to \"fork\" content, or create content based 
+off of it. The platform will provide a way to search for and find content, 
+prioritized by relevance and credibility as determined by other users; 
+the most popular material will be shown with the most prominence. 
 
 \section{Weekly Updates}
 
@@ -168,114 +179,329 @@ the march towards project completion. We made the strategic decision to focus
 on getting rested and well-fed in an attempt to mentally prepare ourselves for 
 the last two main parts of the Fall-term requirements. \\
  
-\noindent Week 10 began with work towards finishing our design document. After a few false 
-starts and a night of less sleep than desired, the final design document was turned 
-in on time. Unfortunately, we were unable to get our client's signature in time; 
-we will be providing a signed copy to be graded as soon as possible. Later in Week 10, 
-during the weekend before finals week, we wrote our progress update document and 
-recorded our progress update video.
+\noindent Week 10 began with work towards finishing our design document. 
+After a few false starts and a night of less sleep than desired, the final 
+design document was turned in on time. Unfortunately, we were unable to get 
+our client's signature in time; we will be providing a signed copy to be graded 
+as soon as possible. Later in Week 10, during the weekend before finals week, 
+we wrote our progress update document and recorded our progress update video.
 
 
-\section{Weekly Summary}
+\section{Steven Term Progress}
+For this week we were getting back into the groove of things after Winter break. 
+Josh and I were able to meet with Carlos the week prior and talked about 
+arranging meetings going forward each week.
+
+We weren't able to get a whole lot of work done this week, but we planned for 
+meeting each week at least a few hours a couple days of the week so we can 
+continue making progress. We plan to meet next week and work on the framework 
+and user stories.
+
+This week we began our weekly meetings, though our client had to cancel 
+meeting for the first two weeks. We also setup our meetings with Jon, which was 
+actually pretty difficult to find a time that worked for all four of our schedules.
+
+We plan to continue working on the User Stories and Framework so we are able 
+to make progress towards a working prototype.
+
+This week we were to begin our weekly meetings with our client. 
+Our client recently transferred positions and our weekly appointment was 
+discarded. This resulted in our weekly time slot being given away, so now we 
+have to find a new time (planned for 9:00AM Mondays). Our client also wants 
+to only meet every other week rather than weekly now.
+
+We talked over the past terms documents and possible upcoming documents that 
+we would be seeing in the class and that we should be focusing on development 
+throughout this term.
+
+We worked on the backend system and testing of the include and input commands 
+with our setup (which seems to be working well!). We also looked into security 
+practices to protect our LaTeX documents from succumbing to common exploits 
+(escaping the document and accessing the shell).
+
+We also worked on getting the framework up and running (TS Lint has been giving 
+us some issues, so we might go with straight typescript without LINT and go to 
+JavaScript with Lint.
+
+This week we met with Dr. Jensen and discussed the back-end of the system as 
+well as some plans for how to model the front end of the system.
+
+Dr. Jensen suggested using low fidelity / medium fidelity to receive feedback 
+from users instead of focusing on getting to high fidelity and having users 
+review that as they will be less critical of the whole system and instead 
+focus on pixel alignment.
+
+Josh and I need to get more work done on Aurelia and get a basic user interface 
+up and running and try working towards in page rendering of the resulting 
+PDF from the back end system.
+
+
+This week was a week we had off from meeting with Dr. Jensen, we used this time 
+to work on developing some of the required features that we need. This 
+included Josh and I working on the PDF in browser rendering with Aurelia. 
+Josh finished this task up separately.
+
+I worked on Prototype development to have Dr. Jensen review and provide 
+feedback on during next weeks meeting. I wasn't able to get as many prototypes 
+drawn as I would have liked, but there is still a good chunk of design that 
+Dr. Jensen could critique.
+
+Next week I plan to show Dr. Jensen our designs and take in any feedback he 
+might have. I also plan to work on revising all of our documents and get them 
+placed into our OneNote document that I have prepared for our group.
+
+
+This week we met with Dr. Jensen and he had lots of feedback about our designs, 
+mainly in ways to simplify the interface for the users while also making it 
+easier to develop. We talked about rendering the PDF only when needed 
+(as in active editing) instead of constantly. We also talked about the 
+possibility of using a tabbed system to only render when the user wants to, 
+which will reduce our server calls.
+
+I plan to continue working on our document revisions, as well as our Progress 
+Report materials (video, presentation materials, and report), which will mainly 
+summarize the previous terms work and provide an overview of our progress 
+this term.
+
+Something that will be better next week is availability, as this week has a 
+lot of midterms for various classes.
+
+
+\section{Evan Term Progress}
+
+This week, we're not really working on too much. We'll be meeting with Carlos 
+in about a week and a half, which will hopefully give us an opportunity to 
+solidify what he wants, versus what we've been designing.
+
+In the mean time, I worked on some of the book management backend over break. 
+I'll continue working on that in my free time.
+
+
+This week we set up meetings with Jon and I've fleshed out the required API 
+for the backend. Barring issues, I'm going to be implementing that for the 
+next few weeks.
+
+This week Carlos cancelled due to calendar migration issues, so we've 
+rescheduled for next week at 9am. Hopefully that'll work out...
+I'm working on getting that backend still moving forward. 
+
+This week we got to meet with Dr Jensen about the state of the backend system 
+(which is my primary domain) and the front-end design, which Steven is planning 
+on drawing some rough prototypes for.
+
+My plan for the next few days is to work on more backend integration, 
+including getting the textbook to render properly.
+
+We didn't meet with Carlos this week, as we've made those every-other. 
+Instead, we used the time to polish existing features we'd already worked on, 
+and write new frontend and backend features. Personally, I got textbook 
+rendering working, which was annoyingly difficult, but it's finally done!
+
+At our next meeting, we're primarily going to show Carlos our frontend 
+prototype designs to get feedback on user flow, interface direction, 
+and the like.
+
+After our meeting with Carlos, we were able to refine our vision for the 
+interface. He mainly stressed making it simpler, and making it less duplicative. 
+We now have an idea around how the user will go about editing a scrap, editing 
+a chapter, etc., and when to render PDFs.
+
+This week is mainly going to be capstone assignments -- the revised documents 
+and the video summary.
+
+
+\section{Josh Term Progress}
+The very end of the break, we were able to get a meeting with Carlos to clear 
+up some possible fallout from the previous term. While we were able to get 
+confirmation on some of the technologies we are using, we didn't sort out a 
+few in the backend. We were able to, however, figure when we could meet with 
+him the following weeks after he moved into his new office. This means we won't 
+be meeting with him for at least two weeks.
+
+As far as figuring out user stories and possible work we could be doing, we 
+managed to develop a game plan of how we can divide and conquer most of it.
+
+Our group managed to meet this week and accomplish setting up the basic 
+architecture of the application. Me and Steven are moving forward with 
+Aurelia and are doing are best to get it configured. 
+
+
+The major changes this week had to do with our client switching his 
+availability to once every two weeks, this hasn't been too much of a 
+problem yet.
+
+The backend has been progressing with Evan, and me and Steven got a semi 
+working version of the Javascript framework working for Aurelia. Me and 
+Even were able to meet this week briefly to discuss progress.
+
+
+We finally got the ball rolling this week because we were able to meet with 
+Dr. Jensen. This led to discussion about work flow designs with a low 
+fidelity goal.
+
+Me and Steven got a fully working version of Aurelia working on a local 
+server, and now we're working on the the basic layout.
+
+Evan has still been making good progress on the backend, and was able to show 
+Dr. Jensen the basic foundation of the backend. 
+
+Me and Steven started working on a PDF viewer by following a guide online. 
+This led to some good progress as far as knowledge for the two of us. We have 
+our meeting with Dr. Jensen this week, and we want to have this done before 
+showing him.
+
+Steven worked on prototypes and I branched off into finishing the 
+pdfviewer demo. 
+
+
+Our meeting with Dr. Jensen went very well, he gave us constructive feedback 
+on our designs and we were able to demo the front of the application to him. 
+Me and Steven are going to continue working on the pdfviewer and integrating 
+it into the application.
+
+We also need to work on a progress report, which will be in the form of a video 
+with edits from last time. We're going to demo our front end as well as our 
+back end for this. It's due on Friday, and with Valentine's Day in the middle, 
+it might be difficult to accomplish everything without the use of an all nighter.
+
+
+
+
+\section{Fall Term Weekly Summary}
 
 \begin{tabular}{|p{0.05\linewidth}|p{0.285\linewidth}|p{0.285\linewidth}|p{0.285\linewidth}|}
 \hline 
 Week & Positives & Deltas & Actions \\ \hline
 
-3 &
-Got the initial draft of the problem statement done after meeting last 
-	week with our client. &
-Were unable to set up a meeting with our client, and thus had no way of 
-	getting feedback on the draft before submission. &
-We will talk to our client via email about possible meeting times, either 
+	3 
+	& Got the initial draft of the problem statement done after meeting last 
+	week with our client. 
+	& Were unable to set up a meeting with our client, and thus had no way of 
+	getting feedback on the draft before submission. 
+	& We will talk to our client via email about possible meeting times, either 
 	in person or remote, that may possibly work for everyone. \\ \hline
 
-4 &
-Figured out a time for meeting with our TA. &
-Need to hear back from our client. &
-We will wait another day or two and then send a new polite email. \\ \hline
+	4 
+	& Figured out a time for meeting with our TA. 
+	& Need to hear back from our client. 
+	& We will wait another day or two and then send a new polite email. \\ \hline
 
-5 &
-Finished revising the problem statement, got it signed. Began the requirements document. & N/A & N/A\\ \hline
+	5 
+	& Finished revising the problem statement, got it signed. 
+		Began the requirements document. 
+	& N/A 
+	& N/A\\ \hline
 
-6 &
-Revised Requirements document via feedback from TA. Got client signature on Requirements. 
-	Attended writing workshop. &
-Need to be on top of things regarding contacting our client as he is difficult to contact. &
-We will send him another email asking for feedback on the requirements. \\ \hline
+	6 
+	& Revised Requirements document via feedback from TA. Got client signature on Requirements. 
+		Attended writing workshop. 
+	& Need to be on top of things regarding contacting our client as 
+		he is difficult to contact. 
+	& We will send him another email asking for feedback on the requirements. \\ \hline
 
-7 &
-Began technology review. Revised requirements document for possible re-grading. &
-Need better team work schedule to get times to work on documents together rather than separately. &
-We will discuss possible extra meeting times in addition to our weekly meeting 
+	7 
+	& Began technology review. Revised requirements document for possible re-grading. 
+	& Need better team work schedule to get times to work on documents 
+	together rather than separately. 
+	& We will discuss possible extra meeting times in addition to our weekly meeting 
 	with our TA where we can work for several hours uninterrupted. \\ \hline
 
-8 &
-Finished technology review (after getting extension to Wednesday). &
-Need to be on top of documents to finish them well in advance of due dates! &
-We will personally push ourselves to get work done sooner rather than later. \\ \hline
+	8 
+	& Finished technology review (after getting extension to Wednesday). 
+	& Need to be on top of documents to finish them well in advance of due dates! 
+	& We will personally push ourselves to get work done sooner rather than later. \\ \hline
 
 
-9 \& 10 &
-Spent Thanksgiving Week getting rested. Finished design document. 
-	Finished progress update document/finished presentation. &
-Need to get client signature for design document! &
-We will be emailing Carlos. With the new term we hope to set up a weekly meeting with him.  \\ \hline
+	9 \hspace{3mm} \& 10 
+	& Spent Thanksgiving Week getting rested. Finished design document. 
+		Finished progress update document/finished presentation. 
+	& Need to get client signature for design document! 
+	& We will be emailing Carlos. With the new term we hope 
+		to set up a weekly meeting with him.  \\ \hline
 
-\hline
 \end{tabular}
+
+
+\section{Fall Term Impending Problems}
+
+For Fall term, client communication was a problem that impeded our progress 
+at a few points. Due to busy schedules of the team and the client, communication 
+slipped from where we expected it to be.
+This caused problems with project requirements and other questions the team 
+had about moving forward. For Winter term and beyond, the team plans on having 
+a weekly meeting with our client and additionally providing a weekly email 
+detailing our progress of the week. \\ 
+
+\noindent Additionally, finding time for the team to come together to work 
+on the project proved difficult.
+Our schedules had many conflicting times with classes and work times that 
+made it difficult to spend large portions of time together.
+This resulted in a lot of remote development of the planning and documentation, 
+resulting in less detailed documentation and lower scores on grading.
+In the recent weeks, the team has spent more time working together, which has 
+led to more cohesive development. For Winter term and beyond, the team has 
+schedules that align more cohesively, allowing for more time to be spent 
+discussing and developing the platform together.
 
 \section{Retrospective}
 
-\begin{tabular}{|p{0.3\linewidth}||p{0.3\linewidth}|p{0.3\linewidth}|}
+\begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
 \hline
-Positives & Deltas & Actions \\ \hline
 
-Team came together on planning and design &
-Client communication &
-We will talk to our client via email about possible meeting times, either in person or remote, that may possibly work for everyone. \\ \hline
+	Positives 
+	& Deltas 
+	& Actions \\ \hline
 
-Learned a lot about the software development process &
-Documentation / Development Confusion &
-If we are confused and blocked by something in the class that could be helped by asking a question of either our TA Jon Dodge or Professors D. Kevin McGrath or Dr. Kirsten M. Winters, we will. \\[0.000001cm] \hline
+	Team came together on planning and design 
+	& Client communication 
+	& We will talk to our client via email about possible meeting times, 
+		either in person or remote, that may possibly work for everyone. \\ \hline
 
-Learned a lot about Latex and the writing of technical documents. &
-Team Communication &
-Solved: Problems with communication were solved by transition to Slack \& Email communication \\[1pt]  \hline
+	Learned a lot about the software development process 
+	& Documentation / Development Confusion 
+	& If we are confused and blocked by something in the class that could 
+		be helped by asking a question of either our TA Jon Dodge or Professors 
+		D. Kevin McGrath or Dr. Kirsten M. Winters, we will. \\ \hline
 
-&
-Team Meeting Time &
-Need to compare our schedules and find a time that will work for all of us to get together. \\ \hline
+	Learned a lot about Latex and the writing of technical documents. 
+	& Team Communication 
+	& Solved: Problems with communication were solved by 
+		transition to Slack \& Email communication \\  \hline
 
-\hline
+	& Team Meeting Time 
+	& Need to compare our schedules and find a time that will work 
+		for all of us to get together. \\ \hline
+
 \end{tabular}
 
 \section{Current Project Status}
 
-Thus far we have written documentation detailing the technical and design requirements of the project.
+Thus far we have written documentation detailing the technical and design 
+requirements of the project.
 Now, we are beginning to move into the technical development phase.
-To begin, we are finishing coalescing a unified vision of what the project is, and how we will go about architecting and building it.
-We are planning on beginning to build our initial prototype over winter break, based on the basic skeleton laid out in the documentation. \\
+To begin, we are finishing coalescing a unified vision of what the project is, 
+and how we will go about architecting and building it.
+We are planning on beginning to build our initial prototype over winter break, 
+based on the basic skeleton laid out in the documentation. \\
 
-\noindent Moving forward, we expect to spend the majority of time doing individual development work, with weekly team development sessions to keep ourselves on the same track.
-In doing so we will be able to progress even when one individual team member is blocked on either something relating to the project, or on other work.
-To do this, we have split the project into chunks, which we will then work on either solo or in a pair. 
+\noindent Moving forward, we expect to spend the majority of time doing 
+individual development work, with weekly team development sessions to 
+keep ourselves on the same track.
+In doing so we will be able to progress even when one individual team 
+member is blocked on either something relating to the project, or on other work.
+To do this, we have split the project into chunks, which we will then 
+work on either solo or in a pair. 
 
-\section{Impending Problems}
 
-For Fall term, client communication was a problem that impeded our progress at a few points.
-Due to busy schedules of the team and the client, communication slipped from where we expected it to be.
-This caused problems with project requirements and other questions the team had about moving forward.
-For Winter term and beyond, the team plans on having a weekly meeting with our client and additionally providing a weekly email detailing our progress of the week. \\ 
-
-\noindent Additionally, finding time for the team to come together to work on the project proved difficult.
-Our schedules had many conflicting times with classes and work times that made it difficult to spend large portions of time together.
-This resulted in a lot of remote development of the planning and documentation, resulting in less detailed documentation and lower scores on grading.
-In the recent weeks, the team has spent more time working together, which has led to more cohesive development.
-For Winter term and beyond, the team has schedules that align more cohesively, allowing for more time to be spent discussing and developing the platform together.
 
 \section{Conclusion}
 
-The Many Voices Publishing Platform has been a great project to work on, bringing each team member outside their comfort zone. A lot of planning has taken place over Fall term, sometimes resulting in shifts in direction of how to manage and develop the platform. The Remix team feels more comfortable moving into Winter term, and for development to begin on the platform. Part of this comfort comes from the planning of weekly meetings with the client, and weekly emails to detail the current project status.
+The Many Voices Publishing Platform has been a great project to work on, 
+bringing each team member outside their comfort zone. A lot of planning has 
+taken place over Fall term, sometimes resulting in shifts in direction of how 
+to manage and develop the platform. The Remix team feels more comfortable moving 
+into Winter term, and for development to begin on the platform. Part of this 
+comfort comes from the planning of weekly meetings with the client, and weekly 
+emails to detail the current project status.
 
 \end{document}

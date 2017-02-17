@@ -6,8 +6,11 @@
 \contentsline {subsection}{\numberline {2.4}Week 6}{3}
 \contentsline {subsection}{\numberline {2.5}Week 7 \& 8}{3}
 \contentsline {subsection}{\numberline {2.6}Week 9 \& 10}{3}
-\contentsline {section}{\numberline {3}Weekly Summary}{4}
-\contentsline {section}{\numberline {4}Retrospective}{5}
-\contentsline {section}{\numberline {5}Current Project Status}{5}
-\contentsline {section}{\numberline {6}Impending Problems}{5}
-\contentsline {section}{\numberline {7}Conclusion}{6}
+\contentsline {section}{\numberline {3}Steven Term Progress}{3}
+\contentsline {section}{\numberline {4}Evan Term Progress}{4}
+\contentsline {section}{\numberline {5}Josh Term Progress}{5}
+\contentsline {section}{\numberline {6}Fall Term Weekly Summary}{6}
+\contentsline {section}{\numberline {7}Fall Term Impending Problems}{7}
+\contentsline {section}{\numberline {8}Retrospective}{7}
+\contentsline {section}{\numberline {9}Current Project Status}{7}
+\contentsline {section}{\numberline {10}Conclusion}{8}
