@@ -269,46 +269,147 @@ lot of midterms for various classes.
 
 \section{Evan Term Progress}
 
-This week, we're not really working on too much. We'll be meeting with Carlos 
-in about a week and a half, which will hopefully give us an opportunity to 
-solidify what he wants, versus what we've been designing.
+\subsection{Weekly Recapping}
+For the first week of the term, we were mostly catching up on what we had done
+over the break. Steven and Josh had managed to meet with Carlos, which was great
+to arrange future meetings and to get his opinion on where we were going with
+the project. After a term of lower levels of contact than would have been
+preferable, it was good to get this initial meeting set up and done with no
+hassles.
 
-In the mean time, I worked on some of the book management backend over break. 
-I'll continue working on that in my free time.
+Over the break, I began work on the book management backend library. This is the
+foundation of the entire project -- the part that will do the actual work
+interacting between the git repositories and Javascript objects with convenient
+APIs.
 
+In the second week, we got meetings set up with Jon, our TA. In the mean time I
+wrote a basic preliminary version of the API specification for the library.
+Barring any issues I ran into the plan was to implement this for the next
+several weeks.
 
-This week we set up meetings with Jon and I've fleshed out the required API 
-for the backend. Barring issues, I'm going to be implementing that for the 
-next few weeks.
+The third week was to be our first meeting with Dr. Carlos Jensen.
+Unfortunately, due to a calendar migration relating to his change in job
+position, he had missed our appointment scheduling and overbooked. We were
+luckily able to work out a time to meet the next week with him.
 
-This week Carlos cancelled due to calendar migration issues, so we've 
-rescheduled for next week at 9am. Hopefully that'll work out...
-I'm working on getting that backend still moving forward. 
+Week four was the first week where we were able to meet with Dr. Jensen as a
+group. We go to talk about the state of the backend, including its technical
+document storage design, and the frontend. For the frontend, Dr. Jensen asked
+us to draw some rough prototypes. Steven is planning on taking the lead with
+that.
 
-This week we got to meet with Dr Jensen about the state of the backend system 
-(which is my primary domain) and the front-end design, which Steven is planning 
-on drawing some rough prototypes for.
+We were unable to meet with Dr. Jensen during week five, as with his calendar
+migration reset we changed our meetings to every other week. Instead, we used
+that week to polish features we'd been working on already. For instance, I
+finally got textbook rendering working. It was a pain to get, because it
+involves descending into chapters and scraps (all asychronous calls in
+Javascript), but with it working now that is a major milestone out of the way.
 
-My plan for the next few days is to work on more backend integration, 
-including getting the textbook to render properly.
+At our next meeting, Monday of week six, we primarily went over our frontend
+prototype designs with Dr. Jensen to get his feedback on user flow, interface
+direction, and the like. We were able to refine our vision for the interface,
+with his main feedback stressing making it simpler, and making it less
+duplicative. We now have an idea around how the user will go about editing a
+scrap, editing  a chapter, etc., and when in the writing process to start
+rendering PDFs for layout preview.
 
-We didn't meet with Carlos this week, as we've made those every-other. 
-Instead, we used the time to polish existing features we'd already worked on, 
-and write new frontend and backend features. Personally, I got textbook 
-rendering working, which was annoyingly difficult, but it's finally done!
+This week, week six, has been all about capstone assignments -- the revised
+documents, the video summary, and of course this progress report document.
 
-At our next meeting, we're primarily going to show Carlos our frontend 
-prototype designs to get feedback on user flow, interface direction, 
-and the like.
+\subsection{What's Left on the Backend}
+The backend is split into two primary parts. The first, and most difficult part
+of the backend, is the interface library being used to store objects into the
+git repositories and to get them back out. Shown below is a code sample, which
+is fully working today, showing a simple script that creates new scraps,
+chapters, and books, and gets a valid tex document to render from them.
 
-After our meeting with Carlos, we were able to refine our vision for the 
-interface. He mainly stressed making it simpler, and making it less duplicative. 
-We now have an idea around how the user will go about editing a scrap, editing 
-a chapter, etc., and when to render PDFs.
+\begin{verbatim}
+var a = new scrap.Scrap('First sentence of a chapter', 'rambourg');
+await a.save('initial save');
 
-This week is mainly going to be capstone assignments -- the revised documents 
-and the video summary.
+var b = new scrap.Scrap('Second sentence of a chapter', 'rambourg');
+await b.save('initial save');
 
+var ch1 = new chapter.Chapter('First Chapter Name', 'rambourg');
+ch1.addScrap(a);
+ch1.addScrap(b);
+
+await ch1.save('initial save');
+
+var c = new scrap.Scrap('First sentence of another chapter', 'rambourg');
+await c.save('initial save');
+var ch2 = new chapter.Chapter('Another Chapter Title', 'rambourg');
+ch2.addScrap(c);
+await ch2.save('initial save');
+
+var myBook = new Book('My Fav Book Title', 'rambourg');
+myBook.addChapter(ch1);
+myBook.addChapter(ch2);
+
+var bookText = await myBook.getText();
+\end{verbatim}
+
+We can create a new scrap with the scrap.Scrap constructor. We simply have
+to pass it the text to include in the scrap, and the author. This allows us to
+simply have some sort of API call that provides these two things and pushes them
+straight into a scrap. It’s necessary to save an object every time. After
+creating the scraps we want, it’s then time to create a chapter. It’s worth
+noting that normally, a user would more likely create a book first, then a
+chapter, then some scraps, but since scraps, chapters, and books can exist
+freely from each other -- a scrap doesn’t always need to be associated with a
+chapter, for example -- it’s easiest to demonstrate here by creating them in the
+order we associate them in. After creating the chapter and saving it, we can
+another create chapter as wanted, a new scrap, et cetera. We can then
+just add these to a book by calling the addChapter method. When we’re done and
+want to get the text of the book in its entirety, we call the getText method.
+What this method does is, more or less, recursively read all chapters, and then
+all of their scraps, and then reconstruct the final latex file by concatenating
+the values of the scraps.
+
+Let’s take a closer look at the scrap object.
+
+\begin{verbatim}
+var scr = new scrap.Scrap('Brody', 'abc123-def456')
+
+// reconstitute a chapter from author and id
+var ch = chapter.reconstitute('Patrick Rambourg', '56c2c2ee')
+var newCh = await ch.fork('Brody')
+
+newCh.addScrap(scr)
+await newCh.save('add new chapter')
+\end{verbatim}
+
+We have today a working
+implementation to load chapters, scraps, and books from disk, modify them, and
+save them. As shown here, it’s as easy as calling “reconstitute” with the
+author’s name and the object’s ID number. In the future, another user will be
+able to fork an object, which will create a copy of the object in their space
+that they can modify. They’ll then be able to do things like add scraps to a
+chapter, chapters to a book, modify scraps, et cetera. It’s worth noting that
+forking is not currently implemented. However, we do not anticipate any problems
+with its implementation, as it integrates easily into the existing git backend.
+
+So what is currently left on the backend? As mentioned before, we have two main
+parts. The library is the unique part of the project, the part that controls
+the actual object storage, modification, forking, and saving. Of these
+functionalities, the only parts left are forking, and getting previous versions.
+Getting a previous version is around 80% done. We can currently read the object
+from the disk and retrieve the old version. It is now only a matter of creating
+a new object from this old version and returning it.
+
+The other main part of the backend is the API. This API is a simple app written
+in Node that wraps the backend library in web-available JSON requests. The API
+is going to be the easier of the two pars to implement, as I already have ample
+experience creating web APIs, including in NodeJS. The API will include user
+authentication, allowing us to control who modifies which objects, and keep
+track of the owner.
+
+In addition, we will be needing some kind of search backend. We have yet to
+adevelop our exact strategy for search, but will most likely be using a prebuilt
+search backend and simply loading objects into it at save time. This will allow
+for easy referencing back and forth between search results, which will return
+the object id and its owner, and the object stored on disk, which is referred to
+by its id and owner.
 
 \section{Josh Term Progress}
 \subsection{Recapping}
