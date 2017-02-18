@@ -1,0 +1,3 @@
+[submodule "backend/scrapjs"]
+	path = backend/scrapjs
+	url = git@github.com:CS461-MVP/scrapjs.git
