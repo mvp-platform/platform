@@ -104,7 +104,7 @@
 \tablehead{}
 \begin{supertabular}{|p{3cm}|p{3cm}|p{3cm}|p{7cm}|}
 \hline
-Name & Change Number & Date & Description of Change  
+Name & Change Number & Date & Description of Change
 \\\hline
 Steven Powers & 1 & 2/13/2017 & Updated document to clarify  that we will not be using Ward Cunningham's Federated Wiki as the base, but instead as inspiration.
 \\\hline
@@ -284,19 +284,20 @@ users from accessing other, non-specified applications.}
 The product will be designed to run on a generic Linux-with-web server environment.
 Ward Cunningham's Federated Wiki, a similar project being drawn upon for inspiration, can run
 on any system with Ruby and CouchDB (a popular NoSQL database) \cite{Federated}.
-With the product being either partially or wholly based on the Federated Wiki, similar system
-requirements are anticipated \cite{Federated}.
+Though not being directly based upon the Federated Wiki, the project has similar
+levels of complexity and engineering requirements. Therefore it is a reasonable
+benchmark to aim for. \cite{Federated}.
 
 \subsection[SYSTEM LEVEL (NON{}-FUNCTIONAL) REQUIREMENTS]{SYSTEM LEVEL (NON-FUNCTIONAL) REQUIREMENTS}
 
 
 \subsubsection[Site Dependencies]{Site Dependencies}
 As a web application, the product has no hard requirements other than high-speed
-network access and an instance of the CouchDB database management system.
+network access and an instance of a chosen database management system.
 \begin{itemize}
   \item Hardware: standard virtual machine(s) running on cloud provider (ex: Amazon EC2
   t2.medium)
-  \item Possible Database: CouchDB 2.0
+  \item Possible Database: CouchDB 2.0, PostgreSQL, etc.
 \end{itemize}
 
 \subsubsection[Safety, Security and Privacy Requirements]{Safety, Security and Privacy Requirements}
