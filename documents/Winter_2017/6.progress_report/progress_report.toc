@@ -1,21 +1,15 @@
-\contentsline {section}{\numberline {1}Project Purpose}{2}
-\contentsline {section}{\numberline {2}Weekly Updates}{2}
-\contentsline {subsection}{\numberline {2.1}Week 3}{2}
-\contentsline {subsection}{\numberline {2.2}Week 4}{2}
-\contentsline {subsection}{\numberline {2.3}Week 5}{2}
-\contentsline {subsection}{\numberline {2.4}Week 6}{3}
-\contentsline {subsection}{\numberline {2.5}Week 7 \& 8}{3}
-\contentsline {subsection}{\numberline {2.6}Week 9 \& 10}{3}
-\contentsline {section}{\numberline {3}Steven Term Progress}{3}
-\contentsline {section}{\numberline {4}Evan Term Progress}{4}
-\contentsline {subsection}{\numberline {4.1}Weekly Recapping}{4}
-\contentsline {subsection}{\numberline {4.2}What's Left on the Backend}{5}
-\contentsline {section}{\numberline {5}Josh Term Progress}{7}
-\contentsline {subsection}{\numberline {5.1}Recapping}{7}
-\contentsline {subsection}{\numberline {5.2}Overview}{8}
-\contentsline {subsection}{\numberline {5.3}What's Left on the Frontend}{8}
-\contentsline {section}{\numberline {6}Fall Term Weekly Summary}{10}
-\contentsline {section}{\numberline {7}Fall Term Impending Problems}{10}
-\contentsline {section}{\numberline {8}Retrospective}{11}
-\contentsline {section}{\numberline {9}Current Project Status}{11}
-\contentsline {section}{\numberline {10}Conclusion}{11}
+\contentsline {section}{\numberline {1}Revision Log}{2}{section.1}
+\contentsline {section}{\numberline {2}Project Purpose}{2}{section.2}
+\contentsline {section}{\numberline {3}Winter Term Weekly Summary}{3}{section.3}
+\contentsline {section}{\numberline {4}Steven Term Progress}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Weekly Recapping}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}What's Left on the Frontend}{5}{subsection.4.2}
+\contentsline {section}{\numberline {5}Evan Term Progress}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}Weekly Recapping}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}What's Left on the Backend}{8}{subsection.5.2}
+\contentsline {section}{\numberline {6}Josh Term Progress}{10}{section.6}
+\contentsline {subsection}{\numberline {6.1}Weekly Recapping}{10}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Overview}{11}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}What's Left on the Frontend}{11}{subsection.6.3}
+\contentsline {section}{\numberline {7}Current Project Status}{12}{section.7}
+\contentsline {section}{\numberline {8}Conclusion}{12}{section.8}
