@@ -39,7 +39,7 @@ Method | Endpoint | Description
 `GET` | `/chapters/{chapter_id}` | get chapter information (incl. scrap list)
 `POST` | `/chapters/{chapter_id}` | *update* chapter information (incl. scrap list)
 `GET` | `/chapters/{chapter_id}/pdf` | generate PDF of chapter
-`GET` | `/chapters/{chapter_id}/history | get history of chapter
+`GET` | `/chapters/{chapter_id}/history` | get history of chapter
 `POST` | `/chapters/new` | create new chapter object
 
 ## `/scraps`
@@ -48,13 +48,13 @@ Method | Endpoint | Description
 ---|---|---
 `GET` | `/scraps/{scrap_id}` | get scrap information (incl. scrap body)
 `GET` | `/scraps/{scrap_id}/pdf` | generate PDF of scrap
-`GET` | `/scraps/{scrap_id}/history | get history of scrap
+`GET` | `/scraps/{scrap_id}/history` | get history of scrap
 `POST` | `/scraps/new` | create new scrap object
 
 ## `/account`
 
 Method | Endpoint | Description
----|--|---
+---|---|---
 `POST` | `/account/login` | Log in
 `POST` | `/account/logout` | Log out
 `POST` | `/account/new` | Create account
