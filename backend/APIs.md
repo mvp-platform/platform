@@ -27,10 +27,16 @@ Method | Endpoint | Description
 
 ## `/search`
 
+Search:  
 `/search?q=plus+separated+query`  
+
+Search for specific types:  
 `/search?q=abc123&type=books`  
 `/search?q=abc123&type=chapters`  
 `/search?q=abc123&type=books&type=chapters`  
+
+Search only current user's items:  
+`/search?q=abc&personal=true`
 
 ## `/chapters`
 
