@@ -8,7 +8,7 @@ Method | Endpoint | Description
 `GET` | `/books/{book_id}` | get information about a book (incl. chapter list)
 `POST` | `/books/{book_id}` | *update* information about a book (incl. chapter list)
 `GET` | `/books/{book_id}/pdf`| generate PDF of book
-`GET` | `/books/{book_id}/history | get history of book
+`GET` | `/books/{book_id}/history` | get history of book
 `POSt` | `/books/new` | create new book object
 
 ## `/users`
