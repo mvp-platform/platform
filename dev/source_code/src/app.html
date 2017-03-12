@@ -1,0 +1,71 @@
+<template>
+    <require from="resources/elements/pdf-document"></require>
+
+    <!--
+  This is just a regular Aurelia viewmodel. We import the pdf-document element that
+  we created, and we bind viewmodel properties to it.
+  -->
+    <section>
+        <div id="bookView">
+            <h1>Many Voices Publishing Platform</h1>
+            <form submit.trigger="addTodo()">
+                <input type="text" value.bind="todoDescription">
+                <button type="submit">Search</button>
+            </form>
+            <ul>
+                <li repeat.for="todo of todos">
+                    <input type="checkbox" checked.bind="todo.done">
+                    <span css="text-decoration: ${todo.done ? 'line-through' : 'none'}">
+                ${todo.description}
+                </span>
+                    <button click.trigger="removeTodo(todo)">Remove</button>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div id="scrapView">
+            <input id="scrapEditor" type="text">
+            <button type="submit">Compile Now</button>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <!-- We can use multiple pdf-document elements in one page - we can even use them in a repeater. -->
+            <div class="" repeat.for="document of documents">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input id="url" type="text" class="form-control" value.bind="document.draftUrl" />
+                        <button click.delegate="loadUrl(document)" class="btn btn-primary btn-block btn-sm">Load PDF URL</button
+          </div>
+
+          Zoom:
+          <input id="scale" type="number" step="0.1" class="form-control" value.bind="document.scale" />
+
+          Page:
+          <input id="pagenumber" type="number" class="form-control" value.bind="document.pageNumber" />
+        </div>
+        <div class="col-xs-12">
+          <!-- Here, we use the pdf-document custom element. Note the bindables. -->
+          <pdf-document url.bind="document.url" page.bind="document.pageNumber" lastpage.bind="document.lastpage" scale.bind="document.scale"></pdf-document>
+
+          <!--
+          Note that the toolbar isn't part of the custom element; it's part of the containing view.
+          This makes customization easy.
+          -->
+          <div style="position: absolute; top: 3em; left: 50%; right: 50%;">
+            <div class="pdf-toolbar text-center">
+              ${document.pageNumber} / ${document.lastpage}
+              <button click.delegate="zoomIn(document)" class="btn btn-link">
+                <i class="fa fa-plus"></i>
+              </button>
+              <button click.delegate="zoomOut(document)" class="btn btn-link">
+                <i class="fa fa-minus"></i>
+              </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</template>
