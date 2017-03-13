@@ -5,6 +5,10 @@ body {
     overflow-x: hidden;
 }
 
+#main-header {
+    background-color: lime;
+}
+
 .pdf-toolbar {
   width: 300px;
   text-align: center;
