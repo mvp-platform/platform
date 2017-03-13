@@ -1,23 +1,3 @@
-# Adventures in Aurelia: Creating a Custom PDF Viewer
-
-## Skeleteon App
-
-This is a [stripped down version of the Aurelia skeleton app](https://github.com/sitepoint-editors/aurelia-pdfjs/tree/skeleton/), to which we have added a couple of things:
-
-- A Gulp task to copy PDF files to the `dist` folder (which Aurelia uses for bundling).
-- The PDF.js dependency has been added to `package.json`.
-- In the root of the app, `index.html` and `index.css` have received some initial styling.
-- Empty copies of the files we're going to be working in have been added.
-- The file `src/resources/elements/pdf-document.css` contains some CSS styling for the custom element.
-
-Clone this if you intend to follow along with [the tutorial](https://www.sitepoint.com/aurelia-custom-pdf-viewer-component).
-
-## Requirements
-
-* [Node.js](http://nodejs.org/)
-
-## Installation Steps (if applicable)
-
 1. Clone repo
 2. Ensure that Gulp and jspm are installed globally: `npm install -g gulp jspm`
 2. Run `npm install`
