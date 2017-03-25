@@ -8,12 +8,13 @@
 \usepackage{tabu}
 \usepackage{hyperref}
 \usepackage{url}
+\usepackage{afterpage}
 
 \geometry{textheight=9.5in, textwidth=7in}
 
 \begin{document}
 
-\noindent Evan Tschuy
+\noindent Josh Matteson
 
 \noindent Winter Final Progress Report
 
@@ -23,95 +24,176 @@
 
 
 \section{Introduction}
-\noindent (~100 words summarizing the overall purposes and goals) \\
+
+The purpose of our application is to make an easy to use workflow for creating a book or working 
+off somebody else's book. The textbook market is crowded with over priced, misleading, and sometimes 
+inaccurate information filled textbooks. To fix this problem, our application will help professors 
+make textsbook in exactly the fashion that they desire. Whether that's entirely different from the 
+one they started with, or just missing a few chapters from the original. The preference will be up 
+to the user, but ultimately, what we want to accomplish with our application is to give everyone 
+a simple tool that they can use to easily create a textbook specific enough for their liking. \\
 
 \section{My Work}
-\noindent paragraph (~100 words summarizing the three pieces you were responsible for). \\
+
+The first piece of technology that I am responsible for is the testing portion. We are going to be using karma and the basic testing 
+suite that comes with Aurelia. Using this technology will aid in proper functionality and minimize errors. Without properly testing 
+code, a number of problems can occur that can disrupt and slow down progress in a team. In extreme cases, not properly testing could 
+lead to failure of the application. \\
+
+The second technology I am responsible for is the revision control unit. While this is my technology, this has fallen under the work 
+of the backend. This part of the application is being delegated to Evan. It's designed to handle small to very large projects with speed and accuracy.
+It is commonly used by a variety of companies. \\
+
+Lastly the database technology. We chose This particular part of the project revolves around how easy it is to use the calls to the database, and how 
+how easy it is to incorporate it into the application. We chose to go with SQL Server to accomplish this goal. \\
+
+
 
 \section{Progress and Problems}
-Progress and problems paragraphs (include a summary of past problems and then add more detail about
+Towards the very end of winter break, we were able to get a meeting with Carlos to clear
+up some possible fallout from the previous term. We were able to figure out that we could meet with
+him again the following week after he moved into his new office. After this point, we were able to 
+move past our previous issues of having poor communication with our client. We established that meetings 
+would happen every other week in order to keep in touch with the project as well as have him assist us 
+wherever possible. \\
 
-what you’ve done since last progress report; 500-1000+ words); can include....
+After our meeting, we decided to delegate some time to developing a game plan of how we
+could divide and conquer the majority of it. The following week, our whole group 
+managed to meet and accomplish setting up the basic architecture blueprints for the 
+application. This meant that Steven and I would forward with Aurelia, and do 
+everything we could get a working version up and running as soon as possible. \\
 
- Figures, tables, bits of code (for coding projects)
+While the backend was progressing with Evan back in the first weeks, Steven and I focused our time 
+trying for a semi working version of a local Aurelia project that would run in browser. 
+It wasn't too difficult to follow an example online and get an express version of the 
+application up and running. Our group was then able to meet that week to briefly discuss 
+progress and impediments. \\
 
- Preliminary results (for research projects)
+During our 14th week, we finally managed to make some real progress and gain momentum, as
+we were able to meet with Dr. Jensen and talk about what we needed from him. This led to discussion 
+about work flow designs with a desired low fidelity goal. This outlined adequate deliverables for 
+our next meeting two weeks from then, and gave us expectations as to what our client wanted to 
+see from us. During the meeting, Steven and I managed to demo a fully working version of a basic 
+Aurelia project to Dr. Jensen. This was useful to to keep him updated with our current progress. 
+After the meeting, we moved forward with the goal of having a few basic layouts prepared, as well
+as some further technology integration.\\
 
- Description of user study and results
+One of the most important meetings took place after this, where we were able to hammer out 
+all our user stories and figure out what we needed for both the front end and the backend. The next 
+meeting we had with Dr. Jensen went really well, as we had a lot of deliverable content. We were able 
+to show Dr. Jensen all our layout prototypes, and overall he seemed quite happy with the direction in 
+which we were taking the layout. \\
 
- Images of your project
+The next meeting our team had was groundbreaking as we were able to meet up and completely 
+cover the API calls and backend requirements, which caused us to be set up really well for moving 
+forward. Steven and I now understand what is needed to accomplish all our goals, which will help us 
+tremendously when creating the user interface. \\
+
+Steven and I were able to get a good amount of work done covering the front end. We worked 
+on implementing the router and tried to get basic tab functionality working. Unfortunately we weren't
+ able to get the tabs and has been a smaller impediment. However, we were still able to finally get the
+ router working, which helps the user navigate from page to page of the application without refreshing. 
+ Carlos asked me to start thinking critically about an algorithm for compiling latex into a PDF in a 
+ calculated time. I'm going to start thinking and doing research on that topic before our next meeting 
+ with Carlos come spring term. \\
+
+ As far as impediments that have come up this term, I believe one of the biggest ones was not 
+ being able to delegate enough time to working on the application. We still have so much to do before 
+ expo finally arrives, and this means that quite a lot of work will have to be done over spring break. 
+ Steven and I have been able to accomplish quite a lot in the time we've been given, and so I'm not too 
+ worried about us being able to meet all of our goals on time. Below is an illustration of what all the 
+ progress Steven and I have made on the frontend currently looks like. \\
+
+\includegraphics[scale=0.3]{current_frontend}
 
 \section{Member Evaluations}
-Additionally, the document should provide a brief evaluation (~250-500 words) of the members of your team and include information on:
-the special role you believe each member, including yourself, has played on the team (e.g., manager, technical expert, etc.),
-the level of contribution (e.g., higher/lower than, equal to, different from) for each member, including yourself, and
-how well you believe your group functions as a development team.
 
+\subsection{Steven Powers}
+Overall, I would say that Steven has shown serious dedication in the way that he has helped our senior capstone project move forward. 
+Evan and I both consider Steven to be the manager of the group, and has been the main one in contact with Dr. Jensen. He makes sure 
+that all of our projects have been turned in our time, and does a majority of the filler work for our papers and smaller projects. \\
+
+Steven also helps me as much as he can with the frontend of the application. He hasn't had any real experience working with a Javascript 
+framework before, but he is very attentive and tries to help as much as he can with it. \\
+
+\subsection{Evan Tschuy}
+Evan has been the one who is solely in charge of our backend. He alone has ensured that the quality and functionality is meeting 
+our goals and expectations. Evan also contributes to our meetings by ensuring that we talk about everything we need to talk about, 
+and ensuring that we're accomplishing all of our goals. \\
+
+\subsection{Myself}
+I would say that the biggest factor I contribute to the team is organizing time for us to meet up, and the frontend of our application. 
+On my previous internship, I worked heavily with another Javascript framework like the one we're using now. This lead to relative ease
+when trying to understand how to work with the new framework we were all going to have to use. Steven has helped me out a great deal with 
+research and useful articles, however, I would say the majority of the frontend has been my work and research. This will change as he 
+becomes more familiar with how to work with a Javascript framework and we both can be working on the frontend together.  \\
+
+\subsection{Overall}
+Everyone in the team seems to have their own specific role and equal level of contribution. We all spend about an equal amount of time in 
+different ways adding to the project. Everyone seems to be serious about doing well, and the only part I would say we all need work on is 
+setting apart more time to accomplish everything we need. \\
+\afterpage{\clearpage}
 \section{Retrospective}
-Retrospective figure with three columns
-
-positives column: anything good that happened
-deltas column: changes that need to be implemented
-actions column: specific actions that will be implemented in order to create the necessary changes
-
-
 \begin{tabular}{|p{0.05\linewidth}|p{0.285\linewidth}|p{0.285\linewidth}|p{0.285\linewidth}|}
 \hline
 	Week & Positives & Deltas & Actions \\ \hline
 
 	1
-	& col2row1
-	& col3row1
-	& col4row1 \\ \hline
+	& Cleared up fallout with poor communication between us and client.
+	& Evan wasn't able to make it to the first meeting, which made for some unanswered questions during it.
+	& Steven and I were able to talk with Evan about what he missed and sorted out what he needed for the next meeting. \\ \hline
 
 	2
-	& col2row2
-	& col3row2
-	& col4row2  \\ \hline
+	& Our group was able to meet up and discuss the basic architecture of the application and how we should move forward.
+	& Our client wasn't able to meet with us and cancelled our meeting.
+	& We talked with our TA (Jon Dodge) about what we should do about meetings and communication moving forward. \\ \hline
 
 	3
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Steven and I managed to get a semi working frontend that we could show, and Evan continued to work on the backend.
+	& Our client began migrating to a new job and wasn't able to meet with us again because of this.
+	& We were finally able to talk with him and agree upon a bi-weekly meeting time, which will be cause for more deliverable content each week  \\ \hline
 
 	4
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Discussed important ways to progress with Dr. Jensen, which included low fidelity prototypes.
+	& Haven't been consistent with our meeting times.
+	& Discussed important of these topics during the meetings, which aided in the meetings becoming more important.  \\ \hline
 
 	5
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Finished plugin which will allow us to view PDF's inside our app.
+	& Personally need to integrate the PDF Viewer with the rest of our application.
+	& Set a part enough time to integrate the PDF Viewer into the application. \\ \hline
 
 	6
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Met with Dr. Jensen with plenty of deliverable content, including the integration of the PDF Viewer and several low fidelity prototypes to show.
+	& Lots of feedback from our client on how to improve our layout.
+	& Spending enough time going over how to accomplish everything our client wanted and making we followed his guidelines.  \\ \hline
 
 	7
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& We were able to figure out the majority of user stories for the frontend as well as the backend.
+	& Not enough time to dedicate to working on the application.
+	& Being clear in the future about meet ups and staying on track with everything we said we'd be getting done. \\ \hline
 
 	8
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Completely figured out our API calls, which will lead to easier to understand objectives.
+	& Same as previous week, haven't spent enough time to frontend work.
+	& Get to work earlier on the important parts of the project. \\ \hline
 
 	9
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Steven and I implemented the router, which helped ease the deltas of the previous weeks.
+	& No real problems or issues that needed work this week.
+	& N/A \\ \hline
 
 	10
-	& col2row3
-	& col3row3
-	& col4row3  \\ \hline
+	& Clear goals of what we can be working on over the break.
+	& No real problems or issues that needed work this week.
+	& N/A \\ \hline
 
 \end{tabular}
-
+\clearpage
 \section{Conclusion}
-Conclusion about what you’re looking forward to in the coming weeks (~100 words)
+With everything that my team has accomplished and worked through this previous and current term, I'm excited to see what we can get done in the next few 
+weeks to come. My team has shown that we can get a lot done in a short amount of time, and that puts some of the worries that I could have moving forward 
+to rest. I've had a great time working with my group mates, we all seem to have a similiar humor and that makes our meetings fairly interesting. I think 
+we'll have a lot to present at expo, and I can't wait to see our finished product. \\
 
 \end{document}
