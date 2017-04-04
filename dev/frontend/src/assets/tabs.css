@@ -1,0 +1,130 @@
+/* Tab Bar */
+
+tab-headers ul {
+    -webkit-padding-start: 5px;
+}
+
+.tab-headers {
+    display: block;
+    height: 100%;
+    text-align: left;
+}
+
+.tabs-light {
+    background: #FFFFFF;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DDDDE5;
+
+}
+
+.tabs-dark {
+    background: #444444;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 20px;
+}
+
+.tabs-dark .tabs-content{
+    background: #FFFFFF;
+}
+
+.tabs-li {
+    display: inline-block;
+    height: 100%;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 15%;
+
+}
+
+.tabs-dark
+.tabs-li:hover,
+.tabs-li-selected {
+    /*border-bottom: 4px solid #1ab394;*/
+    border-bottom: 4px solid #FFFFFF;
+    text-decoration: none;
+}
+
+.tabs-dark
+.tabs-li-selected {
+    /*border-bottom: 4px solid #1ab394;*/
+    border-bottom: 4px solid #FFFFFF;
+    text-decoration: none;
+}
+
+.tabs-dark .tabs-btn:hover, .tabs-dark .tabs-btn:focus{
+   color: #FFFFFF !important;
+   outline: none !important;
+   box-shadow: none;
+}
+
+.tabs-light
+.tabs-li:hover,
+.tabs-li-selected {
+    /*border-bottom: 4px solid #1ab394;*/
+    border-bottom: 4px solid #444444;
+    text-decoration: none;
+}
+
+
+.tabs-btn {
+    border-radius: 0px !important;
+}
+
+.tabs-light .tabs-btn {
+    background-color: #FFFFFF;
+    color: #444444
+}
+
+.tabs-light .tabs-btn:hover, .tabs-light .tabs-btn:focus{
+   background-color: #FFFFFF;
+   color: #444444 !important;
+   outline: none !important;
+   box-shadow: none;
+}
+
+.tabs-dark .tabs-btn {
+    background-color: #444444;
+    color: #FFFFFF;
+}
+
+/* Tab contents wrapper container */
+tabs-wrapper {
+    display: block;
+}
+
+.tab-wrapper {
+    padding-bottom: 40%;
+    position: relative;
+}
+
+.tabs-wrapper-area {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    width: 100%;
+    min-height: 100%;
+}
+
+.row.tabs-wrapper-area {
+    height: 100% !important;
+}
+
+/* Tabbed content (individual wrapped container) */
+tab-content {
+    display: block;
+}
+
+.tab-content {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.4s ease;
+    width: 100%;
+    z-index: -1;
+}
+
+.tab-content-active {
+    opacity: 1;
+    z-index: 500;
+}
