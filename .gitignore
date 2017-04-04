@@ -1,6 +1,8 @@
 *.out
 *.log
 *.aux
+.DS_Store
 sample.pdf
+jspm_packages/*
 dev/frontend/jspm_packages/*
 documents/problemstatement/problemstatement.out
