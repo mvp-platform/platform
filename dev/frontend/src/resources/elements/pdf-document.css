@@ -7,7 +7,7 @@ pdf-document .pdf-container {
   background-color: #bbb;
   overflow: auto;
   height: 100%;
-  height: 600px;
+  max-height: 790px;
   width: 100%;
 }
 

@@ -22,7 +22,7 @@ export class PdfViewer {
         url: 'src/documents/two.pdf',
         draftUrl: 'src/documents/two.pdf',
         pageNumber: 1,
-        scale: 1,
+        scale: 0.8,
         lastpage: 1
       }
     ];
