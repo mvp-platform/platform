@@ -2,4 +2,5 @@
 *.log
 *.aux
 sample.pdf
+dev/frontend/jspm_packages/*
 documents/problemstatement/problemstatement.out
