@@ -8,18 +8,28 @@ var stringify = require('json-stable-stringify');
 var fs = require('fs-extra');
 var ensureDir = promisify(fs.mkdirs);
 var writeFile = promisify(fs.writeFile);
+var readFile = promisify(fs.readFile);
 var mustache = require("mustache");
 
 fs.readFile = promisify(fs.readFile);
 
 const uuidV4 = require('uuid/v4');
 
-var Book = function(bookName, authorName) {
+var Book = function(bookName, authorName, uuid, chapters) {
   this.name = bookName;
   this.author = authorName;
-  this.chapters = [];
-  this.isNew = true;
-  this.uuid = uuidV4();
+  if (uuid === undefined) {
+    this.isNew = true;
+    this.uuid = uuidV4();
+  } else {
+    this.isNew = false;
+    this.uuid = uuid;
+  }
+  if (chapters === undefined) {
+    this.chapters = [];
+  } else {
+    this.chapters = chapters;
+  }
 };
 
 Book.prototype.getText = async function() {
@@ -48,8 +58,32 @@ Book.prototype.setChapters = function(chapters) {
   this.chapters = chapters;
 };
 
+Book.prototype.update = async function(diff) {
+  var success = true;
+  var updateMsg = "update: ";
+  for (var field in diff) {
+    if (field === "name") {
+      updateMsg += "changed name from " + this.name + " to " + diff[field] + ". ";
+      this.name = diff[field];
+    } else if (field === "author" || field === "uuid") {
+      success = false;
+      return JSON.stringify({error: "author and uuid are read-only", field: field});
+    } else if (field === chapters) {
+      // TODO validate chapters
+      updateMsg += "updated chapters (TODO diff). ";
+      this.chapters = diff[field];
+    } else {
+      success = false;
+      return JSON.stringify({error: "unrecognized field " + field, field: field});
+    }
+  }
+  var updateBlock = await this.save(updateMsg);
+  updateBlock.message = updateMsg;
+  return updateBlock;
+}
+
 Book.prototype.previousVersions = function(numVersions) {
-  // TODO
+  return git.getParents('/tmp/mvp/' + this.author + '/book/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
 }
 
@@ -57,9 +91,9 @@ Book.prototype.save = function(reason) {
   // save new version with commit message `reason`
   var u = {};
   u.email = "test@test.com";
-  u.username = this.user;
+  u.username = this.author;
   var commitMessage = reason;
-  var dir = '/tmp/' + u.username + '/book/' + this.uuid;
+  var dir = '/tmp/mvp/' + u.username + '/book/' + this.uuid;
 
   var book = this;
 
@@ -71,10 +105,10 @@ Book.prototype.save = function(reason) {
     return writeFile(path.join(dir, "info.json"), stringify(book, {space: '  '}));
   }).then(function() {
     if (book.isNew) {
-      book.isNew = false;
+      delete book.isNew;
       return git.createRepo(dir, u, commitMessage);
     } else {
-      console.log(book.isNew);
+      delete book.isNew;
       return git.commit(dir, u, commitMessage);
     }
   });
@@ -89,4 +123,17 @@ Book.prototype.fork = function(newUser) {
   // fork book to another user's directory
 }
 
-module.exports = Book;
+module.exports = {
+  Book: Book,
+  reconstitute: async function(author, uuid, sha) {
+    try {
+      var rf = await readFile('/tmp/mvp/' + author + '/book/' + uuid + '/info.json', 'utf8');
+      var data = JSON.parse(rf);
+      console.log(data);
+      return new Book(data.name, data.author, data.uuid, data.chapters);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }
+}

@@ -31,6 +31,22 @@ var commit = async function (dir, user, msg) {
 	return addAndCommit(repo, user, msg);
 }
 
+var getParents = async function (dir, num) {
+	if (num == undefined) { num = 100; }
+	var parents = [];
+	var com = await getHead(dir);
+	parents.push([com.sha(), com.message(), com]);
+
+	while (parents.length <= num) {
+		try {
+			var com = await com.parent(0);
+			parents.push([com.sha(), com.message(), com]);
+		} catch (e) { break; }
+	}
+
+	return parents;
+}
+
 var getFileFromCommit = async function (dir, filename, sha) {
 	// get the info.json file from the dir given a certain sha
 	let fileContents = {};
@@ -74,6 +90,7 @@ module.exports = {
 	getFileFromCommit: getFileFromCommit,
 	createRepo: createRepo,
 	getHead: getHead,
+	getParents: getParents,
 
 	createAndCommit: async function (dir, user, msg) {
 		if (msg === undefined) {

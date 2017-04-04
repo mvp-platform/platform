@@ -4,17 +4,17 @@ var mustache = require('mustache');
 var promisify = require('es6-promisify');
 var fs = require('fs-extra');
 
-var Book = require('./parts/book');
+var book = require('./parts/book');
 var chapter = require('./parts/chapter');
 var scrap = require('./parts/scrap');
 
 var readFile = promisify(fs.readFile);
 
 var run = async function () {
-	var a = new scrap.Scrap('first scrap test', 'rambourg');
+	var a = new scrap.Scrap('French cuisine has a long and storied history', 'rambourg');
 	await a.save('initial save');
 
-	var b = new scrap.Scrap('second scrap', 'rambourg');
+	var b = new scrap.Scrap('It starts out back in 1300 with a chef named Taillevent', 'rambourg');
 	await b.save('initial save');
 
 	var ch1 = new chapter.Chapter('first chapter', 'rambourg');
@@ -29,9 +29,11 @@ var run = async function () {
 	ch2.addScrap(c);
 	await ch2.save('initial save');
 
-	var myBook = new Book('new book', 'rambourg');
+	var myBook = new book.Book("Grand Treatsie on Book Writing", 'rambourg');
 	myBook.addChapter(ch1);
+	await myBook.save('add ch1');
 	myBook.addChapter(ch2);
+	await myBook.save('add ch2');
 
 	var bookText = await myBook.getText();
 	var info = {
