@@ -54,23 +54,17 @@ const getBookHistory = async function(request, reply) {
   return reply(versions.map(function(v) { return [v[0], v[1]] })); // remove the Commit object field
 }
 
-const getAllBooks = function(request, reply) {
-  return reply('hello world');
+const postNewBook = async function(request, reply) {
+  // TODO verify author
+  if (request.payload.author === undefined) {
+    return reply({error: "must define author"}).code(404);
+  }
+	var bk = new book.Book(request.payload.name, request.payload.author);
+  await bk.save('Created book named ' + request.payload.name);
+  return reply(bk);
 }
 
-const postNewBook = function(request, reply) {
-  return reply('hello world');
-}
-
-const deleteBook = function(request, reply) {
-  return reply('hello world');
-}
-
-const routes = [{
-    method: 'GET',
-    path: '/books',
-    handler: getAllBooks
-  },
+const routes = [
   {
     method: 'GET',
     path: '/books/{author}/{id}',
@@ -80,11 +74,6 @@ const routes = [{
     method: 'POST',
     path: '/books/{author}/{id}',
     handler: postBookById
-  },
-  {
-    method: 'DELETE',
-    path: '/books/{author}/{id}',
-    handler: deleteBook
   },
   {
     method: 'GET',

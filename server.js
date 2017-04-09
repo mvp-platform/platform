@@ -2,6 +2,9 @@
 
 const Hapi = require('hapi');
 const books = require('./src/books');
+const scraps = require('./src/scraps');
+const chapters = require('./src/chapters');
+const users = require('./src/users');
 
 // we need a workspace for things like pdf generation
 process.chdir('/tmp/mvp_backend');
@@ -17,8 +20,14 @@ server.connection({
 server.register(require('inert'), () => {});
 
 
-// register books endpoints
+// register books/ endpoints
 books.register(server);
+// register chapters/ endpoints
+chapters.register(server);
+// register scraps/ endpoints
+scraps.register(server);
+// register users/ endpoints
+users.register(server);
 
 // Start the server
 server.start((err) => {
