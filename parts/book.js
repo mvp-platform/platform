@@ -68,7 +68,7 @@ Book.prototype.update = async function(diff) {
     } else if (field === "author" || field === "uuid") {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
-    } else if (field === chapters) {
+    } else if (field === "chapters") {
       // TODO validate chapters
       updateMsg += "updated chapters (TODO diff). ";
       this.chapters = diff[field];

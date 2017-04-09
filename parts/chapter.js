@@ -54,7 +54,7 @@ Chapter.prototype.setScraps = function(scraps) {
 };
 
 Chapter.prototype.previousVersions = function(numVersions) {
-  // TODO
+  return git.getParents('/tmp/mvp/' + this.author + '/chapter/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
 }
 
@@ -90,6 +90,30 @@ Chapter.prototype.fork = function(newUser) {
 
 Chapter.prototype.getHead = function() {
   return git.getHead('/tmp/mvp/' + this.author + '/chapter/' + this.uuid);
+}
+
+Chapter.prototype.update = async function(diff) {
+  var success = true;
+  var updateMsg = "update: ";
+  for (var field in diff) {
+    if (field === "name") {
+      updateMsg += "changed name from " + this.name + " to " + diff[field] + ". ";
+      this.name = diff[field];
+    } else if (field === "author" || field === "uuid") {
+      success = false;
+      return JSON.stringify({error: "author and uuid are read-only", field: field});
+    } else if (field === "scraps") {
+      // TODO validate scraps
+      updateMsg += "updated scraps (TODO diff). ";
+      this.scraps = diff[field];
+    } else {
+      success = false;
+      return JSON.stringify({error: "unrecognized field " + field, field: field});
+    }
+  }
+  var updateBlock = await this.save(updateMsg);
+  updateBlock.message = updateMsg;
+  return updateBlock;
 }
 
 module.exports = {

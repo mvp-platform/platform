@@ -32,10 +32,10 @@ Scrap.prototype.setText = function (text) {
 	this.text = text;
 };
 
-Scrap.prototype.previousVersions = function (numVersions) {
-  // TODO
+Scrap.prototype.previousVersions = function(numVersions) {
+  return git.getParents('/tmp/mvp/' + this.author + '/scrap/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
-};
+}
 
 Scrap.prototype.save = function (reason) {
   // save new version with commit message `reason`
@@ -55,10 +55,14 @@ Scrap.prototype.save = function (reason) {
 	return writeFile(path.join(dir, 'info.json'), stringify(scrap, {space: '  '}));
 }).then(function () {
 	if (scrap.isNew) {
-		scrap.isNew = false;
+		delete scrap.isNew;
+		console.log("creating repo in " + dir);
 		return git.createRepo(dir, u, commitMessage);
+	} else {
+		delete scrap.isNew;
+		console.log("updating repo in " + dir);
+		return git.commit(dir, u, commitMessage);
 	}
-	return git.commit(dir, u, commitMessage);
 });
 };
 
@@ -70,6 +74,17 @@ Scrap.prototype.getBySha = function (hash) {
 Scrap.prototype.fork = function (newUser) {
   // fork scrap to another user's directory
 };
+
+Scrap.prototype.update = async function(diff) {
+  var success = true;
+	this.isNew = false;
+	if (Object.keys(diff).length !== 1 || Object.keys(diff)[0] != "text") { return JSON.stringify("only text field can be updated")}
+  var updateMsg = "update: changed text from " + this.text + " to " + diff.text;
+	this.text = diff.text;
+  var updateBlock = await this.save(updateMsg);
+  updateBlock.message = updateMsg;
+  return updateBlock;
+}
 
 module.exports = {
 	Scrap: Scrap,
