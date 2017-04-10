@@ -1,3 +1,3 @@
-export class Scraps {
+export class emails {
     constructor() {}
 }

@@ -1,15 +1,5 @@
 export class PdfViewer {
   constructor() {
-    // Set up some sensible defaults for documents to use with our repeater.
-/*
-    this.tabSchema = [
-      { id: 'tab-one', label: 'My First Section', viewModel: '', icon: 'fa fa-gear', defaultTab: true },
-      { id: 'tab-two', label: 'Users', viewModel: './tab-two-view-model', icon: '' },
-      { id: 'tab-three', label: 'Browse Items', viewModel: './tab-three-view-model', model: this.modelData, icon: '' }
-    ];
-
-    this.modelData = { first: 'first', second: 'second' }
-*/
     this.documents = [
       /*{
         url: 'src/documents/one.pdf',

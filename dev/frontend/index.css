@@ -5,6 +5,10 @@ body {
     overflow-x: hidden;
 }
 
+div #bookView {
+    margin: 10px;
+}
+
 #main-header {
     background-color: #555;
 

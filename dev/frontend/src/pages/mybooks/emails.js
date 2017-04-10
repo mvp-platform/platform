@@ -1,3 +1,3 @@
-export class Books {
+export class emails {
     constructor() {}
 }
