@@ -5,10 +5,11 @@
 Method | Endpoint | Description
 ----|---|----
 `GET` | `/books` | List all books (will probably not exist)
-`GET` | `/books/{book_id}` | get information about a book (incl. chapter list)
-`POST` | `/books/{book_id}` | *update* information about a book (incl. chapter list)
-`GET` | `/books/{book_id}/pdf`| generate PDF of book
-`GET` | `/books/{book_id}/history` | get history of book
+`GET` | `/books/{author}/{book_id}` | get information about a book (incl. chapter list)
+`POST` | `/books/{author}/{book_id}` | *update* information about a book (incl. chapter list)
+`POST` | `/books/{author}/{book_id}/fork` | fork a book
+`GET` | `/books/{author}/{book_id}/pdf`| generate PDF of book
+`GET` | `/books/{author}/{book_id}/history` | get history of book
 `POSt` | `/books/new` | create new book object
 
 ## `/users`
@@ -42,10 +43,11 @@ Search only current user's items:
 
 Method | Endpoint | Description
 ---|---|---
-`GET` | `/chapters/{chapter_id}` | get chapter information (incl. scrap list)
-`POST` | `/chapters/{chapter_id}` | *update* chapter information (incl. scrap list)
-`GET` | `/chapters/{chapter_id}/pdf` | generate PDF of chapter
-`GET` | `/chapters/{chapter_id}/history` | get history of chapter
+`GET` | `/chapters/{author}/{chapter_id}` | get chapter information (incl. scrap list)
+`POST` | `/chapters/{author}/{chapter_id}` | *update* chapter information (incl. scrap list)
+`POST` | `/chapters/{author}/{chapter_id}/fork` | fork a chapter
+`GET` | `/chapters/{author}/{chapter_id}/pdf` | generate PDF of chapter
+`GET` | `/chapters/{author}/{chapter_id}/history` | get history of chapter
 `POST` | `/chapters/new` | create new chapter object
 
 ## `/scraps`
@@ -54,6 +56,7 @@ Method | Endpoint | Description
 ---|---|---
 `GET` | `/scraps/{scrap_id}` | get scrap information (incl. scrap body)
 `GET` | `/scraps/{scrap_id}/pdf` | generate PDF of scrap
+`POST` | `/scraps/{scrap_id}/fork` | fork a scrap
 `GET` | `/scraps/{scrap_id}/history` | get history of scrap
 `POST` | `/scraps/new` | create new scrap object
 
