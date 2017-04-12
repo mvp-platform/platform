@@ -1,6 +1,5 @@
 export class Scraps {
     configureRouter(config, router) {
-        config.title = 'Right Tabs';
         config.map([
             { route: ['', 'PDF Viewer'], name: 'PDFViewer', moduleId: 'pages/myscraps/PDFViewer', nav: true, title: 'PDF Viewer' },
             { route: 'account', name: 'account', moduleId: 'pages/myscraps/account', nav: true, title: 'Account' },
