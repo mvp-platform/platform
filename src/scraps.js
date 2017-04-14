@@ -9,7 +9,7 @@ const scrapTmpl = `
 \\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
 \\begin{document}
-{{ body }}
+{{{ body }}}
 \\end{document}
 `
 

@@ -18,7 +18,7 @@ const bookTmpl = `
 
 \\tableofcontents
 
-{{ body }}
+{{{ body }}}
 \\end{document}
 `
 

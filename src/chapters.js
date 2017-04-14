@@ -11,7 +11,7 @@ const chapterTmpl = `
 \\title{ {{title}} }
 \\author{ {{author}} }
 \\begin{document}
-{{ body }}
+{{{ body }}}
 \\end{document}
 `
 
