@@ -10,9 +10,10 @@
         <hr>
         <div class="col-sm-8">
             <ul class="nav">
-                <li repeat.for="title of titles" class="${title.isActive ? 'active' : ''}">
+                <li repeat.for="book of books" class="${book.isActive ? 'active' : ''}">
                     <div class="book-title-block">
-                        <p>${title}</p>
+                        <p>${book.name}</p>
+                        <p>Chapters: ${book.chapters.length}</p>
                     </div>
                 </li>
             </ul>

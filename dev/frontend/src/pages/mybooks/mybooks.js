@@ -6,15 +6,18 @@ let httpClient = new HttpClient();
 export class Books {
 
     constructor() {
-        this.titles = [];
+        
+        this.books = [];
+
         httpClient.fetch('http://remix.ist:8000/books/hagrid')
         .then(response => response.json())
         .then(data => {
             for(let instance of data) {
-                this.titles.push(instance.name);
+                this.books.push(instance);
+
+                console.log(instance);
             }
-            console.log(this.titles);
-            this.books = data;
+
         });
 
         
