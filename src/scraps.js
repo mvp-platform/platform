@@ -53,7 +53,11 @@ const postNewScrap = async function(request, reply) {
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
   }
-	var scr = new scrap.Scrap("", request.payload.author);
+  let text = request.payload.text;
+  if (text === undefined) {
+    text = "";
+  }
+	var scr = new scrap.Scrap(text, request.payload.author);
   await scr.save('Created new scrap');
   return reply(scr);
 }
