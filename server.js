@@ -15,7 +15,7 @@ const server = new Hapi.Server();
 server.connection({
     host: '0.0.0.0',
     port: 8000,
-    cors: true
+    routes: { cors: true }
 });
 
 server.register(require('inert'), () => {});
