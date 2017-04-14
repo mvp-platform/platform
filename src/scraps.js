@@ -3,6 +3,9 @@
 const scrap = require('../../scrapjs/parts/scrap');
 const mustache = require('mustache');
 const pdf = require('./pdf');
+const fs = require('fs')
+const promisify = require("es6-promisify");
+const readdir = promisify(fs.readdir);
 
 const scrapTmpl = `
 
@@ -55,10 +58,32 @@ const postNewScrap = async function(request, reply) {
   return reply(scr);
 }
 
+// /scraps/{author}
+const getScrapsByAuthor = async function(request, reply) {
+  let scraps = [];
+  try {
+    let dirs = await readdir('/tmp/mvp/' + request.params.author + '/scrap');
+    for (let dir of dirs) {
+      let b = await scrap.reconstitute(request.params.author, dir);
+      scraps.push(b);
+    }
+  } catch (e) {
+    // TODO should return successful but empty for existing user with no scraps
+    console.error("/users/" + request.params.author + "/scraps unsuccessful", e)
+    return reply({error: "no scraps for user " + request.params.author + " found"}).code(404);
+  }
+  return reply(scraps);
+}
+
 const routes = [{
     method: 'GET',
     path: '/scraps/{author}/{id}',
     handler: getScrapById
+  },
+  {
+    method: 'GET',
+    path: '/scraps/{author}',
+    handler: getScrapsByAuthor
   },
   {
     method: 'POST',

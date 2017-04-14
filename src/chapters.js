@@ -3,6 +3,9 @@
 const chapter = require('../../scrapjs/parts/chapter');
 const mustache = require('mustache');
 const pdf = require('./pdf');
+const fs = require('fs')
+const promisify = require("es6-promisify");
+const readdir = promisify(fs.readdir);
 
 const chapterTmpl = `
 
@@ -60,10 +63,32 @@ const postNewChapter = async function(request, reply) {
   return reply(ch1);
 }
 
+// /chapters/{author}
+const getChaptersByAuthor = async function(request, reply) {
+  let chapters = [];
+  try {
+    let dirs = await readdir('/tmp/mvp/' + request.params.author + '/chapter');
+    for (let dir of dirs) {
+      let b = await chapter.reconstitute(request.params.author, dir);
+      chapters.push(b);
+    }
+  } catch (e) {
+    // TODO should return successful but empty for existing user with no chapters
+    console.error("/users/" + request.params.author + "/chapters unsuccessful", e)
+    return reply({error: "no chapters for user " + request.params.author + " found"}).code(404);
+  }
+  return reply(chapters);
+}
+
 const routes = [{
     method: 'GET',
     path: '/chapters/{author}/{id}',
     handler: getChapterById
+  },
+  {
+    method: 'GET',
+    path: '/chapters/{author}',
+    handler: getChaptersByAuthor
   },
   {
     method: 'POST',
