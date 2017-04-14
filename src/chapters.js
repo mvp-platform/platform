@@ -52,6 +52,9 @@ const postNewChapter = async function(request, reply) {
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
   }
+  if (request.payload.name === undefined) {
+    return reply({error: "must define name"}).code(404);
+  }
 	var ch1 = new chapter.Chapter(request.payload.name, request.payload.author);
   await ch1.save('Created chapter named ' + request.payload.name);
   return reply(ch1);

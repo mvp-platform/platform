@@ -59,6 +59,9 @@ const postNewBook = async function(request, reply) {
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
   }
+  if (request.payload.name === undefined) {
+    return reply({error: "must define name"}).code(404);
+  }
 	var bk = new book.Book(request.payload.name, request.payload.author);
   await bk.save('Created book named ' + request.payload.name);
   return reply(bk);
