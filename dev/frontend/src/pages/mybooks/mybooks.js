@@ -1,3 +1,8 @@
+import 'fetch';
+import {HttpClient, json} from 'aurelia-fetch-client';
+
+let httpClient = new HttpClient();
+
 export class Books {
     constructor() {}
     configureRouter(config, router) {
@@ -9,5 +14,13 @@ export class Books {
             { route: 'notifications', name: 'notifications', moduleId: 'pages/mybooks/notifications', nav: true, title: 'Notifications' }
         ]);
         this.router = router;
+
+        httpClient.fetch('http://remix.ist:8000/users/hagrid/books')
+        .then(response => response.json())
+        .then(data => {
+            // data = JSON.parse(data);
+            console.log(data);
+        });
     }
+    
 }
