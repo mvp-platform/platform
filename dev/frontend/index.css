@@ -9,6 +9,12 @@ div #bookView {
     margin: 10px;
 }
 
+div.book-title-block {
+    border: 2px solid black;
+    margin: 10px;
+    background-color: white;
+}
+
 #main-header {
     background-color: #555;
 
@@ -122,13 +128,13 @@ aside {
     border-radius: 5px;
     xmargin: 10px;
 }
-#bookView div {
+#bookView {
     width: 100%;
     height: auto;
     min-height: 500px;
     background-color: white;
 }
-#scrapView div {
+#scrapView {
     width: 100%;
     height: auto;
 }

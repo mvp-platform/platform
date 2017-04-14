@@ -6,9 +6,16 @@
   we created, and we bind viewmodel properties to it.
   -->
     <section class="leftSection">
-        <div id="bookView">
-            <h1>My Books</h1>
-
+        <h1>My Books</h1>
+        <hr>
+        <div class="col-sm-8">
+            <ul class="nav">
+                <li repeat.for="title of titles" class="${title.isActive ? 'active' : ''}">
+                    <div class="book-title-block">
+                        <p>${title}</p>
+                    </div>
+                </li>
+            </ul>
         </div>
         <hr>
     </section>
