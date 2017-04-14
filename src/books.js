@@ -1,6 +1,7 @@
 'use strict';
 
 const book = require('../../scrapjs/parts/book');
+const accounts = require('./accounts');
 const mustache = require('mustache');
 const pdf = require('./pdf');
 const fs = require('fs')
@@ -31,6 +32,10 @@ const getBookById = async function(request, reply) {
 }
 
 const postBookById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   var b = await book.reconstitute(request.params.author, request.params.id);
   var err = await b.update(request.payload);
   return reply(err);
@@ -58,6 +63,10 @@ const getBookHistory = async function(request, reply) {
 }
 
 const postNewBook = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   // TODO verify author
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);

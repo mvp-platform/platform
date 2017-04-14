@@ -5,6 +5,10 @@ var GoogleAuth = require('google-auth-library');
 const fs = require('fs');
 const CLIENT_ID = "643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com";
 
+const verifylogin = function(request) {
+  return {success: true};
+};
+
 // /accounts/login
 const login = function(request, reply) {
   console.log(request.payload);

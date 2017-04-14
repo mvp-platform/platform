@@ -2,6 +2,7 @@
 
 const scrap = require('../../scrapjs/parts/scrap');
 const mustache = require('mustache');
+const accounts = require('./accounts');
 const pdf = require('./pdf');
 const fs = require('fs')
 const promisify = require("es6-promisify");
@@ -22,6 +23,10 @@ const getScrapById = async function(request, reply) {
 }
 
 const postScrapById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
   return reply(err);
@@ -49,6 +54,10 @@ const getScrapHistory = async function(request, reply) {
 }
 
 const postNewScrap = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   // TODO verify author
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);

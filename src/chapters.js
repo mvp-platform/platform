@@ -2,6 +2,7 @@
 
 const chapter = require('../../scrapjs/parts/chapter');
 const mustache = require('mustache');
+const accounts = require('./accounts');
 const pdf = require('./pdf');
 const fs = require('fs')
 const promisify = require("es6-promisify");
@@ -24,6 +25,10 @@ const getChapterById = async function(request, reply) {
 }
 
 const postChapterById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
   var err = await c.update(request.payload);
   return reply(err);
@@ -51,6 +56,10 @@ const getChapterHistory = async function(request, reply) {
 }
 
 const postNewChapter = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
   // TODO verify author
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
