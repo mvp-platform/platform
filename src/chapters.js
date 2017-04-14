@@ -11,8 +11,8 @@ const chapterTmpl = `
 
 \\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
-\\title{ {{title}} }
-\\author{ {{author}} }
+\\title{ {{{title}}} }
+\\author{ {{{author}}} }
 \\begin{document}
 {{{ body }}}
 \\end{document}

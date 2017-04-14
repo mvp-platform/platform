@@ -4,6 +4,7 @@ const Hapi = require('hapi');
 const books = require('./src/books');
 const scraps = require('./src/scraps');
 const chapters = require('./src/chapters');
+const accounts = require('./src/accounts');
 const users = require('./src/users');
 
 // we need a workspace for things like pdf generation
@@ -29,6 +30,8 @@ chapters.register(server);
 scraps.register(server);
 // register users/ endpoints
 users.register(server);
+// register accounts/ endpoints
+accounts.register(server);
 
 // Start the server
 server.start((err) => {

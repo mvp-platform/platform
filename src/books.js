@@ -11,8 +11,8 @@ const bookTmpl = `
 
 \\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
-\\title{ {{title}} }
-\\author{ {{author}} }
+\\title{ {{{title}}} }
+\\author{ {{{author}}} }
 \\date{ }
 
 \\begin{document}
