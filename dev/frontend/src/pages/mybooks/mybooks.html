@@ -14,6 +14,9 @@
                     <div class="book-title-block">
                         <p>${book.name}</p>
                         <p>Chapters: ${book.chapters.length}</p>
+                        <a route-href="route: PDFViewer; params.bind: {bookID: book.author + '/' + book.uuid}">
+                        Preview
+                        </a>
                     </div>
                 </li>
             </ul>
