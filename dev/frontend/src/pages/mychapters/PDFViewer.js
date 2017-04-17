@@ -9,8 +9,8 @@ export class PdfViewer {
         lastpage: 1
       },*/
       {
-        url: 'src/documents/two.pdf',
-        draftUrl: 'src/documents/two.pdf',
+        url: 'http://remix.ist:8000/chapters/hagrid/aec55377-716d-4274-b006-44913f73ca7f/pdf',
+        draftUrl: 'http://remix.ist:8000/chapters/hagrid/aec55377-716d-4274-b006-44913f73ca7f/pdf',
         pageNumber: 1,
         scale: 0.8,
         lastpage: 1

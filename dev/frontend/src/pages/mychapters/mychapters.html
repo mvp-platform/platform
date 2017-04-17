@@ -1,9 +1,25 @@
 <template>
   <section class="leftSection">
-      <div id="bookView">
-          <h1>My Chapters</h1>
+      <!-- <div id="bookView"> -->
+          <div id="h1spacer">
+              <h1>My Chapters</h1>
+          </div>
+          <div class="col-sm-8">
+              <ul class="nav">
+                  <li repeat.for="book of books" class="${book.isActive ? 'active' : ''}">
+                      <div class="book-title-block">
 
-      </div>
+                          <p>${book.name}</p>
+                          <p>Chapters: ${book.chapters.length}</p>
+                          <p repeat.for="i of book.chapters.length">Chapter ${i} - UUID: ${book.chapters[i][1]}</p>
+                          <a route-href="route: PDFViewer; params.bind: {chapterID: book.author + '/' + book.uuid}">
+                          Preview
+                          </a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      <!-- </div> -->
       <hr>
   </section>
   <section class="rightSection">

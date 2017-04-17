@@ -38,6 +38,19 @@ div.book-title-block {
     color: white !important;
 }
 
+.fullSection, .leftSection {
+    background-color: white;
+}
+
+.fullSection #h1spacer, .leftSection #h1spacer {
+    padding-top:0.20em;
+    padding-bottom:0.25em;
+
+    background-color: #D3D3D3;
+    border-bottom: 1px solid black;
+}
+
+
 .leftSection, .rightSection {
     min-height: 100vh;
     xwidth: calc(85% - 15%);
@@ -45,8 +58,9 @@ div.book-title-block {
     width: 45%;
 }
 
-.leftSection h1, .rightSection h1 {
+.fullSection h1, .leftSection h1, .rightSection h1 {
     margin-left: 0.5em;
+    font-size: 25px;
 }
 
 .fullSection {
@@ -76,6 +90,7 @@ nav#main-header.navbar.navbar-default, div.sidebar-nav, div.col-sm-8, div.row  {
 }
 
 #rightSectionNav {
+  margin-top: 1em;
 }
 
 #rightSectionNav a {
@@ -181,7 +196,16 @@ aside {
   background: rgba(0, 0, 0, 0.6);
 }
 
+
+/* Testing of not styling the first child of the main navigation
 nav#main-header.navbar.navbar-default a:hover
+{
+  background-color: red;
+}*/
+
+
+
+nav#main-header.navbar.navbar-default :not(:first-child) a:hover
 {
   background-color: #777;
 }
