@@ -39,4 +39,4 @@ const register = function(server) {
   }
 }
 
-module.exports = {register: register};
+module.exports = {register: register, verifylogin: verifylogin};
