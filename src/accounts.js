@@ -60,7 +60,7 @@ const login = async function(request, reply) {
       var token = hat();
       var username = payload['name'].replace(/\s/g,'').toLowerCase();
       await db.collection('users').insertOne({userid: username, token: token});
-      return reply({username: request.params.userid, token: token});
+      return reply({username: username, token: token});
   });
 
 }
