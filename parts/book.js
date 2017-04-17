@@ -84,7 +84,7 @@ Book.prototype.update = async function(diff) {
     } else if (field === "chapters") {
       // TODO validate chapters
       updateMsg += "updated chapters (TODO diff). ";
-      this.chapters = validateChapters(diff["chapters"]);
+      this.chapters = await validateChapters(diff["chapters"]);
       if (this.chapters === false) {
         return JSON.stringify({error: "invalid chapters field (does the chapter exist?)", field: field});
       }
