@@ -46,7 +46,7 @@ Book.prototype.addChapter = function(chapter, sha) {
   if (sha == undefined) {
     sha = chapter.head
   }
-  this.chapters.push([chapter.author, chapter.uuid, sha]);
+  this.chapters.push([chapter.author, chapter.uuid, sha, chapter.name]);
 };
 
 Book.prototype.removeChapter = function(chapterName) {
@@ -57,6 +57,17 @@ Book.prototype.removeChapter = function(chapterName) {
 Book.prototype.setChapters = function(chapters) {
   this.chapters = chapters;
 };
+
+var validateChapters = async function(chapters) {
+  await Promise.all(chapters.map(async (ch) => {
+    try {
+      let nc = await chapter.reconstitute(ch[0], ch[1]);
+    } catch (e) {
+      return false;
+    }
+  }));
+  return true;
+}
 
 Book.prototype.update = async function(diff) {
   var success = true;
@@ -71,7 +82,10 @@ Book.prototype.update = async function(diff) {
     } else if (field === "chapters") {
       // TODO validate chapters
       updateMsg += "updated chapters (TODO diff). ";
-      this.chapters = diff[field];
+      if (!validateChapters(diff["chapters"])) {
+        return JSON.stringify({error: "invalid chapters field (did you include all four parts?)", field: field});
+      }
+      this.chapters = diff["chapters"];
     } else {
       success = false;
       return JSON.stringify({error: "unrecognized field " + field, field: field});
