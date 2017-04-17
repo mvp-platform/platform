@@ -12,7 +12,9 @@
     "es6-promisify": "^5.0.0",
     "google-auth-library": "^0.10.0",
     "hapi": "^16.1.1",
+    "hat": "0.0.3",
     "inert": "^4.2.0",
+    "mongodb": "^2.2.25",
     "mustache": "^2.3.0",
     "scrapjs": "file:../scrapjs"
   }

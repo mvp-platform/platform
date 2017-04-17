@@ -1,6 +1,12 @@
 'use strict';
 
 const Hapi = require('hapi');
+const promisify = require("es6-promisify");
+var MongoClient = require('mongodb').MongoClient;
+var connect = promisify(MongoClient.connect);
+var ObjectId = require('mongodb').ObjectID;
+const assert = require("assert");
+
 const books = require('./src/books');
 const scraps = require('./src/scraps');
 const chapters = require('./src/chapters');
@@ -9,7 +15,6 @@ const users = require('./src/users');
 
 // we need a workspace for things like pdf generation
 process.chdir('/tmp/mvp_backend');
-
 
 // Create a server with a host and port
 const server = new Hapi.Server();
@@ -34,7 +39,10 @@ users.register(server);
 accounts.register(server);
 
 // Start the server
-server.start((err) => {
+server.start(async (err) => {
+
+    var mongo = 'mongodb://localhost:27017/mvp';
+    global.db = await connect(mongo);
 
     if (err) {
         throw err;

@@ -34,7 +34,10 @@ const getBookById = async function(request, reply) {
 const postBookById = async function(request, reply) {
   var login = await accounts.verifylogin(request);
   if (!login.success) {
-    return reply({error: "could not verify identity"}).code(403);
+    return reply({error: "could not verify identity", reason: login.reason}).code(403);
+  }
+  if (login.username != request.params.author) {
+    return reply({error: "not your book!"}).code(403);
   }
   var b = await book.reconstitute(request.params.author, request.params.id);
   var err = await b.update(request.payload);
