@@ -8,7 +8,7 @@
   </section>
   <section class="rightSection">
       <div class="col-sm-8">
-            <ul class="nav navbar-nav">
+            <ul id="rightSectionNav" class="nav navbar-nav">
                 <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                     <a href.bind="row.href">${row.title}</a>
                 </li>
