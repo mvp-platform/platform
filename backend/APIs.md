@@ -18,10 +18,10 @@ by the `Book` object to reference the exact version.
 
 it is a list containing:
 
-[`chapter_uuid`, `author`, `commit sha`]
+[`chapter_uuid`, `author`, `commit sha`, `chapter_name`]
 
-The first two fields are required. The commit sha can be `null` if the chapter
-is not pinned to a specific version.
+The first two fields and the last one are required. The commit sha can be `null`
+if the chapter is not pinned to a specific version.
 
 ## `chapter`
 
@@ -52,6 +52,17 @@ Scraps have the following fields:
 * `uuid`: the id of the book (immutable)
 * `text`: the text of the scrap
 
+# Making POST requests
+
+Any request that writes data to the server must be authenticated. Authentication
+is handled with an `Authorization: Token {token}` header.
+
+To get a token for your user, an example login page is hosted at http://remix.ist:8000/login.
+
+After login, the `onSignIn` function will be given a Google oAuth ID token. `POST`
+this ID token to the server to receive a token for this service. If in doubt,
+see the example page code for details.
+
 # Backend API calls
 
 ## `/books`
@@ -70,7 +81,8 @@ Returns all books for a user.
       [
         "hagrid",
         "aec55377-716d-4274-b006-44913f73ca7f",
-        null
+        null,
+        "Chapter Name"
       ],
       ...
     ]
@@ -91,7 +103,8 @@ Returns the information about a single book, given by author and uuid.
     [
       "hagrid",
       "aec55377-716d-4274-b006-44913f73ca7f",
-      null
+      null,
+      "Chapter Name"
     ],
     ...
   ]
@@ -109,6 +122,12 @@ are:
 Only fields being updated need to be included. If updating chapters,
 existing chapters WILL be overwritten; include existing chapters that
 you do not wish to remove.
+
+The chapters must be a list of lists, with the inner lists containing:
+
+1. author
+2. chapter uuid
+3. commit sha
 
 #### Example: change name and change chapter uuid / pin chapter
 ```
@@ -164,7 +183,7 @@ Returns the history of the book.
 ### `POST /books/new`
 
 Create a new book object. The name and author are both required; chapters
-cannot be added.
+cannot be added. The author must be the same as the logged in user.
 
 ```
 POST /books/new
@@ -292,7 +311,7 @@ Returns the history of the chapter.
 ### `POST /chapters/new`
 
 Create a new chapter object. The name and author are both required; scraps
-cannot be added.
+cannot be added. The author must be the same as the logged in user.
 
 ```
 POST /chapters/new
@@ -383,7 +402,7 @@ Returns the history of the scrap.
 ### `POST /scraps/new`
 
 Create a new scrap object. The author is required; text
-can be added.
+can be added. The author must be the same as the logged in user.
 
 ```
 POST /scraps/new
