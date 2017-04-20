@@ -1,6 +1,6 @@
 export class PDFViewer {
   constructor(bookID) {
-    this.url = 'http://remix.ist:8000/books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/pdf';
+    this.url = '/src/assets/blank.pdf';
     this.documents = [
       /*{
         url: 'src/documents/one.pdf',
@@ -10,8 +10,8 @@ export class PDFViewer {
         lastpage: 1
       },*/
       {
-        url: 'http://remix.ist:8000/books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/pdf',
-        draftUrl: 'http://remix.ist:8000/books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/pdf',
+        url: '/src/assets/blank.pdf',
+        draftUrl: '/src/assets/blank.pdf',
         pageNumber: 1,
         scale: 0.8,
         lastpage: 1
@@ -21,7 +21,7 @@ export class PDFViewer {
   }
 
   loadUrl(document) {
-    document.url = document.draftUrl;
+    this.url = document.draftUrl;
   }
 
   firstPage(document) {
@@ -59,6 +59,10 @@ export class PDFViewer {
   }
 
   activate(bookID) {
+    if (bookID.author === undefined) {
+        return;
+    }
+
     this.url = "http://remix.ist:8000/books/" + bookID.author + '/' + bookID.uuid + '/pdf';
     document.url = this.url
     document.draftUrl = this.url;
