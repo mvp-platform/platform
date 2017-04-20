@@ -1,5 +1,6 @@
-export class PdfViewer {
+export class PDFViewer {
   constructor(bookID) {
+    this.url = 'http://remix.ist:8000/books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/pdf';
     this.documents = [
       /*{
         url: 'src/documents/one.pdf',
@@ -56,12 +57,10 @@ export class PdfViewer {
   zoomOut(document) {
     document.scale = Number(document.scale) - 0.1;
   }
+
   activate(bookID) {
-    /*
-    let url = "http://remix.ist:8000/" + bookID;
-    document.url = url
-    document.draftUrl = url;
-    console.log(url);
-    */
+    this.url = "http://remix.ist:8000/books/" + bookID.author + '/' + bookID.uuid + '/pdf';
+    document.url = this.url
+    document.draftUrl = this.url;
   }
 }

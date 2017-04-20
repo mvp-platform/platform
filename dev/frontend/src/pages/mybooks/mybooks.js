@@ -19,12 +19,12 @@ export class Books {
 
         });
 
-        
+
     }
     configureRouter(config, router) {
         config.title = 'Right Tabs';
         config.map([
-            { route: ['', '/:bookID'], name: 'PDFViewer', moduleId: 'pages/mybooks/PDFViewer', nav: true, title: 'PDF Viewer'},
+            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/mybooks/PDFViewer', nav: true, title: 'PDF Viewer'},
             { route: 'account', name: 'account', moduleId: 'pages/mybooks/account', nav: true, title: 'Account' },
             { route: 'emails', name: 'emails', moduleId: 'pages/mybooks/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/mybooks/notifications', nav: true, title: 'Notifications' }
@@ -32,5 +32,5 @@ export class Books {
         this.router = router;
 
     }
-    
+
 }
