@@ -1,4 +1,4 @@
-export class PdfViewer {
+export class PDFViewer {
   constructor() {
     this.documents = [
       /*{
