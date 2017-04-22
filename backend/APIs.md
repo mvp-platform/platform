@@ -405,7 +405,7 @@ POST /scraps/new
 ## `/search`
 
 Search:  
-`/search?q=plus+separated+query`  
+`/search?q=url%20encoded%20query`  
 
 Search for specific types:  
 `/search?q=abc123&type=books`  
