@@ -41,6 +41,14 @@ const postBookById = async function(request, reply) {
   }
   var b = await book.reconstitute(request.params.author, request.params.id);
   var err = await b.update(request.payload);
+  var resp = await global.search.update({
+    index: 'mvp',
+    type: 'book',
+    id: b.author + '-' + b.uuid,
+    body: {
+      doc: b
+    }
+  });
   return reply(err);
 }
 
@@ -79,6 +87,15 @@ const postNewBook = async function(request, reply) {
   }
 	var bk = new book.Book(request.payload.name, request.payload.author);
   await bk.save('Created book named ' + request.payload.name);
+
+  var resp = await global.search.create({
+    index: 'mvp',
+    type: 'book',
+    id: bk.author + '-' + bk.uuid,
+    body: {
+      doc: bk
+    }
+  });
   return reply(bk);
 }
 
@@ -86,7 +103,7 @@ const postNewBook = async function(request, reply) {
 const getBooksByAuthor = async function(request, reply) {
   let books = [];
   try {
-    let dirs = await readdir('/tmp/mvp/' + request.params.author + '/book');
+    let dirs = await readdir(global.storage + request.params.author + '/book');
     for (let dir of dirs) {
       let b = await book.reconstitute(request.params.author, dir);
       books.push(b);

@@ -29,6 +29,14 @@ const postScrapById = async function(request, reply) {
   }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
+  var resp = await global.search.update({
+    index: 'mvp',
+    type: 'scrap',
+    id: s.author + '-' + s.uuid,
+    body: {
+      doc: s
+    }
+  });
   return reply(err);
 }
 
@@ -68,6 +76,15 @@ const postNewScrap = async function(request, reply) {
   }
 	var scr = new scrap.Scrap(text, request.payload.author);
   await scr.save('Created new scrap');
+
+  var resp = await global.search.create({
+    index: 'mvp',
+    type: 'scrap',
+    id: scr.author + '-' + scr.uuid,
+    body: {
+      doc: scr
+    }
+  });
   return reply(scr);
 }
 
@@ -75,7 +92,7 @@ const postNewScrap = async function(request, reply) {
 const getScrapsByAuthor = async function(request, reply) {
   let scraps = [];
   try {
-    let dirs = await readdir('/tmp/mvp/' + request.params.author + '/scrap');
+    let dirs = await readdir(global.storage + request.params.author + '/scrap');
     for (let dir of dirs) {
       let b = await scrap.reconstitute(request.params.author, dir);
       scraps.push(b);

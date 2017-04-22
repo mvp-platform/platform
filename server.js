@@ -6,6 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var connect = promisify(MongoClient.connect);
 var ObjectId = require('mongodb').ObjectID;
 const assert = require("assert");
+const elasticsearch = require('elasticsearch');
 
 const books = require('./src/books');
 const scraps = require('./src/scraps');
@@ -14,7 +15,10 @@ const accounts = require('./src/accounts');
 const users = require('./src/users');
 
 // we need a workspace for things like pdf generation
-process.chdir('/tmp/mvp_backend');
+global.storage = process.cwd() + '/data/storage/';
+global.renders = process.cwd() + '/data/renders';
+process.chdir(global.renders);
+
 
 // Create a server with a host and port
 const server = new Hapi.Server();
@@ -22,6 +26,11 @@ server.connection({
     host: '0.0.0.0',
     port: 8000,
     routes: { cors: true }
+});
+
+global.search = new elasticsearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
 });
 
 server.register(require('inert'), () => {});

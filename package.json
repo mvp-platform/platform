@@ -9,6 +9,7 @@
   },
   "author": "",
   "dependencies": {
+    "elasticsearch": "^13.0.0-rc2",
     "es6-promisify": "^5.0.0",
     "google-auth-library": "^0.10.0",
     "hapi": "^16.1.1",

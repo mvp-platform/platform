@@ -31,6 +31,14 @@ const postChapterById = async function(request, reply) {
   }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
   var err = await c.update(request.payload);
+  var resp = await global.search.update({
+    index: 'mvp',
+    type: 'chapter',
+    id: c.author + '-' + c.uuid,
+    body: {
+      doc: c
+    }
+  });
   return reply(err);
 }
 
@@ -69,6 +77,15 @@ const postNewChapter = async function(request, reply) {
   }
 	var ch1 = new chapter.Chapter(request.payload.name, request.payload.author);
   await ch1.save('Created chapter named ' + request.payload.name);
+
+  var resp = await global.search.create({
+    index: 'mvp',
+    type: 'chapter',
+    id: ch1.author + '-' + ch1.uuid,
+    body: {
+      doc: ch1
+    }
+  });
   return reply(ch1);
 }
 
@@ -76,7 +93,7 @@ const postNewChapter = async function(request, reply) {
 const getChaptersByAuthor = async function(request, reply) {
   let chapters = [];
   try {
-    let dirs = await readdir('/tmp/mvp/' + request.params.author + '/chapter');
+    let dirs = await readdir(global.storage + request.params.author + '/chapter');
     for (let dir of dirs) {
       let b = await chapter.reconstitute(request.params.author, dir);
       chapters.push(b);
