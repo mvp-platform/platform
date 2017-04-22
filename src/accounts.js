@@ -19,7 +19,7 @@ const verifylogin = async function(request) {
   if (user_blob.length != 1) {
     return {success: false, reason: "account does not exist"};
   }
-  return {success: true, username: user_blob[0].username};
+  return {success: true, username: user_blob[0].userid};
 };
 
 const loginPage = async function(request, reply) {
