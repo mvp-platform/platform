@@ -5,13 +5,10 @@ const searchEndpoint = async function(request, reply) {
     return reply({error: "query parameter q must be defined!"}).code(400);
   }
 
-  // get all matching chapters/books (stored by name)
-  let q = {body: {query: {match: {name: decodeURIComponent(request.query.q)}}}};
-  // get all matching scraps (stored by text)
-  let scrap_q = {body: {query: {match: {text: decodeURIComponent(request.query.q)}}}};
+  let queryText = decodeURIComponent(request.query.q);
+  let q = {body: {query: {multi_match: {query: queryText, fields: ["name", "text"]}}}};
   let hits = await global.search.search(q);
-  let scrap_hits = await global.search.search(scrap_q);
-  hits = hits.hits.hits.concat(scrap_hits.hits.hits); // yes, that's really where results live
+  hits = hits.hits.hits; // yes, that's really where results live
 
   hits = hits.filter(function(hit) {
     if (request.query.type) {
