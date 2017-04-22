@@ -4,24 +4,34 @@ const searchEndpoint = async function(request, reply) {
   if (request.query.q === undefined) {
     return reply({error: "query parameter q must be defined!"}).code(400);
   }
+
   let q = {body: {query: {fuzzy: {name: request.query.q}}}};
-  let r = await global.search.search(q);
-  if (request.query.type) {
-    let hits = [];
-    let typelist = request.query.type;
-    if (!Array.isArray(typelist)) {
-      typelist = [typelist];
-    }
-    // I'll give this one a "wat" for hits.hits o.O
-    for (let [key, hit] of Object.entries(r.hits.hits)) {
-      if (typelist.includes(hit._type)) {
-        hits.push(hit);
+  let hits = await global.search.search(q)
+  hits = hits.hits.hits; // yes, that's really where results live
+
+  hits = hits.filter(function(hit) {
+    if (request.query.type) {
+      if (request.query.type.includes(hit._type)) {
+          return true;
+      } else {
+        return false;
       }
     }
-    return reply({total: hits.length, hits: hits});
-  }
+    return true;
+  });
 
-  return reply(r.hits);
+  hits = hits.filter(function(hit) {
+    if (request.query.user) {
+      if (hit._source.author == request.query.user) {
+          return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  return reply({total: hits.length, hits: hits});
 }
 
 const routes = [
