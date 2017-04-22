@@ -13,6 +13,7 @@ const scraps = require('./src/scraps');
 const chapters = require('./src/chapters');
 const accounts = require('./src/accounts');
 const users = require('./src/users');
+const search = require('./src/search');
 
 // we need a workspace for things like pdf generation
 global.storage = process.cwd() + '/data/storage/';
@@ -46,6 +47,8 @@ scraps.register(server);
 users.register(server);
 // register accounts/ endpoints
 accounts.register(server);
+// register search endpoint
+search.register(server);
 
 // Start the server
 server.start(async (err) => {
