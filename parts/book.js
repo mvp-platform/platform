@@ -99,7 +99,7 @@ Book.prototype.update = async function(diff) {
 }
 
 Book.prototype.previousVersions = function(numVersions) {
-  return git.getParents('/tmp/mvp/' + this.author + '/book/' + this.uuid);
+  return git.getParents(global.storage + this.author + '/book/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
 }
 
@@ -109,7 +109,7 @@ Book.prototype.save = function(reason) {
   u.email = "test@test.com";
   u.username = this.author;
   var commitMessage = reason;
-  var dir = '/tmp/mvp/' + u.username + '/book/' + this.uuid;
+  var dir = global.storage + u.username + '/book/' + this.uuid;
 
   var book = this;
 
@@ -143,7 +143,7 @@ module.exports = {
   Book: Book,
   reconstitute: async function(author, uuid, sha) {
     try {
-      var rf = await readFile('/tmp/mvp/' + author + '/book/' + uuid + '/info.json', 'utf8');
+      var rf = await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8');
       var data = JSON.parse(rf);
       console.log(data);
       return new Book(data.name, data.author, data.uuid, data.chapters);

@@ -54,7 +54,7 @@ Chapter.prototype.setScraps = function(scraps) {
 };
 
 Chapter.prototype.previousVersions = function(numVersions) {
-  return git.getParents('/tmp/mvp/' + this.author + '/chapter/' + this.uuid);
+  return git.getParents(global.storage + this.author + '/chapter/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
 }
 
@@ -64,7 +64,7 @@ Chapter.prototype.save = function(reason) {
   u.email = "test@test.com";
   u.username = this.author;
   var commitMessage = reason;
-  var dir = '/tmp/mvp/' + u.username + '/chapter/' + this.uuid;
+  var dir = global.storage + u.username + '/chapter/' + this.uuid;
 
   var chapter = this;
 
@@ -89,7 +89,7 @@ Chapter.prototype.fork = function(newUser) {
 }
 
 Chapter.prototype.getHead = function() {
-  return git.getHead('/tmp/mvp/' + this.author + '/chapter/' + this.uuid);
+  return git.getHead(global.storage + this.author + '/chapter/' + this.uuid);
 }
 
 Chapter.prototype.update = async function(diff) {
@@ -120,7 +120,7 @@ module.exports = {
   Chapter: Chapter,
   reconstitute: async function(author, uuid, sha) {
     try {
-      var rf = await readFile('/tmp/mvp/' + author + '/chapter/' + uuid + '/info.json', 'utf8');
+      var rf = await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8');
       var data = JSON.parse(rf);
       return new Chapter(data.name, data.author, data.uuid, data.scraps);
     } catch (e) {

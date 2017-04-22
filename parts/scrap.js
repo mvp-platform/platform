@@ -33,7 +33,7 @@ Scrap.prototype.setText = function (text) {
 };
 
 Scrap.prototype.previousVersions = function(numVersions) {
-  return git.getParents('/tmp/mvp/' + this.author + '/scrap/' + this.uuid);
+  return git.getParents(global.storage + this.author + '/scrap/' + this.uuid);
   // return list of previous versions as a [[hash, commit message], ...]
 }
 
@@ -43,7 +43,7 @@ Scrap.prototype.save = function (reason) {
 	u.email = 'test@test.com';
 	u.username = this.author;
 	var commitMessage = reason;
-	var dir = '/tmp/mvp/' + u.username + '/scrap/' + this.uuid;
+	var dir = global.storage + u.username + '/scrap/' + this.uuid;
 
 	var scrap = this;
 
@@ -89,7 +89,7 @@ Scrap.prototype.update = async function(diff) {
 module.exports = {
 	Scrap: Scrap,
 	reconstitute: function (author, uuid, sha) {
-		return readFile('/tmp/mvp/' + author + '/scrap/' + uuid + '/info.json', 'utf8').then(function (f) {
+		return readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8').then(function (f) {
       // create a valid Scrap object from disk
 			var data = JSON.parse(f);
 			return new Scrap(data.text, data.author, data.uuid);
