@@ -56,6 +56,7 @@ export class PDFViewer {
   zoomOut(document) {
     document.scale = Number(document.scale) - 0.1;
   }
+
   activate(scrapID) {
     if (scrapID.author === undefined) {
         return;

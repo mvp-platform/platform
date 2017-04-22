@@ -1,5 +1,6 @@
 export class PDFViewer {
-  constructor() {
+  constructor(chapterID) {
+    this.url = '/src/assets/blank.pdf';
     this.documents = [
       /*{
         url: 'src/documents/one.pdf',
@@ -9,8 +10,8 @@ export class PDFViewer {
         lastpage: 1
       },*/
       {
-        url: 'http://remix.ist:8000/chapters/hagrid/aec55377-716d-4274-b006-44913f73ca7f/pdf',
-        draftUrl: 'http://remix.ist:8000/chapters/hagrid/aec55377-716d-4274-b006-44913f73ca7f/pdf',
+        url: '/src/assets/blank.pdf',
+        draftUrl: '/src/assets/blank.pdf',
         pageNumber: 1,
         scale: 0.8,
         lastpage: 1
@@ -54,5 +55,16 @@ export class PDFViewer {
 
   zoomOut(document) {
     document.scale = Number(document.scale) - 0.1;
+  }
+
+  activate(chapterID) {
+    if (chapterID.author === undefined) {
+        return;
+    }
+
+    this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
+    //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
+    document.url = this.url
+    document.draftUrl = this.url;
   }
 }

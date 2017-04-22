@@ -10,9 +10,9 @@ div #bookView {
 }
 
 div.book-title-block {
-    border: 2px solid black;
+    border: 1px dotted black;
     margin: 10px;
-    background-color: white;
+    background-color: lightgray;
 }
 
 
@@ -180,6 +180,15 @@ aside {
     margin-bottom: 10px;
     width: 100%;
     min-height: 600px;
+}
+
+div.book-title-block p.bookName {
+    font-size: 1.5em;
+}
+
+div.book-title-block p a.previewEditLinks {
+  float: right;
+  margin-right: 2%;
 }
 
 .pdf-toolbar {

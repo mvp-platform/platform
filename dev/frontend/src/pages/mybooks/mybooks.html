@@ -13,11 +13,15 @@
             <ul class="nav">
                 <li repeat.for="book of books" class="${book.isActive ? 'active' : ''}">
                     <div class="book-title-block">
-                        <p>${book.name}</p>
-                        <p>Chapters: ${book.chapters.length}</p>
-                        <a route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
-                        Preview
-                        </a>
+                        <p class="bookName">${book.name}</p>
+                        <p>Chapters: ${book.chapters.length}
+                          <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
+                            Preview
+                          </a>
+                          <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
+                            Edit
+                          </a>
+                        </p>
                     </div>
                 </li>
             </ul>
