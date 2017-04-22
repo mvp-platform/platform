@@ -5,7 +5,7 @@ const searchEndpoint = async function(request, reply) {
     return reply({error: "query parameter q must be defined!"}).code(400);
   }
 
-  let q = {body: {query: {fuzzy: {name: request.query.q}}}};
+  let q = {body: {query: {fuzzy: {name: decodeURIComponent(request.query.q)}}}};
   let hits = await global.search.search(q)
   hits = hits.hits.hits; // yes, that's really where results live
 
