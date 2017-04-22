@@ -60,7 +60,7 @@ export class PDFViewer {
     if (scrapID.author === undefined) {
         return;
     }
-    
+
     this.url = "http://remix.ist:8000/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
     //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
     document.url = this.url

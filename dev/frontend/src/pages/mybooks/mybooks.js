@@ -3,10 +3,10 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 
 let httpClient = new HttpClient();
 
-export class Books {
-
-    constructor() {
-
+export class Books
+{
+    constructor()
+    {
         this.books = [];
 
         httpClient.fetch('http://remix.ist:8000/books/hagrid')
@@ -19,9 +19,9 @@ export class Books {
 
         });
 
-
     }
-    configureRouter(config, router) {
+    configureRouter(config, router)
+    {
         config.title = 'Right Tabs';
         config.map([
             { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/mybooks/PDFViewer', nav: true, title: 'PDF Viewer'},

@@ -2,7 +2,7 @@
     <section class="leftSection">
         <div id="bookView">
           <div id="h1spacer">
-            <h1>My Scraps</h1>
+            <h1>Edit Scraps</h1>
           </div>
           <div class="col-sm-8">
               <ul class="nav">
@@ -16,7 +16,10 @@
                               <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                                 Preview
                               </a>
+                              <br>
+                              <textarea rows="4" cols="50" value.bind="scrap.text"></textarea>
                           </p>
+
                           <!--
                             <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}"> -->
                             <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
@@ -24,6 +27,8 @@
                             </a>
                           -->
                       </div>
+
+
                   </li>
               </ul>
           </div>
