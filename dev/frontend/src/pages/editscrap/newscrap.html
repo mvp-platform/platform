@@ -2,34 +2,43 @@
     <section class="leftSection">
         <div id="bookView">
           <div id="h1spacer">
-            <h1>My Scraps</h1>
+            <h1>New Scrap</h1>
           </div>
           <div class="col-sm-8">
               <ul class="nav">
                   <li class="${book.isActive ? 'active' : ''}">
                       <div class="book-title-block">
                           <!-- <p class="bookName">${scrap.name}</p> -->
-                          <p>Scraps: ${scraps.length}</p>
+                          <!-- <p>Scraps: ${scraps.length}</p>
+
 
                           <p repeat.for="scrap of scraps">
                               Scrap: ${$index+1} - ${(scrap.text).substring(0,30) + "..."}
-                              <!-- Scrap: ${$index+1} - ${(scrap.text)} -->
-
-                              <!-- Test = ${$test = (scrap.text).split(" "); }
-                              console.log($test); -->
-
-
                               <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                                 Preview
                               </a>
-                          </p>
+                              <br>
+                              <textarea rows="4" cols="50" value.bind="scrap.text"></textarea>
+                          </p> -->
+
                           <!--
                             <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}"> -->
                             <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                               Edit
                             </a>
                           -->
+
+                          <p>Enter your text</p>
+                          <textarea rows="4" cols="50" value.bind="userText"></textarea>
+                          <!-- <a class="previewEditLinks" route-href="route: newscrap;"> -->
+                          <br>
+                          <a class="previewEditLinks" route-href="route: newscrap; params.bind: {}">
+                            Submit
+                          </a>
+
                       </div>
+
+
                   </li>
               </ul>
           </div>
