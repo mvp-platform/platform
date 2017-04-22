@@ -401,6 +401,21 @@ POST /scraps/new
 }
 ```
 
+
+## `/search`
+
+Search:  
+`/search?q=plus+separated+query`  
+
+Search for specific types:  
+`/search?q=abc123&type=books`  
+`/search?q=abc123&type=chapters`  
+`/search?q=abc123&type=books&type=chapters`  
+
+Search only hagrid's items (can specify any user):  
+`/search?q=abc&user=hagrid`
+
+
 # TODO better explanations here
 
 ## `/users`
@@ -416,19 +431,6 @@ Method | Endpoint | Description
 `GET` | `/users/{user_id}/favorites` | List user's favorites
 `POST` | `/users/{user_id}/favorites/{object_id}` | Add object to favorites
 `DEL` | `/users/{user_id}/favorites/{object_id}` | Remove object from favorites
-
-## `/search`
-
-Search:  
-`/search?q=plus+separated+query`  
-
-Search for specific types:  
-`/search?q=abc123&type=books`  
-`/search?q=abc123&type=chapters`  
-`/search?q=abc123&type=books&type=chapters`  
-
-Search only current user's items:  
-`/search?q=abc&personal=true`
 
 ## `/account`
 
