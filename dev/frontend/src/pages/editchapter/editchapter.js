@@ -23,7 +23,7 @@ export class EditChapters {
         config.title = 'Chapter Tabs';
         config.map([
             { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: true, title: 'PDF Viewer' },
-            { route: 'account', name: 'account', moduleId: 'pages/editchapter/account', nav: true, title: 'Account' },
+            { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/editchapter/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/editchapter/notifications', nav: true, title: 'Notifications' }
         ]);
