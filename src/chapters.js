@@ -21,6 +21,7 @@ const chapterTmpl = `
 
 const getChapterById = async function(request, reply) {
   let c = await chapter.reconstitute(request.params.author, request.params.id);
+  c.scraps = await chapter.fleshOut(c.scraps);
   return reply(c);
 }
 
@@ -101,6 +102,7 @@ const getChaptersByAuthor = async function(request, reply) {
     let dirs = await readdir(global.storage + request.params.author + '/chapter');
     for (let dir of dirs) {
       let b = await chapter.reconstitute(request.params.author, dir);
+      b.scraps = await chapter.fleshOut(b.scraps);
       chapters.push(b);
     }
   } catch (e) {
