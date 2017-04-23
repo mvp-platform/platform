@@ -35,7 +35,7 @@ var Book = function(bookName, authorName, uuid, chapters) {
 Book.prototype.getText = async function() {
   let runningText = "";
   for (let c of this.chapters) {
-    let nc = await chapter.reconstitute(c[0], c[1]);
+    let nc = await chapter.reconstitute(c[0], c[1], c[2]);
     let cText = await nc.getText();
     runningText = runningText + cText + "\n";
   }
@@ -130,9 +130,11 @@ Book.prototype.save = function(reason) {
   });
 }
 
-Book.prototype.getBySha = function(hash) {
+Book.prototype.getBySha = async function(hash) {
   // get old version of book
-  // TODO
+  var dir = global.storage + this.author + '/book/' + this.uuid;
+  dir = path.resolve(process.env.PWD, dir)
+  return await git.getFileFromCommit(dir, 'info.json', hash);
 }
 
 Book.prototype.fork = function(newUser) {
@@ -141,15 +143,15 @@ Book.prototype.fork = function(newUser) {
 
 module.exports = {
   Book: Book,
-  reconstitute: async function(author, uuid, sha) {
-    try {
-      var rf = await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8');
-      var data = JSON.parse(rf);
-      console.log(data);
-      return new Book(data.name, data.author, data.uuid, data.chapters);
-    } catch (e) {
-      console.log(e);
-      return undefined;
+  reconstitute: async function (author, uuid, sha) {
+    var data = {};
+    if (sha !== undefined) {
+      var dir = global.storage + author + '/book/' + uuid;
+      dir = path.resolve(process.env.PWD, dir);
+      data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+    } else {
+      data = JSON.parse(await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8'));
     }
+    return new Book(data.name, data.author, data.uuid, data.chapters);
   }
 }

@@ -1,5 +1,7 @@
 'use strict';
 
+global.storage = process.cwd() + '/test/';
+
 var mustache = require('mustache');
 var promisify = require('es6-promisify');
 var fs = require('fs-extra');

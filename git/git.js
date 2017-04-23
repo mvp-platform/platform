@@ -49,18 +49,21 @@ var getParents = async function (dir, num) {
 
 var getFileFromCommit = async function (dir, filename, sha) {
 	// get the info.json file from the dir given a certain sha
+	// thar be dragons, my utmost apologies to anyone reading this
 	let fileContents = {};
+	let repo = await nodegit.Repository.open(path.resolve(dir, '.git'));
+	let head = await repo.getReferenceCommit('refs/heads/master');
+	var opts = new nodegit.CheckoutOptions();
 	try {
-		let repo = await nodegit.Repository.open(path.resolve(dir, '.git'));
-		let err = await repo.setHeadDetached(sha);
-	  let ref = await repo.getCurrentBranch();
-		console.log("On " + ref.toString() + " " + ref.target());
-		var rf = await readFile(dir + filename, 'utf8');
+		let commit = await nodegit.Commit.lookup(repo, sha);
+		await nodegit.Reset.reset(repo, commit, nodegit.Reset.TYPE.HARD, opts, "tmpbranch");
+		var rf = await readFile(dir + '/' + filename, 'utf8');
 		fileContents = JSON.parse(rf);
+	} catch(err) {
+		console.log("Error getting old sha: ", err);
 	} finally {
-		// reset HEAD to master
-		let err = await repo.setHead('master');
-		return fileContents;
+		await nodegit.Reset.reset(repo, head, nodegit.Reset.TYPE.HARD, opts, "master");
+		return rf;
 	}
 }
 

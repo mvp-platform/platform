@@ -66,9 +66,11 @@ Scrap.prototype.save = function (reason) {
 });
 };
 
-Scrap.prototype.getBySha = function (hash) {
+Scrap.prototype.getBySha = async function (hash) {
   // get old version of scrap
-  // TODO
+  var dir = global.storage + this.author + '/scrap/' + this.uuid;
+  dir = path.resolve(process.env.PWD, dir)
+  return await git.getFileFromCommit(dir, 'info.json', hash);
 };
 
 Scrap.prototype.fork = function (newUser) {
@@ -88,13 +90,15 @@ Scrap.prototype.update = async function(diff) {
 
 module.exports = {
 	Scrap: Scrap,
-	reconstitute: function (author, uuid, sha) {
-		return readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8').then(function (f) {
-      // create a valid Scrap object from disk
-			var data = JSON.parse(f);
-			return new Scrap(data.text, data.author, data.uuid);
-		}).catch(function (err) {
-			console.log(err);
-		});
+	reconstitute: async function (author, uuid, sha) {
+		var data = {};
+		if (sha !== undefined) {
+			var dir = global.storage + author + '/scrap/' + uuid;
+			dir = path.resolve(process.env.PWD, dir);
+			data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+		} else {
+			data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
+		}
+		return new Scrap(data.text, data.author, data.uuid);
 	}
 };

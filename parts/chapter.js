@@ -31,7 +31,7 @@ var Chapter = function(chapterName, authorName, uuid, scraps) {
 Chapter.prototype.getText = async function() {
   var runningText = "\\newpage\n\\section{" + this.name + "}\n\n";
   for (let s of this.scraps) {
-    let ns = await scrap.reconstitute(s[0], s[1]);
+    let ns = await scrap.reconstitute(s[0], s[1], s[2]);
     runningText = runningText + ns.getText() + "\n\\newline\n";
   }
   return runningText;
@@ -79,9 +79,11 @@ Chapter.prototype.save = function(reason) {
   });
 }
 
-Chapter.prototype.getBySha = function(hash) {
+Chapter.prototype.getBySha = async function(hash) {
   // get old version of chapter
-  // TODO
+  var dir = global.storage + this.author + '/chapter/' + this.uuid;
+  dir = path.resolve(process.env.PWD, dir)
+  return await git.getFileFromCommit(dir, 'info.json', hash);
 }
 
 Chapter.prototype.fork = function(newUser) {
@@ -118,14 +120,15 @@ Chapter.prototype.update = async function(diff) {
 
 module.exports = {
   Chapter: Chapter,
-  reconstitute: async function(author, uuid, sha) {
-    try {
-      var rf = await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8');
-      var data = JSON.parse(rf);
-      return new Chapter(data.name, data.author, data.uuid, data.scraps);
-    } catch (e) {
-      console.log(e);
-      return undefined;
+  reconstitute: async function (author, uuid, sha) {
+    var data = {};
+    if (sha !== undefined) {
+      var dir = global.storage + author + '/chapter/' + uuid;
+      dir = path.resolve(process.env.PWD, dir);
+      data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+    } else {
+      data = JSON.parse(await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8'));
     }
+    return new Chapter(data.name, data.author, data.uuid, data.scraps);
   }
 }
