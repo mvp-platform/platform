@@ -85,18 +85,42 @@ const login = async function(request, reply) {
       await db.collection('users').insertOne({userid: username, token: token, name: payload['name']});
       return reply({username: username, token: token});
   });
+}
 
+const favorites = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+  var cursor = await db.collection('users').find({token: token});
+  var user_blob = await cursor.toArray();
+  let types = ['book', 'chapter', 'scrap'];
+  if (request.query.type) {
+    if (Array.isArray(request.query.type)) {
+      types = request.query.type;
+    } else {
+      types = [request.query.type];
+    }
+  }
+  console.log({userid: user_blob[0].username, type: {$in: types}});
+  await db.collection('favorites').find({userid: user_blob[0].username, type: {$in: types}});
 }
 
 const routes = [{
     method: 'POST',
     path: '/accounts/login',
     handler: login
-  }, {
-      method: 'GET',
-      path: '/login',
-      handler: loginPage
-    }
+  },
+  {
+    method: 'GET',
+    path: '/login',
+    handler: loginPage
+  },
+  {
+    method: 'GET',
+    path: '/favorites',
+    handler: favorites
+  }
 ];
 
 const register = function(server) {
