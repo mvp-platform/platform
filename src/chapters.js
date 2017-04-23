@@ -131,7 +131,6 @@ const favoriteChapterById = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
-
   return reply(await accounts.favoriteThing(login.username, 'chapter', request.params.author, request.params.id));
 }
 

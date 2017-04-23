@@ -26,7 +26,12 @@ const server = new Hapi.Server();
 server.connection({
     host: '0.0.0.0',
     port: 8000,
-    routes: { cors: true }
+    routes: {
+      cors: true,
+      response: {
+        emptyStatusCode: 204
+      }
+    }
 });
 
 global.search = new elasticsearch.Client({

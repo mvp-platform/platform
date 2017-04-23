@@ -105,4 +105,4 @@ const register = function(server) {
   }
 }
 
-module.exports = {register: register, verifylogin: verifylogin, fullNames: fullNames};
+module.exports = {favoriteThing: favoriteThing, register: register, verifylogin: verifylogin, fullNames: fullNames};
