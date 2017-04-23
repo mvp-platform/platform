@@ -4,6 +4,10 @@ var GoogleAuth = require('google-auth-library');
 var hat = require('hat');
 var lescape = require('escape-latex');
 
+const book = require('../../scrapjs/parts/book');
+const scrap = require('../../scrapjs/parts/scrap');
+const chapter = require('../../scrapjs/parts/chapter');
+
 const fs = require('fs');
 const CLIENT_ID = "643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com";
 
@@ -21,12 +25,23 @@ const fullNames = async function(authors) {
   return authorFullNames;
 }
 
+const reconstitute = {
+  book: book.reconstitute,
+  chapter: chapter.reconstitute,
+  scrap: scrap.reconstitute
+}
+
 const favoriteThing = async function(user, type, author, uuid) {
   var cursor = await db.collection('favorites').find({userid: user, type: type, author: author, uuid: uuid});
   var isFaved = (await cursor.toArray()).length === 1;
   if (!isFaved) {
     console.log("inserting favorite");
-    await db.collection('favorites').insertOne({userid: user, type: type, author: author, uuid: uuid});
+    let obj = await reconstitute[type](author, uuid);
+    if (type === "scrap") {
+      await db.collection('favorites').insertOne({userid: user, type: type, author: author, uuid: uuid, text: obj.text});
+    } else {
+      await db.collection('favorites').insertOne({userid: user, type: type, author: author, uuid: uuid, name: obj.name});
+    }
   }
 }
 
