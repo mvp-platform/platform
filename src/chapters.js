@@ -49,7 +49,7 @@ const generateChapterPdf = async function(request, reply) {
   const c = await chapter.reconstitute(request.params.author, request.params.id);
 
 	const [chapterText, authors] = await c.getText();
-  const authorFullNames = account.fullNames(authors);
+  const authorFullNames = accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
 	const info = {
 		title: c.name,

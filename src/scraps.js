@@ -47,7 +47,7 @@ const generateScrapPdf = async function(request, reply) {
   const s = await scrap.reconstitute(request.params.author, request.params.id);
 
 	const [scrapText, authors] = await s.getText();
-  const authorFullNames = account.fullNames(authors);
+  const authorFullNames = accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
 	const info = {
 		title: s.name,
