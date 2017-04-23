@@ -415,27 +415,78 @@ Search for specific types:
 Search only hagrid's items (can specify any user):  
 `/search?q=abc&user=hagrid`
 
+## `Favorites`
 
-# TODO better explanations here
+There are three API calls in the favoriting family.
 
-## `/users`
+### `POST /{type}/{author}/{id}/favorite`
 
-Method | Endpoint | Description
-------|-----|-----
-`GET` | `/users/{user_id}` | Get information about user account
-`GET` | `/users/{user_id}/books` | List user's books
-`GET` | `/users/{user_id}/chapters` | List user's chapters
-`GET` | `/users/{user_id}/scraps` | List user's scraps
-`GET` | `/users/{user_id}/chapters/unassociated` | List user's unassociated chapters
-`GET` | `/users/{user_id}/scraps/unassociated` | List user's unassociated scraps
-`GET` | `/users/{user_id}/favorites` | List user's favorites
-`POST` | `/users/{user_id}/favorites/{object_id}` | Add object to favorites
-`DEL` | `/users/{user_id}/favorites/{object_id}` | Remove object from favorites
+Adds a favorite. If the object is already favorited, it stays in the favorites.
+The return body is empty; the return status code is 204.
 
-## `/account`
+Ex: `POST /books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/favorite`
 
-Method | Endpoint | Description
----|---|---
-`POST` | `/account/login` | Log in
-`POST` | `/account/logout` | Log out
-`POST` | `/account/new` | Create account
+### `DELETE /{type}/{author}/{id}/favorite`
+
+Removes a favorite. If the object isn't favorited, it stays not favorited without an error.
+The return body is empty; the return status code is 204.
+
+Ex: `DELETE /books/hagrid/19b66178-856d-4dad-bbc2-a9575ecfd36b/favorite`
+
+### `GET /favorites`
+
+Gets all of the user's favorites. The token is used to determine whose favorites
+to return.
+
+```
+[
+  {
+    "type": "book",
+    "author": "evantschuy",
+    "uuid": "19b66178-856d-4dad-bbc2-a9575ecfd36b"
+  },
+  {
+    "type": "book",
+    "author": "hagrid",
+    "uuid": "19b66178-856d-4dad-bbc2-a9575ecfd36b",
+    "name": "Plumbus: How They're Made"
+  },
+  {
+    "type": "scrap",
+    "author": "hagrid",
+    "uuid": "31f54157-1ab4-48fc-a606-849e28270faf",
+    "text": "this is a new scrap created 14:03 13 April 2017"
+  }
+]
+```
+
+To filter to specific types, use the same filter as for `search`: `?type=...`:
+
+`GET /favorites?type=book`
+
+```
+[
+  {
+    "type": "book",
+    "author": "evantschuy",
+    "uuid": "19b66178-856d-4dad-bbc2-a9575ecfd36b"
+  },
+  {
+    "type": "book",
+    "author": "hagrid",
+    "uuid": "19b66178-856d-4dad-bbc2-a9575ecfd36b",
+    "name": "Plumbus: How They're Made"
+  }
+]
+```
+
+Multiple types can be specified:
+
+`GET /favorites?type=book&type=chapter`
+
+# TODO APIs that still need a little love
+
+`GET /chapters/unassociated` | List user's unassociated chapters
+`GET /scraps/unassociated`   | List user's unassociated scraps
+
+Login page integration
