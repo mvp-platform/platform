@@ -122,6 +122,16 @@ const forkScrapById = async function(request, reply) {
   return reply(sFork);
 }
 
+// /scraps/{author}/{id}/favorite
+const favoriteScrapById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+
+  return reply(await accounts.favoriteThing(login.username, 'scrap', request.params.author, request.params.id));
+}
+
 const routes = [{
     method: 'GET',
     path: '/scraps/{author}/{id}',
@@ -141,6 +151,11 @@ const routes = [{
     method: 'POST',
     path: '/scraps/{author}/{id}/fork',
     handler: forkScrapById
+  },
+  {
+    method: 'POST',
+    path: '/scraps/{author}/{id}/favorite',
+    handler: favoriteScrapById
   },
   {
     method: 'GET',

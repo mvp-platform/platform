@@ -1,7 +1,6 @@
 'use strict';
 
 var GoogleAuth = require('google-auth-library');
-var mongodb = require('mongodb');
 var hat = require('hat');
 var lescape = require('escape-latex');
 
@@ -20,6 +19,15 @@ const fullNames = async function(authors) {
     }
   }
   return authorFullNames;
+}
+
+const favoriteThing = async function(user, type, author, uuid) {
+  var cursor = await db.collection('favorites').find({userid: user, type: type, author: author, uuid: uuid});
+  var isFaved = (await cursor.toArray()).length === 1;
+  if (!isFaved) {
+    console.log("inserting favorite");
+    await db.collection('favorites').insertOne({userid: user, type: type, author: author, uuid: uuid});
+  }
 }
 
 const verifylogin = async function(request) {

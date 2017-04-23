@@ -125,6 +125,16 @@ const forkChapterById = async function(request, reply) {
   return reply(cFork);
 }
 
+// /chapters/{author}/{id}/favorite
+const favoriteChapterById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+
+  return reply(await accounts.favoriteThing(login.username, 'chapter', request.params.author, request.params.id));
+}
+
 const routes = [{
     method: 'GET',
     path: '/chapters/{author}/{id}',
@@ -144,6 +154,11 @@ const routes = [{
     method: 'POST',
     path: '/chapters/{author}/{id}/fork',
     handler: forkChapterById
+  },
+  {
+    method: 'POST',
+    path: '/chapters/{author}/{id}/favorite',
+    handler: favoriteChapterById
   },
   {
     method: 'GET',
