@@ -31,6 +31,11 @@ const reconstitute = {
   scrap: scrap.reconstitute
 }
 
+const unfavoriteThing = async function(user, type, author, uuid) {
+  await db.collection('favorites').remove({userid: user, type: type, author: author, uuid: uuid});
+  return;
+}
+
 const favoriteThing = async function(user, type, author, uuid) {
   var cursor = await db.collection('favorites').find({userid: user, type: type, author: author, uuid: uuid});
   var isFaved = (await cursor.toArray()).length === 1;
@@ -147,4 +152,4 @@ const register = function(server) {
   }
 }
 
-module.exports = {favoriteThing: favoriteThing, register: register, verifylogin: verifylogin, fullNames: fullNames};
+module.exports = {favoriteThing: favoriteThing, unfavoriteThing: unfavoriteThing, register: register, verifylogin: verifylogin, fullNames: fullNames};

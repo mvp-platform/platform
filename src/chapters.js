@@ -134,6 +134,15 @@ const favoriteChapterById = async function(request, reply) {
   return reply(await accounts.favoriteThing(login.username, 'chapter', request.params.author, request.params.id));
 }
 
+// /chapters/{author}/{id}/favorite
+const unfavoriteChapterById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+  return reply(await accounts.unfavoriteThing(login.username, 'chapter', request.params.author, request.params.id));
+}
+
 const routes = [{
     method: 'GET',
     path: '/chapters/{author}/{id}',
@@ -158,6 +167,11 @@ const routes = [{
     method: 'POST',
     path: '/chapters/{author}/{id}/favorite',
     handler: favoriteChapterById
+  },
+  {
+    method: 'DELETE',
+    path: '/chapters/{author}/{id}/favorite',
+    handler: unfavoriteChapterById
   },
   {
     method: 'GET',
