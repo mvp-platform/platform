@@ -1,5 +1,6 @@
 export class PDFViewer {
-  constructor(scrapID) {
+  constructor(chapterID) {
+    console.log("constructing " + chapterID);
     this.url = '/src/assets/blank.pdf';
     this.documents = [
       /*{
@@ -57,13 +58,14 @@ export class PDFViewer {
     document.scale = Number(document.scale) - 0.1;
   }
 
-  activate(scrapID) {
-    if (scrapID.author === undefined) {
+  activate(chapterID) {
+    console.log("activating ", chapterID);
+    if (chapterID.author === undefined) {
         return;
     }
-    
-    this.url = "http://remix.ist:8000/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
-    //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
+
+    //this.url = "http://remix.ist:8000/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
+    this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
     document.url = this.url
     document.draftUrl = this.url;
   }

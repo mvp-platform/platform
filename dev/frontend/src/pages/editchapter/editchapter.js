@@ -1,47 +1,30 @@
 import 'fetch';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import { HttpClient, json } from 'aurelia-fetch-client';
 
 let httpClient = new HttpClient();
 
-export class EditChapters
-{
-    constructor(chapterID)
-    {
+export class EditChapters {
+    constructor() {}
 
+    activate(author) {
 
         this.chapters = [];
 
-
-        // httpClient.fetch('http://remix.ist:8000/chapters/' + chapterID.author + '/' + chapterID.uuid)
-        // .then(response => response.json())
-        // .then(data => {
-        //     for(let instance of data) {
-        //         console.log(instance);
-        //         this.books.push(instance);
-        //     }
-        //
-        // });
-
-
-        httpClient.fetch('http://remix.ist:8000/chapters/hagrid/68c47c74-f6fb-4e5b-a68c-f2c6b4265bd1')
-        .then(response => response.json())
-        .then(data => {
-            this.chapters.push(data);
-
-            // for(let instance of data) {
-            //     console.log(instance);
-            //     this.books.push(instance);
-            // }
-
-        });
+        httpClient.fetch('http://remix.ist:8000/chapters/' + author.author + '/' + author.uuid)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.chapters.push(data);
+            });
 
     }
-    configureRouter(config, router)
-    {
+
+    configureRouter(config, router) {
         config.title = 'Chapter Tabs';
         config.map([
             { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: true, title: 'PDF Viewer' },
-            { route: 'account', name: 'account', moduleId: 'pages/editchapter/account', nav: true, title: 'Account' },
+            { route: ['myscraps', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: false, title: 'PDF Viewer' },
+            { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/editchapter/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/editchapter/notifications', nav: true, title: 'Notifications' }
         ]);
