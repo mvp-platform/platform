@@ -27,6 +27,9 @@ const postScrapById = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
+  if (login.username != request.params.author) {
+    return reply({error: "not your scrap!"}).code(403);
+  }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
   var resp = await global.search.update({

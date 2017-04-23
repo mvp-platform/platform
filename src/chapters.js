@@ -29,6 +29,9 @@ const postChapterById = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
+  if (login.username != request.params.author) {
+    return reply({error: "not your chapter!"}).code(403);
+  }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
   var err = await c.update(request.payload);
   var resp = await global.search.update({
