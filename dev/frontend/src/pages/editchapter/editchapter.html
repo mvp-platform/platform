@@ -18,14 +18,14 @@ we created, and we bind viewmodel properties to it.
                             <p class="bookName">${chapter.name}</p>
                             <p>Scraps: ${chapter.scraps.length}</p>
 
-                            <p repeat.for="i of chapter.scraps.length">Scrap ${i+1}
+                            <p repeat.for="i of chapter.scraps.length">Scrap ${i+1} - ${(chapter.scraps[i][chapter.scraps[i].length-1]).substring(0,30) + "..."}
                               <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}">
                                 Preview
                               </a>
-                              <a class="previewEditLinks" route-href="route: editchapter; ">
+                              <!-- <a class="previewEditLinks" route-href="route: editchapter; "> -->
                               <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}"> -->
-                                Edit
-                              </a>
+                                <!-- Edit
+                              </a> -->
                             </p>
 
                         </div>

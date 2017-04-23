@@ -1,5 +1,5 @@
 export class PDFViewer {
-    constructor(scrapID) {
+    constructor(chapterID) {
         this.url = '/src/assets/blank.pdf';
         this.documents = [
             /*{
@@ -57,14 +57,16 @@ export class PDFViewer {
         document.scale = Number(document.scale) - 0.1;
     }
 
-    activate(scrapID) {
-        if (scrapID.author === undefined) {
+    activate(chapterID) {
+        if (chapterID.author === undefined) {
             return;
         }
 
-        console.log(scrapID);
+        console.log("chapterid");
 
-        this.url = "http://remix.ist:8000/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
+        console.log(chapterID);
+
+        this.url = "http://remix.ist:8000/books/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
         //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
         document.url = this.url
         document.draftUrl = this.url;
