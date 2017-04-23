@@ -7,6 +7,7 @@ const pdf = require('./pdf');
 const fs = require('fs')
 const promisify = require("es6-promisify");
 const readdir = promisify(fs.readdir);
+const lescape = require('escape-latex');
 
 const chapterTmpl = `
 
@@ -53,7 +54,7 @@ const generateChapterPdf = async function(request, reply) {
   const authorFullNames = await accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
 	const info = {
-		title: c.name,
+		title: lescape(c.name),
 		author: authorText,
 		body: chapterText
 	};

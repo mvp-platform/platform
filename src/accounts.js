@@ -3,6 +3,7 @@
 var GoogleAuth = require('google-auth-library');
 var mongodb = require('mongodb');
 var hat = require('hat');
+var lescape = require('escape-latex');
 
 const fs = require('fs');
 const CLIENT_ID = "643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com";
@@ -15,7 +16,7 @@ const fullNames = async function(authors) {
     if (name.length === 0) {
       authorFullNames.push(author);
     } else {
-      authorFullNames.push(name[0].name);
+      authorFullNames.push(lescape(name[0].name));
     }
   }
   return authorFullNames;

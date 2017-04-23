@@ -7,6 +7,7 @@ const pdf = require('./pdf');
 const fs = require('fs');
 const promisify = require("es6-promisify");
 const readdir = promisify(fs.readdir);
+const lescape = require('escape-latex');
 
 const scrapTmpl = `
 
@@ -50,9 +51,9 @@ const generateScrapPdf = async function(request, reply) {
   const authorFullNames = await accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
 	const info = {
-		title: s.name,
+		title: lescape(s.name),
 		author: authorText,
-		body: scrapText
+		body: lescape(scrapText)
 	};
 	const laText = mustache.render(scrapTmpl, info); // lol laText
   const pdfPath = await pdf.gen(laText);
