@@ -41,7 +41,7 @@ var Scrap = function (text, authorName, uuid) {
 };
 
 Scrap.prototype.getText = function () {
-	return this.text;
+	return [this.text, [this.author]];
 };
 
 Scrap.prototype.setText = function (text) {

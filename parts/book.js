@@ -50,12 +50,14 @@ var Book = function(bookName, authorName, uuid, chapters) {
 
 Book.prototype.getText = async function() {
   let runningText = "";
+  let authors = [this.author];
   for (let c of this.chapters) {
     let nc = await chapter.reconstitute(c[0], c[1], c[2]);
-    let cText = await nc.getText();
+    let [cText, cAuthors] = await nc.getText();
+    authors = authors.concat(cAuthors);
     runningText = runningText + cText + "\n";
   }
-  return runningText;
+  return [runningText, new Set(authors)];
 }
 
 Book.prototype.addChapter = function(chapter, sha) {
