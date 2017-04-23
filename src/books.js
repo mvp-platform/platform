@@ -56,7 +56,8 @@ const generateBookPdf = async function(request, reply) {
   const b = await book.reconstitute(request.params.author, request.params.id);
 
 	const [bookText, authors] = await b.getText();
-  const authorText = Array.from(authors).join(' \\and ');
+  const authorFullNames = account.fullNames(authors);
+  const authorText = authorFullNames.join(' \\and ');
 	const info = {
 		title: b.name,
 		author: authorText,

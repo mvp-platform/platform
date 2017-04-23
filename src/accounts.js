@@ -7,6 +7,13 @@ var hat = require('hat');
 const fs = require('fs');
 const CLIENT_ID = "643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com";
 
+const fullNames = async function(authors) {
+  for (let author of authors) {
+    console.log(author);
+  }
+  return authors;
+}
+
 const verifylogin = async function(request) {
   var header = request.headers.authorization;
   if (header != undefined && header.substring(0, 6) == "Token ") {
@@ -59,7 +66,7 @@ const login = async function(request, reply) {
       var userid = payload['sub'];
       var token = hat();
       var username = payload['name'].replace(/\s/g,'').toLowerCase();
-      await db.collection('users').insertOne({userid: username, token: token});
+      await db.collection('users').insertOne({userid: username, token: token, name: payload['name']});
       return reply({username: username, token: token});
   });
 
@@ -82,4 +89,4 @@ const register = function(server) {
   }
 }
 
-module.exports = {register: register, verifylogin: verifylogin};
+module.exports = {register: register, verifylogin: verifylogin, fullNames: fullNames};
