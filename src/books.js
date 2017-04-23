@@ -42,28 +42,7 @@ const postBookById = async function(request, reply) {
   }
   var b = await book.reconstitute(request.params.author, request.params.id);
   if (Array.isArray(request.payload.chapters)) {
-    // oh dear, this is not what I intended to be writing today
-    // 100% USDA Prime Code
-    let newCs = request.payload.chapters.map(e => [e[0],[1]].join());
-    for (let oldC of c.chapters) {
-      if (!newCs.contains([oldC[0],oldC[1]].join())) {
-        // new chapters doesn't contain old chapter
-        console.log("book no longer references ", oldC);
-        if (oldC[0] === login.username) {
-          await mongoutils.decRef(oldC[0], oldC[1]);
-        }
-      }
-    }
-    let oldCs = c.chapters.map(e => [e[0],[1]].join());
-    for (let newC of newCs) {
-      if (!oldCs.contains([newC[0],newC[1]].join())) {
-        // newly added chapter
-        console.log("book now references ", newC);
-        if (newC[0] === login.username) {
-          await mongoutils.incRef(newC[0], newC[1]);
-        }
-      }
-    }
+    mongoutils.countRefs(b.chapters, request.payload.chapters, request.params.author);
   }
   var err = await b.update(request.payload);
   var resp = await global.search.update({
@@ -105,7 +84,9 @@ const postNewBook = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
-  // TODO verify author
+  if (request.payload.author !== login.username) {
+    return reply({error: "can only create books for " + login.username}).code(403);
+  }
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
   }

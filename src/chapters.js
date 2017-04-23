@@ -36,29 +36,8 @@ const postChapterById = async function(request, reply) {
     return reply({error: "not your chapter!"}).code(403);
   }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
-  if (Array.isArray(request.payload.scraps)) {
-    // oh dear, this is not what I intended to be writing today
-    // 100% USDA Prime Code
-    let newSs = request.payload.scraps.map(e => [e[0],[1]].join());
-    for (let oldS of c.scraps) {
-      if (!newSs.contains([oldS[0],oldS[1]].join())) {
-        // new scraps doesn't contain old scrap
-        console.log("chapter no longer references ", oldS);
-        if (oldS[0] === login.username) {
-          await mongoutils.decRef(oldS[0], oldS[1]);
-        }
-      }
-    }
-    let oldSs = c.scraps.map(e => [e[0],[1]].join());
-    for (let newS of newSs) {
-      if (!oldSs.contains([newS[0],newS[1]].join())) {
-        // newly added scrap
-        console.log("chapter now references ", neS);
-        if (newS[0] === login.username) {
-          await mongoutils.incRef(newS[0], newS[1]);
-        }
-      }
-    }
+  if (Array.isArray(request.payload.chapters)) {
+    mongoutils.countRefs(c.scraps, request.payload.scraps, request.params.author);
   }
   var err = await c.update(request.payload);
   var resp = await global.search.update({
@@ -100,12 +79,14 @@ const postNewChapter = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
-  // TODO verify author
   if (request.payload.author === undefined) {
-    return reply({error: "must define author"}).code(404);
+    return reply({error: "must define author"}).code(403);
+  }
+  if (request.payload.author !== login.username) {
+    return reply({error: "can only create chapters for " + login.username}).code(403);
   }
   if (request.payload.name === undefined) {
-    return reply({error: "must define name"}).code(404);
+    return reply({error: "must define name"}).code(403);
   }
 	var ch1 = new chapter.Chapter(request.payload.name, request.payload.author);
   await ch1.save('Created chapter named ' + request.payload.name);
@@ -118,7 +99,7 @@ const postNewChapter = async function(request, reply) {
       doc: ch1
     }
   });
-  await db.collection('refs').insertOne({count: 0, type: 'chapter', author: author, uuid: uuid, name: request.payload.name});
+  await db.collection('refs').insertOne({count: 0, author: request.payload.author, uuid: ch1.uuid});
   return reply(ch1);
 }
 

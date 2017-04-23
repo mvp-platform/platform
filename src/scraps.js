@@ -72,7 +72,9 @@ const postNewScrap = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
-  // TODO verify author
+  if (request.payload.author !== login.username) {
+    return reply({error: "can only create scraps for " + login.username}).code(403);
+  }
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
   }
@@ -91,7 +93,7 @@ const postNewScrap = async function(request, reply) {
       doc: scr
     }
   });
-  await db.collection('unassociated').insertOne({userid: user, type: 'scrap', author: author, uuid: uuid, text: text});
+  await db.collection('refs').insertOne({author: request.payload.author, uuid: scr.uuid, count: 0});
   return reply(scr);
 }
 
