@@ -18,7 +18,7 @@ export class EditBook {
         config.title = 'Book Tabs';
         config.map([
             { route: ['', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editBook/PDFViewer', nav: true, title: 'PDF Viewer' },
-            { route: ['editchapter', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: true, title: 'PDF Viewer' },
+            { route: ['editchapter', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: false, title: 'PDF Viewer' },
 
             { route: 'search', name: 'search', moduleId: 'pages/editBook/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/editBook/emails', nav: true, title: 'Emails' },
