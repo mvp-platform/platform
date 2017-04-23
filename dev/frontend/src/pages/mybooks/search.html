@@ -21,6 +21,8 @@
                     </div>
                 </div>
             </li>
+            <br>
+            <p if.bind="(hits.length === 0) && (searchedAtLeastOnce === true)">No results found.</p>
         </ul>
     </div>
 

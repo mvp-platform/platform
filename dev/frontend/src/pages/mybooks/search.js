@@ -7,19 +7,20 @@ export class search {
 
     query = "";
     hits = [];
+    baseURI = "http://remix.ist:8000/search?q=";
+    searchedAtLeastOnce = false;
 
     constructor() {}
 
     elasticSearch(newQuery) {
-
-        console.log(newQuery);
-        this.query = newQuery;
+        this.searchedAtLeastOnce = true;
+        this.query = encodeURI(newQuery);
 
         if (this.hits.length != 0) {
             this.hits = [];
         }
 
-        httpClient.fetch('http://remix.ist:8000/search?q=Searchable')
+        httpClient.fetch(this.baseURI + this.query)
             .then(response => response.json())
             .then(data => {
                 //console.log(data);
@@ -27,6 +28,5 @@ export class search {
                     this.hits.push(hit);
                 }
             });
-        console.log(this.hits);
     }
 }
