@@ -8,10 +8,17 @@ const fs = require('fs');
 const CLIENT_ID = "643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com";
 
 const fullNames = async function(authors) {
+  var authorFullNames = [];
   for (let author of authors) {
-    console.log(author);
+    var cursor = await db.collection('users').find({userid: author, name: {$exists: true}});
+    var name = await cursor.toArray();
+    if (name.length === 0) {
+      authorFullNames.push(author);
+    } else {
+      authorFullNames.push(name[0].name);
+    }
   }
-  return Array.from(authors);
+  return authorFullNames;
 }
 
 const verifylogin = async function(request) {
