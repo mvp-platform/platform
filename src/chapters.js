@@ -109,6 +109,17 @@ const getChaptersByAuthor = async function(request, reply) {
   return reply(chapters);
 }
 
+// /chapters/{author}/{id}/fork
+const forkChapterById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+  const c = await chapter.reconstitute(request.params.author, request.params.id);
+  const cFork = await c.fork(login.username);
+  return reply(cFork);
+}
+
 const routes = [{
     method: 'GET',
     path: '/chapters/{author}/{id}',
@@ -123,6 +134,11 @@ const routes = [{
     method: 'POST',
     path: '/chapters/{author}/{id}',
     handler: postChapterById
+  },
+  {
+    method: 'POST',
+    path: '/chapters/{author}/{id}/fork',
+    handler: forkChapterById
   },
   {
     method: 'GET',

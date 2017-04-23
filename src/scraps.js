@@ -4,7 +4,7 @@ const scrap = require('../../scrapjs/parts/scrap');
 const mustache = require('mustache');
 const accounts = require('./accounts');
 const pdf = require('./pdf');
-const fs = require('fs')
+const fs = require('fs');
 const promisify = require("es6-promisify");
 const readdir = promisify(fs.readdir);
 
@@ -108,6 +108,17 @@ const getScrapsByAuthor = async function(request, reply) {
   return reply(scraps);
 }
 
+// /scraps/{author}/{id}/fork
+const forkScrapById = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+  const s = await scrap.reconstitute(request.params.author, request.params.id);
+  const sFork = await s.fork(login.username);
+  return reply(sFork);
+}
+
 const routes = [{
     method: 'GET',
     path: '/scraps/{author}/{id}',
@@ -122,6 +133,11 @@ const routes = [{
     method: 'POST',
     path: '/scraps/{author}/{id}',
     handler: postScrapById
+  },
+  {
+    method: 'POST',
+    path: '/scraps/{author}/{id}/fork',
+    handler: forkScrapById
   },
   {
     method: 'GET',
