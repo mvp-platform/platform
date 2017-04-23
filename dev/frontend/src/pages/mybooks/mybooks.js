@@ -1,4 +1,3 @@
-import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
 
 let httpClient = new HttpClient();

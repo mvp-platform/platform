@@ -1,4 +1,9 @@
 <template>
+    <require from="./search">
     <h1>Search: </h1>
-    <input id="search" type="text" name="search" placeholder="Search..">
+    <form submit.delegate="elasticSearch()">
+        <input id="search" type="text" value.bind="query" name="search" placeholder="Search..">
+        <button type="search">Search</button>
+        <p>YOLO</p>
+    </form>
 </template>
