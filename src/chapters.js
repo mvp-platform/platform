@@ -48,10 +48,11 @@ const postChapterById = async function(request, reply) {
 const generateChapterPdf = async function(request, reply) {
   const c = await chapter.reconstitute(request.params.author, request.params.id);
 
-	const chapterText = await c.getText();
+	const [chapterText, authors] = await c.getText();
+  const authorText = Array.from(authors).join(' \\and ');
 	const info = {
 		title: c.name,
-		author: c.author,
+		author: authorText,
 		body: chapterText
 	};
 	const laText = mustache.render(chapterTmpl, info); // lol laText

@@ -46,10 +46,11 @@ const postScrapById = async function(request, reply) {
 const generateScrapPdf = async function(request, reply) {
   const s = await scrap.reconstitute(request.params.author, request.params.id);
 
-	const scrapText = await s.getText();
+	const [scrapText, authors] = await s.getText();
+  const authorText = Array.from(authors).join(' \\and ');
 	const info = {
 		title: s.name,
-		author: s.author,
+		author: authorText,
 		body: scrapText
 	};
 	const laText = mustache.render(scrapTmpl, info); // lol laText

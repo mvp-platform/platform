@@ -55,10 +55,11 @@ const postBookById = async function(request, reply) {
 const generateBookPdf = async function(request, reply) {
   const b = await book.reconstitute(request.params.author, request.params.id);
 
-	const bookText = await b.getText();
+	const [bookText, authors] = await b.getText();
+  const authorText = Array.from(authors).join(' \\and ');
 	const info = {
 		title: b.name,
-		author: b.author,
+		author: authorText,
 		body: bookText
 	};
 	const laText = mustache.render(bookTmpl, info); // lol laText
