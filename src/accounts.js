@@ -11,7 +11,7 @@ const fullNames = async function(authors) {
   for (let author of authors) {
     console.log(author);
   }
-  return authors;
+  return Array.from(authors);
 }
 
 const verifylogin = async function(request) {
