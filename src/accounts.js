@@ -101,7 +101,11 @@ const favorites = async function(request, reply) {
     }
   }
   var cursor = await db.collection('favorites').find({userid: login.username, type: {$in: types}});
-  var resp = await cursor.toArray();
+  var resp = (await cursor.toArray()).map(fav => {
+    delete fav._id; // mongodb internal favorite id
+    delete fav.userid; // favoriter id
+    return fav;
+  });
   reply(resp);
 }
 
