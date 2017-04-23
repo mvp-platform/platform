@@ -24,12 +24,13 @@ var reconstitute = async function (author, uuid, sha) {
   } else {
     data = JSON.parse(await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8'));
   }
-  return new Chapter(data.name, data.author, data.uuid, data.scraps);
+  return new Chapter(data.name, data.author, data.uuid, data.scraps, data.oldAuthors);
 }
 
-var Chapter = function(chapterName, authorName, uuid, scraps) {
+var Chapter = function(chapterName, authorName, uuid, scraps, authors) {
   this.name = chapterName;
   this.author = authorName;
+  this.oldAuthors = authors; // previous authors from before forking
   this.head = undefined;
   this.isNew = true;
   if (uuid === undefined) {
@@ -46,13 +47,15 @@ var Chapter = function(chapterName, authorName, uuid, scraps) {
 
 Chapter.prototype.getText = async function() {
   var runningText = "\\newpage\n\\section{" + this.name + "}\n\n";
-  var authors = [];
+  let authors = [this.author];
+  if (this.oldAuthors !== undefined) {
+    authors = authors.concat(this.oldAuthors);
+  }
   for (let s of this.scraps) {
     let ns = await scrap.reconstitute(s[0], s[1], s[2]);
     runningText = runningText + ns.getText() + "\n\\newline\n";
     authors.push(ns.author);
   }
-  authors.push(this.author);
   return [runningText, Array.from(new Set(authors))];
 }
 
@@ -110,8 +113,13 @@ Chapter.prototype.fork = async function(newUser) {
 	await mkdirpp(global.storage + newUser + '/scrap/');
   var err = await ncp(global.storage + this.author + '/chapter/' + this.uuid, global.storage + newUser + '/chapter/' + this.uuid);
   var newChap = await reconstitute(newUser, this.uuid);
-  await newChap.update({author: newUser});
+  if (!newChap.oldAuthors) {
+    newChap.oldAuthors = [this.author];
+  } else {
+    newChap.oldAuthors.push(this.author);
+  }
   newChap.author = newUser;
+  await newChap.save('forked from ' + this.author);
   return newChap;
 }
 

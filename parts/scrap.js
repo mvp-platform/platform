@@ -25,11 +25,12 @@ var reconstitute = async function (author, uuid, sha) {
 	} else {
 		data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
 	}
-	return new Scrap(data.text, data.author, data.uuid);
+	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors);
 }
 
-var Scrap = function (text, authorName, uuid) {
+var Scrap = function (text, authorName, uuid, oldAuthors) {
 	this.author = authorName;
+	this.oldAuthors = oldAuthors;
 	this.text = text;
 	this.head = undefined;
 	this.isNew = true;
@@ -41,6 +42,10 @@ var Scrap = function (text, authorName, uuid) {
 };
 
 Scrap.prototype.getText = function () {
+	if (this.oldAuthors !== undefined) {
+		this.oldAuthors.push(this.author);
+		return [this.text, this.oldAuthors];
+	}
 	return [this.text, [this.author]];
 };
 
@@ -94,8 +99,14 @@ Scrap.prototype.fork = async function(newUser) {
 	await mkdirpp(global.storage + newUser + '/scrap/');
   var err = await ncp(global.storage + this.author + '/scrap/' + this.uuid, global.storage + newUser + '/scrap/' + this.uuid);
   var newScrap = await reconstitute(newUser, this.uuid);
-  await newScrap.update({author: newUser});
   newScrap.author = newUser;
+  if (!newScrap.oldAuthors) {
+    newScrap.oldAuthors = [this.author];
+  } else {
+    newScrap.oldAuthors.push(this.author);
+  }
+  newScrap.author = newUser;
+  await newScrap.save('forked from ' + this.author);
   return newScrap;
 }
 

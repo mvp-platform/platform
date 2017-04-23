@@ -28,11 +28,12 @@ var reconstitute = async function (author, uuid, sha) {
   } else {
     data = JSON.parse(await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8'));
   }
-  return new Book(data.name, data.author, data.uuid, data.chapters);
+  return new Book(data.name, data.author, data.uuid, data.chapters, data.oldAuthors);
 }
 
-var Book = function(bookName, authorName, uuid, chapters) {
+var Book = function(bookName, authorName, uuid, chapters, oldAuthors) {
   this.name = bookName;
+  this.oldAuthors = oldAuthors; // authors from before forking
   this.author = authorName;
   if (uuid === undefined) {
     this.isNew = true;
@@ -51,6 +52,9 @@ var Book = function(bookName, authorName, uuid, chapters) {
 Book.prototype.getText = async function() {
   let runningText = "";
   let authors = [this.author];
+  if (this.oldAuthors !== undefined) {
+    authors = authors.concat(this.oldAuthors);
+  }
   for (let c of this.chapters) {
     let nc = await chapter.reconstitute(c[0], c[1], c[2]);
     let [cText, cAuthors] = await nc.getText();
@@ -160,8 +164,14 @@ Book.prototype.fork = async function(newUser) {
   // fork book to another user's directory
   var err = await ncp(global.storage + this.author + '/book/' + this.uuid, global.storage + newUser + '/book/' + this.uuid);
   var newBook = await reconstitute(newUser, this.uuid);
-  await newBook.update({author: newUser});
   newBook.author = newUser;
+  if (!newBook.oldAuthors) {
+    newBook.oldAuthors = [this.author];
+  } else {
+    newBook.oldAuthors.push(this.author);
+  }
+  newBook.author = newUser;
+  await newBook.save('forked from ' + this.author);
   return newBook;
 }
 
