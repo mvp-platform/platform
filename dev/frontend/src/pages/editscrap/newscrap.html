@@ -28,13 +28,25 @@
                             </a>
                           -->
 
-                          <p>Enter your text</p>
+                          <!-- <p>Enter your text</p>
                           <textarea rows="4" cols="50" value.bind="userText"></textarea>
-                          <!-- <a class="previewEditLinks" route-href="route: newscrap;"> -->
+
                           <br>
-                          <a class="previewEditLinks" route-href="route: newscrap; params.bind: {}">
+                          <a class="previewEditLinks" route-href="route: newscrap; params.bind: {userText: userText}">
                             Submit
-                          </a>
+                          </a> -->
+
+                          <form role = "form" submit.delegate = "submitNewScrap()">
+
+                            <label for = "userText">Create your New Scrap here</label>
+                            <!-- <input type = "text" value.bind = "email" placeholder = "Email"> -->
+                            <textarea rows="4" cols="50" value.bind="userText"></textarea>
+
+                            <!-- <label for = "password">Password</label>
+                            <input type = "password" value.bind = "password" placeholder = "Password"> -->
+
+                            <button type = "submit">submit</button>
+                         </form>
 
                       </div>
 

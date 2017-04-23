@@ -4,9 +4,60 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 let httpClient = new HttpClient();
 
 export class Scraps {
+
+    // email = '';
+    // password = '';
+    userText = '';
+
+
+    submitNewScrap()
+    {
+      var requested = this.userText;
+      console.log(requested);
+
+
+      //alert(userText);
+      // this.http = this.httpClient();
+
+      //BookID
+      //f12d3550-b93e-455f-8d41-fbd480f464bb
+
+      //chapterID
+      //439385c0-66e0-46c3-8390-36805da3154c
+
+      //scrapID
+      //4071b78c-2328-4a59-a278-86200f93bfde
+      let request = {
+      //   //name: "Hagrid's First Chapter",
+          author: "hagrid",
+      //   //FOR SETTING CHAPTER
+      //   // chapters: [
+      //   //   [
+      //   //   "hagrid",
+      //   //   "439385c0-66e0-46c3-8390-36805da3154c"
+      //   //   ]
+      //   // ]
+      //   text: "\\section{Testing}This is a new UPDATED scrap created with posting via the newscrap page!"
+          text: requested
+      };
+      //
+      httpClient.fetch('http://remix.ist:8000/scraps/new', {
+        method: 'post',
+        body: JSON.stringify(request),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Token abc123'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      });
+
+    }
+
     constructor()
     {
-
         // this.scraps = [];
         // //
         // // //' + chapterID.author + '/' + chapterID.uuid)
@@ -38,43 +89,7 @@ export class Scraps {
     }
     activate()
     {
-      var userText = "This is a test";
-      //alert(userText);
-      // this.http = this.httpClient();
 
-      //BookID
-      //f12d3550-b93e-455f-8d41-fbd480f464bb
-
-      //chapterID
-      //439385c0-66e0-46c3-8390-36805da3154c
-
-      //scrapID
-      //4071b78c-2328-4a59-a278-86200f93bfde
-      // let request = {
-      //   //name: "Hagrid's First Chapter",
-      //   //author: "hagrid",
-      //   //FOR SETTING CHAPTER
-      //   // chapters: [
-      //   //   [
-      //   //   "hagrid",
-      //   //   "439385c0-66e0-46c3-8390-36805da3154c"
-      //   //   ]
-      //   // ]
-      //   text: "\\section{Testing}This is a new UPDATED scrap created with posting via the newscrap page!"
-      // };
-      //
-      // httpClient.fetch('http://remix.ist:8000/scraps/hagrid/4071b78c-2328-4a59-a278-86200f93bfde', {
-      //   method: 'post',
-      //   body: JSON.stringify(request),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': 'Token abc123'
-      //   }
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   console.log(data)
-      // });
 
 
     }
@@ -88,4 +103,6 @@ export class Scraps {
         ]);
         this.router = router;
     }
+
+
 }
