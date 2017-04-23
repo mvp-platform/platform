@@ -122,7 +122,7 @@ module.exports = {
   Chapter: Chapter,
   reconstitute: async function (author, uuid, sha) {
     var data = {};
-    if (sha !== undefined) {
+    if (sha !== null) {
       var dir = global.storage + author + '/chapter/' + uuid;
       dir = path.resolve(process.env.PWD, dir);
       data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
