@@ -1,0 +1,44 @@
+<template>
+    <require from="resources/elements/pdf-document"></require>
+
+  <!--
+This is just a regular Aurelia viewmodel. We import the pdf-document element that
+we created, and we bind viewmodel properties to it.
+-->
+    <section class="leftSection">
+        <!-- <div id="bookView"> -->
+            <div id="h1spacer">
+                <h1>Edit Book</h1>
+            </div>
+            <div class="col-sm-8">
+                <ul class="nav">
+
+                    <li repeat.for="chapter of book.chapters" class="${chapter.isActive ? 'active' : ''}">
+                        <div class="book-title-block">
+                            <p class="bookName">Name: ${chapter[3]}</p>
+                            <p>Author: ${chapter[0]}</p>
+                            <p>UUID: ${chapter[1]}</p>
+                            <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1]}">
+                            Edit
+                          </a>
+                          <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
+                            Preview
+                          </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        <!-- </div> -->
+        <hr>
+    </section>
+    <section class="rightSection">
+        <div class="col-sm-8">
+              <ul id="rightSectionNav" class="nav navbar-nav">
+                  <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                      <a href.bind="row.href">${row.title}</a>
+                  </li>
+              </ul>
+          </div>
+          <router-view></router-view>
+    </section>
+</template>
