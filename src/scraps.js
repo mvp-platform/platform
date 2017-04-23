@@ -91,6 +91,7 @@ const postNewScrap = async function(request, reply) {
       doc: scr
     }
   });
+  await db.collection('unassociated').insertOne({userid: user, type: 'scrap', author: author, uuid: uuid, text: text});
   return reply(scr);
 }
 

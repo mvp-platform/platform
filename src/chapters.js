@@ -3,6 +3,7 @@
 const chapter = require('../../scrapjs/parts/chapter');
 const mustache = require('mustache');
 const accounts = require('./accounts');
+const mongoutils = require('./mongoutils');
 const pdf = require('./pdf');
 const fs = require('fs')
 const promisify = require("es6-promisify");
@@ -35,6 +36,30 @@ const postChapterById = async function(request, reply) {
     return reply({error: "not your chapter!"}).code(403);
   }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
+  if (Array.isArray(request.payload.scraps)) {
+    // oh dear, this is not what I intended to be writing today
+    // 100% USDA Prime Code
+    let newSs = request.payload.scraps.map(e => [e[0],[1]].join());
+    for (let oldS of c.scraps) {
+      if (!newSs.contains([oldS[0],oldS[1]].join())) {
+        // new scraps doesn't contain old scrap
+        console.log("chapter no longer references ", oldS);
+        if (oldS[0] === login.username) {
+          await mongoutils.decRef(oldS[0], oldS[1]);
+        }
+      }
+    }
+    let oldSs = c.scraps.map(e => [e[0],[1]].join());
+    for (let newS of newSs) {
+      if (!oldSs.contains([newS[0],newS[1]].join())) {
+        // newly added scrap
+        console.log("chapter now references ", neS);
+        if (newS[0] === login.username) {
+          await mongoutils.incRef(newS[0], newS[1]);
+        }
+      }
+    }
+  }
   var err = await c.update(request.payload);
   var resp = await global.search.update({
     index: 'mvp',
@@ -93,6 +118,7 @@ const postNewChapter = async function(request, reply) {
       doc: ch1
     }
   });
+  await db.collection('refs').insertOne({count: 0, type: 'chapter', author: author, uuid: uuid, name: request.payload.name});
   return reply(ch1);
 }
 
