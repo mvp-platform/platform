@@ -143,7 +143,16 @@ Chapter.prototype.update = async function(diff) {
   return updateBlock;
 }
 
+var fleshOut = async function(truple) {
+  for (let scr in truple) {
+    var s = await scrap.reconstitute(truple[scr][0], truple[scr][1], truple[scr][2]);
+    truple[scr].push(s.text);
+  }
+  return truple;
+}
+
 module.exports = {
   Chapter: Chapter,
-  reconstitute: reconstitute
+  reconstitute: reconstitute,
+  fleshOut: fleshOut
 }
