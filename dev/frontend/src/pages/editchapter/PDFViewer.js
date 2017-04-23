@@ -1,5 +1,6 @@
 export class PDFViewer {
   constructor(chapterID) {
+    console.log("constructing " + chapterID);
     this.url = '/src/assets/blank.pdf';
     this.documents = [
       /*{
@@ -58,6 +59,7 @@ export class PDFViewer {
   }
 
   activate(chapterID) {
+    console.log("activating ", chapterID);
     if (chapterID.author === undefined) {
         return;
     }

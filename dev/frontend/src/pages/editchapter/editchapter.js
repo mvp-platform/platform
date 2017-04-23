@@ -22,8 +22,8 @@ export class EditChapters {
     configureRouter(config, router) {
         config.title = 'Chapter Tabs';
         config.map([
-            //{ route: ['', 'myscraps/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: true, title: 'PDF Viewer' },
             { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: true, title: 'PDF Viewer' },
+            { route: ['myscraps', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: true, title: 'PDF Viewer' },
             { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/editchapter/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/editchapter/notifications', nav: true, title: 'Notifications' }
