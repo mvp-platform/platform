@@ -12,6 +12,7 @@ const bookTmpl = `
 
 \\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
+\usepackage{graphicx} 
 \\title{ {{{title}}} }
 \\author{ {{{author}}} }
 \\date{ }
