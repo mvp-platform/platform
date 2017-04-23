@@ -2,7 +2,11 @@
 
 var scrap = require("./scrap");
 var path = require("path");
+var ncp_cb = require('ncp').ncp;
 var promisify = require("es6-promisify");
+var ncp = promisify(ncp_cb);
+const mkdirp = require('mkdirp');
+const mkdirpp = promisify(mkdirp);
 var stringify = require('json-stable-stringify');
 var fs = require('fs-extra');
 var ensureDir = promisify(fs.mkdirs);
@@ -10,6 +14,18 @@ var writeFile = promisify(fs.writeFile);
 var readFile = promisify(fs.readFile);
 const uuidV4 = require('uuid/v4');
 var git = require("../git/git");
+
+var reconstitute = async function (author, uuid, sha) {
+  var data = {};
+  if (sha !== null && sha !== undefined) {
+    var dir = global.storage + author + '/chapter/' + uuid;
+    dir = path.resolve(process.env.PWD, dir);
+    data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+  } else {
+    data = JSON.parse(await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8'));
+  }
+  return new Chapter(data.name, data.author, data.uuid, data.scraps);
+}
 
 var Chapter = function(chapterName, authorName, uuid, scraps) {
   this.name = chapterName;
@@ -86,8 +102,14 @@ Chapter.prototype.getBySha = async function(hash) {
   return await git.getFileFromCommit(dir, 'info.json', hash);
 }
 
-Chapter.prototype.fork = function(newUser) {
+Chapter.prototype.fork = async function(newUser) {
   // fork chapter to another user's directory
+	await mkdirpp(global.storage + newUser + '/scrap/');
+  var err = await ncp(global.storage + this.author + '/chapter/' + this.uuid, global.storage + newUser + '/chapter/' + this.uuid);
+  var newChap = await reconstitute(newUser, this.uuid);
+  await newChap.update({author: newUser});
+  newChap.author = newUser;
+  return newChap;
 }
 
 Chapter.prototype.getHead = function() {
@@ -120,15 +142,5 @@ Chapter.prototype.update = async function(diff) {
 
 module.exports = {
   Chapter: Chapter,
-  reconstitute: async function (author, uuid, sha) {
-    var data = {};
-    if (sha !== null && sha !== undefined) {
-      var dir = global.storage + author + '/chapter/' + uuid;
-      dir = path.resolve(process.env.PWD, dir);
-      data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
-    } else {
-      data = JSON.parse(await readFile(global.storage + author + '/chapter/' + uuid + '/info.json', 'utf8'));
-    }
-    return new Chapter(data.name, data.author, data.uuid, data.scraps);
-  }
+  reconstitute: reconstitute
 }

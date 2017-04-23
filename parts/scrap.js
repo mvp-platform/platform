@@ -1,7 +1,11 @@
 'use strict';
 
 var path = require('path');
-var promisify = require('es6-promisify');
+var ncp_cb = require('ncp').ncp;
+var promisify = require("es6-promisify");
+var ncp = promisify(ncp_cb);
+const mkdirp = require('mkdirp');
+const mkdirpp = promisify(mkdirp);
 var stringify = require('json-stable-stringify');
 var fs = require('fs-extra');
 
@@ -11,6 +15,18 @@ var git = require('../git/git');
 var ensureDir = promisify(fs.mkdirs);
 var writeFile = promisify(fs.writeFile);
 var readFile = promisify(fs.readFile);
+
+var reconstitute = async function (author, uuid, sha) {
+	var data = {};
+	if (sha !== null && sha !== undefined) {
+		var dir = global.storage + author + '/scrap/' + uuid;
+		dir = path.resolve(process.env.PWD, dir);
+		data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+	} else {
+		data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
+	}
+	return new Scrap(data.text, data.author, data.uuid);
+}
 
 var Scrap = function (text, authorName, uuid) {
 	this.author = authorName;
@@ -73,9 +89,15 @@ Scrap.prototype.getBySha = async function (hash) {
   return await git.getFileFromCommit(dir, 'info.json', hash);
 };
 
-Scrap.prototype.fork = function (newUser) {
+Scrap.prototype.fork = async function(newUser) {
   // fork scrap to another user's directory
-};
+	await mkdirpp(global.storage + newUser + '/scrap/');
+  var err = await ncp(global.storage + this.author + '/scrap/' + this.uuid, global.storage + newUser + '/scrap/' + this.uuid);
+  var newScrap = await reconstitute(newUser, this.uuid);
+  await newScrap.update({author: newUser});
+  newScrap.author = newUser;
+  return newScrap;
+}
 
 Scrap.prototype.update = async function(diff) {
   var success = true;
@@ -90,15 +112,5 @@ Scrap.prototype.update = async function(diff) {
 
 module.exports = {
 	Scrap: Scrap,
-	reconstitute: async function (author, uuid, sha) {
-		var data = {};
-    if (sha !== null && sha !== undefined) {
-			var dir = global.storage + author + '/scrap/' + uuid;
-			dir = path.resolve(process.env.PWD, dir);
-			data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
-		} else {
-			data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
-		}
-		return new Scrap(data.text, data.author, data.uuid);
-	}
+	reconstitute: reconstitute
 };

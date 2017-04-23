@@ -3,7 +3,11 @@
 var git = require("../git/git");
 var chapter = require("./chapter");
 var path = require("path");
+var ncp_cb = require('ncp').ncp;
 var promisify = require("es6-promisify");
+const mkdirp = require('mkdirp');
+const mkdirpp = promisify(mkdirp);
+var ncp = promisify(ncp_cb);
 var stringify = require('json-stable-stringify');
 var fs = require('fs-extra');
 var ensureDir = promisify(fs.mkdirs);
@@ -14,6 +18,18 @@ var mustache = require("mustache");
 fs.readFile = promisify(fs.readFile);
 
 const uuidV4 = require('uuid/v4');
+
+var reconstitute = async function (author, uuid, sha) {
+  var data = {};
+  if (sha !== null && sha !== undefined) {
+    var dir = global.storage + author + '/book/' + uuid;
+    dir = path.resolve(process.env.PWD, dir);
+    data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
+  } else {
+    data = JSON.parse(await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8'));
+  }
+  return new Book(data.name, data.author, data.uuid, data.chapters);
+}
 
 var Book = function(bookName, authorName, uuid, chapters) {
   this.name = bookName;
@@ -137,21 +153,17 @@ Book.prototype.getBySha = async function(hash) {
   return await git.getFileFromCommit(dir, 'info.json', hash);
 }
 
-Book.prototype.fork = function(newUser) {
+Book.prototype.fork = async function(newUser) {
+  await mkdirpp(global.storage + newUser + '/scrap/');
   // fork book to another user's directory
+  var err = await ncp(global.storage + this.author + '/book/' + this.uuid, global.storage + newUser + '/book/' + this.uuid);
+  var newBook = await reconstitute(newUser, this.uuid);
+  await newBook.update({author: newUser});
+  newBook.author = newUser;
+  return newBook;
 }
 
 module.exports = {
   Book: Book,
-  reconstitute: async function (author, uuid, sha) {
-    var data = {};
-    if (sha !== null && sha !== undefined) {
-      var dir = global.storage + author + '/book/' + uuid;
-      dir = path.resolve(process.env.PWD, dir);
-      data = JSON.parse(await git.getFileFromCommit(dir, 'info.json', sha));
-    } else {
-      data = JSON.parse(await readFile(global.storage + author + '/book/' + uuid + '/info.json', 'utf8'));
-    }
-    return new Book(data.name, data.author, data.uuid, data.chapters);
-  }
+  reconstitute: reconstitute
 }
