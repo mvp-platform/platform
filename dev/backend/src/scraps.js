@@ -67,7 +67,7 @@ const generateScrapPdf = async function(request, reply) {
 	const info = {
 		title: lescape(s.name),
 		author: authorText,
-		body: lescape(scrapText)
+		body: scrapText // TODO better escaping!
 	};
 	const laText = mustache.render(scrapTmpl, info); // lol laText
   const pdfPath = await pdf.gen(laText);
