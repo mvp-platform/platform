@@ -1,0 +1,52 @@
+<template>
+    <require from="resources/elements/pdf-document"></require>
+
+  <!--
+This is just a regular Aurelia viewmodel. We import the pdf-document element that
+we created, and we bind viewmodel properties to it.
+-->
+    <section class="leftSection">
+        <!-- <div id="bookView"> -->
+            <div id="h1spacer">
+                <h1>Edit Chapter</h1>
+            </div>
+            <div class="col-sm-8">
+                <ul class="nav">
+
+                    <li repeat.for="chapter of chapters" class="${chapter.isActive ? 'active' : ''}">
+                        <div class="book-title-block">
+                            <p class="bookName">${chapter.name}</p>
+                            <p>Scraps: ${chapter.scraps.length}</p>
+
+                            <p repeat.for="i of chapter.scraps.length">Scrap ${i+1} - ${(chapter.scraps[i][chapter.scraps[i].length-1]).substring(0,30) + "..."}
+                              <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}">
+                                Preview
+                              </a>
+                              <!-- <a class="previewEditLinks" route-href="route: editchapter; "> -->
+                              <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}"> -->
+                                <!-- Edit
+                              </a> -->
+                            </p>
+
+                        </div>
+                        <a class="previewEditLinks" route-href="route: newscrap; params.bind: {author: chapter.author, uuid: chapter.uuid}">
+                          New Scrap
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        <!-- </div> -->
+        <hr>
+    </section>
+    <section class="rightSection">
+        <div class="col-sm-8">
+              <ul id="rightSectionNav" class="nav navbar-nav">
+                  <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                      <a href.bind="row.href">${row.title}</a>
+                  </li>
+              </ul>
+          </div>
+          <router-view></router-view>
+    </section>
+</template>

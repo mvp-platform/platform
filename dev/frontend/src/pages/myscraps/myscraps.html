@@ -1,14 +1,44 @@
 <template>
     <section class="leftSection">
         <div id="bookView">
+          <div id="h1spacer">
             <h1>My Scraps</h1>
+          </div>
+          <div class="col-sm-8">
+              <ul class="nav">
+                  <li class="${book.isActive ? 'active' : ''}">
+                      <div class="book-title-block">
+                          <!-- <p class="bookName">${scrap.name}</p> -->
+                          <p>Scraps: ${scraps.length}</p>
 
+                          <p repeat.for="scrap of scraps">
+                              Scrap: ${$index+1} - ${(scrap.text).substring(0,30) + "..."}
+                              <!-- Scrap: ${$index+1} - ${(scrap.text)} -->
+
+                              <!-- Test = ${$test = (scrap.text).split(" "); }
+                              console.log($test); -->
+
+
+                              <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: scrap.author, uuid: scrap.uuid}">
+                                Preview
+                              </a>
+                          </p>
+                          <!--
+                            <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}"> -->
+                            <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
+                              Edit
+                            </a>
+                          -->
+                      </div>
+                  </li>
+              </ul>
+          </div>
         </div>
         <hr>
     </section>
     <section class="rightSection">
         <div class="col-sm-8">
-            <ul class="nav navbar-nav">
+            <ul id="rightSectionNav" class="nav navbar-nav">
                 <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                     <a href.bind="row.href">${row.title}</a>
                 </li>

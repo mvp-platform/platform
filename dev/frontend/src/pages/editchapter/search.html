@@ -1,0 +1,33 @@
+<template>
+    <h1>Search: </h1>
+    <form submit.delegate="elasticSearch(query, searchOwn, searchBooks, searchChapters, searchScraps)">
+        <div class="search-field">
+            <div><input type="checkbox" name="Own"      value.bind="searchOwn"      checked.bind="searchOwn">Your Content Only</div>
+            <div><input type="checkbox" name="Book"     value.bind="searchBooks"    checked.bind="searchBooks">Search Books</div>
+            <div><input type="checkbox" name="Chapter"  value.bind="searchChapters" checked.bind="searchChapters">Search Chapters</div>
+            <div><input type="checkbox" name="Scrap"    value.bind="searchScraps"   checked.bind="searchScraps">Scraps</div>
+            <input id="search" type="text" value.bind="query" name="search" placeholder="Search..">
+            <button type="search">Search</button>
+        </div>
+    </form>
+
+    <div class="col-sm-8">
+        <ul class="nav">
+            <li repeat.for="hit of hits" class="${hit.isActive ? 'active' : ''}">
+                <div class="book-title-block">
+                    <p>Type: ${hit._type}</p>
+                    <p if.bind="hit._source.name">Name: ${hit._source.name}</p>
+                    <p if.bind="!(hit._source.name)">Name: Does not contain name</p>
+                    <p>Author: ${hit._source.author}</p>
+                    <div if.bind="hit._type === 'scrap'">
+                        <p>Matched Scrap:</p>
+                        <p>${hit._source.text}</p>
+                    </div>
+                </div>
+            </li>
+            <br>
+            <p if.bind="(hits.length === 0) && (searchedAtLeastOnce === true)">No results found.</p>
+        </ul>
+    </div>
+
+</template>

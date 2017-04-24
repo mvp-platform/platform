@@ -1,5 +1,6 @@
-export class PdfViewer {
-  constructor() {
+export class PDFViewer {
+  constructor(bookID) {
+    this.url = '/src/assets/blank.pdf';
     this.documents = [
       /*{
         url: 'src/documents/one.pdf',
@@ -9,17 +10,18 @@ export class PdfViewer {
         lastpage: 1
       },*/
       {
-        url: 'src/documents/two.pdf',
-        draftUrl: 'src/documents/two.pdf',
+        url: '/src/assets/blank.pdf',
+        draftUrl: '/src/assets/blank.pdf',
         pageNumber: 1,
         scale: 0.8,
         lastpage: 1
       }
     ];
+    //console.log(bookID);
   }
 
   loadUrl(document) {
-    document.url = document.draftUrl;
+    this.url = document.draftUrl;
   }
 
   firstPage(document) {
@@ -54,5 +56,15 @@ export class PdfViewer {
 
   zoomOut(document) {
     document.scale = Number(document.scale) - 0.1;
+  }
+
+  activate(bookID) {
+    if (bookID.author === undefined) {
+        return;
+    }
+
+    this.url = "http://remix.ist:8000/books/" + bookID.author + '/' + bookID.uuid + '/pdf';
+    document.url = this.url
+    document.draftUrl = this.url;
   }
 }
