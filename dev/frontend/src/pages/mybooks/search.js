@@ -12,15 +12,36 @@ export class search {
 
     constructor() {}
 
-    elasticSearch(newQuery) {
+    elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
+
+        let SO = '';
+        let SB = '';
+        let SC = '';
+        let SS = '';
+
+        if (searchOwn === true) {
+            SO = "&user=hagrid"
+        }
+        if (searchBooks === true) {
+            SB = "&type=book"
+        }
+        if (searchChapters === true) {
+            SC = "&type=chapter"
+        }
+        if (searchScraps === true) {
+            SS = "&type=scrap"
+        }
+
+        //console.log(newQuery + " " + searchOwn + " " + searchBooks + " " + searchChapters + " " + searchScraps);
+
         this.searchedAtLeastOnce = true;
         this.query = encodeURI(newQuery);
 
-        if (this.hits.length != 0) {
+        if (this.hits.length !== 0) {
             this.hits = [];
         }
-
-        httpClient.fetch(this.baseURI + this.query)
+        //console.log(this.baseURI + this.query + SO + SB + SC + SS);
+        httpClient.fetch(this.baseURI + this.query + SO + SB + SC + SS)
             .then(response => response.json())
             .then(data => {
                 //console.log(data);

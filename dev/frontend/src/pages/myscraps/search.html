@@ -1,7 +1,11 @@
 <template>
     <h1>Search: </h1>
-    <form submit.delegate="elasticSearch(query)">
+    <form submit.delegate="elasticSearch(query, searchOwn, searchBooks, searchChapters, searchScraps)">
         <div class="search-field">
+            <div><input type="checkbox" name="Own"      value.bind="searchOwn"      checked.bind="searchOwn">Your Content Only</div>
+            <div><input type="checkbox" name="Book"     value.bind="searchBooks"    checked.bind="searchBooks">Search Books</div>
+            <div><input type="checkbox" name="Chapter"  value.bind="searchChapters" checked.bind="searchChapters">Search Chapters</div>
+            <div><input type="checkbox" name="Scrap"    value.bind="searchScraps"   checked.bind="searchScraps">Scraps</div>
             <input id="search" type="text" value.bind="query" name="search" placeholder="Search..">
             <button type="search">Search</button>
         </div>
