@@ -38,6 +38,8 @@
 
                           <form role = "form" submit.delegate = "submitNewScrap()">
 
+                            <p value.bind="setAuthor" value="${chapters[0]}">${chapters[0]}</p>
+                            <p value.bind="setChapter">${chapters[1]}</p>
                             <label for = "userText">Create your New Scrap here</label>
                             <!-- <input type = "text" value.bind = "email" placeholder = "Email"> -->
                             <textarea rows="4" cols="50" value.bind="userText"></textarea>
