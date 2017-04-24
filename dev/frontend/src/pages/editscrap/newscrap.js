@@ -5,37 +5,37 @@ let httpClient = new HttpClient();
 
 export class Scraps {
 
-  constructor(author) {
-      console.log("constructor");
-      // this.scraps = [];
-      // //
-      // // //' + chapterID.author + '/' + chapterID.uuid)
-      // // httpClient.fetch('http://remix.ist:8000/scraps/hagrid')
-      // // .then(response => response.json())
-      // // .then(data => {
-      // //     for(let instance of data) {
-      // //         console.log(instance);
-      // //         this.scraps.push(instance);
-      // //     }
-      // //
-      // //
-      // // });
-      //
-      //
-      // httpClient.fetch('http://remix.ist:8000/scraps/hagrid/4071b78c-2328-4a59-a278-86200f93bfde')
-      // .then(response => response.json())
-      // .then(data => {
-      //     console.log(data);
-      //     //this.chapters.push(data);
-      //
-      //     for(let instance of data) {
-      //         console.log(instance);
-      //         this.scraps.push(instance);
-      //     }
-      //
-      // });
+    constructor(author) {
+        console.log("constructor");
+        // this.scraps = [];
+        // //
+        // // //' + chapterID.author + '/' + chapterID.uuid)
+        // // httpClient.fetch('http://remix.ist:8000/scraps/hagrid')
+        // // .then(response => response.json())
+        // // .then(data => {
+        // //     for(let instance of data) {
+        // //         console.log(instance);
+        // //         this.scraps.push(instance);
+        // //     }
+        // //
+        // //
+        // // });
+        //
+        //
+        // httpClient.fetch('http://remix.ist:8000/scraps/hagrid/4071b78c-2328-4a59-a278-86200f93bfde')
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        //     //this.chapters.push(data);
+        //
+        //     for(let instance of data) {
+        //         console.log(instance);
+        //         this.scraps.push(instance);
+        //     }
+        //
+        // });
 
-  }
+    }
 
 
     // email = '';
@@ -46,6 +46,7 @@ export class Scraps {
         var requested = this.userText;
         var theAuthor = this.chapters[0];
         var theChapter = this.chapters[1];
+        var authToken = 'Token abc123';
 
         console.log(requested);
         console.log(theAuthor);
@@ -78,20 +79,21 @@ export class Scraps {
 
             //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
             //var scrapID = '';
-            httpClient.fetch('http://remix.ist:8000/scraps/new', {
-                    method: 'post',
-                    body: JSON.stringify(request),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Token abc123'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    //console.log(data);
-
-                    //alert("Scrap with " + data.uuid + "created successfully!");
-                });
+            // httpClient.fetch('http://remix.ist:8000/scraps/new', {
+            //         method: 'post',
+            //         body: JSON.stringify(request),
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'Authorization': 'Token abc123'
+            //         }
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         console.log("theChapter wasn't provided");
+            //         console.log(data);
+            //
+            //         //alert("Scrap with " + data.uuid + "created successfully!");
+            //     });
 
 
         }
@@ -112,55 +114,101 @@ export class Scraps {
           };
 
 
-          //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
-          // var scrapID = '';
-          // httpClient.fetch('http://remix.ist:8000/scraps/new', {
-          //         method: 'post',
-          //         body: JSON.stringify(request),
-          //         headers: {
-          //             'Content-Type': 'application/json',
-          //             'Authorization': 'Token abc123'
-          //         }
-          //     })
-          //     .then(response => response.json())
-          //     .then(data => {
-          //         console.log(data);
-          //         scrapID = data.scrap;
-          //     });
-          //
-          // console.log(scrapID);
-
-
-          //RECOVER CHAPTERS SCRAPS
-          // let request3 = {
-          //     //   //name: "Hagrid's First Chapter",
-          //     //author: theAuthor,
-          //     //   //FOR SETTING CHAPTER
-          //     chapters:
-          //     [
-          //         [
-          //         theAuthor,
-          //         theChapter
-          //         ]
-          //     ]
-          //     //   text: "\\section{Testing}This is a new UPDATED scrap created with posting via the newscrap page!"
-          //     text: requested
-          // };
-
-          this.scraps = [];
-          //GET CHAPTERS SCRAPS
-          httpClient.fetch('http://remix.ist:8000/chapters/' + theAuthor + '/' + theChapter)
+          // CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
+          var scrapID = '';
+          httpClient.fetch('http://remix.ist:8000/scraps/new', {
+                  method: 'post',
+                  body: JSON.stringify(request),
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': authToken
+                  }
+              })
               .then(response => response.json())
               .then(data => {
-                  for (let instance of data)
-                  {
-                      console.log(data);
-                      this.scraps.push(data);
-                  }
-                  //alert(scraps);
+                  console.log("response: ");
+                  scrapID = data.uuid;
+                  console.log(scrapID);
+
+                  //RECOVER CHAPTERS SCRAPS
+                  // let request3 = {
+                  //     //   //name: "Hagrid's First Chapter",
+                  //     //author: theAuthor,
+                  //     //   //FOR SETTING CHAPTER
+                  //     chapters:
+                  //     [
+                  //         [
+                  //         theAuthor,
+                  //         theChapter
+                  //         ]
+                  //     ]
+                  //     //   text: "\\section{Testing}This is a new UPDATED scrap created with posting via the newscrap page!"
+                  //     text: requested
+                  // };
+
+                  //var scrapID = "06776465-ab55-45b1-9a8e-5a379bb903b2";
+
+                  this.scraps = [];
+                  var test = [];
+                  //GET CHAPTERS SCRAPS
+                  httpClient.fetch('http://remix.ist:8000/chapters/' + theAuthor + '/' + theChapter)
+                      .then(response => response.json())
+                      .then(data => {
+
+                              var scraps;
+                              console.log(data.scraps);
+                              this.scraps.push(data);
+                              scraps = data.scraps;
+
+                              //alert(scraps.length);
+                              var newScrapRequest = [];
+
+                              //newScrapRequest.push(theAuthor);
+                              for(var i = 0; i < scraps.length; i++)
+                              {
+                                  //alert(scraps[i][1]);
+                                  newScrapRequest.push([scraps[i][0], scraps[i][1], scraps[i][2]]);
+                                  //newScrapRequest.push(scraps[i][1]);
+                                  //newScrapRequest.push(scraps[i][2]);
+                              }
+                              //alert(oldScraps);
+                              newScrapRequest.push([theAuthor, scrapID, null]);
+                              //newScrapRequest.push(scrapID);
+                              //newScrapRequest.push(null);
+                              //alert(newScrapRequest.toString());
+
+                              let request2 = {
+                                  //   //name: "Hagrid's First Chapter",
+                                  scraps:
+                                      newScrapRequest
+
+                              };
+
+                              alert(JSON.stringify(request2));
+
+                              //console.log(this.scraps);
+                              //alert(this.scraps);
+
+                              // httpClient.fetch('http://remix.ist:8000/chapters/' + theAuthor + '/' + theChapter, {
+                              //         method: 'post',
+                              //         body: JSON.stringify(request2),
+                              //         headers: {
+                              //             'Content-Type': 'application/json',
+                              //             'Authorization': authToken
+                              //         }
+                              //     })
+                              //     .then(response => response.json())
+                              //     .then(data => {
+                              //         console.log(data)
+                              //         alert("Scrap has been added to chapter " + theChapter);
+                              //     });
+
+
+                      });
+
               });
 
-          alert(this.scraps);
+
         }
 
 
