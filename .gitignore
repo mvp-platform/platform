@@ -6,3 +6,6 @@ sample.pdf
 jspm_packages/*
 dev/frontend/jspm_packages/*
 documents/problemstatement/problemstatement.out
+node_modules/
+npm-debug.log
+data/
