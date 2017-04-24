@@ -21,6 +21,20 @@ const chapterTmpl = `
 \\end{document}
 `
 
+const getUnassociatedChapters = async function(request, reply) {
+  var login = await accounts.verifylogin(request, reply);
+  if (!login.success) {
+    return reply({error: "could not verify identity", reason: login.reason}).code(403);
+  }
+  var cursor = await db.collection('refs').find({author: login.username, type: "chapter", count: 0});
+  var unassoc = await cursor.toArray();
+  unassoc.map(function(e) {
+    delete e._id;
+    delete e.count;
+  })
+  return reply(unassoc);
+}
+
 const getChapterById = async function(request, reply) {
   let c = await chapter.reconstitute(request.params.author, request.params.id);
   c.scraps = await chapter.fleshOut(c.scraps);
@@ -99,7 +113,13 @@ const postNewChapter = async function(request, reply) {
       doc: ch1
     }
   });
-  await db.collection('refs').insertOne({count: 0, author: request.payload.author, uuid: ch1.uuid});
+  await db.collection('refs').insertOne({
+    count: 0,
+    type: 'chapter',
+    name: request.payload.name,
+    author: request.payload.author,
+    uuid: ch1.uuid
+  });
   return reply(ch1);
 }
 
@@ -189,6 +209,11 @@ const routes = [{
     method: 'GET',
     path: '/chapters/{author}/{id}/history',
     handler: getChapterHistory
+  },
+  {
+    method: 'GET',
+    path: '/chapters/unassociated',
+    handler: getUnassociatedChapters
   },
   {
     method: 'POST',

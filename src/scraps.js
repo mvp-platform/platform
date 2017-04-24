@@ -18,6 +18,20 @@ const scrapTmpl = `
 \\end{document}
 `
 
+const getUnassociatedScraps = async function(request, reply) {
+  var login = await accounts.verifylogin(request, reply);
+  if (!login.success) {
+    return reply({error: "could not verify identity", reason: login.reason}).code(403);
+  }
+  var cursor = await db.collection('refs').find({author: login.username, type: "scrap", count: 0});
+  var unassoc = await cursor.toArray();
+  unassoc.map(function(e) {
+    delete e._id;
+    delete e.count;
+  })
+  return reply(unassoc);
+}
+
 const getScrapById = async function(request, reply) {
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   return reply(s);
@@ -93,7 +107,7 @@ const postNewScrap = async function(request, reply) {
       doc: scr
     }
   });
-  await db.collection('refs').insertOne({author: request.payload.author, uuid: scr.uuid, count: 0});
+  await db.collection('refs').insertOne({author: request.payload.author, text: text, type: 'scrap', uuid: scr.uuid, count: 0});
   return reply(scr);
 }
 
@@ -179,6 +193,11 @@ const routes = [{
     method: 'GET',
     path: '/scraps/{author}/{id}/pdf',
     handler: generateScrapPdf
+  },
+  {
+    method: 'GET',
+    path: '/scraps/unassociated',
+    handler: getUnassociatedScraps
   },
   {
     method: 'GET',
