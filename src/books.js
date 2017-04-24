@@ -2,6 +2,7 @@
 
 const book = require('../../scrapjs/parts/book');
 const accounts = require('./accounts');
+const mongoutils = require('./mongoutils');
 const mustache = require('mustache');
 const pdf = require('./pdf');
 const fs = require('fs')

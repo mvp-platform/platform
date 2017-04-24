@@ -7,26 +7,26 @@ const countRefs = async function(old, newRef, user) {
   let newComp = newRef.map(e => e[0] + "," + e[1]);
 
   for (let i in oldComp) {
-    if (!newComp.includes(i) && old[i][0] === user) {
+    if (!newComp.includes(oldComp[i]) && old[i][0] === user) {
       decRef(old[i][0], old[i][1]);
     }
   }
 
   for (let i in newComp) {
-    if (!oldComp.includes(i) && newRef[i][0] === user) {
-      decRef(newRef[i][0], newRef[i][1]);
+    if (!oldComp.includes(newComp[i]) && newRef[i][0] === user) {
+      incRef(newRef[i][0], newRef[i][1]);
     }
   }
   return;
 }
 
 const incRef = async function(author, uuid) {
-  await db.collection('favorites').update({author: author, uuid: uuid}, {$inc: {count: 1}});
+  await db.collection('refs').update({author: author, uuid: uuid}, {$inc: {count: 1}});
   return;
 }
 
 const decRef = async function(author, uuid) {
-  await db.collection('favorites').update({author: author, uuid: uuid}, {$inc: {count: -1}});
+  await db.collection('refs').update({author: author, uuid: uuid}, {$inc: {count: -1}});
   return;
 }
 
