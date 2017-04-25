@@ -12,6 +12,18 @@ const lescape = require('escape-latex');
 const scrapTmpl = `
 
 \\documentclass{article}
+\\usepackage{graphicx}
+\\usepackage{setspace}
+\\usepackage{comment}
+\\usepackage{bigstrut}
+\\usepackage{geometry}
+\\usepackage{supertabular}
+\\usepackage{tabu}
+\\usepackage{hyperref}
+\\usepackage{url}
+\\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue}
+\\geometry{textheight=9.5in, textwidth=7in}
 \\usepackage{fontspec}
 \\defaultfontfeatures{Ligatures=TeX}
 \\usepackage[small,sf,bf]{titlesec}
