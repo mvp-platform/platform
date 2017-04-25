@@ -105,6 +105,29 @@ var validateChapters = async function(chapters) {
   return correctChapters;
 }
 
+let chapterDiff = async function(newRef, old) {
+  // newRef = [[author, uuid, sha], [author, uuid, sha]]
+  // old = [[author, uuid, sha, name], [author, uuid, sha, name]]
+
+  let running = "Updated chapters: ";
+  let oldComp = old.map(e => e[0] + "," + e[1]); // join would give all elements; we don't want that
+  let newComp = newRef.map(e => e[0] + "," + e[1]);
+
+  for (let i in oldComp) {
+    if (!newComp.includes(oldComp[i])) {
+      running = running + "Removed chapter " + old[i][3] + "; ";
+    }
+  }
+
+  for (let i in newComp) {
+    if (!oldComp.includes(newComp[i])) {
+      let c = await chapter.reconstitute(newRef[i][0], newRef[i][1]);
+      running = running + "Added chapter " + c.name; + "; ";
+    }
+  }
+  return running.slice(0, -2) + '. ';
+}
+
 Book.prototype.update = async function(diff) {
   var success = true;
   var updateMsg = "update: ";
@@ -116,7 +139,7 @@ Book.prototype.update = async function(diff) {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
     } else if (field === "chapters") {
-      updateMsg += "updated chapters (TODO diff). ";
+      updateMsg += await chapterDiff(diff['chapters'], this.chapters);
       this.chapters = await validateChapters(diff["chapters"]);
       if (this.chapters === false) {
         return JSON.stringify({error: "invalid chapters field", field: field});

@@ -159,6 +159,30 @@ var validate = async function(scraps) {
   return correctScraps;
 }
 
+let scrapDiff = async function(newRef, old) {
+  // newRef = [[author, uuid, sha], [author, uuid, sha]]
+  // old = [[author, uuid, sha], [author, uuid, sha]]
+
+  let running = "Updated scraps: ";
+  let oldComp = old.map(e => e[0] + "," + e[1]); // join would give all elements; we don't want that
+  let newComp = newRef.map(e => e[0] + "," + e[1]);
+
+  for (let i in oldComp) {
+    if (!newComp.includes(oldComp[i])) {
+      let c = await scrap.reconstitute(old[i][0], old[i][1]);
+      running = running + "Removed scrap " + c.text.slice(0,20) + "; ";
+    }
+  }
+
+  for (let i in newComp) {
+    if (!oldComp.includes(newComp[i])) {
+      let c = await scrap.reconstitute(newRef[i][0], newRef[i][1]);
+      running = running + "Added scrap " + c.text.slice(0,20) + "; ";
+    }
+  }
+  return running.slice(0, -2) + '. ';
+}
+
 Chapter.prototype.update = async function(diff) {
   var success = true;
   var updateMsg = "update: ";
@@ -174,7 +198,7 @@ Chapter.prototype.update = async function(diff) {
       if (!valid) {
         return JSON.stringify({error: "invalid scraps!", field: diff[field]});
       }
-      updateMsg += "updated scraps (TODO diff). ";
+      updateMsg += await scrapDiff(diff['scraps'], this.scraps);
       this.scraps = diff[field];
     } else {
       success = false;
