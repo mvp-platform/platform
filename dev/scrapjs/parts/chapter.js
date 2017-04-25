@@ -169,7 +169,7 @@ let scrapDiff = async function(newRef, old) {
 
   for (let i in oldComp) {
     if (!newComp.includes(oldComp[i])) {
-      let c = await scrap.reconstitute(oldRef[i][0], oldRef[i][1]);
+      let c = await scrap.reconstitute(old[i][0], old[i][1]);
       running += running + "Removed scrap " + c.text.slice(0,20); + "; "
     }
   }
