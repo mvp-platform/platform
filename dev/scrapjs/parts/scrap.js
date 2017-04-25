@@ -25,10 +25,10 @@ var reconstitute = async function (author, uuid, sha) {
 	} else {
 		data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
 	}
-	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors, data.latex, data.image);
+	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors, data.latex, data.image, data.tags);
 }
 
-var Scrap = function (text, authorName, uuid, oldAuthors, latex, image) {
+var Scrap = function (text, authorName, uuid, oldAuthors, latex, image, tags) {
 	this.author = authorName;
 	this.oldAuthors = oldAuthors;
 	this.text = text;
@@ -36,6 +36,7 @@ var Scrap = function (text, authorName, uuid, oldAuthors, latex, image) {
 	this.image = image ? true : false;
 	this.head = undefined;
 	this.isNew = true;
+	this.tags = tags;
 	if (uuid === undefined) {
 		this.uuid = uuidV4();
 	} else {
@@ -135,6 +136,18 @@ Scrap.prototype.update = async function(diff) {
 				return {error: "latex option must true or false", value: diff[field]};
 			}
 		}
+		if (field === "tags")
+	    if (!Array.isArray(diff[field])) {
+	      return {error: "tags must be array"};
+	    }
+	    for (let item of diff[field]) {
+	      if (typeof item !== 'string') {
+	        return {error: "tags must only be strings"};
+	      }
+	    }
+			this.tags = diff['tags'];
+			updateMsg = updateMsg + "Changed tags to " + diff['tags'].join(', ') + '. ';
+	  }
 	}
   var updateBlock = await this.save(updateMsg);
   updateBlock.message = updateMsg;
