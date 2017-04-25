@@ -6,6 +6,7 @@
     "es6-promisify": "^5.0.0",
     "fs-extra": "^2.0.0",
     "json-stable-stringify": "^1.0.1",
+    "lockfile": "^1.0.3",
     "mkdirp": "^0.5.1",
     "mustache": "^2.3.0",
     "ncp": "^2.0.0",
