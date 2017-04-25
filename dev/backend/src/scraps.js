@@ -4,8 +4,10 @@ const scrap = require('../../scrapjs/parts/scrap');
 const mustache = require('mustache');
 const accounts = require('./accounts');
 const pdf = require('./pdf');
-const fs = require('fs');
+const fs = require('fs-extra');
 const promisify = require("es6-promisify");
+const ensureDir = promisify(fs.mkdirs);
+const writeFile = promisify(fs.writeFile);
 const readdir = promisify(fs.readdir);
 const lescape = require('escape-latex');
 
@@ -68,6 +70,9 @@ const postScrapById = async function(request, reply) {
     return reply({error: "not your scrap!"}).code(403);
   }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
+  if (s.image) {
+    return reply({error: "cannot update images"}).code(400);
+  }
   var err = await s.update(request.payload);
   if (err.error) {
     return reply(err).code(403);
@@ -124,7 +129,10 @@ const postNewScrap = async function(request, reply) {
   if (text === undefined) {
     text = "";
   }
-	var scr = new scrap.Scrap(text, request.payload.author);
+  var scr = new scrap.Scrap(text, request.payload.author);
+  if (request.payload.latex === true) {
+    scr.latex = true;
+  }
   await scr.save('Created new scrap');
 
   var resp = await global.search.create({
@@ -137,6 +145,28 @@ const postNewScrap = async function(request, reply) {
   });
   await db.collection('refs').insertOne({author: request.payload.author, text: text, type: 'scrap', uuid: scr.uuid, count: 0});
   return reply(scr);
+}
+
+const postNewImage = async function(request, reply) {
+  var login = await accounts.verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+
+  if (request.payload.image) {
+    var image = request.payload.image;
+    var path = global.storage + 'images/' + login.username;
+    await ensureDir(path);
+    var fn = path + '/' + Math.random().toString(36).substring(7);
+    await writeFile(fn, image);
+    var scr = new scrap.Scrap('\\includegraphics[width=\\textwidth]{' + fn + '}', login.username);
+    scr.image = true;
+    scr.latex = true;
+    await scr.save('Created image');
+    return reply(scr);
+  } else {
+    return reply({error: "must specify image"}).code(400);
+  }
 }
 
 // /scraps/{author}
@@ -236,6 +266,11 @@ const routes = [{
     method: 'POST',
     path: '/scraps/new',
     handler: postNewScrap
+  },
+  {
+    method: 'POST',
+    path: '/images/new',
+    handler: postNewImage
   }
 ];
 

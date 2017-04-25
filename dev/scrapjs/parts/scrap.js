@@ -25,14 +25,15 @@ var reconstitute = async function (author, uuid, sha) {
 	} else {
 		data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
 	}
-	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors, data.latex);
+	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors, data.latex, data.image);
 }
 
-var Scrap = function (text, authorName, uuid, oldAuthors, latex) {
+var Scrap = function (text, authorName, uuid, oldAuthors, latex, image) {
 	this.author = authorName;
 	this.oldAuthors = oldAuthors;
 	this.text = text;
 	this.latex = latex ? true : false;
+	this.image = image ? true : false;
 	this.head = undefined;
 	this.isNew = true;
 	if (uuid === undefined) {

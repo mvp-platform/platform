@@ -40,7 +40,6 @@ const favoriteThing = async function(user, type, author, uuid) {
   var cursor = await db.collection('favorites').find({userid: user, type: type, author: author, uuid: uuid});
   var isFaved = (await cursor.toArray()).length === 1;
   if (!isFaved) {
-    console.log("inserting favorite");
     let obj = await reconstitute[type](author, uuid);
     if (type === "scrap") {
       await db.collection('favorites').insertOne({userid: user, type: type, author: author, uuid: uuid, text: obj.text});
