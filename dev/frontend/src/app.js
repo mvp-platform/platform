@@ -20,7 +20,6 @@ export class App {
 
     configureRouter(config, router) {
         if (Cookies.get('data') !== null) {
-          console.log(Cookies.get('data'));
           let data = JSON.parse(Cookies.get('data'));
           for (let key in data) {
             Cookies.put(key, data[key]);

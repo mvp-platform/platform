@@ -64,12 +64,28 @@ input[type=text]:focus {
     border-bottom: 1px solid black;
 }
 
+.router-title {
+  font-size: 3em;
+  margin: auto;
+}
+
+.centering {
+  text-align: center;
+}
+
+.spacer {
+  padding-left: 10px;
+}
+
 .leftSection,
 .rightSection {
     min-height: 100vh;
-    xwidth: calc(85% - 15%);
-    xwidth: 42.5%;
-    width: 45%;
+    width: 35%;
+}
+
+.leftSection {
+  width: 65%;
+  padding-left: 300px;
 }
 
 .fullSection h1,

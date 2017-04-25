@@ -1,8 +1,13 @@
 export function configure(aurelia) {
-  aurelia.use
-    .standardConfiguration()
-    /*.plugin('aurelia-tabbed')*/
-    .developmentLogging();
 
-  aurelia.start().then(() => aurelia.setRoot());
+ let materialize = 'materialize-css';
+ 
+  return aurelia.loader.loadModule(materialize).then(() => {
+    aurelia.use
+    .standardConfiguration()
+    .developmentLogging()
+    // Install and configure the plugin
+    .plugin('aurelia-materialize-bridge', bridge => bridge.useAll());
+    return aurelia.start().then(a => a.setRoot());
+  });
 }

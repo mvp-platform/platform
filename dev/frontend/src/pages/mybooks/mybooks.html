@@ -6,9 +6,9 @@
   we created, and we bind viewmodel properties to it.
   -->
     <section class="leftSection">
-        <div id="h1spacer">
-            <h1>My Books</h1>
-        </div>
+        <md-navbar>
+            <span class="spacer"><span class="brand-logo">My Books</span></span>
+        </md-navbar>
         <div class="col-sm-8">
             <ul class="nav">
                 <li repeat.for="book of books" class="${book.isActive ? 'active' : ''}">
