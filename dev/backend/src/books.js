@@ -11,9 +11,16 @@ const readdir = promisify(fs.readdir);
 const lescape = require('escape-latex');
 
 const bookTmpl = `
+\\documentclass{article}
+\\usepackage{fontspec}
+\\defaultfontfeatures{Ligatures=TeX}
+\\usepackage[small,sf,bf]{titlesec}
+\\usepackage{fvextra}
+\DefineVerbatimEnvironment{plain_raw}
+  {Verbatim}
+  {fontfamily=\rmdefault,breaklines,breaksymbolleft={}}
 
-\\documentclass[12pt]{article}
-\\usepackage[utf8]{inputenc}
+\\begin{plain_raw}
 \\title{ {{{title}}} }
 \\author{ {{{author}}} }
 \\date{ }
@@ -25,6 +32,7 @@ const bookTmpl = `
 \\tableofcontents
 
 {{{ body }}}
+\\end{plain_raw}
 \\end{document}
 `
 

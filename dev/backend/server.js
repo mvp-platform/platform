@@ -5,6 +5,8 @@ const promisify = require("es6-promisify");
 var MongoClient = require('mongodb').MongoClient;
 var connect = promisify(MongoClient.connect);
 var ObjectId = require('mongodb').ObjectID;
+var fs = require('fs-extra');
+var copyFile = promisify(fs.copy);
 const assert = require("assert");
 const elasticsearch = require('elasticsearch');
 
@@ -18,6 +20,7 @@ const search = require('./src/search');
 // we need a workspace for things like pdf generation
 global.storage = process.cwd() + '/data/storage/';
 global.renders = process.cwd() + '/data/renders';
+global.root = process.cwd();
 process.chdir(global.renders);
 
 
@@ -57,6 +60,8 @@ search.register(server);
 
 // Start the server
 server.start(async (err) => {
+    await fs.copy(global.root + '/assets/fvextra.sty', global.renders + '/fvextra.sty');
+    await fs.copy(global.root + '/assets/upquote.sty', global.renders + '/upquote.sty');
 
     var mongo = 'mongodb://localhost:27017/mvp';
     global.db = await connect(mongo);
