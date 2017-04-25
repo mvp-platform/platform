@@ -55,9 +55,6 @@ const postScrapById = async function(request, reply) {
   if (login.username != request.params.author) {
     return reply({error: "not your scrap!"}).code(403);
   }
-  if (request.payload) {
-    return reply({error: "not your scrap!"}).code(403);
-  }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
   if (err.error) {

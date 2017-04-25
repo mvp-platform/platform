@@ -115,7 +115,7 @@ Scrap.prototype.update = async function(diff) {
   var success = true;
 	this.isNew = false;
 	var updateMsg = "update: ";
-	for (let field of diff) {
+	for (let field of Object.keys(diff)) {
 		if (field !== "text" && field !== "latex") {
 			return {error: "invalid field", field: field};
 		}
