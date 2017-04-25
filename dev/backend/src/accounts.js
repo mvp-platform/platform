@@ -117,7 +117,7 @@ const updateAccount = async function(request, reply) {
     return reply({error: "can only update name"}).code(400);
   }
 
-  await db.collection('users').update({userid: login.username}, {name: request.payload.name});
+  await db.collection('users').update({userid: login.username}, {$set: {name: request.payload.name}});
   return reply({success: true, name: request.payload.name});
 }
 
