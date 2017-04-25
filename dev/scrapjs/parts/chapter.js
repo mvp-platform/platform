@@ -53,7 +53,7 @@ Chapter.prototype.getText = async function() {
   }
   for (let s of this.scraps) {
     let ns = await scrap.reconstitute(s[0], s[1], s[2]);
-    runningText = runningText + ns.getText() + "\n\\end{plainraw}\\begin{plainraw}\n";
+    runningText = runningText + ns.getText() + "\n\\end{plainraw}\n\\begin{plainraw}\n";
     authors.push(ns.author);
   }
   return [runningText, Array.from(new Set(authors))];
