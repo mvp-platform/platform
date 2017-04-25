@@ -89,6 +89,38 @@ const loginPage = async function(request, reply) {
 `)
 }
 
+const getAccount = async function(request, reply) {
+  var header = request.headers.authorization;
+  if (header != undefined && header.substring(0, 6) == "Token ") {
+    var token = header.substring(6);
+  } else {
+    return reply({error: "invalid authorization header"});
+  }
+
+  var cursor = await db.collection('users').find({token: token});
+  var user_blob = await cursor.toArray();
+  if (user_blob.length != 1) {
+    return reply({error: "invalid token"});
+  }
+  delete user_blob[0]._id;
+  delete user_blob[0].token;
+  return reply(user_blob[0]);
+}
+
+const updateAccount = async function(request, reply) {
+  var login = await verifylogin(request);
+  if (!login.success) {
+    return reply({error: "could not verify identity"}).code(403);
+  }
+
+  if (Object.keys(request.payload).length !== 1 || Object.keys(request.payload)[0] !== "name") {
+    return reply({error: "can only update name"}).code(400);
+  }
+
+  await db.collection('users').update({userid: login.username}, {name: request.payload.name});
+  return reply({success: true, name: request.payload.name});
+}
+
 // /accounts/login
 const login = async function(request, reply) {
   var auth = new GoogleAuth;
@@ -132,6 +164,16 @@ const routes = [{
     method: 'POST',
     path: '/accounts/login',
     handler: login
+  },
+  {
+    method: 'POST',
+    path: '/accounts/myaccount',
+    handler: updateAccount
+  },
+  {
+    method: 'GET',
+    path: '/accounts/myaccount',
+    handler: getAccount
   },
   {
     method: 'GET',
