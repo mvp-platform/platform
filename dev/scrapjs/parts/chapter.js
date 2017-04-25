@@ -7,6 +7,7 @@ var promisify = require("es6-promisify");
 var ncp = promisify(ncp_cb);
 const mkdirp = require('mkdirp');
 const mkdirpp = promisify(mkdirp);
+const lescape = require('escape-latex');
 var stringify = require('json-stable-stringify');
 var fs = require('fs-extra');
 var ensureDir = promisify(fs.mkdirs);
@@ -46,7 +47,7 @@ var Chapter = function(chapterName, authorName, uuid, scraps, authors) {
 }
 
 Chapter.prototype.getText = async function() {
-  var runningText = "\\end{plainraw}\n\\newpage\n\\section{" + this.name + "}\n\\begin{plainraw}\n\n";
+  var runningText = "\\end{plainraw}\n\\newpage\n\\section{" + lescape(this.name) + "}\n\\begin{plainraw}\n\n";
   let authors = [this.author];
   if (this.oldAuthors !== undefined) {
     authors = authors.concat(this.oldAuthors);
