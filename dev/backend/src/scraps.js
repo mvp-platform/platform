@@ -161,7 +161,10 @@ const postNewScrap = async function(request, reply) {
     type: 'scrap',
     id: scr.author + '-' + scr.uuid,
     body: {
-      doc: scr
+      tags: scr.tags,
+      author: scr.author,
+      text: scr.text,
+      uuid: scr.uuid
     }
   });
   await db.collection('refs').insertOne({author: request.payload.author, text: text, type: 'scrap', uuid: scr.uuid, count: 0});
