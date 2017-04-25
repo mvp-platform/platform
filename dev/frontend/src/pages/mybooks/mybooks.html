@@ -11,27 +11,28 @@
         </md-navbar>
         <div class="col-sm-8">
             <ul class="nav">
-                <li repeat.for="book of books" class="${book.isActive ? 'active' : ''}">
-                    <div class="book-title-block">
-                        <p class="bookName">${book.name}
-                          <a class="previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
-                            &#8599;
-                          </a>
-                        </p>
-                        <p>Chapters: ${book.chapters.length}
-                          <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
-                            Preview
-                          </a>
-                          <a class="previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
-                            Edit
-                          </a>
+                <li repeat.for="book of books" class="book ${book.isActive ? 'active' : ''}">
+                  <md-card md-title="${book.name}">
+                    <div>
+                      <p class="bookName">
+                        <a class="previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
+                          &#8599;
+                        </a>
+                      </p>
+                      <p>Chapters: ${book.chapters.length}
+                        <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
+                          Preview
+                        </a>
+                        <a class="previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
+                          Edit
+                        </a>
 
-                        </p>
+                      </p>
                     </div>
+                  </md-card>
                 </li>
             </ul>
         </div>
-        <hr>
     </section>
     <section class="rightSection">
         <div class="col-sm-8">
