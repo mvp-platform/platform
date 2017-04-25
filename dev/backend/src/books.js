@@ -16,9 +16,9 @@ const bookTmpl = `
 \\defaultfontfeatures{Ligatures=TeX}
 \\usepackage[small,sf,bf]{titlesec}
 \\usepackage{fvextra}
-\\DefineVerbatimEnvironment{plain_raw}
+\\DefineVerbatimEnvironment{plainraw}
   {Verbatim}
-  {fontfamily=\rmdefault,breaklines,breaksymbolleft={}}
+  {fontfamily=\\rmdefault,breaklines,breaksymbolleft={}}
 \\title{ {{{title}}} }
 \\author{ {{{author}}} }
 \\date{ }
@@ -28,10 +28,10 @@ const bookTmpl = `
 \\maketitle
 
 \\tableofcontents
-\\begin{plain_raw}
+\\begin{plainraw}
 
 {{{ body }}}
-\\end{plain_raw}
+\\end{plainraw}
 \\end{document}
 `
 

@@ -12,12 +12,23 @@ const lescape = require('escape-latex');
 
 const chapterTmpl = `
 
-\\documentclass[12pt]{article}
-\\usepackage[utf8]{inputenc}
+\\documentclass{article}
+\\usepackage{fontspec}
+\\defaultfontfeatures{Ligatures=TeX}
+\\usepackage[small,sf,bf]{titlesec}
+\\usepackage{fvextra}
+\\DefineVerbatimEnvironment{plainraw}
+  {Verbatim}
+  {fontfamily=\\rmdefault,breaklines,breaksymbolleft={}}
 \\title{ {{{title}}} }
 \\author{ {{{author}}} }
+
 \\begin{document}
+\\maketitle
+\\begin{plainraw}
+
 {{{ body }}}
+\\end{plainraw}
 \\end{document}
 `
 
