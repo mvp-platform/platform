@@ -180,7 +180,7 @@ let scrapDiff = async function(newRef, old) {
       running += running + "Added scrap " + c.text.slice(0,20); + "; "
     }
   }
-  return str.slice(0, -2) + '. ';
+  return running.slice(0, -2) + '. ';
 }
 
 Chapter.prototype.update = async function(diff) {

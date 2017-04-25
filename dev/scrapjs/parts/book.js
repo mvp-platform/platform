@@ -125,7 +125,7 @@ let chapterDiff = async function(newRef, old) {
       running += running + "Added chapter " + c.name; + "; "
     }
   }
-  return str.slice(0, -2) + '. ';
+  return running.slice(0, -2) + '. ';
 }
 
 Book.prototype.update = async function(diff) {
