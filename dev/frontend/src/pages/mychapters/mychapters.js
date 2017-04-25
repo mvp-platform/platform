@@ -7,7 +7,7 @@ export class Chapters {
     constructor() {
         this.books = [];
 
-        httpClient.fetch('http://remix.ist:8000/books/hagrid')
+        httpClient.fetch('http://remix.ist:8000/books/dcampbell')
             .then(response => response.json())
             .then(data => {
                 for (let instance of data) {

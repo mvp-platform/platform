@@ -9,7 +9,7 @@ export class Scraps {
         this.scraps = [];
 
         //' + chapterID.author + '/' + chapterID.uuid)
-        httpClient.fetch('http://remix.ist:8000/scraps/hagrid')
+        httpClient.fetch('http://remix.ist:8000/scraps/dcampbell')
             .then(response => response.json())
             .then(data => {
                 for (let instance of data) {
