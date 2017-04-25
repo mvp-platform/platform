@@ -58,11 +58,13 @@
     "dependencies": {
       "aurelia-animator-css": "npm:aurelia-animator-css@^1.0.0-rc.1.0.0",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-rc.1.0.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-rc.1.0.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-rc.1.0.0",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0-rc.1.0.0",
       "aurelia-loader-default": "npm:aurelia-loader-default@^1.0.0-rc.1.0.0",
       "aurelia-logging-console": "npm:aurelia-logging-console@^1.0.0-rc.1.0.0",
+      "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.27.0",
       "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0-rc.1.0.0",
       "aurelia-plugins-cookies": "npm:aurelia-plugins-cookies@^2.0.2",
       "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-rc.1.0.0",
@@ -73,17 +75,35 @@
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-rc.1.0.0",
       "bluebird": "npm:bluebird@3.4.1",
       "bootstrap": "github:twbs/bootstrap@^3.3.7",
+      "css": "github:systemjs/plugin-css@^0.1.33",
       "fetch": "github:github/fetch@^1.0.0",
       "font-awesome": "npm:font-awesome@^4.7.0",
       "jquery": "npm:jquery@^2.2.4",
+      "materialize-css": "npm:materialize-css@^0.98.2",
       "pdfjs-dist": "npm:pdfjs-dist@^1.5.391",
       "text": "github:systemjs/plugin-text@^0.0.8"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "overrides": {
+      "npm:materialize-css@0.98.0": {
+        "main": "dist/js/materialize",
+        "format": "global",
+        "shim": {
+          "dist/js/materialize": {
+            "deps": [
+              "jquery",
+              "../css/materialize.css!"
+            ]
+          }
+        }
+      }
+    }
   },
   "dependencies": {
+    "aurelia-materialize-bridge": "^0.27.0",
     "aurelia-plugins-cookies": "^2.0.2",
     "aurelia-tabbed": "^0.1.3",
-    "aurelia-tabs": "^1.0.2"
+    "aurelia-tabs": "^1.0.2",
+    "materialize-css": "^0.98.2"
   }
 }
