@@ -13,7 +13,7 @@ var gen = async function(latext) {
   let f = await writeFile(jobname + ".tex", latext);
   let v = await exec("xelatex " + jobname + ".tex");
   // second run for ToC
-  let v = await exec("xelatex " + jobname + ".tex");
+  let w = await exec("xelatex " + jobname + ".tex");
   let p = path.join(process.cwd(), jobname + ".pdf");
   await chmod(p, '644');
   return p;
