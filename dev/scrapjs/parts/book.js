@@ -105,7 +105,7 @@ var validateChapters = async function(chapters) {
   return correctChapters;
 }
 
-let chapterDiff = function(newRef, old) {
+let chapterDiff = async function(newRef, old) {
   // newRef = [[author, uuid, sha], [author, uuid, sha]]
   // old = [[author, uuid, sha, name], [author, uuid, sha, name]]
 
@@ -139,7 +139,7 @@ Book.prototype.update = async function(diff) {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
     } else if (field === "chapters") {
-      updateMsg += chapterDiff(diff['chapters'], this.chapters);
+      updateMsg += await chapterDiff(diff['chapters'], this.chapters);
       this.chapters = await validateChapters(diff["chapters"]);
       if (this.chapters === false) {
         return JSON.stringify({error: "invalid chapters field", field: field});

@@ -159,7 +159,7 @@ var validate = async function(scraps) {
   return correctScraps;
 }
 
-let scrapDiff = function(newRef, old) {
+let scrapDiff = async function(newRef, old) {
   // newRef = [[author, uuid, sha], [author, uuid, sha]]
   // old = [[author, uuid, sha], [author, uuid, sha]]
 
@@ -198,7 +198,7 @@ Chapter.prototype.update = async function(diff) {
       if (!valid) {
         return JSON.stringify({error: "invalid scraps!", field: diff[field]});
       }
-      updateMsg += scrapDiff(diff['scraps'], this.scraps);
+      updateMsg += await scrapDiff(diff['scraps'], this.scraps);
       this.scraps = diff[field];
     } else {
       success = false;
