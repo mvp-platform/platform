@@ -148,7 +148,7 @@ var validate = async function(scraps) {
       return false;
     }
   }));
-  if (truths.inclues(false)) {
+  if (truths.includes(false)) {
     return false;
   }
   return correctScraps;

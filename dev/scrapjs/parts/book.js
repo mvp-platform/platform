@@ -99,7 +99,7 @@ var validateChapters = async function(chapters) {
       return false;
     }
   }));
-  if (truths.inclues(false)) {
+  if (truths.includes(false)) {
     return false;
   }
   return correctChapters;
