@@ -47,7 +47,7 @@ Scrap.prototype.getText = function () {
 		this.oldAuthors.push(this.author);
 		return [this.text, this.oldAuthors];
 	}
-	return [this.text, [this.author], this.latex];
+	return [this.text, [this.author]];
 };
 
 Scrap.prototype.setText = function (text) {
@@ -128,7 +128,7 @@ Scrap.prototype.update = async function(diff) {
 				updateMsg = updateMsg + "Disabled latex. "
 				this.latex = false;
 			} else if (diff[field] === true) {
-				updateMsg = updateMsg + "Disabled latex. "
+				updateMsg = updateMsg + "Enabled latex. "
 				this.latex = true;
 			} else {
 				return {error: "latex option must true or false", value: diff[field]};
