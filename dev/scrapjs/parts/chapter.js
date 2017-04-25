@@ -129,6 +129,27 @@ Chapter.prototype.getHead = function() {
   return git.getHead(global.storage + this.author + '/chapter/' + this.uuid);
 }
 
+let shaMatch = new RegExp("^[0-9a-f]{5,40}$");
+
+var validate = async function(scraps) {
+  var correctScraps = [];
+  await Promise.all(scraps.map(async (sc) => {
+    try {
+      let nc = await scrap.reconstitute(sc[0], sc[1]);
+      if (sc[2] != null && !(shaMatch.test(sc[2]))) {
+        throw "sha must be either null or a valid sha!";
+      }
+      if (sc.length != 3) {
+        throw "bad length, should have three items";
+      }
+      correctScraps.push([sc[0], sc[1], sc[2]]);
+    } catch (e) {
+      return false;
+    }
+  }));
+  return correctScraps;
+}
+
 Chapter.prototype.update = async function(diff) {
   var success = true;
   var updateMsg = "update: ";
@@ -140,7 +161,10 @@ Chapter.prototype.update = async function(diff) {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
     } else if (field === "scraps") {
-      // TODO validate scraps
+      let valid = validate(diff[fields]);
+      if (!valid) {
+        return JSON.stringify({error: "invalid scraps!", field: diff[fields]});
+      }
       updateMsg += "updated scraps (TODO diff). ";
       this.scraps = diff[field];
     } else {

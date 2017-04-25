@@ -61,10 +61,13 @@ const postChapterById = async function(request, reply) {
     return reply({error: "not your chapter!"}).code(403);
   }
   let c = await chapter.reconstitute(request.params.author, request.params.id);
+  var err = await c.update(request.payload);
+  if (err.error) {
+    return reply(err).code(403);
+  }
   if (Array.isArray(request.payload.scraps)) {
     mongoutils.countRefs(c.scraps, request.payload.scraps, request.params.author);
   }
-  var err = await c.update(request.payload);
   var resp = await global.search.update({
     index: 'mvp',
     type: 'chapter',

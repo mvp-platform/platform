@@ -49,10 +49,13 @@ const postBookById = async function(request, reply) {
     return reply({error: "not your book!"}).code(403);
   }
   var b = await book.reconstitute(request.params.author, request.params.id);
+  var err = await b.update(request.payload);
+  if (err.error) {
+    return reply(err).code(403);
+  }
   if (Array.isArray(request.payload.chapters)) {
     mongoutils.countRefs(b.chapters, request.payload.chapters, request.params.author);
   }
-  var err = await b.update(request.payload);
   var resp = await global.search.update({
     index: 'mvp',
     type: 'book',
@@ -92,11 +95,11 @@ const postNewBook = async function(request, reply) {
   if (!login.success) {
     return reply({error: "could not verify identity"}).code(403);
   }
-  if (request.payload.author !== login.username) {
-    return reply({error: "can only create books for " + login.username}).code(403);
-  }
   if (request.payload.author === undefined) {
     return reply({error: "must define author"}).code(404);
+  }
+  if (request.payload.author !== login.username) {
+    return reply({error: "not your book -- you are: " + login.username}).code(403);
   }
   if (request.payload.name === undefined) {
     return reply({error: "must define name"}).code(404);

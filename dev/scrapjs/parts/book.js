@@ -80,11 +80,19 @@ Book.prototype.setChapters = function(chapters) {
   this.chapters = chapters;
 };
 
+let shaMatch = new RegExp("^[0-9a-f]{5,40}$");
+
 var validateChapters = async function(chapters) {
   var correctChapters = [];
   await Promise.all(chapters.map(async (ch) => {
     try {
       let nc = await chapter.reconstitute(ch[0], ch[1]);
+      if (ch[2] != null && !(shaMatch.test(ch[2]))) {
+        throw "sha must be either null or a valid sha!";
+      }
+      if (ch.length != 3) {
+        throw "bad length, should have three items";
+      }
       correctChapters.push([ch[0], ch[1], ch[2], nc.name]);
     } catch (e) {
       return false;
@@ -108,7 +116,7 @@ Book.prototype.update = async function(diff) {
       updateMsg += "updated chapters (TODO diff). ";
       this.chapters = await validateChapters(diff["chapters"]);
       if (this.chapters === false) {
-        return JSON.stringify({error: "invalid chapters field (does the chapter exist?)", field: field});
+        return JSON.stringify({error: "invalid chapters field", field: field});
       }
     } else {
       success = false;
