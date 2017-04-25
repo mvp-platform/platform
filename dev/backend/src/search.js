@@ -6,7 +6,14 @@ const searchEndpoint = async function(request, reply) {
   }
 
   let queryText = decodeURIComponent(request.query.q);
-  let q = {body: {query: {multi_match: {query: queryText, fields: ["name", "text"]}}}};
+  let q = {body: {
+    "query": {
+      "multi_match": {
+        "query": queryText,
+          "fields": ["name", "text", "tags"]
+        }
+    }
+  }};
   let hits = await global.search.search(q);
   hits = hits.hits.hits; // yes, that's really where results live
 
