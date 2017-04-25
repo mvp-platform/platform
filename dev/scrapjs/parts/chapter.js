@@ -46,14 +46,14 @@ var Chapter = function(chapterName, authorName, uuid, scraps, authors) {
 }
 
 Chapter.prototype.getText = async function() {
-  var runningText = "\\end{plainraw}\\newpage\n\\section{" + this.name + "}\begin{plainraw}\n\n";
+  var runningText = "\\end{plainraw}\n\\newpage\n\\section{" + this.name + "}\n\\begin{plainraw}\n\n";
   let authors = [this.author];
   if (this.oldAuthors !== undefined) {
     authors = authors.concat(this.oldAuthors);
   }
   for (let s of this.scraps) {
     let ns = await scrap.reconstitute(s[0], s[1], s[2]);
-    runningText = runningText + ns.getText() + "\n\\end{plainraw}\\newline\\begin{plainraw}\n";
+    runningText = runningText + ns.getText() + "\n\\end{plainraw}\\begin{plainraw}\n";
     authors.push(ns.author);
   }
   return [runningText, Array.from(new Set(authors))];
