@@ -12,6 +12,18 @@ const lescape = require('escape-latex');
 const scrapTmpl = `
 
 \\documentclass{article}
+\\usepackage{graphicx}
+\\usepackage{setspace}
+\\usepackage{comment}
+\\usepackage{bigstrut}
+\\usepackage{geometry}
+\\usepackage{supertabular}
+\\usepackage{tabu}
+\\usepackage{hyperref}
+\\usepackage{url}
+\\hypersetup{
+  colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue}
+\\geometry{textheight=9.5in, textwidth=7in}
 \\usepackage{fontspec}
 \\defaultfontfeatures{Ligatures=TeX}
 \\usepackage[small,sf,bf]{titlesec}
@@ -55,14 +67,11 @@ const postScrapById = async function(request, reply) {
   if (login.username != request.params.author) {
     return reply({error: "not your scrap!"}).code(403);
   }
-  if (request.payload) {
-    return reply({error: "not your scrap!"}).code(403);
-  }
-  if (!Array.isArray(request.payload) || (request.payload.length != 1 || Object.keys(request.payload)[0] != "text")) {
-    return reply({error: "can only update text"}).code(403);
-  }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
+  if (err.error) {
+    return reply(err).code(403);
+  }
   var resp = await global.search.update({
     index: 'mvp',
     type: 'scrap',
@@ -77,13 +86,16 @@ const postScrapById = async function(request, reply) {
 const generateScrapPdf = async function(request, reply) {
   const s = await scrap.reconstitute(request.params.author, request.params.id);
 
-	const [scrapText, authors] = await s.getText();
+	let [scrapText, authors] = await s.getText();
   const authorFullNames = await accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
+  if (s.latex) {
+    scrapText = "\n\\end{plainraw}\n" + scrapText + "\n\\begin{plainraw}\n";
+  }
 	const info = {
 		title: lescape(s.name),
 		author: authorText,
-		body: scrapText // TODO better escaping!
+		body: scrapText
 	};
 	const laText = mustache.render(scrapTmpl, info); // lol laText
   const pdfPath = await pdf.gen(laText);
