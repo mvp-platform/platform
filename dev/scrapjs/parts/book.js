@@ -115,14 +115,14 @@ let chapterDiff = async function(newRef, old) {
 
   for (let i in oldComp) {
     if (!newComp.includes(oldComp[i])) {
-      running += running + "Removed chapter " + oldRef[i][2]; + "; "
+      running = running + "Removed chapter " + old[i][3] + "; ";
     }
   }
 
   for (let i in newComp) {
     if (!oldComp.includes(newComp[i])) {
       let c = await chapter.reconstitute(newRef[i][0], newRef[i][1]);
-      running += running + "Added chapter " + c.name; + "; "
+      running = running + "Added chapter " + c.name; + "; ";
     }
   }
   return running.slice(0, -2) + '. ';

@@ -170,14 +170,14 @@ let scrapDiff = async function(newRef, old) {
   for (let i in oldComp) {
     if (!newComp.includes(oldComp[i])) {
       let c = await scrap.reconstitute(old[i][0], old[i][1]);
-      running += running + "Removed scrap " + c.text.slice(0,20); + "; "
+      running = running + "Removed scrap " + c.text.slice(0,20) + "; ";
     }
   }
 
   for (let i in newComp) {
     if (!oldComp.includes(newComp[i])) {
       let c = await scrap.reconstitute(newRef[i][0], newRef[i][1]);
-      running += running + "Added scrap " + c.text.slice(0,20); + "; "
+      running = running + "Added scrap " + c.text.slice(0,20) + "; ";
     }
   }
   return running.slice(0, -2) + '. ';
