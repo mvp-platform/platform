@@ -420,6 +420,23 @@ POST /scraps/new
 }
 ```
 
+### `POST /images/new`
+
+Create a new image. This is a `form/multipart` file upload; the image must
+be in the field "image". When successful, it will return a scrap object that
+can be included in a chapter to include the picture:
+
+```
+{
+author: "hagrid",
+text: "\includegraphics[width=\textwidth]{/home/ubuntu/mvp_platform/dev/backend/data/storage/images/hagrid/mhcf7dezlahdxu5jt6gvi}",
+latex: true,
+image: true,
+isNew: true,
+uuid: "266bfe4c-2338-4a03-afdd-a9765fdbe629"
+}
+```
+
 
 ## `/search`
 
