@@ -4,9 +4,10 @@ const scrap = require('../../scrapjs/parts/scrap');
 const mustache = require('mustache');
 const accounts = require('./accounts');
 const pdf = require('./pdf');
-const fs = require('fs');
+const fs = require('fs-extra');
 const promisify = require("es6-promisify");
-var ensureDir = promisify(fs.mkdirs);
+const ensureDir = promisify(fs.mkdirs);
+const writeFile = promisify(fs.writeFile);
 const readdir = promisify(fs.readdir);
 const lescape = require('escape-latex');
 
@@ -154,21 +155,15 @@ const postNewImage = async function(request, reply) {
 
   if (request.payload.image) {
     var image = request.payload.image;
-    var path = global.storage + '/images/' + login.username;
+    var path = global.storage + 'images/' + login.username;
     await ensureDir(path);
-    var file = fs.createWriteStream(path + '/' + name);
-    image.pipe(file);
-    image.on('end', async function (err) {
-      if (err) {
-        console.log("could not save image", err);
-        return reply({error: "could not save image"}).code(500);
-      }
-      var scr = new scrap.Scrap('\\includegraphics[width=\\textwidth]{' + path + '/' + name + '}', request.payload.author);
-      scr.image = true;
-      scr.latex = true;
-      await scr.save('Created image');
-      return reply(scr);
-    });
+    var fn = path + '/' + Math.random().toString(36).substring(7);
+    await writeFile(fn, image);
+    var scr = new scrap.Scrap('\\includegraphics[width=\\textwidth]{' + fn + '}', login.username);
+    scr.image = true;
+    scr.latex = true;
+    await scr.save('Created image');
+    return reply(scr);
   } else {
     return reply({error: "must specify image"}).code(400);
   }
