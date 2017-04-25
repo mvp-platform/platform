@@ -58,11 +58,11 @@ const postScrapById = async function(request, reply) {
   if (request.payload) {
     return reply({error: "not your scrap!"}).code(403);
   }
-  if (!Array.isArray(request.payload) || (request.payload.length != 1 || Object.keys(request.payload)[0] != "text")) {
-    return reply({error: "can only update text"}).code(403);
-  }
   var s = await scrap.reconstitute(request.params.author, request.params.id);
   var err = await s.update(request.payload);
+  if (err.error) {
+    return reply(err).code(403);
+  }
   var resp = await global.search.update({
     index: 'mvp',
     type: 'scrap',

@@ -25,13 +25,14 @@ var reconstitute = async function (author, uuid, sha) {
 	} else {
 		data = JSON.parse(await readFile(global.storage + author + '/scrap/' + uuid + '/info.json', 'utf8'));
 	}
-	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors);
+	return new Scrap(data.text, data.author, data.uuid, data.oldAuthors, data.latex);
 }
 
-var Scrap = function (text, authorName, uuid, oldAuthors) {
+var Scrap = function (text, authorName, uuid, oldAuthors, latex) {
 	this.author = authorName;
 	this.oldAuthors = oldAuthors;
 	this.text = text;
+	this.latex = latex ? true : false;
 	this.head = undefined;
 	this.isNew = true;
 	if (uuid === undefined) {
@@ -46,7 +47,7 @@ Scrap.prototype.getText = function () {
 		this.oldAuthors.push(this.author);
 		return [this.text, this.oldAuthors];
 	}
-	return [this.text, [this.author]];
+	return [this.text, [this.author], this.latex];
 };
 
 Scrap.prototype.setText = function (text) {
@@ -113,9 +114,27 @@ Scrap.prototype.fork = async function(newUser) {
 Scrap.prototype.update = async function(diff) {
   var success = true;
 	this.isNew = false;
-	if (Object.keys(diff).length !== 1 || Object.keys(diff)[0] != "text") { return JSON.stringify("only text field can be updated")}
-  var updateMsg = "update: changed text from " + this.text + " to " + diff.text;
-	this.text = diff.text;
+	var updateMsg = "update: ";
+	for (let field of diff) {
+		if (field !== "text" && field !== "latex") {
+			return {error: "invalid field", field: field};
+		}
+		if (field === "text") {
+			updateMsg = updateMsg + "changed text from " + this.text + " to " + diff.text + ". ";
+			this.text = diff.text;
+		}
+		if (field === "latex") {
+			if (diff[field] === false) {
+				updateMsg = updateMsg + "Disabled latex. "
+				this.latex = false;
+			} else if (diff[field] === true) {
+				updateMsg = updateMsg + "Disabled latex. "
+				this.latex = true;
+			} else {
+				return {error: "latex option must true or false", value: diff[field]};
+			}
+		}
+	}
   var updateBlock = await this.save(updateMsg);
   updateBlock.message = updateMsg;
   return updateBlock;
