@@ -154,15 +154,14 @@ const postNewImage = async function(request, reply) {
 
   if (request.payload.image) {
     var image = request.payload.image;
-    var name = image.hapi.filename;
     var path = global.storage + '/images/' + login.username;
     await ensureDir(path);
     var file = fs.createWriteStream(path + '/' + name);
     image.pipe(file);
     image.on('end', async function (err) {
-      console.log(image.hapi.headers);
-      var ret = {
-          filename: image.hapi.filename
+      if (err) {
+        console.log("could not save image", err);
+        return reply({error: "could not save image"}).code(500);
       }
       var scr = new scrap.Scrap('\\includegraphics[width=\\textwidth]{' + path + '/' + name + '}', request.payload.author);
       scr.image = true;
