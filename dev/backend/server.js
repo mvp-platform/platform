@@ -10,6 +10,11 @@ var copyFile = promisify(fs.copy);
 const assert = require("assert");
 const elasticsearch = require('elasticsearch');
 
+let elasticConnection = 'localhost:9200';
+if (process.env.ELASTIC) {
+  elasticConnection = process.env.ELASTIC;
+}
+
 const books = require('./src/books');
 const scraps = require('./src/scraps');
 const chapters = require('./src/chapters');
@@ -38,7 +43,7 @@ server.connection({
 });
 
 global.search = new elasticsearch.Client({
-  host: 'localhost:9200',
+  host: elasticConnection,
   log: 'trace'
 });
 
