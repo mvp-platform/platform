@@ -16,7 +16,7 @@ const bookTmpl = `
 \\defaultfontfeatures{Ligatures=TeX}
 \\usepackage[small,sf,bf]{titlesec}
 \\usepackage{fvextra}
-\DefineVerbatimEnvironment{plain_raw}
+\\DefineVerbatimEnvironment{plain_raw}
   {Verbatim}
   {fontfamily=\rmdefault,breaklines,breaksymbolleft={}}
 \\title{ {{{title}}} }
