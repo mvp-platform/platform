@@ -136,7 +136,7 @@ Scrap.prototype.update = async function(diff) {
 				return {error: "latex option must true or false", value: diff[field]};
 			}
 		}
-		if (field === "tags")
+		if (field === "tags") {
 	    if (!Array.isArray(diff[field])) {
 	      return {error: "tags must be array"};
 	    }
