@@ -162,6 +162,8 @@ const postNewScrap = async function(request, reply) {
     id: scr.author + '-' + scr.uuid,
     body: {
       tags: scr.tags,
+      image: scr.image,
+      latex: scr.latex,
       author: scr.author,
       text: scr.text,
       uuid: scr.uuid
