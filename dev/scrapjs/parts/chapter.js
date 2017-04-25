@@ -165,7 +165,7 @@ Chapter.prototype.update = async function(diff) {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
     } else if (field === "scraps") {
-      let valid = validate(diff[field]);
+      let valid = await validate(diff[field]);
       if (!valid) {
         return JSON.stringify({error: "invalid scraps!", field: diff[field]});
       }
