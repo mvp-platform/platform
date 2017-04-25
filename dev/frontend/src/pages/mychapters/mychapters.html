@@ -24,6 +24,9 @@ we created, and we bind viewmodel properties to it.
                               <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}">
                                 Edit
                               </a>
+                              <a class="previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${book.author}/${book.chapters[i][1]}/pdf">
+                                ↓
+                              </a>
                             </p>
 
                         </div>

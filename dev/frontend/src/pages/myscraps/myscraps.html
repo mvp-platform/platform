@@ -12,7 +12,7 @@
                           <p>Scraps: ${scraps.length}</p>
 
                           <p repeat.for="scrap of scraps">
-                              Scrap: ${$index+1} - ${(scrap.text).substring(0,30) + "..."}
+                              Scrap: ${$index+1} - ${(scrap.text).substring(0,35) + "..."}
                               <!-- Scrap: ${$index+1} - ${(scrap.text)} -->
 
                               <!-- Test = ${$test = (scrap.text).split(" "); }
@@ -21,6 +21,11 @@
 
                               <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                                 Preview
+                              </a>
+
+
+                              <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
+                                ↓
                               </a>
                           </p>
                           <!--

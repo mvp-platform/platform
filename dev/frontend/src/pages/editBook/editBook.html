@@ -15,7 +15,11 @@ we created, and we bind viewmodel properties to it.
                     <h3>${book.name}</h3>
                     <li repeat.for="chapter of book.chapters" class="${chapter.isActive ? 'active' : ''}">
                         <div class="book-title-block">
-                            <p class="bookName">${chapter[3]}</p>
+                            <p class="bookName">${chapter[3]}
+                              <a class="previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/books/${chapter[0]}/${chapter[1]}/pdf">
+                                ↓
+                              </a>
+                            </p>
                             <p>Author: ${chapter[0]}</p>
                             <p>UUID: ${chapter[1]}</p>
                             <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1]}">
@@ -24,6 +28,7 @@ we created, and we bind viewmodel properties to it.
                           <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: chapter[0], uuid: chapter[1]}">
                             Preview
                           </a>
+
                         </div>
                     </li>
                 </ul>

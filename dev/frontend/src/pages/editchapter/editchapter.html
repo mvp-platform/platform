@@ -15,7 +15,11 @@ we created, and we bind viewmodel properties to it.
 
                     <li repeat.for="chapter of chapters" class="${chapter.isActive ? 'active' : ''}">
                         <div class="book-title-block">
-                            <p class="bookName">${chapter.name}</p>
+                            <p class="bookName">${chapter.name}
+                              <a class="previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf">
+                                ↓
+                              </a>
+                            </p>
                             <p>Scraps: ${chapter.scraps.length}</p>
 
                             <p repeat.for="i of chapter.scraps.length">Scrap ${i+1} - ${(chapter.scraps[i][chapter.scraps[i].length-1]).substring(0,30) + "..."}
@@ -26,6 +30,10 @@ we created, and we bind viewmodel properties to it.
                               <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}"> -->
                                 <!-- Edit
                               </a> -->
+
+                              <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${chapter.author}/${chapter.scraps[i][1]}/pdf">
+                                ↓
+                              </a>
                             </p>
 
                         </div>
