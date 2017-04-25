@@ -19,8 +19,6 @@ const bookTmpl = `
 \DefineVerbatimEnvironment{plain_raw}
   {Verbatim}
   {fontfamily=\rmdefault,breaklines,breaksymbolleft={}}
-
-\\begin{plain_raw}
 \\title{ {{{title}}} }
 \\author{ {{{author}}} }
 \\date{ }
@@ -30,6 +28,7 @@ const bookTmpl = `
 \\maketitle
 
 \\tableofcontents
+\\begin{plain_raw}
 
 {{{ body }}}
 \\end{plain_raw}
