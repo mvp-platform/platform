@@ -1,14 +1,7 @@
 export class PDFViewer {
-  constructor(chapterID) {
+  constructor(thingID) {
     this.url = '/src/assets/blank.pdf';
     this.documents = [
-      /*{
-        url: 'src/documents/one.pdf',
-        draftUrl: 'src/documents/one.pdf',
-        pageNumber: 1,
-        scale: 1,
-        lastpage: 1
-      },*/
       {
         url: '/src/assets/blank.pdf',
         draftUrl: '/src/assets/blank.pdf',
@@ -57,13 +50,12 @@ export class PDFViewer {
     document.scale = Number(document.scale) - 0.1;
   }
 
-  activate(chapterID) {
-    if (chapterID.author === undefined) {
+  activate(thingID) {
+    if (thingID.author === undefined) {
         return;
     }
 
-    this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
-    //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
+    this.url = "http://remix.ist:8000/" + thingID.type + "/" + thingID.author + '/' + thingID.uuid + '/pdf';
     document.url = this.url
     document.draftUrl = this.url;
   }

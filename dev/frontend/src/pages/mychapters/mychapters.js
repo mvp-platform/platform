@@ -21,7 +21,7 @@ export class Chapters {
     configureRouter(config, router) {
         config.title = 'Chapter Tabs';
         config.map([
-            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/mychapters/PDFViewer', nav: true, title: 'PDF Viewer' },
+            { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
             { route: 'search', name: 'search', moduleId: 'pages/mychapters/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/mychapters/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/mychapters/notifications', nav: true, title: 'Notifications' }

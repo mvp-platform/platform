@@ -13,7 +13,6 @@ export class Scraps {
             .then(response => response.json())
             .then(data => {
                 for (let instance of data) {
-                    console.log(instance);
                     this.scraps.push(instance);
                 }
 

@@ -4,7 +4,6 @@ pdf-document {
 }
 
 pdf-document .pdf-container {
-  background-color: #bbb;
   overflow: auto;
   height: 100%;
   max-height: 790px;

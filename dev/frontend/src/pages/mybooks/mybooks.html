@@ -15,15 +15,15 @@
                   <md-card md-title="${book.name}">
                     <div>
                       <p class="bookName">
-                        <a class="previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
+                        <a class="on-white previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
                           &#8599;
                         </a>
                       </p>
                       <p>Chapters: ${book.chapters.length}
-                        <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: book.author, uuid: book.uuid}">
+                        <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'books', author: book.author, uuid: book.uuid}">
                           Preview
                         </a>
-                        <a class="previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
+                        <a class="on-white previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
                           Edit
                         </a>
 
@@ -35,13 +35,15 @@
         </div>
     </section>
     <section class="rightSection">
-        <div class="col-sm-8">
-            <ul id="rightSectionNav" class="nav navbar-nav">
-                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                    <a href.bind="row.href">${row.title}</a>
-                </li>
-            </ul>
-        </div>
+      <div class="col-sm-8">
+        <md-navbar>
+          <ul class="hide-on-med-and-down right">
+            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                <a class="nav-link" href.bind="row.href">${row.title}</a>
+            </li>
+          </ul>
+        </md-navbar>
+      </div>
         <router-view></router-view>
     </section>
 </template>

@@ -19,7 +19,7 @@ export class Books {
     configureRouter(config, router) {
         config.title = 'Right Tabs';
         config.map([
-            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/mybooks/PDFViewer', nav: true, title: 'PDF Viewer' },
+            { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
             { route: 'search', name: 'search', moduleId: 'pages/mybooks/search', nav: true, title: 'search' },
             { route: 'emails', name: 'emails', moduleId: 'pages/mybooks/emails', nav: true, title: 'Emails' },
             { route: 'notifications', name: 'notifications', moduleId: 'pages/mybooks/notifications', nav: true, title: 'Notifications' }
