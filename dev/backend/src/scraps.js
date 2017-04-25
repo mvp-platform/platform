@@ -73,6 +73,16 @@ const postScrapById = async function(request, reply) {
   if (s.image) {
     return reply({error: "cannot update images"}).code(400);
   }
+  if (request.payload.tags) {
+    if (!Array.isArray(request.payload.tags)) {
+      return reply({error: "tags must be array"}).code(400);
+    }
+    for (let item of request.payload.tags) {
+      if (typeof item !== 'string') {
+        return reply({error: "tags must only be strings"}).code(400);
+      }
+    }
+  }
   var err = await s.update(request.payload);
   if (err.error) {
     return reply(err).code(403);
@@ -123,7 +133,7 @@ const postNewScrap = async function(request, reply) {
     return reply({error: "can only create scraps for " + login.username}).code(403);
   }
   if (request.payload.author === undefined) {
-    return reply({error: "must define author"}).code(404);
+    return reply({error: "must define author"}).code(400);
   }
   let text = request.payload.text;
   if (text === undefined) {
@@ -133,6 +143,17 @@ const postNewScrap = async function(request, reply) {
   if (request.payload.latex === true) {
     scr.latex = true;
   }
+  if (request.payload.tags) {
+    if (!Array.isArray(request.payload.tags)) {
+      return reply({error: "tags must be array"}).code(400);
+    }
+    for (let item of request.payload.tags) {
+      if (typeof item !== 'string') {
+        return reply({error: "tags must only be strings"}).code(400);
+      }
+    }
+  }
+  scr.tags = request.payload.tags;
   await scr.save('Created new scrap');
 
   var resp = await global.search.create({
@@ -140,7 +161,12 @@ const postNewScrap = async function(request, reply) {
     type: 'scrap',
     id: scr.author + '-' + scr.uuid,
     body: {
-      doc: scr
+      tags: scr.tags,
+      image: scr.image,
+      latex: scr.latex,
+      author: scr.author,
+      text: scr.text,
+      uuid: scr.uuid
     }
   });
   await db.collection('refs').insertOne({author: request.payload.author, text: text, type: 'scrap', uuid: scr.uuid, count: 0});
