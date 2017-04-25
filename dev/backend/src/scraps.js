@@ -159,7 +159,7 @@ const postNewImage = async function(request, reply) {
     await ensureDir(path);
     var file = fs.createWriteStream(path + '/' + name);
     image.pipe(file);
-    image.on('end', function (err) {
+    image.on('end', async function (err) {
       console.log(image.hapi.headers);
       var ret = {
           filename: image.hapi.filename
