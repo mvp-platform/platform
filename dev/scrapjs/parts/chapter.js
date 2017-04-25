@@ -55,7 +55,7 @@ Chapter.prototype.getText = async function() {
   for (let s of this.scraps) {
     let ns = await scrap.reconstitute(s[0], s[1], s[2]);
     let [sText, sAuthor] = ns.getText();
-    if (latex) {
+    if (ns.latex) {
       runningText = runningText + "\n\\end{plainraw}\n" + sText + "\n\\begin{plainraw}\n";
     } else {
       runningText = runningText + sText + "\n\n";

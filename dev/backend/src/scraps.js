@@ -77,10 +77,13 @@ const generateScrapPdf = async function(request, reply) {
 	const [scrapText, authors] = await s.getText();
   const authorFullNames = await accounts.fullNames(authors);
   const authorText = authorFullNames.join(' \\and ');
+  if (s.latex) {
+    scrapText = "\n\\end{plainraw}\n" + scrapText + "\n\\begin{plainraw}\n";
+  }
 	const info = {
 		title: lescape(s.name),
 		author: authorText,
-		body: scrapText // TODO better escaping!
+		body: scrapText
 	};
 	const laText = mustache.render(scrapTmpl, info); // lol laText
   const pdfPath = await pdf.gen(laText);
