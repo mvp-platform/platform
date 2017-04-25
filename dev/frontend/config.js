@@ -15,6 +15,7 @@ System.config({
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0",
+    "aurelia-plugins-cookies": "npm:aurelia-plugins-cookies@2.0.2",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.0.0",
     "aurelia-router": "npm:aurelia-router@1.2.1",
     "aurelia-tabs": "github:vheissu/aurelia-tabs@1.0.2",

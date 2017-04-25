@@ -2,12 +2,15 @@
 <html>
   <head>
     <title>Many Voices Publishing Platform</title>
-
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
 
   <body aurelia-app="main">
@@ -16,10 +19,9 @@
     <script src="jspm_packages/npm/bluebird@3.4.1/js/browser/bluebird.min.js"></script>
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      <meta name="google-signin-scope" content="profile email">
-      <meta name="google-signin-client_id" content="643825511576-aecm78ba0gdc5aild94hi0on5lrrobma.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      System.import('aurelia-bootstrapper');
+    </script>
     <script>
       var SERVER = "http://remix.ist:8000";
       function onSignIn(googleUser) {
@@ -27,12 +29,13 @@
         var id_token = googleUser.getAuthResponse().id_token;
         $.post( SERVER + "/accounts/login", {token: id_token}, function( data ) {
           console.log(data);
-          alert("LOGIN");
+          document.cookie = "data=" + JSON.stringify(data);
+          window.location.href = location.origin;
         });
       };
-    </script>
-    <script>
-      System.import('aurelia-bootstrapper');
+      function handleFailure(googleUser) {
+        console.log(googleUser);
+      }
     </script>
   </body>
 </html>
