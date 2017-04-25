@@ -133,7 +133,7 @@ let shaMatch = new RegExp("^[0-9a-f]{5,40}$");
 
 var validate = async function(scraps) {
   var correctScraps = [];
-  await Promise.all(scraps.map(async (sc) => {
+  var truths = await Promise.all(scraps.map(async (sc) => {
     try {
       let nc = await scrap.reconstitute(sc[0], sc[1]);
       if (sc[2] != null && !(shaMatch.test(sc[2]))) {
@@ -142,11 +142,15 @@ var validate = async function(scraps) {
       if (sc.length != 3) {
         throw "bad length, should have three items";
       }
+      return true;
       correctScraps.push([sc[0], sc[1], sc[2]]);
     } catch (e) {
       return false;
     }
   }));
+  if (truths.inclues(false)) {
+    return false;
+  }
   return correctScraps;
 }
 
@@ -161,9 +165,9 @@ Chapter.prototype.update = async function(diff) {
       success = false;
       return JSON.stringify({error: "author and uuid are read-only", field: field});
     } else if (field === "scraps") {
-      let valid = validate(diff[fields]);
+      let valid = validate(diff[field]);
       if (!valid) {
-        return JSON.stringify({error: "invalid scraps!", field: diff[fields]});
+        return JSON.stringify({error: "invalid scraps!", field: diff[field]});
       }
       updateMsg += "updated scraps (TODO diff). ";
       this.scraps = diff[field];

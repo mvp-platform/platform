@@ -84,7 +84,7 @@ let shaMatch = new RegExp("^[0-9a-f]{5,40}$");
 
 var validateChapters = async function(chapters) {
   var correctChapters = [];
-  await Promise.all(chapters.map(async (ch) => {
+  var truths = await Promise.all(chapters.map(async (ch) => {
     try {
       let nc = await chapter.reconstitute(ch[0], ch[1]);
       if (ch[2] != null && !(shaMatch.test(ch[2]))) {
@@ -94,10 +94,14 @@ var validateChapters = async function(chapters) {
         throw "bad length, should have three items";
       }
       correctChapters.push([ch[0], ch[1], ch[2], nc.name]);
+      return true;
     } catch (e) {
       return false;
     }
   }));
+  if (truths.inclues(false)) {
+    return false;
+  }
   return correctChapters;
 }
 
