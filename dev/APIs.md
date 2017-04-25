@@ -520,7 +520,26 @@ Multiple types can be specified:
 
 `GET /favorites?type=book&type=chapter`
 
-# TODO APIs that still need a little love
+## `/accounts/myaccount`
+
+### `POST /accounts/myaccount`
+
+Provides an endpoint to update the name to be displayed on book renders:
+```
+{"name": "D. Campbell"}
+```
+
+### `GET /accounts/myaccount`
+
+Provides an endpoint to view the name to be displayed on book renders:
+```
+{
+  "userid": "dcampbell",
+  "name": "D. Campbell"
+}
+```
+
+# These APIs exist but maybe aren't documented so well
 
 `GET /chapters/unassociated` | List user's unassociated chapters
 `GET /scraps/unassociated`   | List user's unassociated scraps
