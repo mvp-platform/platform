@@ -4,35 +4,23 @@
               <span class="spacer"><span class="brand-logo">My Scraps</span></span>
           </md-navbar>
           <div class="col-sm-8">
-              <ul class="nav">
-                  <li repeat.for="scrap of scraps" class="scrap ${book.isActive ? 'active' : ''}">
-                    <md-card md-title="${book.name}">
-                      <div>
-                        <p>Scrap: ${$index+1} - ${(scrap.text).substring(0,150) + "..."}</p>
-                        <p>
-                            <!-- Scrap: ${$index+1} - ${(scrap.text)} -->
-
-                            <!-- Test = ${$test = (scrap.text).split(" "); }
-                            console.log($test); -->
-
-
-                            <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
-                              Preview
-                            </a>
-
-                            <a  class="previewEditLinks" route-href="route: editScrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
-                              Edit
-                            </a>
-
-
-                            <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
-                              &#8599;
-                            </a>
-                        </p>
-                      </div>
-                    </md-card>
-                  </li>
-              </ul>
+          <ul class="nav">
+          <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
+          <li repeat.for="scrap of scraps" view-model.bind="mysraps" class="scrap ${book.isActive ? 'active' : ''} drag-source drop-target">
+            <md-card md-title="${book.name}">
+              <div>
+                <p>Scrap: ${$index+1} - ${(scrap.text).substring(0,150) + "..."}</p>
+                <p><a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
+                  Preview
+                </a><a  class="previewEditLinks" route-href="route: editScrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
+                  Edit
+                </a><a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
+                  &#8599;
+                </a></p>
+              </div>
+            </md-card>
+          </li>
+          </ul>
           </div>
     </section>
     <section class="rightSection">
