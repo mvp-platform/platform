@@ -15,16 +15,17 @@
                   <md-card md-title="${book.name}">
                     <div>
                       <p class="bookName">
-                        <a class="on-white previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
-                          &#8599;
-                        </a>
                       </p>
-                      <p>Chapters: ${book.chapters.length}
+                      <p>Chapters: ${book.chapters.length}</p>
+                      <p>
                         <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'books', author: book.author, uuid: book.uuid}">
                           Preview
                         </a>
                         <a class="on-white previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
                           Edit
+                        </a>
+                        <a class="on-white previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
+                          &#8599;
                         </a>
 
                       </p>

@@ -1,12 +1,14 @@
 import { HttpClient, json } from 'aurelia-fetch-client';
+import {Cookies} from 'aurelia-plugins-cookies';
 
 let httpClient = new HttpClient();
 
 export class Books {
     constructor() {
       this.books = [];
+      let username = Cookies.get('username');
 
-      httpClient.fetch('http://remix.ist:8000/books/dcampbell')
+      httpClient.fetch('http://remix.ist/books/' + username)
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {

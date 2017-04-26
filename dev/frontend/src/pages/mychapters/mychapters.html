@@ -14,7 +14,8 @@ we created, and we bind viewmodel properties to it.
                     <li repeat.for="chapter of chapters " class="chapter ${chapter.isActive ? 'active' : ''}">
                       <md-card md-title="${chapter.name}">
                         <div>
-                          <p>Scraps: ${chapter.scraps.length}
+                          <p>Scraps: ${chapter.scraps.length}</p>
+                          <p>
                             <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}">
                               Preview
                             </a>
