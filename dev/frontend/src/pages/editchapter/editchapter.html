@@ -11,7 +11,7 @@
           <div id="save-warning" class="collapsible-header"></div>
           <div id="save-text" class="collapsible-body">
             <md-card>
-              <p>When you're done rearranging, make sure to save your changes!
+              <p>When you're done modifying your chapter, make sure to save your changes!
               <form role="form" submit.delegate="saveRearrangements()">
                 <button md-button="submit" class="primary" md-button="large: true;">Save Now</button>
               </form>
@@ -33,6 +33,10 @@
                   <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}">
                   Edit
                   </a>
+                  <a class="previewEditLinks" href click.delegate="delete($index)">
+                  Remove
+                </a>
+
                 <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}">
                   Preview
                 </a>

@@ -14,6 +14,14 @@ export class EditChapters {
       this.ea = eventag;
     }
 
+    delete(index) {
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+      this.chapter.scraps.splice(parseInt(index), 1);
+    }
+
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
       console.log("ITEM DROPPED");
