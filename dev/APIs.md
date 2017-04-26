@@ -348,18 +348,27 @@ Returns all scraps for a user.
 ]
 ```
 
-### `POST /scraps{author}/{uuid}`
+### `POST /scraps/{author}/{uuid}`
 
 Updates a scrap with information from the request body. Fields that can be updated
 are:
 
 * `text`
+* `latex`
+* `tags`
 
-#### Example: change text
+
+#### Example: change text, latex, tags
 ```
 POST /scraps/hagrid/1a530c40-d8ed-4362-b402-4481c50e50a2
 {
-  "text": "hello world!"
+  "text": "hello world!",
+  "latex": false,
+  "tags": [
+    "tag1",
+    "tag2",
+    "tag3"
+  ],
 }
 ```
 
