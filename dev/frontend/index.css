@@ -7,6 +7,12 @@ div #bookView {
     margin: 10px;
 }
 
+#mych_dropdown, .wide-enough {
+  /*for some reason, the auto-generated positioning is all wrong*/
+  width: 200px !important;
+  left: calc(125px + 65%) !important;
+}
+
 div.book-title-block {
     border: 1px dotted black;
     margin: 10px;
@@ -24,7 +30,6 @@ div.book-title-block {
 input[type=text]:focus {
     width: auto;
 }
-
 
 .on-white:link, .on-white:visited, .on-white:hover, .on-white:active {
   color: teal;
@@ -68,6 +73,10 @@ input[type=text]:focus {
 .nav-link:link, .nav-link:visited, .nav-link:hover {
   text-decoration: none;
   color: white;
+}
+
+.fancy-link:link, .fancy-link:visited, .fancy-link:hover, .fancy-link:active {
+    text-decoration: none;
 }
 
 .rightSection {

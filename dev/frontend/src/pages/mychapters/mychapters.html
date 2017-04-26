@@ -7,8 +7,14 @@ we created, and we bind viewmodel properties to it.
 -->
     <section class="leftSection">
       <md-navbar>
-          <span class="spacer"><span class="brand-logo">My Chapters</span></span>
+        <span class="spacer"><span class="brand-logo">${title}</span></span>
+        <ul class="hide-on-med-and-down right">
+          <li><a data-activates="mych_dropdown" md-dropdown="activates: mych_dropdown" class="dropdown-button"><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
       </md-navbar>
+      <ul id="mych_dropdown" class="wide-enough dropdown-content" style="">
+        <li md-waves><a class="on-white fancy-link" click.delegate="unassociated()">Unassociated Chapters</a></li>
+      </ul>
             <div class="col-sm-8">
                 <ul class="nav">
                     <li repeat.for="chapter of chapters " class="chapter ${chapter.isActive ? 'active' : ''}">

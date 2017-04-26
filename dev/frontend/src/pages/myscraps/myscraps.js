@@ -6,10 +6,28 @@ let httpClient = new HttpClient();
 
 export class Scraps {
     constructor(scrapID) {
+      this.title = "My Scraps";
       this.scraps = [];
       let username = Cookies.get('username');
 
       httpClient.fetch('http://remix.ist:8000/scraps/' + username)
+      .then(response => response.json())
+      .then(data => {
+          for (let instance of data) {
+              this.scraps.push(instance);
+          }
+      });
+    }
+
+    unassociated() {
+      var authToken = "Token " + Cookies.get('token');
+      this.title = "Unassociated Scraps";
+      this.scraps = [];
+      httpClient.fetch('http://remix.ist:8000/scraps/unassociated', {
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }})
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
