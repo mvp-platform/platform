@@ -16,13 +16,17 @@ export class EditChapters {
 
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
+      console.log("ITEM DROPPED");
       console.log({item: item, target: target, source: source, sibling: sibling, itemVM: itemVM, siblingVM: siblingVM});
       // console.log(item)
-      var move = function(array, from, to) {
-        array.splice(to, 0, array.splice(from, 1)[0]);
-      };
-      move(this.chapter.scraps, parseInt(source.dataset.index), parseInt(target.dataset.index));
-
+      if(source.dataset.search) {
+        this.chapter.scraps.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null, source.dataset.text]);
+      } else {
+        var move = function(array, from, to) {
+          array.splice(to, 0, array.splice(from, 1)[0]);
+        };
+        move(this.chapter.scraps, parseInt(source.dataset.index), parseInt(target.dataset.index));
+      }
       if (this.hidden) {
         document.getElementById('save-warning').click();
         this.hidden = false;
