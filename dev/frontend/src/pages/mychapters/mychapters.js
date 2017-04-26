@@ -22,9 +22,7 @@ export class Chapters {
         config.title = 'Chapter Tabs';
         config.map([
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
-            { route: 'search', name: 'search', moduleId: 'pages/mychapters/search', nav: true, title: 'search' },
-            { route: 'emails', name: 'emails', moduleId: 'pages/mychapters/emails', nav: true, title: 'Emails' },
-            { route: 'notifications', name: 'notifications', moduleId: 'pages/mychapters/notifications', nav: true, title: 'Notifications' }
+            { route: 'search', name: 'Search', moduleId: 'pages/mychapters/search', nav: true, title: 'search' },
         ]);
         this.router = router;
     }
