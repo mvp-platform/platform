@@ -61,7 +61,7 @@ const verifylogin = async function(request) {
   var h = sha256.update(token, 'utf8').digest('hex');
   var cursor = await db.collection('users').find({token: h});
   var user_blob = await cursor.toArray();
-  if (user_blob.length != 1) {
+  if (user_blob.length < 1) {
     return {success: false, reason: "account does not exist"};
   }
   return {success: true, username: user_blob[0].userid};
@@ -104,7 +104,7 @@ const getAccount = async function(request, reply) {
   var h = sha256.update(token, 'utf8').digest('hex');
   var cursor = await db.collection('users').find({token: h});
   var user_blob = await cursor.toArray();
-  if (user_blob.length != 1) {
+  if (user_blob.length < 1) {
     return reply({error: "invalid token"});
   }
   delete user_blob[0]._id;
