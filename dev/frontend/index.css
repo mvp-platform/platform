@@ -30,6 +30,11 @@ input[type=text]:focus {
   color: teal;
 }
 
+.pdf-numbers-parent {
+  display: inline-flex;
+  height: 100%;
+}
+
 .fullSection,
 .leftSection {
     background-color: white;
@@ -143,14 +148,32 @@ div#pageWrapper {
     background-color: red;
 }
 
+.pdf-numbers {
+    display: flex;
+    margin: auto 15px auto 15px;
+}
+
 .pdf-toolbar {
-    width: 300px;
-    text-align: center;
-    margin-left: -150px;
-    background: rgba(0, 0, 0, 0.2);
+    margin: 10px 30px 10px 15px;
+    width: 100%;
+    height: 4em;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.0);
     border-radius: 1.5em;
     color: white;
     transition: all 0.5s ease-in-out;
+}
+
+.pdf-buttons {
+  height: 100%;
+  margin: auto 15px auto 15px;
+  display: inline-flex;
+  float: right;
+}
+
+.pdf-button {
+  margin: auto;
+  margin-left: 10px;
 }
 
 .pdf-toolbar:hover,
@@ -207,22 +230,6 @@ div.book-title-block p a.previewEditLinks {
     float: right;
     margin-right: 2%;
 }
-
-.pdf-toolbar {
-    width: 300px;
-    text-align: center;
-    margin-left: -150px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 1.5em;
-    color: white;
-    transition: all 0.5s ease-in-out;
-}
-
-.pdf-toolbar:hover,
-.pdf-toolbar:focus {
-    background: rgba(0, 0, 0, 0.6);
-}
-
 
 /* Testing of not styling the first child of the main navigation
 nav#main-header.navbar.navbar-default a:hover

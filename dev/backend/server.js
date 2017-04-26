@@ -35,6 +35,10 @@ server.connection({
     host: '0.0.0.0',
     port: 8000,
     routes: {
+      state: {
+        parse: true,
+        failAction: "ignore"
+      },
       cors: true,
       response: {
         emptyStatusCode: 204
