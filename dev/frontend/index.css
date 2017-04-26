@@ -7,6 +7,14 @@ div #bookView {
     margin: 10px;
 }
 
+#save-warning {
+  display: none;
+}
+
+.draggable-header {
+  margin-top: -6px;
+}
+
 #mych_dropdown, .wide-enough {
   /*for some reason, the auto-generated positioning is all wrong*/
   width: 200px !important;

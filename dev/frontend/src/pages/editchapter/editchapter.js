@@ -1,10 +1,50 @@
 import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
+import {Dragula} from 'aurelia-dragula';
+import {Cookies} from 'aurelia-plugins-cookies';
 
 let httpClient = new HttpClient();
 
 export class EditChapters {
-    constructor() {}
+    constructor() {
+      this.hidden = true;
+    }
+
+
+    itemDropped(item, target, source, sibling, itemVM, siblingVM) {
+      console.log({item: item, target: target, source: source, sibling: sibling, itemVM: itemVM, siblingVM: siblingVM});
+      // console.log(item)
+      var move = function(array, from, to) {
+        array.splice(to, 0, array.splice(from, 1)[0]);
+      };
+      move(this.chapter.scraps, parseInt(source.dataset.index), parseInt(target.dataset.index));
+
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+    }
+
+    saveRearrangements() {
+      var theAuthor = Cookies.get('username');
+      var authToken = "Token " + Cookies.get('token');
+
+      // have to get rid of the text field to save scraps
+      var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
+      httpClient.fetch('http://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
+        method: 'post',
+        body: JSON.stringify({scraps: scraps_change}),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': authToken
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+         document.getElementById('save-warning').click();
+       });
+    }
 
     activate(author) {
 
