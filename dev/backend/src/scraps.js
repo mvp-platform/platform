@@ -181,6 +181,12 @@ const postNewImage = async function(request, reply) {
 
   if (request.payload.image) {
     var image = request.payload.image;
+    var tags =request.payload.tags;
+    if (tags === undefined) {
+      tags = ['image'];
+    } else {
+      tags.push('image');
+    }
     var path = global.storage + 'images/' + login.username;
     await ensureDir(path);
     var fn = path + '/' + Math.random().toString(36).substring(7);
@@ -188,6 +194,7 @@ const postNewImage = async function(request, reply) {
     var scr = new scrap.Scrap('\\includegraphics[width=\\textwidth]{' + fn + '}', login.username);
     scr.image = true;
     scr.latex = true;
+    scr.tags = tags;
     await scr.save('Created image');
     return reply(scr);
   } else {
