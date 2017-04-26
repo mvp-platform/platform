@@ -13,10 +13,19 @@ export class Scraps {
     constructor(ea, toast) {
       this.ea = ea;
       this.toast = toast;
+      this.disabledValue = !this.disabledValue;
     }
 
     userText = '';
     enableLatex = false;
+    disabledValue = false;
+    editTags = false;
+    editTagsText = '';
+
+    toggleDisabled() {
+      this.disabledValue = !this.disabledValue;
+      this.editTags = !this.editTags;
+    }
 
     submitEditScrap() {
         console.log(Cookies.get('data'));
@@ -32,12 +41,27 @@ export class Scraps {
         console.log(theScrap);
         console.log(enableLatex);
 
-          let request = {
-              //author: theAuthor,
+        var editTags = this.editTags;
+        var editedTags = this.editTagsText;
+
+
+        if(editTags) {
+          editedTags = editedTags.toString();
+          editedTags = editedTags.replace(/\s/g, '');
+          editedTags = editedTags.split(",");
+
+          var request = {
+              text: requested,
+              latex: enableLatex,
+              tags: editedTags
+          };
+        }
+        else {
+          var request = {
               text: requested,
               latex: enableLatex
           };
-
+        }
 
           //UPDATE THE EDITED SCRAP AND GET THE NEW SCRAP ID
           httpClient.fetch('http://remix.ist/scraps/' + theAuthor + '/' + theScrap, {
@@ -77,6 +101,8 @@ export class Scraps {
               console.log(data);
               this.enableLatex = data.latex;
               this.userText = data.text;
+              this.editTagsText = data.tags;
+
       });
 
     }
