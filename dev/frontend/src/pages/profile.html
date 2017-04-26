@@ -1,12 +1,21 @@
 <template>
   <section class="fullSection">
-    <div id="h1spacer">
-        <h1>Profile</h1>
+    <md-navbar>
+        <span class="spacer"><span class="brand-logo">Profile</span></span>
+    </md-navbar>
+    <div class="col-sm-8">
+        <ul class="nav">
+            <md-card>
+                <div>
+                    <form role = "form" submit.delegate="updateUserDisplayName()">
+                      <md-input md-label="Username (You are unable to change this)" md-value.bind="userName" md-disabled="disabled"></md-input>
+                      <md-input md-label="Display Name (How your name will appear on publications)" md-value.bind="userDisplayName"></md-input>
+                      <button md-button="submit" class="primary-text" md-tooltip="position: right; text: Update Profile Changes;">Submit</button>
+                   </form>
+                </div>
+            </md-card>
+        </ul>
     </div>
-      <!-- <div id="scrapView">
-          <input id="scrapEditor" type="text">
-          <button type="submit">Compile Now</button>
-      </div> -->
   </section>
 
 </template>
