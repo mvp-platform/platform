@@ -1,71 +1,42 @@
 <template>
     <section class="leftSection">
-        <div id="bookView">
-          <div id="h1spacer">
-            <h1>New Scrap</h1>
-          </div>
+          <md-navbar>
+              <span class="spacer"><span class="brand-logo">New Scrap</span></span>
+          </md-navbar>
           <div class="col-sm-8">
               <ul class="nav">
                   <li class="${book.isActive ? 'active' : ''}">
-                      <div class="book-title-block">
-                          <!-- <p class="bookName">${scrap.name}</p> -->
-                          <!-- <p>Scraps: ${scraps.length}</p>
-
-
-                          <p repeat.for="scrap of scraps">
-                              Scrap: ${$index+1} - ${(scrap.text).substring(0,30) + "..."}
-                              <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: scrap.author, uuid: scrap.uuid}">
-                                Preview
-                              </a>
-                              <br>
-                              <textarea rows="4" cols="50" value.bind="scrap.text"></textarea>
-                          </p> -->
-
-                          <!--
-                            <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}"> -->
-                            <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
-                              Edit
-                            </a>
-                          -->
-
-                          <!-- <p>Enter your text</p>
-                          <textarea rows="4" cols="50" value.bind="userText"></textarea>
-
-                          <br>
-                          <a class="previewEditLinks" route-href="route: newscrap; params.bind: {userText: userText}">
-                            Submit
-                          </a> -->
+                    <md-card>
+                      <div>
 
                           <form role = "form" submit.delegate = "submitNewScrap()">
 
-                            <p value.bind="setAuthor" value="${chapters[0]}">${chapters[0]}</p>
+                            <p value.bind="setAuthor" value="${chapters[0]}" >${chapters[0]}</p>
                             <p value.bind="setChapter">${chapters[1]}</p>
-                            <label for = "userText">Create your New Scrap here</label>
-                            <!-- <input type = "text" value.bind = "email" placeholder = "Email"> -->
-                            <textarea rows="4" cols="50" value.bind="userText"></textarea>
+                            <md-input md-label="Write your new scrap here" md-value.bind="userText" md-text-area="true" ></md-input>
 
-                            <!-- <label for = "password">Password</label>
-                            <input type = "password" value.bind = "password" placeholder = "Password"> -->
-
-                            <button type = "submit">submit</button>
+                            <p class="enableLatexPar">
+                              <md-checkbox md-checked.bind="enableLatex">Enable LaTeX?</md-checkbox>
+                            </p>
+                            <button md-button="submit" class="primary-text">Submit</button>
                          </form>
 
                       </div>
-
+                      </md-card>
 
                   </li>
               </ul>
           </div>
-        </div>
-        <hr>
     </section>
     <section class="rightSection">
         <div class="col-sm-8">
-            <ul id="rightSectionNav" class="nav navbar-nav">
+          <md-navbar>
+            <ul class="hide-on-med-and-down right">
                 <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                     <a href.bind="row.href">${row.title}</a>
                 </li>
             </ul>
+          </md-navbar>
         </div>
         <router-view></router-view>
     </section>

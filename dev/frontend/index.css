@@ -88,7 +88,7 @@ input[type=text]:focus {
 
 .leftSection div.col-sm-8 ul.nav {
 	max-height: 93vh;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .fullSection {
@@ -105,6 +105,10 @@ input[type=text]:focus {
 .fullSection {
     min-height: 100vh;
     width: 100%;
+}
+
+.enableLatexPar {
+  margin-bottom: 1em !important;
 }
 
 nav#main-header.navbar.navbar-default {
