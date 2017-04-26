@@ -11,20 +11,17 @@ we created, and we bind viewmodel properties to it.
       </md-navbar>
             <div class="col-sm-8">
                 <ul class="nav">
-                    <li repeat.for="book of books" class="chapter ${book.isActive ? 'active' : ''}">
-                      <md-card md-title="${book.name}">
+                    <li repeat.for="chapter of chapters " class="chapter ${chapter.isActive ? 'active' : ''}">
+                      <md-card md-title="${chapter.name}">
                         <div>
-                          <p class="bookName">${book.name}</p>
-                          <p>Chapters: ${book.chapters.length}</p>
-                          <p repeat.for="i of book.chapters.length">Chapter ${i+1} - Title: ${book.chapters[i][3]}
-                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: book.author, uuid: book.chapters[i][1]}">
+                          <p>Scraps: ${chapter.scraps.length}
+                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}">
                               Preview
                             </a>
-                            <!-- <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}"> -->
-                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: book.author, uuid: book.chapters[i][1]}">
+                            <a class="on-white previewEditLinks" route-href="route: editChapter; params.bind: {author: chapter.author, uuid: chapter.uuid}">
                               Edit
                             </a>
-                            <a class="on-white previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${book.author}/${book.chapters[i][1]}/pdf">
+                            <a class="on-white previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf">
                               &#8599;
                             </a>
                           </p>
