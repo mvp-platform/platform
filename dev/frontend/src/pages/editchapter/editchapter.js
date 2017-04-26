@@ -64,6 +64,7 @@ export class EditChapters {
         config.map([
           { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
           { route: ['newscrap', ':author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
+          { route: ['editscrap', ':author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
           { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
         ]);
         this.router = router;

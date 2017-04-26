@@ -1,8 +1,6 @@
 <template>
-    <section class="leftSection">
-          <md-navbar>
-              <span class="spacer"><span class="brand-logo">Edit Scrap</span></span>
-          </md-navbar>
+    <section class="rightTabInstance">
+          <md-card md-title="Edit Scrap"></md-card>
           <div class="col-sm-8">
               <ul class="nav">
                   <li class="${book.isActive ? 'active' : ''}">
@@ -25,19 +23,6 @@
                   </li>
               </ul>
           </div>
-        </div>
-        <hr>
     </section>
-    <section class="rightSection">
-        <div class="col-sm-8">
-          <md-navbar>
-            <ul class="hide-on-med-and-down right">
-                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                    <a href.bind="row.href">${row.title}</a>
-                </li>
-            </ul>
-            </md-navbar>
-        </div>
-        <router-view></router-view>
-    </section>
+    <router-view class="this-should-be-hidden-whoops"></router-view>
 </template>
