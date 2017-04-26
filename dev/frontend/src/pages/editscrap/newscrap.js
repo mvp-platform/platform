@@ -152,6 +152,7 @@ export class Scraps {
 
 
     activate(chapterID) {
+      console.log('activating');
       var author = '';
       var chapter = '';
 
@@ -177,7 +178,7 @@ export class Scraps {
             //{ route: 'emails', name: 'emails', moduleId: 'pages/editscrap/emails', nav: true, title: 'Emails' },
             //{ route: 'notifications', name: 'notifications', moduleId: 'pages/editscrap/notifications', nav: true, title: 'Notifications' }
         ]);
-        this.router = router;
+        // this.router = router;
     }
 
 

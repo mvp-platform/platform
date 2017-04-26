@@ -8,13 +8,13 @@ export class EditChapters {
 
     activate(author) {
 
-        this.chapters = [];
+        this.chapter = null;
 
         httpClient.fetch('http://remix.ist:8000/chapters/' + author.author + '/' + author.uuid)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                this.chapters.push(data);
+                this.chapter = data;
             });
 
     }
@@ -22,33 +22,10 @@ export class EditChapters {
     configureRouter(config, router) {
         config.title = 'Chapter Tabs';
         config.map([
-            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editchapter/PDFViewer', nav: true, title: 'PDF Viewer' },
-            { route: ['myscraps', '/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: false, title: 'PDF Viewer' },
-            { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
-            { route: 'emails', name: 'emails', moduleId: 'pages/editchapter/emails', nav: true, title: 'Emails' },
-            { route: 'notifications', name: 'notifications', moduleId: 'pages/editchapter/notifications', nav: true, title: 'Notifications' }
+          { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
+          { route: ['newscrap', ':author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
+          { route: 'search', name: 'search', moduleId: 'pages/editchapter/search', nav: true, title: 'search' },
         ]);
         this.router = router;
     }
-
-    // activate(params)
-    // {
-    //
-    //     // return this.http.fetch('editchapter/' + params.author)
-    //     // .then(response => response.json())
-    //     // .then(author => this.author = author);
-    //     // alert("author = " + author);
-    // }
-
-    // activate(scrapID) {
-    //   // if (chapterID.author === undefined) {
-    //   //     return;
-    //   // }
-    //   alert("here");
-    //
-    //   //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
-    //   //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
-    //   //document.url = this.url
-    //   //document.draftUrl = this.url;
-    // }
 }

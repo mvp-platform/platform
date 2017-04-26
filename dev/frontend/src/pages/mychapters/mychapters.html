@@ -7,8 +7,14 @@ we created, and we bind viewmodel properties to it.
 -->
     <section class="leftSection">
       <md-navbar>
-          <span class="spacer"><span class="brand-logo">My Chapters</span></span>
+        <span class="spacer"><span class="brand-logo">${title}</span></span>
+        <ul class="hide-on-med-and-down right">
+          <li><a data-activates="mych_dropdown" md-dropdown="activates: mych_dropdown" class="dropdown-button"><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
       </md-navbar>
+      <ul id="mych_dropdown" class="wide-enough dropdown-content" style="">
+        <li md-waves><a class="on-white fancy-link" click.delegate="unassociated()">Unassociated Chapters</a></li>
+      </ul>
             <div class="col-sm-8">
                 <ul class="nav">
                     <li repeat.for="chapter of chapters " class="chapter ${chapter.isActive ? 'active' : ''}">
@@ -19,7 +25,7 @@ we created, and we bind viewmodel properties to it.
                             <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}">
                               Preview
                             </a>
-                            <a class="on-white previewEditLinks" route-href="route: editChapter; params.bind: {author: chapter.author, uuid: chapter.uuid}">
+                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}">
                               Edit
                             </a>
                             <a class="on-white previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf">
@@ -31,16 +37,6 @@ we created, and we bind viewmodel properties to it.
                     </li>
                 </ul>
             </div>
-            <div class="fixed-action-btn" id="left-pane-button">
-             <a href="#/newbook" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Book;" md-waves="color: light; circle: true;">
-               <i class="large material-icons">library_books</i>
-             </a>
-             <ul>
-             <li><a href="#/newscrap" md-button="floating: true;" md-tooltip="position: left; text: Create New Scrap;" md-waves="color: light; circle: true;" class="yellow darken-1"><i class="material-icons">description</i></a></li>
-             <li><a href="#/newchapter" md-button="floating: true;" md-tooltip="position: left; text: Create New Chapter;" md-waves="color: light; circle: true;" class="red"><i class="material-icons">list</i></a></li>
-             </ul>
-           </div>
-        <hr>
     </section>
     <section class="rightSection">
       <div class="col-sm-8">

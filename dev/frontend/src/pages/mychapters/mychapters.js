@@ -6,10 +6,30 @@ let httpClient = new HttpClient();
 
 export class Chapters {
     constructor() {
+      this.title = "My Chapters";
       this.chapters = [];
       let username = Cookies.get('username');
 
       httpClient.fetch('http://remix.ist/chapters/' + username)
+      .then(response => response.json())
+      .then(data => {
+          for (let instance of data) {
+              console.log(instance);
+              this.chapters.push(instance);
+          }
+        });
+    }
+
+    unassociated() {
+      var authToken = "Token " + Cookies.get('token');
+
+      this.title = "Unassociated Chapters";
+      this.chapters = [];
+      httpClient.fetch('http://remix.ist/chapters/unassociated', {
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }})
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
