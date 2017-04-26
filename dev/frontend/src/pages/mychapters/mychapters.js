@@ -25,7 +25,7 @@ export class Chapters {
 
     configureRouter(config, router) {
         config.title = 'Chapter Tabs';
-        config.map(
+        config.map([
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
             { route: 'search', name: 'search', moduleId: 'pages/mychapters/search', nav: true, title: 'Search' },
         ]);
