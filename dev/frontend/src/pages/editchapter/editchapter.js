@@ -2,12 +2,16 @@ import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Dragula} from 'aurelia-dragula';
 import {Cookies} from 'aurelia-plugins-cookies';
+import { inject } from 'aurelia-framework';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
+@inject(EventAggregator)
 export class EditChapters {
-    constructor() {
+    constructor(eventag) {
       this.hidden = true;
+      this.ea = eventag;
     }
 
 
@@ -57,6 +61,23 @@ export class EditChapters {
                 this.chapter = data;
             });
 
+        this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
+           this.chapter.scraps.push([scrap.author, scrap.uuid, null, scrap.text]);
+           this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: scrap.author, uuid: scrap.uuid});
+       });
+       this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
+          console.log("RECEIVED EDITED SCRAP");
+          console.log(data);
+          this.chapter.scraps.splice(parseInt(data.index), 1, [data.author, data.uuid, null, data.text]);
+          console.log(this.chapter.scraps);
+          this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: data.author, uuid: data.uuid});
+      });
+
+    }
+
+    detached() {
+      this.new_subscription.dispose();
+      this.edit_subscription.dispose();
     }
 
     configureRouter(config, router) {

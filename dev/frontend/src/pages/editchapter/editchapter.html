@@ -30,7 +30,7 @@
                 <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf">
                   &#8599;
                 </a>
-                  <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1]}">
+                  <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}">
                   Edit
                   </a>
                 <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}">

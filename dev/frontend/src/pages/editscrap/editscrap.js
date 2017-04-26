@@ -3,13 +3,15 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
 import { MdToastService } from 'aurelia-materialize-bridge';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
 
-@inject(MdToastService)
+@inject(EventAggregator, MdToastService)
 export class Scraps {
-    constructor(toast) {
+    constructor(ea, toast) {
+      this.ea = ea;
       this.toast = toast;
     }
 
@@ -50,11 +52,11 @@ export class Scraps {
               .then(data => {
                   console.log(data);
                   this.toast.show('Scrap saved successfully!', 5000);
-                  this.router.navigateBack();
+                  this.ea.publish('edit-scrap', {text: requested, author: this.scrap[0], uuid: this.scrap[1], index: this.index});
               });
     }
 
-    activate(scrapID, route, navigationInstruction) {
+    activate(scrapID, route) {
       var author = '';
       var id = '';
       this.userText = '';
@@ -67,8 +69,7 @@ export class Scraps {
       this.scrap = [];
       this.scrap.push(author);
       this.scrap.push(id);
-
-      console.log(this.scrap);
+      this.index = scrapID.index;
 
       httpClient.fetch('http://remix.ist/scraps/' + author + '/' + id )
       .then(response => response.json())

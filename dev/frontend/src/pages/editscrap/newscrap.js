@@ -3,13 +3,14 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
 import { MdToastService } from 'aurelia-materialize-bridge';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
-@inject(MdToastService)
+@inject(EventAggregator, MdToastService)
 export class NewScrap {
-    constructor(toast) {
-      console.log("test");
+    constructor(eventag, toast) {
+      this.ea = eventag;
       this.toast = toast;
     }
 
@@ -17,18 +18,11 @@ export class NewScrap {
     enableLatex = false;
 
     submitNewScrap() {
-        console.log(Cookies.get('data'));
         var requested = this.userText;
         var enableLatex = this.enableLatex;
         var theAuthor = Cookies.get('username');
         var theChapter = this.chapters[1];
         var authToken = "Token " + Cookies.get('token');
-
-        console.log(requested);
-        console.log(theAuthor);
-        console.log(theChapter);
-        console.log(enableLatex);
-
 
         if(theChapter == undefined || theChapter == null || theChapter == "")
         {
@@ -50,12 +44,9 @@ export class NewScrap {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     var scrapID = data.uuid;
                     this.toast.show('Scrap saved successfully!', 5000);
-                    this.router.navigateBack();
-
-                    console.log(scrapID);
+                    this.ea.publish('new-scrap', data);
            });
 
         }
@@ -80,13 +71,8 @@ export class NewScrap {
               })
               .then(response => response.json())
               .then(data => {
-                  console.log(data);
+                  var new_scrap = data;
                   var scrapID = data.uuid;
-
-                  console.log(scrapID);
-
-
-                  //var scrapID = "06776465-ab55-45b1-9a8e-5a379bb903b2";
 
                   this.scraps = [];
                   var test = [];
@@ -96,7 +82,6 @@ export class NewScrap {
                       .then(data => {
 
                               var scraps;
-                              console.log(data.scraps);
                               this.scraps.push(data);
                               scraps = data.scraps;
 
@@ -125,7 +110,6 @@ export class NewScrap {
 
                               //alert(JSON.stringify(request2));
 
-                              //console.log(this.scraps);
                               //alert(this.scraps);
 
                               //   UPDATE CHAPTER WITH NEW SCRAPS
@@ -139,10 +123,9 @@ export class NewScrap {
                                   })
                                   .then(response => response.json())
                                   .then(data => {
-                                      console.log(data)
                                       // alert("Scrap has been added to chapter " + theChapter);
                                       this.toast.show('Scrap saved successfully!', 5000);
-                                      this.router.navigateBack();
+                                      this.ea.publish('new-scrap', new_scrap);
                                   });
 
 
@@ -158,23 +141,16 @@ export class NewScrap {
 
 
     activate(chapterID) {
-      console.log('activating');
       var author = '';
       var chapter = '';
-
-      console.log(chapterID);
 
       author = chapterID.author;
       chapter = chapterID.uuid;
 
-      console.log(author);
-      console.log(chapter);
       this.chapters = [];
 
       this.chapters.push(author);
       this.chapters.push(chapter);
-
-      console.log(this.chapters);
     }
 
     configureRouter(config, router) {
