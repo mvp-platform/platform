@@ -21,6 +21,7 @@ export class Scraps {
     configureRouter(config, router) {
         config.map([
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
+            { route: ['newscrap'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: true, title: 'New Scrap' },
             { route: 'search', name: 'search', moduleId: 'pages/myscraps/search', nav: true, title: 'Search' },
         ]);
         this.router = router;

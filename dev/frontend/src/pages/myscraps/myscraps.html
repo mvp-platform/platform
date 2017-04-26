@@ -16,16 +16,16 @@
                             console.log($test); -->
 
 
-                            <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
+                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
                               Preview
                             </a>
 
-                            <a  class="previewEditLinks" route-href="route: editScrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
+                            <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                               Edit
                             </a>
 
 
-                            <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
+                            <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
                               &#8599;
                             </a>
                         </p>
@@ -34,6 +34,11 @@
                   </li>
               </ul>
           </div>
+          <div class="fixed-action-btn" id="left-pane-button">
+           <a route-href="route: newscrap" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Scrap;" md-waves="color: light; circle: true;">
+             <i class="large material-icons">note_add</i>
+           </a>
+         </div>
     </section>
     <section class="rightSection">
         <div class="col-sm-8">
