@@ -86,6 +86,11 @@ input[type=text]:focus {
   padding-left: 300px;
 }
 
+.leftSection div.col-sm-8 ul.nav {
+	max-height: 93vh;
+	overflow-y: scroll;
+}
+
 .fullSection {
   padding-left: 300px;
 }
