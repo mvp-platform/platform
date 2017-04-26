@@ -1,14 +1,16 @@
 import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
+import { inject } from 'aurelia-framework';
+import { MdToastService } from 'aurelia-materialize-bridge';
 
 let httpClient = new HttpClient();
 
-export class Scraps {
-
-    constructor(author) {
-        console.log("constructor");
-
+@inject(MdToastService)
+export class NewScrap {
+    constructor(toast) {
+      console.log("test");
+      this.toast = toast;
     }
 
     userText = '';
@@ -50,6 +52,8 @@ export class Scraps {
                 .then(data => {
                     console.log(data);
                     var scrapID = data.uuid;
+                    this.toast.show('Scrap saved successfully!', 5000);
+                    this.router.navigateBack();
 
                     console.log(scrapID);
            });
@@ -136,7 +140,9 @@ export class Scraps {
                                   .then(response => response.json())
                                   .then(data => {
                                       console.log(data)
-                                      alert("Scrap has been added to chapter " + theChapter);
+                                      // alert("Scrap has been added to chapter " + theChapter);
+                                      this.toast.show('Scrap saved successfully!', 5000);
+                                      this.router.navigateBack();
                                   });
 
 
@@ -178,7 +184,7 @@ export class Scraps {
             //{ route: 'emails', name: 'emails', moduleId: 'pages/editscrap/emails', nav: true, title: 'Emails' },
             //{ route: 'notifications', name: 'notifications', moduleId: 'pages/editscrap/notifications', nav: true, title: 'Notifications' }
         ]);
-        // this.router = router;
+        this.router = router;
     }
 
 

@@ -11,6 +11,10 @@ div #bookView {
   display: none;
 }
 
+.toast {
+  top: 75px !important;
+}
+
 .this-should-be-hidden-whoops {
   display: none;
 }

@@ -1,11 +1,16 @@
 import 'fetch';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
+import { inject } from 'aurelia-framework';
+import { MdToastService } from 'aurelia-materialize-bridge';
 
 let httpClient = new HttpClient();
 
+
+@inject(MdToastService)
 export class Scraps {
-    constructor() {
+    constructor(toast) {
+      this.toast = toast;
     }
 
     userText = '';
@@ -44,12 +49,12 @@ export class Scraps {
               .then(response => response.json())
               .then(data => {
                   console.log(data);
-
+                  this.toast.show('Scrap saved successfully!', 5000);
+                  this.router.navigateBack();
               });
-
     }
 
-    activate(scrapID) {
+    activate(scrapID, route, navigationInstruction) {
       var author = '';
       var id = '';
       this.userText = '';
