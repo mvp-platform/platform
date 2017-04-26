@@ -3,6 +3,7 @@
 var GoogleAuth = require('google-auth-library');
 var hat = require('hat');
 var lescape = require('escape-latex');
+var createHash = require('sha.js');
 
 const book = require('../../scrapjs/parts/book');
 const scrap = require('../../scrapjs/parts/scrap');
@@ -56,7 +57,9 @@ const verifylogin = async function(request) {
   } else {
     return {success: false, reason: "invalid authorization header"};
   }
-  var cursor = await db.collection('users').find({token: token});
+  var sha256 = createHash('sha256');
+  var h = sha256.update(token, 'utf8').digest('hex');
+  var cursor = await db.collection('users').find({token: h});
   var user_blob = await cursor.toArray();
   if (user_blob.length != 1) {
     return {success: false, reason: "account does not exist"};
@@ -97,7 +100,9 @@ const getAccount = async function(request, reply) {
     return reply({error: "invalid authorization header"});
   }
 
-  var cursor = await db.collection('users').find({token: token});
+  var sha256 = createHash('sha256');
+  var h = sha256.update(token, 'utf8').digest('hex');
+  var cursor = await db.collection('users').find({token: h});
   var user_blob = await cursor.toArray();
   if (user_blob.length != 1) {
     return reply({error: "invalid token"});
@@ -133,7 +138,9 @@ const login = async function(request, reply) {
       var userid = payload['sub'];
       var token = hat();
       var username = payload['name'].replace(/\s/g,'').toLowerCase();
-      await db.collection('users').insertOne({userid: username, token: token, name: payload['name']});
+      var sha256 = createHash('sha256');
+      var h = sha256.update(token, 'utf8').digest('hex');
+      await db.collection('users').insertOne({userid: username, token: h, name: payload['name']});
       return reply({username: username, token: token});
   });
 }

@@ -20,6 +20,7 @@
     "mkdirp": "^0.5.1",
     "mongodb": "^2.2.25",
     "mustache": "^2.3.0",
-    "scrapjs": "file:../scrapjs"
+    "scrapjs": "file:../scrapjs",
+    "sha.js": "^2.4.8"
   }
 }
