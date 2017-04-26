@@ -1,8 +1,6 @@
 <template>
-    <section class="leftSection">
-          <md-navbar>
-              <span class="spacer"><span class="brand-logo">New Scrap</span></span>
-          </md-navbar>
+    <section class="rightTabInstance">
+          <md-card md-title="Add New Scrap"></md-card>
           <div class="col-sm-8">
               <ul class="nav">
                   <li class="${book.isActive ? 'active' : ''}">
@@ -28,16 +26,5 @@
               </ul>
           </div>
     </section>
-    <section class="rightSection">
-        <div class="col-sm-8">
-          <md-navbar>
-            <ul class="hide-on-med-and-down right">
-                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                    <a href.bind="row.href">${row.title}</a>
-                </li>
-            </ul>
-          </md-navbar>
-        </div>
         <router-view></router-view>
-    </section>
 </template>

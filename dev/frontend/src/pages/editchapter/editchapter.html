@@ -1,60 +1,46 @@
 <template>
     <require from="resources/elements/pdf-document"></require>
-
-  <!--
-This is just a regular Aurelia viewmodel. We import the pdf-document element that
-we created, and we bind viewmodel properties to it.
--->
     <section class="leftSection">
-        <!-- <div id="bookView"> -->
-            <div id="h1spacer">
-                <h1>Edit Chapter</h1>
-            </div>
-            <div class="col-sm-8">
-                <ul class="nav">
-
-                    <li repeat.for="chapter of chapters" class="${chapter.isActive ? 'active' : ''}">
-                        <div class="book-title-block">
-                            <p class="bookName">${chapter.name}
-                              <a class="previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf">
-                                &#8599;
-                              </a>
-                            </p>
-                            <p>Scraps: ${chapter.scraps.length}</p>
-
-                            <p repeat.for="i of chapter.scraps.length">Scrap ${i+1} - ${(chapter.scraps[i][chapter.scraps[i].length-1]).substring(0,30) + "..."}
-                              <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}">
-                                Preview
-                              </a>
-                              <!-- <a class="previewEditLinks" route-href="route: editchapter; "> -->
-                              <!-- <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: chapter.author, uuid: chapter.scraps[i][1]}"> -->
-                                <!-- Edit
-                              </a> -->
-
-                              <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${chapter.author}/${chapter.scraps[i][1]}/pdf">
-                                &#8599;
-                              </a>
-                            </p>
-
-                        </div>
-                        <a class="previewEditLinks" route-href="route: newscrap; params.bind: {author: chapter.author, uuid: chapter.uuid}">
-                          New Scrap
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        <!-- </div> -->
-        <hr>
+      <md-navbar>
+          <span class="spacer"><span class="brand-logo">Edit Chapter</span></span>
+      </md-navbar>
+      <div class="col-sm-8">
+      <ul class="nav">
+      <md-card md-title="${chapter.name}"></md-card>
+      <li repeat.for="scrap of chapter.scraps" class="scrap ${scrap.isActive ? 'active' : ''}">
+      <md-card md-title="${scrap[0]}">
+        <div>
+          <p>${scrap[3]}</p>
+          <p>
+          <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf">
+            &#8599;
+          </a>
+            <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1]}">
+            Edit
+            </a>
+          <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}">
+            Preview
+          </a>
+          </p>
+        </div>
+      </md-card>
+    </ul>
+    <div class="fixed-action-btn" id="left-pane-button">
+     <a route-href="route: newscrap; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Scrap to End;" md-waves="color: light; circle: true;">
+       <i class="large material-icons">note_add</i>
+     </a>
+   </div>
     </section>
     <section class="rightSection">
-        <div class="col-sm-8">
-              <ul id="rightSectionNav" class="nav navbar-nav">
-                  <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                      <a href.bind="row.href">${row.title}</a>
-                  </li>
-              </ul>
-          </div>
-          <router-view></router-view>
+      <div class="col-sm-8">
+        <md-navbar>
+          <ul class="hide-on-med-and-down right">
+            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                <a class="nav-link" href.bind="row.href">${row.title}</a>
+            </li>
+          </ul>
+        </md-navbar>
+      </div>
+        <router-view></router-view>
     </section>
 </template>

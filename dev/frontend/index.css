@@ -75,9 +75,13 @@ input[type=text]:focus {
     width: 35%;
 }
 
+.rightTabInstance {
+  width: 100%;
+}
+
 #left-pane-button {
-  right: calc(35% + 24px);
-  bottom: 45px;
+  right: calc(35% + 40px);
+  bottom: 35px;
 }
 
 .leftSection {

@@ -51,9 +51,11 @@ export class PDFViewer {
   }
 
   activate(thingID) {
-    if (thingID.author === undefined) {
+    if (thingID.author === undefined || thingID.type === undefined || thingID.author === undefined) {
         return;
     }
+
+    console.log(thingID);
 
     this.url = "http://remix.ist/" + thingID.type + "/" + thingID.author + '/' + thingID.uuid + '/pdf';
     document.url = this.url
