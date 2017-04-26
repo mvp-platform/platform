@@ -11,8 +11,8 @@
 
                           <form role = "form" submit.delegate = "submitNewScrap()">
 
-                            <p value.bind="setAuthor" value="${chapters[0]}" >${chapters[0]}</p>
-                            <p value.bind="setChapter">${chapters[1]}</p>
+                            <p value.bind="setAuthor" value="${chapters[0]}" hidden >${chapters[0]}</p>
+                            <p value.bind="setChapter" hidden>${chapters[1]}</p>
                             <md-input md-label="Write your new scrap here" md-value.bind="userText" md-text-area="true" ></md-input>
 
                             <p class="enableLatexPar">

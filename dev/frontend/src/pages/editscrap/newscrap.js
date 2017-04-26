@@ -37,23 +37,22 @@ export class Scraps {
             };
 
             //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
-            //var scrapID = '';
-            // httpClient.fetch('http://remix.ist:8000/scraps/new', {
-            //         method: 'post',
-            //         body: JSON.stringify(request),
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'Authorization': authToken
-            //         }
-            //     })
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         console.log("theChapter wasn't provided");
-            //         console.log(data);
-            //
-            //         //alert("Scrap with " + data.uuid + "created successfully!");
-            //     });
+            var scrapID = '';
+            httpClient.fetch('http://remix.ist/scraps/new', {
+                    method: 'post',
+                    body: JSON.stringify(request),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': authToken
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    var scrapID = data.uuid;
 
+                    console.log(scrapID);
+           });
 
         }
         else //The Chapter Was Provided, so create the scrap and then add it to a chapter.
