@@ -8,9 +8,9 @@ let logged_in_routes = [
 
     { route: 'editBook/:author/:uuid', name: 'editBook', moduleId: './pages/editBook/editBook', nav: false, title: 'Edit Book' },
     { route: 'editchapter/:author/:uuid', name: 'editchapter', moduleId: './pages/editchapter/editchapter', nav: false, title: 'Edit Chapter' },
-    { route: 'editscrap', name: 'editscrap', moduleId: './pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
+    { route: 'editscrap/:author/:uuid', name: 'editscrap', moduleId: './pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
 
-    { route: 'newscrap', name: 'newscrap', moduleId: './pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
+    { route: 'newscrap/:author/:uuid', name: 'newscrap', moduleId: './pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
     { route: 'newchapter', name: 'newchapter', moduleId: './pages/editchaper/newchapter', nav: false, title: 'New Chapter' },
     { route: 'newbook', name: 'newbook', moduleId: './pages/editbook/newbook', nav: false, title: 'New Book' },
 

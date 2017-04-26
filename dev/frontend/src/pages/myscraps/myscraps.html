@@ -1,14 +1,8 @@
 <template>
     <section class="leftSection">
-      <md-navbar>
-        <span class="spacer"><span class="brand-logo">${title}</span></span>
-        <ul class="hide-on-med-and-down right">
-          <li><a data-activates="mych_dropdown" md-dropdown="activates: mych_dropdown" class="dropdown-button"><i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-      </md-navbar>
-      <ul id="mych_dropdown" class="wide-enough dropdown-content" style="">
-        <li md-waves><a class="on-white fancy-link" click.delegate="unassociated()">Unassociated Scraps</a></li>
-      </ul>
+          <md-navbar>
+              <span class="spacer"><span class="brand-logo">My Scraps</span></span>
+          </md-navbar>
           <div class="col-sm-8">
               <ul class="nav">
                   <li repeat.for="scrap of scraps" class="scrap ${book.isActive ? 'active' : ''}">
@@ -22,16 +16,16 @@
                             console.log($test); -->
 
 
-                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
+                            <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
                               Preview
                             </a>
 
-                            <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
+                            <a  class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid}">
                               Edit
                             </a>
 
 
-                            <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
+                            <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
                               &#8599;
                             </a>
                         </p>
@@ -41,9 +35,13 @@
               </ul>
           </div>
           <div class="fixed-action-btn" id="left-pane-button">
-           <a route-href="route: newscrap" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Scrap;" md-waves="color: light; circle: true;">
-             <i class="large material-icons">note_add</i>
+           <a href="#/newbook" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Book;" md-waves="color: light; circle: true;">
+             <i class="large material-icons">library_books</i>
            </a>
+           <ul>
+           <li><a href="#/newscrap" md-button="floating: true;" md-tooltip="position: left; text: Create New Scrap;" md-waves="color: light; circle: true;" class="yellow darken-1"><i class="material-icons">description</i></a></li>
+           <li><a href="#/newchapter" md-button="floating: true;" md-tooltip="position: left; text: Create New Chapter;" md-waves="color: light; circle: true;" class="red"><i class="material-icons">list</i></a></li>
+           </ul>
          </div>
     </section>
     <section class="rightSection">

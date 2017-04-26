@@ -1,38 +1,77 @@
 import 'fetch';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import {Cookies} from 'aurelia-plugins-cookies';
 
 let httpClient = new HttpClient();
 
 export class Scraps {
-    constructor(scrapID)
-    {
+    constructor() {
+    }
 
-        this.scraps = [];
+    userText = '';
+    enableLatex = false;
 
-        //' + chapterID.author + '/' + chapterID.uuid)
-        httpClient.fetch('http://remix.ist:8000/scraps/dcampbell')
-        .then(response => response.json())
-        .then(data => {
-            for(let instance of data) {
-                console.log(instance);
-                this.scraps.push(instance);
-            }
-
-
-        });
+    submitEditScrap() {
+        console.log(Cookies.get('data'));
+        var theAuthor = Cookies.get('username');
+        var authToken = "Token " + Cookies.get('token');
+        var theScrap = this.scrap[1];
+        var enableLatex = this.enableLatex;
+        var requested = this.userText;
 
 
-        // httpClient.fetch('http://remix.ist:8000/chapters/hagrid/68c47c74-f6fb-4e5b-a68c-f2c6b4265bd1')
-        // .then(response => response.json())
-        // .then(data => {
-        //     this.chapters.push(data);
-        //
-        //     // for(let instance of data) {
-        //     //     console.log(instance);
-        //     //     this.books.push(instance);
-        //     // }
-        //
-        // });
+        console.log(requested);
+        console.log(theAuthor);
+        console.log(theScrap);
+        console.log(enableLatex);
+
+          let request = {
+              //author: theAuthor,
+              text: requested,
+              latex: enableLatex
+          };
+
+
+          //UPDATE THE EDITED SCRAP AND GET THE NEW SCRAP ID
+          httpClient.fetch('http://remix.ist/scraps/' + theAuthor + '/' + theScrap, {
+                  method: 'post',
+                  body: JSON.stringify(request),
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': authToken
+                  }
+              })
+              .then(response => response.json())
+              .then(data => {
+                  console.log(data);
+
+              });
+
+    }
+
+    activate(scrapID) {
+      var author = '';
+      var id = '';
+      this.userText = '';
+      this.enableLatex = false;
+
+
+      author = Cookies.get('username');
+      id = scrapID.uuid;
+
+      this.scrap = [];
+      this.scrap.push(author);
+      this.scrap.push(id);
+
+      console.log(this.scrap);
+
+      httpClient.fetch('http://remix.ist/scraps/' + author + '/' + id )
+      .then(response => response.json())
+      .then(data => {
+              console.log(data);
+              this.enableLatex = data.latex;
+              this.userText = data.text;
+      });
 
     }
     configureRouter(config, router) {
