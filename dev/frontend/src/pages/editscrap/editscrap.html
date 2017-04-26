@@ -16,6 +16,12 @@
                               <md-checkbox md-checked.bind="enableLatex">Enable LaTeX?</md-checkbox>
                             </p>
 
+                            <p class="enableLatexPar">
+                              <md-checkbox click.delegate="toggleDisabled()" md-checked.bind="editTags">Edit Tags?</md-checkbox>
+                            </p>
+
+                            <md-input md-label="Edit your Scrap Tags here, delimited by commas" md-value.bind="editTagsText" md-disabled.bind="disabledValue" md-text-area="true"></md-input>
+
                             <button md-button="submit" class="primary-text">Submit</button>
                          </form>
                         </div>
