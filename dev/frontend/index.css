@@ -48,8 +48,12 @@ input[type=text]:focus {
   padding-left: 10px;
 }
 
-.book, .chapter, .scrap {
+.book, .chapter, .scrap, .login {
   padding: 15px 15px 0px 15px;
+}
+
+.login {
+  display: inline-block;
 }
 
 .scrap {
@@ -72,6 +76,10 @@ input[type=text]:focus {
   padding-left: 300px;
 }
 
+.fullSection {
+  padding-left: 300px;
+}
+
 .fullSection h1,
 .leftSection h1,
 .rightSection h1 {
@@ -81,7 +89,7 @@ input[type=text]:focus {
 
 .fullSection {
     min-height: 100vh;
-    width: 90%;
+    width: 100%;
 }
 
 nav#main-header.navbar.navbar-default {

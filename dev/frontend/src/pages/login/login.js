@@ -9,7 +9,7 @@ export class Login {
       console.log('activated');
       gapi.signin2.render('logindiv', {
         scope: 'profile email',
-        width: 200,
+        width: 250,
         height: 50,
         longtitle: true,
         theme: 'dark',
