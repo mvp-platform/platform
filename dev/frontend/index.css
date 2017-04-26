@@ -3,6 +3,12 @@ body {
     overflow-x: hidden;
 }
 
+.title-input div input {
+  font-size: 2.5em;
+  margin: 10px 15px 10px 15px;
+  width: calc(100% - 20px) !important;
+}
+
 div #bookView {
     margin: 10px;
 }

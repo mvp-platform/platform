@@ -20,7 +20,7 @@
         <li>
           <div class="">
             <ul class="draggable-header nav">
-            <md-card md-title="${chapter.name}"></md-card>
+            <md-input class="title-input" onchange.bind="updateName" md-value.bind="chapter.name"></md-input>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
             <md-card md-title="${scrap[0]}">

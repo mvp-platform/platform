@@ -14,6 +14,14 @@ export class EditChapters {
       this.ea = eventag;
     }
 
+    updateName = () => {
+      this.nameUpdated = true;
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+    }
+
     delete(index) {
       if (this.hidden) {
         document.getElementById('save-warning').click();
@@ -24,9 +32,6 @@ export class EditChapters {
 
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
-      console.log("ITEM DROPPED");
-      console.log({item: item, target: target, source: source, sibling: sibling, itemVM: itemVM, siblingVM: siblingVM});
-      // console.log(item)
       if(source.dataset.search) {
         this.chapter.scraps.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null, source.dataset.text]);
       } else {
@@ -47,9 +52,13 @@ export class EditChapters {
 
       // have to get rid of the text field to save scraps
       var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
+      var body = {scraps: scraps_change};
+      if (this.nameUpdated) {
+        body.name = this.chapter.name;
+      }
       httpClient.fetch('http://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',
-        body: JSON.stringify({scraps: scraps_change}),
+        body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
             'Authorization': authToken
