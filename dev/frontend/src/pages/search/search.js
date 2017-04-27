@@ -13,6 +13,7 @@ export class search {
       this.config = config;
       console.log(config);
       this.searchOwn = config.settings.myStuff;
+      this.type = config.settings.type;
     }
 
     elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
@@ -22,7 +23,9 @@ export class search {
       if (searchOwn === true) {
           queryParams += "&user=" + Cookies.get('username');
       }
-      queryParams += "&type=" + this.config.settings.type;
+      if (this.config.settings.type) {
+          queryParams += "&type=" + this.config.settings.type;
+      }
 
       this.searchedAtLeastOnce = true;
       this.query = encodeURI(newQuery);
