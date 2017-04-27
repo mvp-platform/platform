@@ -9,25 +9,13 @@
                     <md-card md-title="${book.name}">
                       <div>
                         <p>Scrap: ${$index+1} - ${(scrap.text).substring(0,150) + "..."}</p>
-                        <p>
-                            <!-- Scrap: ${$index+1} - ${(scrap.text)} -->
-
-                            <!-- Test = ${$test = (scrap.text).split(" "); }
-                            console.log($test); -->
-
-
-                            <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}">
-                              Preview
-                            </a>
-
-                            <a  class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid, index: $index}">
-                              Edit
-                            </a>
-
-
-                            <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf">
-                              &#8599;
-                            </a>
+                        <p class="buttonOptions">
+                           <a  class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
+                              <!-- Preview --><i class="material-icons">pageview</i></a>
+                            <a  class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid, index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                              <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                            <a class="previewEditLinks" target="_blank" href="http://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                              <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                         </p>
                       </div>
                     </md-card>

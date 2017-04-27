@@ -17,16 +17,13 @@
                       <p class="bookName">
                       </p>
                       <p>Chapters: ${book.chapters.length}</p>
-                      <p>
-                        <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'books', author: book.author, uuid: book.uuid}">
-                          Preview
-                        </a>
-                        <a class="on-white previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}">
-                          Edit
-                        </a>
-                        <a class="on-white previewEditLinks" target="_blank" title="Download this Book" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf">
-                          &#8599;
-                        </a>
+                      <p class="buttonOptions">
+                        <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'books', author: book.author, uuid: book.uuid}" md-tooltip="position: bottom; text: Preview Book;">
+                          <!-- Preview --><i class="material-icons">pageview</i></a>
+                        <a class="on-white previewEditLinks" route-href="route: editBook; params.bind: {author: book.author, uuid: book.uuid}" md-tooltip="position: bottom; text: Edit Book;">
+                          <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                        <a class="on-white previewEditLinks" target="_blank" href="http://remix.ist/books/${book.author}/${book.uuid}/pdf" md-tooltip="position: bottom; text: Open Book Externally;">
+                          <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
 
                       </p>
                     </div>

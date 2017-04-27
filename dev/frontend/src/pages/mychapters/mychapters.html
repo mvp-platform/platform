@@ -21,16 +21,13 @@ we created, and we bind viewmodel properties to it.
                       <md-card md-title="${chapter.name}">
                         <div>
                           <p>Scraps: ${chapter.scraps.length}</p>
-                          <p>
-                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}">
-                              Preview
-                            </a>
-                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}">
-                              Edit
-                            </a>
-                            <a class="on-white previewEditLinks" target="_blank" title="Download this Chapter" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf">
-                              &#8599;
-                            </a>
+                          <p class="buttonOptions">
+                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Preview Chapter;">
+                              <!-- Preview --><i class="material-icons">pageview</i></a>
+                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Edit Chapter;">
+                              <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                            <a class="on-white previewEditLinks" target="_blank" href="http://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
+                              <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                           </p>
                         </div>
                       </md-card>

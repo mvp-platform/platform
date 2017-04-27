@@ -6,7 +6,7 @@ body {
 .title-input div input {
   font-size: 2.5em;
   margin: 10px 15px 10px 15px;
-  width: calc(100% - 20px) !important;
+  width: calc(100% - 35px) !important;
 }
 
 div #bookView {
@@ -151,8 +151,21 @@ input[type=text]:focus {
     width: 100%;
 }
 
-.enableLatexPar {
+.enableLatexPar, .checkBoxOption {
   margin-bottom: 1em !important;
+}
+
+p a i.material-icons {
+  padding: 0.5em 0.5em 0em 0.5em;
+}
+
+div.card-content div p{
+  overflow-x: hidden;
+}
+
+div.card-content div > p.buttonOptions{
+  text-align: right !important;
+  overflow-x: hidden;
 }
 
 nav#main-header.navbar.navbar-default {

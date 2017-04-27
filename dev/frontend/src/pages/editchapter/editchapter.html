@@ -11,9 +11,9 @@
           <div id="save-warning" class="collapsible-header"></div>
           <div id="save-text" class="collapsible-body">
             <md-card>
-              <p>When you're done modifying your chapter, make sure to save your changes!
+              <p style="margin-bottom: 0.5em;">When you're done modifying your chapter, make sure to save your changes!</p>
               <form role="form" submit.delegate="saveRearrangements()">
-                <button md-button="submit" class="primary" md-button="large: true;">Save Now</button>
+                <button md-button="submit" class="primary" md-button="large: true;" md-tooltip="position: right; text: Submit Chapter Edits;">Save Now</button>
               </form>
             </md-card></div>
         </li>
@@ -26,20 +26,15 @@
             <md-card md-title="${scrap[0]}">
               <div>
                 <p>${scrap[3]}</p>
-                <p>
-                <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf">
-                  &#8599;
-                </a>
-                  <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}">
-                  Edit
-                  </a>
-                  <a class="previewEditLinks" href click.delegate="delete($index)">
-                  Remove
-                </a>
-
-                <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}">
-                  Preview
-                </a>
+                <p class="buttonOptions">
+                  <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}" md-tooltip="position: bottom; text: Preview Scrap;">
+                    <!-- Preview --><i class="material-icons">pageview</i></a>
+                  <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                    <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                  <a class="previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
+                    <!-- Remove--> <i class="material-icons">no_sim</i></a>
+                  <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                    <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                 </p>
               </div>
             </md-card>
