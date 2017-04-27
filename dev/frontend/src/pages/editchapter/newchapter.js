@@ -8,10 +8,13 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 let httpClient = new HttpClient();
 
 @inject(EventAggregator)
-export class EditChapters {
+export class NewChapter {
     constructor(eventag) {
       this.hidden = true;
       this.ea = eventag;
+      this.author = Cookies.get('username');
+      this.chapter = {name: "New Chapter", author: this.author, uuid: "none"};
+      this.token = "Token " + Cookies.get('token');
     }
 
     updateName = () => {
@@ -47,51 +50,51 @@ export class EditChapters {
     }
 
     saveRearrangements() {
-      var theAuthor = Cookies.get('username');
-      var authToken = "Token " + Cookies.get('token');
 
-      // have to get rid of the text field to save scraps
+      console.log("save rearrangements");
       var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
-      var body = {scraps: scraps_change};
-      if (this.nameUpdated) {
-        body.name = this.chapter.name;
-      }
+      var body = {scraps: scraps_change, name: this.chapter.name};
       httpClient.fetch('http://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': authToken
+            'Authorization': this.token
         }
       })
       .then(response => response.json())
       .then(data => {
           console.log(data);
          document.getElementById('save-warning').click();
+         this.hidden = true;
        });
     }
 
     activate(author) {
+      httpClient.fetch('http://remix.ist:8000/chapters/new', {
+        method: 'post',
+        body: JSON.stringify({name: "New Chapter", author: Cookies.get('username')}),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': this.token
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          this.chapter = data;
+      });
 
-        this.chapter = null;
-
-        httpClient.fetch('http://remix.ist:8000/chapters/' + author.author + '/' + author.uuid)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.chapter = data;
-            });
-
-        this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
-           this.chapter.scraps.push([scrap.author, scrap.uuid, null, scrap.text]);
-           this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: scrap.author, uuid: scrap.uuid});
-       });
-       this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
-          console.log("RECEIVED EDITED SCRAP");
-          console.log(data);
-          this.chapter.scraps.splice(parseInt(data.index), 1, [data.author, data.uuid, null, data.text]);
-          console.log(this.chapter.scraps);
-          this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: data.author, uuid: data.uuid});
+      this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
+        if (this.hidden) {
+          document.getElementById('save-warning').click();
+          this.hidden = false;
+        }
+        this.chapter.scraps.push([scrap.author, scrap.uuid, null, scrap.text]);
+        this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: scrap.author, uuid: scrap.uuid});
+      });
+      this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
+        this.chapter.scraps.splice(parseInt(data.index), 1, [data.author, data.uuid, null, data.text]);
+        this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: data.author, uuid: data.uuid});
       });
 
     }

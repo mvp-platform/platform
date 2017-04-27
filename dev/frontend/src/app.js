@@ -11,7 +11,7 @@ let logged_in_routes = [
     { route: 'editscrap/:author/:uuid', name: 'editscrap', moduleId: './pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
 
     { route: 'newscrap/:author/:uuid', name: 'newscrap', moduleId: './pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
-    { route: 'newchapter', name: 'newchapter', moduleId: './pages/editchaper/newchapter', nav: false, title: 'New Chapter' },
+    { route: 'newchapter', name: 'newchapter', moduleId: './pages/editchapter/newchapter', nav: false, title: 'New Chapter' },
     { route: 'newbook', name: 'newbook', moduleId: './pages/editbook/newbook', nav: false, title: 'New Book' },
 
     { route: 'profile', name: 'profile', moduleId: './pages/profile', nav: true, title: 'Profile', settings: 'perm_identity' },
