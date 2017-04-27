@@ -12,10 +12,19 @@ export class NewScrap {
     constructor(eventag, toast) {
       this.ea = eventag;
       this.toast = toast;
+      this.disabledValue = !this.disabledValue;
     }
 
     userText = '';
     enableLatex = false;
+    disabledValue = false;
+    submitTags = false;
+    submitTagsText = [];
+
+    toggleDisabled() {
+      this.disabledValue = !this.disabledValue;
+      this.submitTags = !this.submitTags;
+    }
 
     submitNewScrap() {
         var requested = this.userText;
@@ -24,12 +33,25 @@ export class NewScrap {
         var theChapter = this.chapters[1];
         var authToken = "Token " + Cookies.get('token');
 
+
+        var submitTags = this.submitTags;
+        var submittedTags = this.submitTagsText;
+
         if(theChapter == undefined || theChapter == null || theChapter == "")
         {
+            if(submitTags) {
+              submittedTags = submittedTags.toString();
+              submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+              submittedTags = submittedTags.replace(/\s/g, '');
+              submittedTags = submittedTags.split(",");
+
+              console.log(submittedTags);
+            }
             let request = {
               author: theAuthor,
               text: requested,
-              latex: enableLatex
+              latex: enableLatex,
+              tags: submittedTags
             };
 
             //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
@@ -52,10 +74,19 @@ export class NewScrap {
         }
         else //The Chapter Was Provided, so create the scrap and then add it to a chapter.
         {
+          if(submitTags) {
+            submittedTags = submittedTags.toString();
+            submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+            submittedTags = submittedTags.replace(/\s/g, '');
+            submittedTags = submittedTags.split(",");
+            console.log(submittedTags);
+          }
+
           let request = {
               author: theAuthor,
               text: requested,
-              latex: enableLatex
+              latex: enableLatex,
+              tags: submittedTags
           };
 
 
@@ -91,16 +122,10 @@ export class NewScrap {
                               //newScrapRequest.push(theAuthor);
                               for(var i = 0; i < scraps.length; i++)
                               {
-                                  //alert(scraps[i][1]);
                                   newScrapRequest.push([scraps[i][0], scraps[i][1], scraps[i][2]]);
-                                  //newScrapRequest.push(scraps[i][1]);
-                                  //newScrapRequest.push(scraps[i][2]);
                               }
                               //alert(oldScraps);
                               newScrapRequest.push([theAuthor, scrapID, null]);
-                              //newScrapRequest.push(scrapID);
-                              //newScrapRequest.push(null);
-                              //alert(newScrapRequest.toString());
 
                               let request2 = {
                                   scraps:

@@ -47,6 +47,7 @@ export class Scraps {
 
         if(editTags) {
           editedTags = editedTags.toString();
+          editedTags = editedTags.replace(/(^,)|(,$)/g, "");
           editedTags = editedTags.replace(/\s/g, '');
           editedTags = editedTags.split(",");
 
