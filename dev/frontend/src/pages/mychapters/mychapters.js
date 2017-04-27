@@ -1,13 +1,16 @@
 import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
+import { bindable } from 'aurelia-framework';
 
 let httpClient = new HttpClient();
 
 export class Chapters {
+    @bindable unassociated;
     constructor() {
       this.title = "My Chapters";
       this.chapters = [];
+      this.unassociatedChapters = false;
       let username = Cookies.get('username');
 
       httpClient.fetch('http://remix.ist/chapters/' + username)
@@ -20,7 +23,23 @@ export class Chapters {
         });
     }
 
-    unassociated() {
+    unassociatedChanged(newValue) {
+      // true = right = unassociated
+      if (newValue === true) {
+        this.title = "Unassociated Chapters";
+        if (!this.unassociatedChapters) {
+          return this.get_unassociated();
+        }
+        this.chapters = this.unassociatedChapters;
+      } else {
+        this.title = "My Chapters";
+        this.chapters = this.allChapters;
+      }
+    }
+
+    get_unassociated() {
+      this.allChapters = this.chapters;
+
       var authToken = "Token " + Cookies.get('token');
 
       this.title = "Unassociated Chapters";
@@ -36,6 +55,7 @@ export class Chapters {
               console.log(instance);
               this.chapters.push(instance);
           }
+          this.unassociatedChapters = this.chapters;
         });
     }
 

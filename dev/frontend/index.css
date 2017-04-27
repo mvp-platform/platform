@@ -9,6 +9,23 @@ body {
   width: calc(100% - 35px) !important;
 }
 
+.unassoc-switch {
+  margin-right: 10px;
+  color: white;
+}
+
+.unassoc-switch label {
+  color: white;
+}
+
+.unassoc-switch label input[type=checkbox]:checked + .lever {
+  background-color: #818181 !important;
+}
+
+.unassoc-switch label input[type=checkbox]:checked + .lever:after {
+  background-color: white !important;
+}
+
 div #bookView {
     margin: 10px;
 }

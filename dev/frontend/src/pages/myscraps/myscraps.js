@@ -3,15 +3,18 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import { bindable } from 'aurelia-framework';
 
 let httpClient = new HttpClient();
 
 @inject(EventAggregator)
 export class Scraps {
+    @bindable unassociated;
     constructor(eventag) {
       this.ea = eventag;
       this.title = "My Scraps";
       this.scraps = [];
+      this.unassociatedScraps = false;
       let username = Cookies.get('username');
 
       httpClient.fetch('http://remix.ist:8000/scraps/' + username)
@@ -21,6 +24,40 @@ export class Scraps {
               this.scraps.push(instance);
           }
       });
+    }
+
+    unassociatedChanged(newValue) {
+      // true = right = unassociated
+      if (newValue === true) {
+        this.title = "Unassociated Scraps";
+        if (!this.unassociatedScraps) {
+          return this.get_unassociated();
+        }
+        this.scraps = this.unassociatedScraps;
+      } else {
+        this.title = "My Scraps";
+        this.scraps = this.allScraps;
+      }
+    }
+
+    get_unassociated() {
+      this.allScraps = this.scraps;
+
+      var authToken = "Token " + Cookies.get('token');
+      this.scraps = [];
+      httpClient.fetch('http://remix.ist/scraps/unassociated', {
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }})
+      .then(response => response.json())
+      .then(data => {
+          for (let instance of data) {
+              console.log(instance);
+              this.scraps.push(instance);
+          }
+          this.unassociatedScraps = this.scraps;
+        });
     }
 
     attached() {
