@@ -12,11 +12,11 @@
                         <div>
                           <p>Author: ${chapter[0]}</p>
                           <p class="buttonOptions">
-                            <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Preview Chapter;">
+                            <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Preview Chapter;">
                               <!-- Preview --><i class="material-icons">pageview</i></a>
-                            <a class="previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Edit Chapter;">
+                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Edit Chapter;">
                             <!-- Edit--><i class="material-icons">mode_edit</i></a>
-                            <a class="previewEditLinks" target="_blank" href="http://remix.ist/chapters/${chapter[0]}/${chapter[1]}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
+                            <a class="on-white previewEditLinks" target="_blank" href="http://remix.ist/chapters/${chapter[0]}/${chapter[1]}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
                               <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                           </p>
                         </div>

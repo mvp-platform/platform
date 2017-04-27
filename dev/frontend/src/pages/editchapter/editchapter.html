@@ -27,13 +27,13 @@
               <div>
                 <p>${scrap[3]}</p>
                 <p class="buttonOptions">
-                  <a class="previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}" md-tooltip="position: bottom; text: Preview Scrap;">
+                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}" md-tooltip="position: bottom; text: Preview Scrap;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
-                  <a class="previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                  <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
-                  <a class="previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
+                  <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
-                  <a class="previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                  <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="http://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
                     <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                 </p>
               </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="fixed-action-btn" id="left-pane-button">
      <a route-href="route: newscrap; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Scrap to End;" md-waves="color: light; circle: true;">
-       <i class="large material-icons">note_add</i>
+       <i class="large material-icons">receipt</i>
      </a>
    </div>
     </section>
