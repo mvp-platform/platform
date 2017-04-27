@@ -111,7 +111,13 @@ input[type=text]:focus {
 }
 
 .login {
-  display: inline-block;
+  display: block;
+  max-width: 500px;
+}
+
+.intro {
+  margin-bottom: 15px !important;
+  line-height: 150%;
 }
 
 .scrap {
