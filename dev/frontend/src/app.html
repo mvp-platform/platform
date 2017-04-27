@@ -1,9 +1,9 @@
 <template>
   <md-sidenav view-model.ref="sideNav" md-fixed="true" class="fixed">
-    <div class="centering"><span class="router-title"><i class="fa fa-home"></i>${router.title}</span></div>
+    <div class="centering"><span class="router-title"><i class="material-icons" style="font-size: 0.73em;">share</i> ${router.title}</span></div>
     <ul>
       <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-          <a href.bind="row.href">${row.title}</a>
+          <a href.bind="row.href"><i class="material-icons">${row.settings}</i>${row.title}</a>
       </li>
     </ul>
   </md-sidenav>
