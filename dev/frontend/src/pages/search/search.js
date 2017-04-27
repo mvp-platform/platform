@@ -1,4 +1,4 @@
-import { bindable } from 'aurelia-framework';
+import { bindable, inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
 
@@ -9,7 +9,9 @@ export class search {
     baseURI = "https://remix.ist/search?q=";
     searchedAtLeastOnce = false;
 
-    constructor() {}
+    activate(params, config, navigationInstruction)  {
+      this.config = config;
+    }
 
     elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
       // for now, we'll constrain to only the kind of things on the left hand pane
@@ -18,15 +20,7 @@ export class search {
       if (searchOwn === true) {
           queryParams += "&user=" + Cookies.get('username');
       }
-      // if (searchBooks === true) {
-      //       SB = "&type=book";
-      //   }
-      //   if (searchChapters === true) {
-      //       SC = "&type=chapter";
-      //   }
-        // if (searchScraps === true) {
-      queryParams += "&type=scrap";
-        // }
+      queryParams += "&type=" + this.config.settings.type;
 
       this.searchedAtLeastOnce = true;
       this.query = encodeURI(newQuery);
@@ -38,7 +32,6 @@ export class search {
       httpClient.fetch(this.baseURI + this.query + queryParams)
       .then(response => response.json())
       .then(data => {
-          //console.log(data);
           for (let hit of data.hits) {
               this.hits.push(hit);
           }
