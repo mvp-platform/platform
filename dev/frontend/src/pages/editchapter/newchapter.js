@@ -54,7 +54,7 @@ export class NewChapter {
       console.log("save rearrangements");
       var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
       var body = {scraps: scraps_change, name: this.chapter.name};
-      httpClient.fetch('http://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
+      httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',
         body: JSON.stringify(body),
         headers: {
@@ -71,7 +71,7 @@ export class NewChapter {
     }
 
     activate(author) {
-      httpClient.fetch('http://remix.ist:8000/chapters/new', {
+      httpClient.fetch('https://remix.ist/chapters/new', {
         method: 'post',
         body: JSON.stringify({name: "New Chapter", author: Cookies.get('username')}),
         headers: {

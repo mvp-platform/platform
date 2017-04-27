@@ -13,7 +13,7 @@ export class Chapters {
       this.unassociatedChapters = false;
       let username = Cookies.get('username');
 
-      httpClient.fetch('http://remix.ist/chapters/' + username)
+      httpClient.fetch('https://remix.ist/chapters/' + username)
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
@@ -44,7 +44,7 @@ export class Chapters {
 
       this.title = "Unassociated Chapters";
       this.chapters = [];
-      httpClient.fetch('http://remix.ist/chapters/unassociated', {
+      httpClient.fetch('https://remix.ist/chapters/unassociated', {
       headers: {
           'Content-Type': 'application/json',
           'Authorization': authToken

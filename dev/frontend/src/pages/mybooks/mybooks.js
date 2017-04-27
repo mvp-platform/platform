@@ -8,7 +8,7 @@ export class Books {
       this.books = [];
       let username = Cookies.get('username');
 
-      httpClient.fetch('http://remix.ist/books/' + username)
+      httpClient.fetch('https://remix.ist/books/' + username)
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {

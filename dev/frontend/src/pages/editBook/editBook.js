@@ -7,7 +7,7 @@ export class EditBook {
     constructor() {}
 
     activate(author) {
-        httpClient.fetch('http://remix.ist/books/' + author.author + '/' + author.uuid)
+        httpClient.fetch('https://remix.ist/books/' + author.author + '/' + author.uuid)
             .then(response => response.json())
             .then(data => {
                 this.book = data;

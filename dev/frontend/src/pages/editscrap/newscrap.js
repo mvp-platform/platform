@@ -56,7 +56,7 @@ export class NewScrap {
 
             //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
             var scrapID = '';
-            httpClient.fetch('http://remix.ist/scraps/new', {
+            httpClient.fetch('https://remix.ist/scraps/new', {
                     method: 'post',
                     body: JSON.stringify(request),
                     headers: {
@@ -92,7 +92,7 @@ export class NewScrap {
 
           //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
           var scrapID = '';
-          httpClient.fetch('http://remix.ist/scraps/new', {
+          httpClient.fetch('https://remix.ist/scraps/new', {
                   method: 'post',
                   body: JSON.stringify(request),
                   headers: {
@@ -108,7 +108,7 @@ export class NewScrap {
                   this.scraps = [];
                   var test = [];
                   //GET CHAPTERS SCRAPS
-                  httpClient.fetch('http://remix.ist:8000/chapters/' + theAuthor + '/' + theChapter)
+                  httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter)
                       .then(response => response.json())
                       .then(data => {
 
@@ -138,7 +138,7 @@ export class NewScrap {
                               //alert(this.scraps);
 
                               //   UPDATE CHAPTER WITH NEW SCRAPS
-                              httpClient.fetch('http://remix.ist/chapters/' + theAuthor + '/' + theChapter, {
+                              httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter, {
                                       method: 'post',
                                       body: JSON.stringify(request2),
                                       headers: {

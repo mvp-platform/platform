@@ -56,7 +56,7 @@ export class EditChapters {
       if (this.nameUpdated) {
         body.name = this.chapter.name;
       }
-      httpClient.fetch('http://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
+      httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',
         body: JSON.stringify(body),
         headers: {
@@ -75,7 +75,7 @@ export class EditChapters {
 
         this.chapter = null;
 
-        httpClient.fetch('http://remix.ist:8000/chapters/' + author.author + '/' + author.uuid)
+        httpClient.fetch('https://remix.ist/chapters/' + author.author + '/' + author.uuid)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

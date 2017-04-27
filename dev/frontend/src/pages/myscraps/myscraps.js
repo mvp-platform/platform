@@ -17,7 +17,7 @@ export class Scraps {
       this.unassociatedScraps = false;
       let username = Cookies.get('username');
 
-      httpClient.fetch('http://remix.ist:8000/scraps/' + username)
+      httpClient.fetch('https://remix.ist/scraps/' + username)
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
@@ -45,7 +45,7 @@ export class Scraps {
 
       var authToken = "Token " + Cookies.get('token');
       this.scraps = [];
-      httpClient.fetch('http://remix.ist/scraps/unassociated', {
+      httpClient.fetch('https://remix.ist/scraps/unassociated', {
       headers: {
           'Content-Type': 'application/json',
           'Authorization': authToken
@@ -81,7 +81,7 @@ export class Scraps {
       var authToken = "Token " + Cookies.get('token');
       this.title = "Unassociated Scraps";
       this.scraps = [];
-      httpClient.fetch('http://remix.ist:8000/scraps/unassociated', {
+      httpClient.fetch('https://remix.ist/scraps/unassociated', {
       headers: {
           'Content-Type': 'application/json',
           'Authorization': authToken

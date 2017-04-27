@@ -7,7 +7,7 @@ export class search {
 
     query = "";
     hits = [];
-    baseURI = "http://remix.ist:8000/search?q=";
+    baseURI = "https://remix.ist/search?q=";
     searchedAtLeastOnce = false;
 
     constructor() {}

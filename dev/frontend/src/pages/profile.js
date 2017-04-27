@@ -27,7 +27,7 @@ export class Profile {
             name: displayname
         };
 
-        httpClient.fetch('http://remix.ist/accounts/myaccount', {
+        httpClient.fetch('https://remix.ist/accounts/myaccount', {
                     method: 'post',
                     body: JSON.stringify(request),
                     headers: {
@@ -59,7 +59,7 @@ export class Profile {
 
       console.log(this.userInfo);
 
-      httpClient.fetch('http://remix.ist/accounts/myaccount', {
+      httpClient.fetch('https://remix.ist/accounts/myaccount', {
                   headers: {
                       'Content-Type': 'application/json',
                       'Authorization': authToken

@@ -61,8 +61,8 @@ export class PDFViewer {
         return;
     }
 
-    this.url = "http://remix.ist:8000/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
-    //this.url = "http://remix.ist:8000/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
+    this.url = "https://remix.ist/scraps/" + scrapID.author + '/' + scrapID.uuid + '/pdf';
+    //this.url = "https://remix.ist/chapters/" + chapterID.author + '/' + chapterID.uuid + '/pdf';
     document.url = this.url
     document.draftUrl = this.url;
   }

@@ -57,7 +57,7 @@ export class PDFViewer {
 
     console.log(thingID);
 
-    this.url = "http://remix.ist/" + thingID.type + "/" + thingID.author + '/' + thingID.uuid + '/pdf';
+    this.url = "https://remix.ist/" + thingID.type + "/" + thingID.author + '/' + thingID.uuid + '/pdf';
     document.url = this.url
     document.draftUrl = this.url;
   }

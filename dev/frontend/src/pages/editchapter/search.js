@@ -6,7 +6,7 @@ let httpClient = new HttpClient();
 
 export class search {
     hits = [];
-    baseURI = "http://remix.ist/search?q=";
+    baseURI = "https://remix.ist/search?q=";
     searchedAtLeastOnce = false;
 
     constructor() {}

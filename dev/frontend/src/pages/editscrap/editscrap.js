@@ -65,7 +65,7 @@ export class Scraps {
         }
 
           //UPDATE THE EDITED SCRAP AND GET THE NEW SCRAP ID
-          httpClient.fetch('http://remix.ist/scraps/' + theAuthor + '/' + theScrap, {
+          httpClient.fetch('https://remix.ist/scraps/' + theAuthor + '/' + theScrap, {
                   method: 'post',
                   body: JSON.stringify(request),
                   headers: {
@@ -96,7 +96,7 @@ export class Scraps {
       this.scrap.push(id);
       this.index = scrapID.index;
 
-      httpClient.fetch('http://remix.ist/scraps/' + author + '/' + id )
+      httpClient.fetch('https://remix.ist/scraps/' + author + '/' + id )
       .then(response => response.json())
       .then(data => {
               console.log(data);
