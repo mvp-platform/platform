@@ -87,7 +87,6 @@ export class Scraps {
       this.userText = '';
       this.enableLatex = false;
 
-
       author = Cookies.get('username');
       id = scrapID.uuid;
 
@@ -105,15 +104,5 @@ export class Scraps {
               this.editTagsText = data.tags;
 
       });
-
-    }
-    configureRouter(config, router) {
-        config.map([
-            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: true, title: 'PDF Viewer' },
-            // { route: 'account', name: 'account', moduleId: 'pages/editscrap/account', nav: true, title: 'Account' },
-            // { route: 'emails', name: 'emails', moduleId: 'pages/editscrap/emails', nav: true, title: 'Emails' },
-            // { route: 'notifications', name: 'notifications', moduleId: 'pages/editscrap/notifications', nav: true, title: 'Notifications' }
-        ]);
-        this.router = router;
     }
 }

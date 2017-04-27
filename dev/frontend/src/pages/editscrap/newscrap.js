@@ -27,141 +27,114 @@ export class NewScrap {
     }
 
     submitNewScrap() {
-        var requested = this.userText;
-        var enableLatex = this.enableLatex;
-        var theAuthor = Cookies.get('username');
-        var theChapter = this.chapters[1];
-        var authToken = "Token " + Cookies.get('token');
+      var requested = this.userText;
+      var enableLatex = this.enableLatex;
+      var theAuthor = Cookies.get('username');
+      var theChapter = this.chapters[1];
+      var authToken = "Token " + Cookies.get('token');
 
+      var submitTags = this.submitTags;
+      var submittedTags = this.submitTagsText;
 
-        var submitTags = this.submitTags;
-        var submittedTags = this.submitTagsText;
+      if(theChapter == undefined || theChapter == null || theChapter == "") {
+        if(submitTags) {
+          submittedTags = submittedTags.toString();
+          submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+          submittedTags = submittedTags.replace(/\s/g, '');
+          submittedTags = submittedTags.split(",");
+        }
+        let request = {
+          author: theAuthor,
+          text: requested,
+          latex: enableLatex,
+          tags: submittedTags
+        };
 
-        if(theChapter == undefined || theChapter == null || theChapter == "")
-        {
-            if(submitTags) {
-              submittedTags = submittedTags.toString();
-              submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
-              submittedTags = submittedTags.replace(/\s/g, '');
-              submittedTags = submittedTags.split(",");
+        //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
+        var scrapID = '';
+        httpClient.fetch('https://remix.ist/scraps/new', {
+          method: 'post',
+          body: JSON.stringify(request),
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': authToken
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          var scrapID = data.uuid;
+          this.toast.show('Scrap saved successfully!', 5000);
+          this.ea.publish('new-scrap', data);
+       });
+      } else { //The Chapter Was Provided, so create the scrap and then add it to a chapter.
+        if(submitTags) {
+          submittedTags = submittedTags.toString();
+          submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+          submittedTags = submittedTags.replace(/\s/g, '');
+          submittedTags = submittedTags.split(",");
+        }
 
-              console.log(submittedTags);
+        let request = {
+          author: theAuthor,
+          text: requested,
+          latex: enableLatex,
+          tags: submittedTags
+        };
+
+        //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
+        var scrapID = '';
+        httpClient.fetch('https://remix.ist/scraps/new', {
+            method: 'post',
+            body: JSON.stringify(request),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': authToken
             }
-            let request = {
-              author: theAuthor,
-              text: requested,
-              latex: enableLatex,
-              tags: submittedTags
+        })
+        .then(response => response.json())
+        .then(data => {
+          var new_scrap = data;
+          var scrapID = data.uuid;
+
+          this.scraps = [];
+          var test = [];
+          //GET CHAPTERS SCRAPS
+          httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter)
+          .then(response => response.json())
+          .then(data => {
+
+            var scraps;
+            this.scraps.push(data);
+            scraps = data.scraps;
+
+            var newScrapRequest = [];
+
+            for(var i = 0; i < scraps.length; i++) {
+              newScrapRequest.push([scraps[i][0], scraps[i][1], scraps[i][2]]);
+            }
+            newScrapRequest.push([theAuthor, scrapID, null]);
+            let request2 = {
+              scraps:
+                newScrapRequest
             };
 
-            //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
-            var scrapID = '';
-            httpClient.fetch('https://remix.ist/scraps/new', {
-                    method: 'post',
-                    body: JSON.stringify(request),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': authToken
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    var scrapID = data.uuid;
-                    this.toast.show('Scrap saved successfully!', 5000);
-                    this.ea.publish('new-scrap', data);
-           });
-
-        }
-        else //The Chapter Was Provided, so create the scrap and then add it to a chapter.
-        {
-          if(submitTags) {
-            submittedTags = submittedTags.toString();
-            submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
-            submittedTags = submittedTags.replace(/\s/g, '');
-            submittedTags = submittedTags.split(",");
-            console.log(submittedTags);
-          }
-
-          let request = {
-              author: theAuthor,
-              text: requested,
-              latex: enableLatex,
-              tags: submittedTags
-          };
-
-
-          //CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
-          var scrapID = '';
-          httpClient.fetch('https://remix.ist/scraps/new', {
-                  method: 'post',
-                  body: JSON.stringify(request),
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': authToken
-                  }
-              })
-              .then(response => response.json())
-              .then(data => {
-                  var new_scrap = data;
-                  var scrapID = data.uuid;
-
-                  this.scraps = [];
-                  var test = [];
-                  //GET CHAPTERS SCRAPS
-                  httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter)
-                      .then(response => response.json())
-                      .then(data => {
-
-                              var scraps;
-                              this.scraps.push(data);
-                              scraps = data.scraps;
-
-                              //alert(scraps.length);
-                              var newScrapRequest = [];
-
-                              //newScrapRequest.push(theAuthor);
-                              for(var i = 0; i < scraps.length; i++)
-                              {
-                                  newScrapRequest.push([scraps[i][0], scraps[i][1], scraps[i][2]]);
-                              }
-                              //alert(oldScraps);
-                              newScrapRequest.push([theAuthor, scrapID, null]);
-
-                              let request2 = {
-                                  scraps:
-                                      newScrapRequest
-
-                              };
-
-                              //alert(JSON.stringify(request2));
-
-                              //alert(this.scraps);
-
-                              //   UPDATE CHAPTER WITH NEW SCRAPS
-                              httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter, {
-                                      method: 'post',
-                                      body: JSON.stringify(request2),
-                                      headers: {
-                                          'Content-Type': 'application/json',
-                                          'Authorization': authToken
-                                      }
-                                  })
-                                  .then(response => response.json())
-                                  .then(data => {
-                                      // alert("Scrap has been added to chapter " + theChapter);
-                                      this.toast.show('Scrap saved successfully!', 5000);
-                                      this.ea.publish('new-scrap', new_scrap);
-                                  });
-
-
-                      });
-
-              });
-
-
-        }
-
-
+            //   UPDATE CHAPTER WITH NEW SCRAPS
+            httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter, {
+              method: 'post',
+              body: JSON.stringify(request2),
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authToken
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+              this.toast.show('Scrap saved successfully!', 5000);
+              this.ea.publish('new-scrap', new_scrap);
+            });
+          });
+        });
+      }
     }
 
 
@@ -177,16 +150,4 @@ export class NewScrap {
       this.chapters.push(author);
       this.chapters.push(chapter);
     }
-
-    configureRouter(config, router) {
-        config.map([
-            { route: ['', ':author/:uuid'], name: 'PDFViewer', moduleId: 'pages/editscrap/PDFViewer', nav: false, title: 'PDF Viewer' },
-            { route: ['', 'search'], name: 'Search', moduleId: 'pages/editscrap/search', nav: true, title: 'Search' }
-            //{ route: 'emails', name: 'emails', moduleId: 'pages/editscrap/emails', nav: true, title: 'Emails' },
-            //{ route: 'notifications', name: 'notifications', moduleId: 'pages/editscrap/notifications', nav: true, title: 'Notifications' }
-        ]);
-        this.router = router;
-    }
-
-
 }

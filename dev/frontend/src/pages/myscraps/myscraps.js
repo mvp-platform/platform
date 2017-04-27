@@ -99,7 +99,7 @@ export class Scraps {
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
             { route: ['newscrap'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: true, title: 'New Scrap' },
             { route: ['editscrap', ':author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
-            { route: 'search', name: 'search', moduleId: 'pages/myscraps/search', nav: true, title: 'Search' },
+            { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
         ]);
         this.router = router;
     }
