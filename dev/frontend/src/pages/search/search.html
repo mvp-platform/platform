@@ -11,9 +11,10 @@
 
     <div class="col-sm-8">
         <ul class="nav">
-            <li repeat.for="hit of hits" data-search="true" data-author="${hit._source.author}" data-uuid="${hit._source.uuid}" data-text="${hit._source.text}" class="drag-source ${hit.isActive ? 'active' : ''}">
+            <li repeat.for="hit of hits" data-search="true" data-author="${hit._source.author}" data-uuid="${hit._source.uuid}" data-text="${hit._source.text}"  data-name="${hit._source.name}" class="drag-source ${hit.isActive ? 'active' : ''}">
               <md-card class="search-card" md-title="${hit._source.author}">
-                <p>${hit._source.text}</p>
+                <p if.bind="hit._type === 'scrap'">${hit._source.text}</p>
+                <p if.bind="hit._type === 'chapter' || hit._type === 'book'">${hit._source.name}</p>
               </md-card>
             </li>
             <br>

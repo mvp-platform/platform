@@ -11,6 +11,8 @@ export class search {
 
     activate(params, config, navigationInstruction)  {
       this.config = config;
+      console.log(config);
+      this.searchOwn = config.settings.myStuff;
     }
 
     elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
