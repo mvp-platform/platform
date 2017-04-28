@@ -4,6 +4,7 @@
   "description": "",
   "dependencies": {
     "es6-promisify": "^5.0.0",
+    "escape-latex": "^0.1.5",
     "fs-extra": "^2.0.0",
     "json-stable-stringify": "^1.0.1",
     "lockfile": "^1.0.3",
