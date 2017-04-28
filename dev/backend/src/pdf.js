@@ -1,22 +1,21 @@
-"use strict";
+const execCb = require('child_process').exec;
+const promisify = require('es6-promisify');
+const path = require('path');
+const fs = require('fs');
 
-var execCb = require('child_process').exec;
-var promisify = require("es6-promisify");
-var exec = promisify(execCb);
-var path = require("path");
-var fs = require("fs");
-var writeFile = promisify(fs.writeFile);
-var chmod = promisify(fs.chmod);
+const writeFile = promisify(fs.writeFile);
+const chmod = promisify(fs.chmod);
+const exec = promisify(execCb);
 
-var gen = async function(latext) {
+const gen = async function (latext) {
   const jobname = Math.random().toString(36).substring(7);
-  let f = await writeFile(jobname + ".tex", latext);
-  let v = await exec("xelatex " + jobname + ".tex");
+  await writeFile(`${jobname}.tex`, latext);
+  await exec(`xelatex ${jobname}.tex`);
   // second run for ToC
-  let w = await exec("xelatex " + jobname + ".tex");
-  let p = path.join(process.cwd(), jobname + ".pdf");
+  await exec(`xelatex ${jobname}.tex`);
+  const p = path.join(process.cwd(), `${jobname}.pdf`);
   await chmod(p, '644');
   return p;
-}
+};
 
-module.exports = {gen: gen}
+module.exports = { gen };

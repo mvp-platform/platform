@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "func-names": ["error", "as-needed"],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_source", "_type"] }]
+  }
+}
