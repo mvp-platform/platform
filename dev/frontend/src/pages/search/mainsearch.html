@@ -1,8 +1,47 @@
 <template>
-    <section class="fullSection">
-          <md-navbar>
-              <span class="spacer"><span class="brand-logo">Search</span></span>
-          </md-navbar>
-          <router-view></router-view>
+    <section class="leftSection">
+      <md-navbar>
+          <span class="spacer"><span class="brand-logo">Search</span></span>
+      </md-navbar>
+      <md-card md-title="Search">
+      <form submit.delegate="elasticSearch(query, searchOwn, searchBooks, searchChapters, searchScraps)">
+          <div class="search-field">
+              <md-checkbox md-checked.bind="searchOwn">Only Your Content</md-checkbox><br>
+              <md-input md-label="What do you want to search for?" md-value.bind="query"></md-input>
+              <button md-button md-tooltip="position: right; text: Search for materials;"><i class="left material-icons">search</i>Search</button>
+          </div>
+      </form>
+      </md-card>
+
+      <div class="col-sm-8">
+          <ul class="nav">
+              <li repeat.for="hit of hits" data-search="true" data-author="${hit._source.author}" data-uuid="${hit._source.uuid}" data-text="${hit._source.text}"  data-name="${hit._source.name}" class="drag-source ${hit.isActive ? 'active' : ''}">
+                <md-card md-title="${hit._type}: ${hit._source.author}" class="search-card">
+                  <p if.bind="hit._type === 'scrap'">${hit._source.text}</p>
+                  <p if.bind="hit._type === 'chapter' || hit._type === 'book'">${hit._source.name}</p>
+                  <p class="buttonOptions">
+                     <a  class="on-white previewEditLinks" route-href="route: pdfviewer; params.bind: {type: hit._type + 's', author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Preview;">
+                        <!-- Preview --><i class="material-icons">pageview</i></a>
+                      <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/${hit._type}s/${hit._source.author}/${hit._source.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                        <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                  </p>
+                </md-card>
+              </li>
+              <br>
+              <md-card class="search-card" md-title=":(" if.bind="(hits.length === 0) && (searchedAtLeastOnce === true)">No results found.</md-card>
+          </ul>
+      </div>
+    </section>
+    <section class="rightSection">
+      <div class="col-sm-8">
+        <md-navbar>
+          <ul class="hide-on-med-and-down right">
+            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                <a class="nav-link" href.bind="row.href">${row.title}</a>
+            </li>
+          </ul>
+        </md-navbar>
+      </div>
+    <router-view></router-view>
     </section>
 </template>

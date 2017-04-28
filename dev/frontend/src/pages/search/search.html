@@ -12,9 +12,21 @@
     <div class="col-sm-8">
         <ul class="nav">
             <li repeat.for="hit of hits" data-search="true" data-author="${hit._source.author}" data-uuid="${hit._source.uuid}" data-text="${hit._source.text}"  data-name="${hit._source.name}" class="drag-source ${hit.isActive ? 'active' : ''}">
-              <md-card class="search-card" md-title="${hit._source.author}">
+              <md-card if.bind="!mainSearch" md-title="${hit._source.author}" class="search-card">
                 <p if.bind="hit._type === 'scrap'">${hit._source.text}</p>
                 <p if.bind="hit._type === 'chapter' || hit._type === 'book'">${hit._source.name}</p>
+              </md-card>
+              <md-card if.bind="mainSearch" md-title="${hit._type}: ${hit._source.author}" class="search-card">
+                <p if.bind="hit._type === 'scrap'">${hit._source.text}</p>
+                <p if.bind="hit._type === 'chapter' || hit._type === 'book'">${hit._source.name}</p>
+                <p class="buttonOptions">
+                   <a  class="on-white previewEditLinks" route-href="route: pdfviewer; params.bind: {type: 'scraps', author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
+                      <!-- Preview --><i class="material-icons">pageview</i></a>
+                    <a  class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: ${hit._source.author}, uuid: ${hit._source.uuid}, index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                      <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                    <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/${hit._type}s/${hit._source.author}/${hit._source.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                      <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                </p>
               </md-card>
             </li>
             <br>

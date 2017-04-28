@@ -1,103 +1,61 @@
-import 'fetch';
+import { bindable, inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
-import { inject } from 'aurelia-framework';
-import {EventAggregator} from 'aurelia-event-aggregator';
-import { bindable } from 'aurelia-framework';
 
 let httpClient = new HttpClient();
 
-@inject(EventAggregator)
-export class Scraps {
-    @bindable unassociated;
-    constructor(eventag) {
-      this.ea = eventag;
-      this.title = "My Scraps";
-      this.scraps = [];
-      this.unassociatedScraps = false;
-      let username = Cookies.get('username');
+export class MainSearch {
+    hits = [];
+    baseURI = "https://remix.ist/search?q=";
+    searchedAtLeastOnce = false;
 
-      httpClient.fetch('https://remix.ist/scraps/' + username)
-      .then(response => response.json())
-      .then(data => {
-          for (let instance of data) {
-              this.scraps.push(instance);
-          }
-      });
+    constructor() {
+      this.title = "Search";
     }
 
-    unassociatedChanged(newValue) {
-      // true = right = unassociated
-      if (newValue === true) {
-        this.title = "Unassociated Scraps";
-        if (!this.unassociatedScraps) {
-          return this.get_unassociated();
-        }
-        this.scraps = this.unassociatedScraps;
+    activate(params, config, navigationInstruction)  {
+      this.config = config;
+      console.log(config);
+      if(config) {
+        this.searchOwn = config.settings.myStuff;
+        this.type = config.settings.type;
+        this.mainSearch = config.settings.mainSearch ? true : false;
       } else {
-        this.title = "My Scraps";
-        this.scraps = this.allScraps;
+        this.mainSearch = true;
+        this.searchOwn = false;
       }
     }
 
-    get_unassociated() {
-      this.allScraps = this.scraps;
+    elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
+      let queryParams = "";
 
-      var authToken = "Token " + Cookies.get('token');
-      this.scraps = [];
-      httpClient.fetch('https://remix.ist/scraps/unassociated', {
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': authToken
-      }})
+      if (searchOwn === true) {
+          queryParams += "&user=" + Cookies.get('username');
+      }
+      if (this.type) {
+          queryParams += "&type=" + this.type;
+      }
+
+      this.searchedAtLeastOnce = true;
+      this.query = encodeURI(newQuery);
+
+      if (this.hits.length !== 0) {
+        this.hits = [];
+      }
+
+      httpClient.fetch(this.baseURI + this.query + queryParams)
       .then(response => response.json())
       .then(data => {
-          for (let instance of data) {
-              console.log(instance);
-              this.scraps.push(instance);
-          }
-          this.unassociatedScraps = this.scraps;
-        });
-    }
-
-    attached() {
-      this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
-         this.scraps.unshift(scrap); // why? who chose this name?
-         this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: scrap.author, uuid: scrap.uuid});
-     });
-     this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
-     this.scraps.splice(parseInt(data.index), 1, {text: data.text, author: data.author, uuid: data.uuid});
-     console.log(this.scraps);
-     this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: data.author, uuid: data.uuid});
-    });
-    }
-
-    detached() {
-      this.new_subscription.dispose();
-      this.edit_subscription.dispose();
-    }
-
-    unassociated() {
-      var authToken = "Token " + Cookies.get('token');
-      this.title = "Unassociated Scraps";
-      this.scraps = [];
-      httpClient.fetch('https://remix.ist/scraps/unassociated', {
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': authToken
-      }})
-      .then(response => response.json())
-      .then(data => {
-          for (let instance of data) {
-              this.scraps.push(instance);
+          for (let hit of data.hits) {
+              this.hits.push(hit);
           }
       });
     }
 
     configureRouter(config, router) {
         config.map([
-            { route: '', name: 'Search', moduleId: 'pages/search/search', nav: false, title: 'Search' },
-          ]);
+          { route: ['', ':type/:author/:uuid'], name: 'pdfviewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
+        ]);
         this.router = router;
     }
 }

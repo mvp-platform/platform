@@ -12,8 +12,14 @@ export class search {
     activate(params, config, navigationInstruction)  {
       this.config = config;
       console.log(config);
-      this.searchOwn = config.settings.myStuff;
-      this.type = config.settings.type;
+      if(config) {
+        this.searchOwn = config.settings.myStuff;
+        this.type = config.settings.type;
+        this.mainSearch = config.settings.mainSearch ? true : false;
+      } else {
+        this.mainSearch = true;
+        this.searchOwn = false;
+      }
     }
 
     elasticSearch(newQuery, searchOwn, searchBooks, searchChapters, searchScraps) {
@@ -23,8 +29,8 @@ export class search {
       if (searchOwn === true) {
           queryParams += "&user=" + Cookies.get('username');
       }
-      if (this.config.settings.type) {
-          queryParams += "&type=" + this.config.settings.type;
+      if (this.type) {
+          queryParams += "&type=" + this.type;
       }
 
       this.searchedAtLeastOnce = true;

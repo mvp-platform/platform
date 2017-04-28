@@ -14,6 +14,10 @@ body {
   color: white;
 }
 
+.main-search md-card {
+  margin-top: 0px;
+}
+
 .unassoc-switch label {
   color: white;
 }
