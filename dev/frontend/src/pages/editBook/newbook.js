@@ -121,8 +121,8 @@ export class NewBook {
         config.title = 'Chapter Tabs';
         config.map([
           { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
-          { route: ['newscrap', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
-          { route: ['editscrap', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
+          { route: ['newchapter', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/newchapter/newchapter', nav: false, title: 'New Scrap' },
+          { route: ['editchapter', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editchapter/editchapter', nav: false, title: 'Edit Scrap' },
           { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
         ]);
         this.router = router;

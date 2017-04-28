@@ -5,6 +5,7 @@ const httpClient = new HttpClient();
 
 export class Books {
   constructor() {
+    this.title = "My Books";
     this.books = [];
     const username = Cookies.get('username');
 

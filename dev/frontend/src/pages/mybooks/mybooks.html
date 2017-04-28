@@ -7,7 +7,7 @@
   -->
     <section class="leftSection">
         <md-navbar>
-            <span class="spacer"><span class="brand-logo">My Books</span></span>
+            <span class="spacer"><span class="brand-logo">${title}</span></span>
         </md-navbar>
         <div class="col-sm-8">
             <ul class="nav">
@@ -30,6 +30,11 @@
                   </md-card>
                 </li>
             </ul>
+        </div>
+        <div class="fixed-action-btn" id="left-pane-button">
+             <a route-href="route: newbook;" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Book;" md-waves="color: light; circle: true;">
+               <i class="large material-icons">library_books</i>
+             </a>
         </div>
     </section>
     <section class="rightSection">
