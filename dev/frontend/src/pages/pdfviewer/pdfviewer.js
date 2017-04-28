@@ -7,8 +7,8 @@ export class PDFViewer {
         draftUrl: '/src/assets/blank.pdf',
         pageNumber: 1,
         scale: 0.8,
-        lastpage: 1
-      }
+        lastpage: 1,
+      },
     ];
   }
 
@@ -52,13 +52,13 @@ export class PDFViewer {
 
   activate(thingID) {
     if (thingID.author === undefined || thingID.type === undefined || thingID.author === undefined) {
-        return;
+      return;
     }
 
     console.log(thingID);
 
-    this.url = "https://remix.ist/" + thingID.type + "/" + thingID.author + '/' + thingID.uuid + '/pdf';
-    document.url = this.url
+    this.url = `https://remix.ist/${thingID.type}/${thingID.author}/${thingID.uuid}/pdf`;
+    document.url = this.url;
     document.draftUrl = this.url;
   }
 }

@@ -1,6 +1,5 @@
 export function configure(aurelia) {
-
- let materialize = 'materialize-css';
+  const materialize = 'materialize-css';
 
   return aurelia.loader.loadModule(materialize).then(() => {
     aurelia.use
