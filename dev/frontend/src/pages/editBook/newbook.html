@@ -1,0 +1,65 @@
+<template>
+    <require from="resources/elements/pdf-document"></require>
+    <section class="leftSection">
+      <md-navbar>
+          <span class="spacer"><span class="brand-logo">${title}</span></span>
+      </md-navbar>
+      <div class="col-sm-8">
+      <div class="collapsible-basic-use">
+      <ul md-collapsible>
+        <li>
+          <div id="save-warning" class="collapsible-header"></div>
+          <div id="save-text" class="collapsible-body">
+            <md-card>
+              <p style="margin-bottom: 0.5em;">When you're done modifying your book, make sure to save your changes!</p>
+              <form role="form" submit.delegate="saveRearrangements()">
+                <button md-button="submit" class="primary" md-button="large: true;" md-tooltip="position: right; text: Submit Book Edits;">Save Now</button>
+              </form>
+            </md-card></div>
+        </li>
+        <li>
+          <div class="">
+            <ul class="draggable-header nav">
+            <md-input class="title-input" onchange.bind="updateName" md-value.bind="book.name"></md-input>
+            <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
+            <li repeat.for="chapter of book.chapters" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
+            <md-card md-title="${chapter[0]}">
+              <div>
+                <p>${scrap[3]}</p>
+                <p class="buttonOptions">
+                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Preview Chapter;">
+                    <!-- Preview --><i class="material-icons">pageview</i></a>
+                  <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1], index: $index}" md-tooltip="position: bottom; text: Edit Chapter;">
+                    <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                  <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
+                    <!-- Remove--> <i class="material-icons">no_sim</i></a>
+                  <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter[0]}/${chapter[1]}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
+                    <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                </p>
+              </div>
+            </md-card>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="fixed-action-btn" id="left-pane-button">
+     <a route-href="route: newchapter;" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Chapter;" md-waves="color: light; circle: true;">
+     <!-- <a route-href="route: newchapter; params.bind: {author: book.author, uuid: book.uuid}" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Chapter to End;" md-waves="color: light; circle: true;"> -->
+       <i class="large material-icons">receipt</i>
+     </a>
+   </div>
+    </section>
+    <section class="rightSection">
+      <div class="col-sm-8">
+        <md-navbar>
+          <ul class="hide-on-med-and-down right">
+            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                <a class="nav-link" href.bind="row.href">${row.title}</a>
+            </li>
+          </ul>
+        </md-navbar>
+      </div>
+        <router-view></router-view>
+    </section>
+</template>
