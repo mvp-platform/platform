@@ -14,6 +14,7 @@ System.config({
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0",
     "aurelia-framework": "npm:aurelia-framework@1.1.2",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0",
+    "aurelia-http-client": "npm:aurelia-http-client@1.1.1",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0",
     "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.27.0",
@@ -134,6 +135,10 @@ System.config({
     "npm:aurelia-history-browser@1.0.0": {
       "aurelia-history": "npm:aurelia-history@1.0.0",
       "aurelia-pal": "npm:aurelia-pal@1.3.0"
+    },
+    "npm:aurelia-http-client@1.1.1": {
+      "aurelia-pal": "npm:aurelia-pal@1.3.0",
+      "aurelia-path": "npm:aurelia-path@1.1.1"
     },
     "npm:aurelia-loader-default@1.0.0": {
       "aurelia-loader": "npm:aurelia-loader@1.0.0",
