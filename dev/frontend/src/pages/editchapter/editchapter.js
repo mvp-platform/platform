@@ -54,7 +54,7 @@ export class EditChapters {
       var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
       var body = {scraps: scraps_change};
       if (this.nameUpdated) {
-        body.name = this.chapter.name;
+        body.name = this.chapter.name.trim();
       }
       httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',

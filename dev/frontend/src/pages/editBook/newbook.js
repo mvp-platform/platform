@@ -4,15 +4,17 @@ import {Dragula} from 'aurelia-dragula';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import { MdToastService } from 'aurelia-materialize-bridge';
 
 let httpClient = new HttpClient();
 
-@inject(EventAggregator)
+@inject(EventAggregator, MdToastService)
 export class NewBook {
-    constructor(eventag) {
+    constructor(eventag, toast) {
       this.title="New Book";
       this.hidden = true;
       this.ea = eventag;
+      this.toast = toast;
       this.author = Cookies.get('username');
       this.book = {name: "Enter Book Title Here", author: this.author, uuid: "none"};
       this.token = "Token " + Cookies.get('token');
@@ -56,7 +58,7 @@ export class NewBook {
 
       //var chapters_change = this.book.chapters.map(function(e) { return [e[0], e[1], e[2]]});
       //var body = {chapters: chapters_change, name: this.book.name};
-      var body = {name: this.book.name};
+      var body = {name: this.book.name.trim()};
 
       httpClient.fetch('https://remix.ist/books/' + this.book.author + '/' + this.book.uuid, {
         method: 'post',
@@ -71,7 +73,9 @@ export class NewBook {
           console.log(data);
          document.getElementById('save-warning').click();
          this.hidden = true;
+         this.toast.show('A new book has successfully been created!', 5000, 'rounded orange');
        });
+
     }
 
     activate(author) {

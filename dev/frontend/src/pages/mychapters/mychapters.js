@@ -67,6 +67,7 @@ export class Chapters {
         config.title = 'Chapter Tabs';
         config.map([
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
+            { route: ['newchapter'], name: 'newchapter', moduleId: 'pages/editchapter/newchapter', nav: true, title: 'New Chapter' },
             { route: 'search', name: 'search', settings: {type: 'chapter', myStuff: true}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
         ]);
         this.router = router;

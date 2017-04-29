@@ -1,6 +1,7 @@
 <template>
     <require from="resources/elements/pdf-document"></require>
-    <section class="leftSection">
+    <!-- <section class="leftSection"> -->
+    <section class="rightTabInstance">
       <md-navbar>
           <span class="spacer"><span class="brand-logo">New Chapter</span></span>
       </md-navbar>
@@ -19,7 +20,7 @@
         </li>
         <li>
           <div class="">
-            <ul class="draggable-header nav">
+            <ul class="nav">
             <md-input class="title-input" onchange.bind="updateName" md-value.bind="chapter.name"></md-input>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
@@ -43,13 +44,13 @@
         </li>
       </ul>
     </div>
-    <div class="fixed-action-btn" id="left-pane-button">
+    <!-- <div class="fixed-action-btn" id="left-pane-button">
      <a route-href="route: newscrap; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-button="floating: true; large: true;" md-tooltip="position: left; text: Add New Scrap to End;" md-waves="color: light; circle: true;">
        <i class="large material-icons">receipt</i>
      </a>
-   </div>
+   </div> -->
     </section>
-    <section class="rightSection">
+    <!-- <section class="rightSection">
       <div class="col-sm-8">
         <md-navbar>
           <ul class="hide-on-med-and-down right">
@@ -60,5 +61,5 @@
         </md-navbar>
       </div>
         <router-view></router-view>
-    </section>
+    </section> -->
 </template>

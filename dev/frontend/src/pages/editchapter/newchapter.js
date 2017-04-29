@@ -4,14 +4,16 @@ import {Dragula} from 'aurelia-dragula';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import { MdToastService } from 'aurelia-materialize-bridge';
 
 let httpClient = new HttpClient();
 
-@inject(EventAggregator)
+@inject(EventAggregator, MdToastService)
 export class NewChapter {
-    constructor(eventag) {
+    constructor(eventag, toast) {
       this.hidden = true;
       this.ea = eventag;
+      this.toast = toast;
       this.author = Cookies.get('username');
       this.chapter = {name: "New Chapter", author: this.author, uuid: "none"};
       this.token = "Token " + Cookies.get('token');
@@ -53,7 +55,7 @@ export class NewChapter {
 
       console.log("save rearrangements");
       var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
-      var body = {scraps: scraps_change, name: this.chapter.name};
+      var body = {scraps: scraps_change, name: this.chapter.name.trim()};
       httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
         method: 'post',
         body: JSON.stringify(body),
@@ -67,10 +69,12 @@ export class NewChapter {
           console.log(data);
          document.getElementById('save-warning').click();
          this.hidden = true;
+         this.toast.show('A new chapter has successfully been added.', 5000, 'rounded orange');
        });
     }
 
     activate(author) {
+      console.log(author);
       httpClient.fetch('https://remix.ist/chapters/new', {
         method: 'post',
         body: JSON.stringify({name: "New Chapter", author: Cookies.get('username')}),
@@ -82,7 +86,37 @@ export class NewChapter {
       .then(response => response.json())
       .then(data => {
           this.chapter = data;
+          console.log('new chaptr');
+          console.log(data);
+
+          var body = {chapters: [[data.author, data.uuid, null]]};
+          console.log("json = " + JSON.stringify(body));
+
+          let chapterAuthor = author.author;
+          let bookID = author.uuid;
+          console.log(author.author);
+          console.log(author.uuid);
+
+          console.log('https://remix.ist/books/' + chapterAuthor + '/' + bookID);
+          //httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
+          httpClient.fetch('https://remix.ist/books/' + chapterAuthor + '/' + bookID, {
+            method: 'post',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': this.token
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+              this.chapter = data;
+              console.log('this is a story aLL ABOUT HOW');
+              console.log(data);
+          });
       });
+
+
+
 
       this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
         if (this.hidden) {
@@ -104,14 +138,14 @@ export class NewChapter {
       this.edit_subscription.dispose();
     }
 
-    configureRouter(config, router) {
-        config.title = 'Chapter Tabs';
-        config.map([
-          { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
-          { route: ['newscrap', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
-          { route: ['editscrap', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
-          { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
-        ]);
-        this.router = router;
-    }
+    // configureRouter(config, router) {
+    //     config.title = 'Chapter Tabs';
+    //     config.map([
+    //       { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
+    //       { route: ['newscrap', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
+    //       { route: ['editscrap', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
+    //       { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
+    //     ]);
+    //     this.router = router;
+    // }
 }

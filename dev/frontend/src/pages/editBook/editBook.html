@@ -45,7 +45,7 @@
           </ul>
         </div>
         <div class="fixed-action-btn" id="left-pane-button">
-             <a route-href="route: newchapter;" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Chapter;" md-waves="color: light; circle: true;">
+             <a route-href="route: newchapter; params.bind: {author: book.author, uuid: book.uuid}" md-button="floating: true; large: true;" md-tooltip="position: left; text: Create New Chapter;" md-waves="color: light; circle: true;">
                <i class="large material-icons">description</i>
              </a>
         </div>
