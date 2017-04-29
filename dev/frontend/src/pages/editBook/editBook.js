@@ -40,7 +40,6 @@ export class EditBook {
     if(source.dataset.search) {
 
       this.book.chapters.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null]);
-      alert(this.book.chapters);
     } else {
       var move = function(array, from, to) {
         array.splice(to, 0, array.splice(from, 1)[0]);

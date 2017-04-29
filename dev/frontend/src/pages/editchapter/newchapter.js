@@ -54,27 +54,32 @@ export class NewChapter {
     saveRearrangements() {
 
       console.log("save rearrangements");
-      var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
-      var body = {scraps: scraps_change, name: this.chapter.name.trim()};
-      httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
-        method: 'post',
-        body: JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': this.token
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log(data);
-         document.getElementById('save-warning').click();
-         this.hidden = true;
-         this.toast.show('A new chapter has successfully been added.', 5000, 'rounded orange');
-       });
+      // if(this.type == "book")
+      // {
+
+        var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
+        var body = {scraps: scraps_change, name: this.chapter.name.trim()};
+        httpClient.fetch('https://remix.ist/chapters/' + this.chapter.author + '/' + this.chapter.uuid, {
+          method: 'post',
+          body: JSON.stringify(body),
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': this.token
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+           document.getElementById('save-warning').click();
+           this.hidden = true;
+           this.toast.show('A new chapter has successfully been added.', 5000, 'rounded orange');
+         });
+    //  }
     }
 
     activate(author) {
       console.log(author);
+
       httpClient.fetch('https://remix.ist/chapters/new', {
         method: 'post',
         body: JSON.stringify({name: "New Chapter", author: Cookies.get('username')}),
@@ -86,33 +91,89 @@ export class NewChapter {
       .then(response => response.json())
       .then(data => {
           this.chapter = data;
-          console.log('new chaptr');
+
           console.log(data);
+          console.log("Finished With Chapter Creation");
 
-          var body = {chapters: [[data.author, data.uuid, null]]};
-          console.log("json = " + JSON.stringify(body));
+          // var body = {chapters: [[data.author, data.uuid, null]]};
+          // console.log("json = " + JSON.stringify(body));
 
-          let chapterAuthor = author.author;
+          let bookAuthor = author.author;
           let bookID = author.uuid;
-          console.log(author.author);
-          console.log(author.uuid);
+          let chapterAuthor = data.author;
+          let chapterID = data.uuid;
+          let chapterTitle = data.name;
 
-          console.log('https://remix.ist/books/' + chapterAuthor + '/' + bookID);
-          //httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
-          httpClient.fetch('https://remix.ist/books/' + chapterAuthor + '/' + bookID, {
-            method: 'post',
-            body: JSON.stringify(body),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': this.token
-            }
-          })
-          .then(response => response.json())
-          .then(data => {
-              this.chapter = data;
-              console.log('this is a story aLL ABOUT HOW');
-              console.log(data);
-          });
+          console.log(bookAuthor);
+          console.log(bookID);
+          console.log(chapterID);
+
+          console.log('https://remix.ist/books/' + bookAuthor + '/' + bookID);
+
+          if(bookID !== undefined || bookID !== null || bookID !== "")
+          {
+            this.type = "book";
+            //httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
+            httpClient.fetch('https://remix.ist/books/' + bookAuthor + '/' + bookID, {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': this.token
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+                //this.booksChapters = data.chapters;
+
+                var booksChapters;
+                //this.booksChapters.push(data);
+                booksChapters = data.chapters;
+
+                var newChapterRequest = [];
+
+                for(var i = 0; i < booksChapters.length; i++) {
+                  newChapterRequest.push([booksChapters[i][0], booksChapters[i][1], booksChapters[i][2]]);
+                }
+                newChapterRequest.push([chapterAuthor, chapterID, null]);
+
+                let body = {
+                  chapters:
+                    newChapterRequest
+                };
+
+
+
+                //
+                // booksChapters = this.booksChapters;
+                //
+                // console.log("booksChapters = " + JSON.stringify(booksChapters));
+                // booksChapters.push([chapterAuthor,chapterID,null]);
+                //
+                // var body = {chapters: booksChapters};
+                //
+
+                console.log("Update Book Now!");
+
+                console.log(JSON.stringify(body));
+                this.type = "book";
+                //httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
+                httpClient.fetch('https://remix.ist/books/' + bookAuthor + '/' + bookID, {
+                  method: 'post',
+                  body: JSON.stringify(body),
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': this.token
+                  }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    this.book = data;
+                    console.log("bookid = " + bookID + " should be updated with " + chapterID);
+                    console.log(data);
+                });
+            });
+
+          }
+
       });
 
 
