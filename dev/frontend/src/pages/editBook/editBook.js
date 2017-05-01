@@ -185,10 +185,10 @@ export class EditBook {
             });
 
 
-      this.new_subscription = this.ea.subscribe('new-chapter', test => {
-          console.log(test);
-          console.log(test.chapterAuthor, test.chapterID, null, test.requested);
-          this.book.chapters.push({author: test.chapterAuthor, uuid: test.chapterID, sha: null, name: test.requested, favorite: false}) ;
+      this.new_subscription = this.ea.subscribe('new-chapter', new_chapter => {
+          console.log(new_chapter);
+          console.log(new_chapter.chapterAuthor, new_chapter.chapterID, null, new_chapter.requested);
+          this.book.chapters.push({author: new_chapter.chapterAuthor, uuid: new_chapter.chapterID, sha: null, name: new_chapter.requested, favorite: false}) ;
       });
   }
 

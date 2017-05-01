@@ -17,18 +17,18 @@ export class Chapters {
         this.unassociatedChapters = false;
         let username = Cookies.get('username');
 
-        httpClient.fetch('https://remix.ist/chapters/' + username, {
-                headers: {
-                    'Authorization': "Token " + Cookies.get('token')
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                for (let instance of data) {
-                    console.log(instance);
-                    this.chapters.push(instance);
-                }
-            });
+        // httpClient.fetch('https://remix.ist/chapters/' + username, {
+        //         headers: {
+        //             'Authorization': "Token " + Cookies.get('token')
+        //         }
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         for (let instance of data) {
+        //             console.log(instance);
+        //             this.chapters.push(instance);
+        //         }
+        //     });
     }
 
     favorite(thing) {
@@ -88,13 +88,26 @@ export class Chapters {
     }
 
     activate(chapter) {
-        console.log(chapter);
+      let username = Cookies.get('username');
 
-        this.new_subscription = this.ea.subscribe('new-chapter', test => {
-            console.log(test);
-            console.log(test.chapterAuthor, test.chapterID, null, test.requested);
-            this.book.chapters.push({ author: test.chapterAuthor, uuid: test.chapterID, sha: null, name: test.requested, favorite: false });
+      httpClient.fetch('https://remix.ist/chapters/' + username, {
+        headers: {
+          'Authorization': "Token " + Cookies.get('token')
+        }})
+      .then(response => response.json())
+      .then(data => {
+          for (let instance of data) {
+              console.log(instance);
+              this.chapters.push(instance);
+          }
         });
+
+
+      this.new_subscription = this.ea.subscribe('new-chapter', new_chapter => {
+          console.log(new_chapter);
+          console.log(new_chapter.chapterAuthor, new_chapter.chapterID, null, new_chapter.requested);
+          //this.chapters.push({author: new_chapter.chapterAuthor, uuid: new_chapter.chapterID, sha: null, name: new_chapter.requested, favorite: false}) ;
+      });
     }
 
     configureRouter(config, router) {
