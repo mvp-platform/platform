@@ -139,7 +139,7 @@ const getBooksByAuthor = async function (request, reply) {
       results.push(book.reconstitute(request.params.author, dir));
     }
     let books = await Promise.all(results);
-    if (login.success)
+    if (login.success) {
       for (let book of books) {
         book.favorite = await mongoutils.isFav("book", book, login.username);
       }
