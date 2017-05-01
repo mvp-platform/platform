@@ -203,7 +203,17 @@ Book.prototype.fork = async function fork(newUser) {
   return newBook;
 };
 
+
+const fleshOut = async function (truple) {
+  for (const ch in truple) {
+    const c = await chapter.reconstitute(truple[ch][0], truple[ch][1], truple[ch][2]);
+    truple[ch].push(c.name);
+  }
+  return truple;
+};
+
 module.exports = {
   Book,
   reconstitute,
+  fleshOut
 };
