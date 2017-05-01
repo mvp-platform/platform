@@ -127,7 +127,7 @@ export class EditBook {
     console.log('siblingVM = ' ); console.log( siblingVM);
 
     if(source.dataset.search) {
-      this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name});
+      this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name, sha: null});
     }
     else {
       var move = function(array, from, to) {

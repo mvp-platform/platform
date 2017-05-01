@@ -59,7 +59,7 @@ export class NewBook {
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
       if(source.dataset.search) {
-        this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name});
+        this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name, sha: null});
       }
       else {
         var move = function(array, from, to) {
@@ -150,6 +150,7 @@ export class NewBook {
           { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
           { route: ['newchapter', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/newchapter/newchapter', nav: false, title: 'New Scrap' },
           { route: ['editchapter', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editchapter/editchapter', nav: false, title: 'Edit Scrap' },
+          { route: ['mychaptersside'], name: 'mychaptersside', moduleId: 'pages/mychapters/mychaptersside', nav: true, title: 'My Chapters' },
           { route: 'search', name: 'search', settings: {type: 'chapter'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
           { route: 'favs', name: 'favs', settings: {type: 'chapter'}, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
         ]);
