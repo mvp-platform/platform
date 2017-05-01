@@ -253,7 +253,7 @@ const forkScrapById = async function (request, reply) {
       uuid: sFork.uuid,
     },
   });
-  await global.db.collection('refs').insertOne({ author: sFork.author, sFork.text, type: 'scrap', uuid: sFork.uuid, count: 0 });
+  await global.db.collection('refs').insertOne({ author: sFork.author, text: sFork.text, type: 'scrap', uuid: sFork.uuid, count: 0 });
   return reply(sFork);
 };
 
