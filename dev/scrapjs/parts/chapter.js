@@ -210,8 +210,8 @@ Chapter.prototype.update = async function update(diff) {
 const fleshOut = async function (truple) {
   for (const scr in truple) {
     const s = await scrap.reconstitute(truple[scr][0], truple[scr][1], truple[scr][2]);
-    truple[scr].push(s.text);
-    truple[scr].push(s.image);
+    truple[scr][3] = s.text;
+    truple[scr][5] = s.image;
   }
   return truple;
 };
