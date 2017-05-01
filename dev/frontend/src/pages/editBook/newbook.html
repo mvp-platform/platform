@@ -25,7 +25,7 @@
             <li repeat.for="chapter of book.chapters" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
             <md-card md-title="${chapter[0]}">
               <div>
-                <p>${scrap[3]}</p>
+                <p>${chapter[3]}</p>
                 <p class="buttonOptions">
                   <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Preview Chapter;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
@@ -38,6 +38,11 @@
                 </p>
               </div>
             </md-card>
+            <li if.bind="book.chapters.length === 0" class="drag-source drop-target chapter ${chapter.isActive ? 'active' : ''}" data-index="-1">
+              <md-card>
+              <p>It doesn't look like anything's here. Try searching for a chapter to get started, or add a new one!</p>
+              </md-card>
+            </li>
             </ul>
           </div>
         </li>

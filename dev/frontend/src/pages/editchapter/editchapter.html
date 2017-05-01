@@ -42,6 +42,11 @@
                 </p>
               </div>
             </md-card>
+            <li if.bind="chapter.scraps.length === 0" class="drag-source drop-target chapter ${chapter.isActive ? 'active' : ''}" data-index="-1">
+              <md-card>
+              <p>It doesn't look like anything's here. Try searching for a scrap to get started, or add a new one!</p>
+              </md-card>
+            </li>
             </ul>
           </div>
         </li>
