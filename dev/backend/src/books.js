@@ -137,7 +137,11 @@ const getBooksByAuthor = async function (request, reply) {
     for (const dir of dirs) {
       results.push(book.reconstitute(request.params.author, dir));
     }
-    return reply(await Promise.all(results));
+    let books = await Promise.all(results));
+    for (let book of books) {
+      book.favorite = await mongoutils.isFav("book", book);
+    }
+    return reply(books);
   } catch (e) {
     // TODO should return successful but empty for existing user with no books
     return reply({ error: `no books for user ${request.params.author} found` }).code(404);

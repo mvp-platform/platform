@@ -4,6 +4,27 @@ import { Cookies } from 'aurelia-plugins-cookies';
 const httpClient = new HttpClient();
 
 export class Books {
+  favorite(book) {
+    var authToken = "Token " + Cookies.get('token');
+    let method;
+    if (document.getElementById("fav" + book.author + book.uuid + "-icon").innerHTML === "favorite_border") {
+      // add to favorites
+      document.getElementById("fav" + book.author + book.uuid + "-icon").innerHTML = "favorite";
+      method = 'post';
+    } else {
+      // remove from favorites
+      document.getElementById("fav" + book.author + book.uuid + "-icon").innerHTML = "favorite_border";
+      method = 'delete';
+    }
+    // add to favs or remove from favs
+    httpClient.fetch('https://remix.ist/books/' + book.author + '/' + book.uuid + '/favorite', {
+      method: method,
+      headers: {
+        'Authorization': authToken
+      }
+    });
+}
+
   constructor() {
     this.title = "My Books";
     this.books = [];
