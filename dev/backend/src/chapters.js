@@ -163,6 +163,11 @@ const getChaptersByAuthor = async function (request, reply) {
     // TODO should return successful but empty for existing user with no chapters
     return reply({ error: `no chapters for user ${request.params.author} found` }).code(404);
   }
+  if (login.success) {
+    for (let chapter of chapters) {
+      book.favorite = await mongoutils.isFav("chapter", chapter, login.username);
+    }
+  }
   return reply(chapters);
 };
 
