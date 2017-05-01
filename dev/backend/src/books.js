@@ -48,6 +48,12 @@ const bookTmpl = `
 
 const getBookById = async function (request, reply) {
   const b = await book.reconstitute(request.params.author, request.params.id);
+  const login = await accounts.verifylogin(request);
+  if (login.success) {
+    for (let c in b.chapters) {
+      c[4] = await mongoutils.isFav("chapter", {author: c[0], uuid: c[1]}, login.username);
+    }
+  }
   return reply(b);
 };
 

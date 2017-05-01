@@ -10,6 +10,25 @@ const httpClient = new HttpClient();
 
 @inject(EventAggregator, MdToastService)
 export class EditBook {
+  favorite(thing) {
+    var authToken = "Token " + Cookies.get('token');
+    let method;
+    if (!thing[4]) {
+      method = 'post';
+      thing[4] = true;
+    } else {
+      method = 'delete';
+      thing[4] = false;
+    }
+    // add to favs or remove from favs
+    httpClient.fetch('https://remix.ist/chapters/' + thing[0] + '/' + thing[1] + '/favorite', {
+      method: method,
+      headers: {
+        'Authorization': authToken
+      }
+    });
+  }
+
   constructor(eventag, toast) {
     this.title = "Edit Book";
     this.hidden = true;
@@ -89,7 +108,10 @@ export class EditBook {
 
 
   activate(author) {
-    httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`)
+    httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
+      headers: {
+        'Authorization': "Token " + Cookies.get('token')
+      }})
             .then(response => response.json())
             .then((data) => {
               this.book = data;
