@@ -16,7 +16,7 @@ export class NewBook {
       this.ea = eventag;
       this.toast = toast;
       this.author = Cookies.get('username');
-      this.book = {name: "Enter Book Title Here", author: this.author, uuid: "none"};
+      this.book = {name: "Enter Book Title Here", author: this.author, uuid: "none", chapters: []};
       this.token = "Token " + Cookies.get('token');
     }
 
@@ -36,11 +36,11 @@ export class NewBook {
       this.book.chapters.splice(parseInt(index), 1);
     }
 
-
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
       if(source.dataset.search) {
-        this.book.book.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null, source.dataset.text]);
-      } else {
+        this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name});
+      }
+      else {
         var move = function(array, from, to) {
           array.splice(to, 0, array.splice(from, 1)[0]);
         };
@@ -53,29 +53,30 @@ export class NewBook {
     }
 
     saveRearrangements() {
+      var theAuthor = Cookies.get('username');
+      var authToken = "Token " + Cookies.get('token');
 
-      console.log("save rearrangements");
+      // have to get rid of the text field to save chapters
+      var chapters_change = this.book.chapters.map(function(e) { return [e.author, e.uuid, e.sha]});
+      var body = {chapters: chapters_change};
 
-      //var chapters_change = this.book.chapters.map(function(e) { return [e[0], e[1], e[2]]});
-      //var body = {chapters: chapters_change, name: this.book.name};
-      var body = {name: this.book.name.trim()};
-
+      if (this.nameUpdated) {
+        body.name = this.book.name.trim();
+      }
       httpClient.fetch('https://remix.ist/books/' + this.book.author + '/' + this.book.uuid, {
         method: 'post',
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': this.token
+            'Authorization': authToken
         }
       })
       .then(response => response.json())
       .then(data => {
           console.log(data);
-         document.getElementById('save-warning').click();
-         this.hidden = true;
-         this.toast.show('A new book has successfully been created!', 5000);
+          document.getElementById('save-warning').click();
+          this.toast.show('This book has successfully been updated.', 5000);
        });
-
     }
 
     activate(author) {
@@ -127,8 +128,8 @@ export class NewBook {
           { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
           { route: ['newchapter', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/newchapter/newchapter', nav: false, title: 'New Scrap' },
           { route: ['editchapter', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editchapter/editchapter', nav: false, title: 'Edit Scrap' },
-          { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
-          { route: 'favs', name: 'favs', settings: {type: 'scrap'}, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
+          { route: 'search', name: 'search', settings: {type: 'chapter'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
+          { route: 'favs', name: 'favs', settings: {type: 'chapter'}, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
         ]);
         this.router = router;
     }

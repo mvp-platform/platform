@@ -23,17 +23,17 @@
             <md-input class="title-input" onchange.bind="updateName" md-value.bind="book.name"></md-input>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
             <li repeat.for="chapter of book.chapters" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
-            <md-card md-title="${chapter[0]}">
+            <md-card md-title="${chapter.author}">
               <div>
-                <p>${chapter[3]}</p>
+                <p>${chapter.name}</p>
                 <p class="buttonOptions">
-                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: chapter[0], uuid: chapter[1]}" md-tooltip="position: bottom; text: Preview Chapter;">
+                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Preview Chapter;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
-                  <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter[0], uuid: chapter[1], index: $index}" md-tooltip="position: bottom; text: Edit Chapter;">
+                  <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid, index: $index}" md-tooltip="position: bottom; text: Edit Chapter;">
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
                   <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
-                  <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter[0]}/${chapter[1]}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
+                  <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
                     <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                 </p>
               </div>
