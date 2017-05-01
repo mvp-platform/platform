@@ -138,6 +138,7 @@ export class EditChapters {
           { route: ['newscrap', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: false, title: 'New Scrap' },
           { route: ['editscrap', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
           { route: 'search', name: 'search', settings: {type: "scrap"}, moduleId:'pages/search/search', nav: true, title: 'Search' },
+          { route: 'favs', name: 'favs', settings: {type: 'scrap'}, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
         ]);
         this.router = router;
     }
