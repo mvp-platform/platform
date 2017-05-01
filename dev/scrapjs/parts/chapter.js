@@ -62,7 +62,7 @@ Chapter.prototype.getText = async function getText() {
       runningText = `${runningText + sText}\n\n`;
     }
 
-    authors.concat(sAuthor);
+    authors = authors.concat(sAuthor);
   }
   return [runningText, Array.from(new Set(authors))];
 };
