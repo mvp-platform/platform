@@ -21,7 +21,23 @@
         <li>
           <div class="">
             <ul class="nav">
-            <md-input class="title-input" onchange.bind="updateName" md-value.bind="chapter.name"></md-input>
+              <li class="${book.isActive ? 'active' : ''}">
+	 	             <div>
+	 	               <form role = "form" submit.delegate = "submitNewChapter()">
+	 	                 <p value.bind="setAuthor" value="${author[0]}" hidden>${author[0]}</p>
+	 	                 <p value.bind="setBook" value="${author[1]}" hidden>${author[1]}</p>
+	 	                 <md-input class="title-input" md-value.bind="userText"></md-input>
+
+	 	                 <!-- <p class="enableLatexPar">
+	 	                   <md-checkbox click.delegate="toggleDisabled()" md-checked.bind="submitTags">Submit Tags?</md-checkbox>
+	 	                 </p>
+
+	 	                 <md-input md-label="Submit your Scrap Tags here, delimited by commas" md-value.bind="submitTagsText" md-disabled.bind="disabledValue" md-text-area="true"></md-input> -->
+
+	 	                 <button md-button="submit" class="primary-text">Submit</button>
+	 	               </form>
+	 	             </div>
+ 	           </li>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
             <md-card md-title="${scrap[0]}">

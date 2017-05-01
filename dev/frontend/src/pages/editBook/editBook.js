@@ -119,12 +119,6 @@ export class EditBook {
   }
 
   itemDropped(item, target, source, sibling, itemVM, siblingVM) {
-    console.log('item=' ); console.log( item);
-    console.log('target = ' ); console.log( target);
-    console.log('source = ' ); console.log( source);
-    console.log('sibling = ' ); console.log( sibling);
-    console.log('itemVM = ' ); console.log( itemVM);
-    console.log('siblingVM = ' ); console.log( siblingVM);
 
     if(source.dataset.search) {
       this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name, sha: null});
@@ -189,6 +183,13 @@ export class EditBook {
               }
               this.book = data;
             });
+
+
+      this.new_subscription = this.ea.subscribe('new-chapter', test => {
+          console.log(test);
+          console.log(test.chapterAuthor, test.chapterID, null, test.requested);
+          this.book.chapters.push({author: test.chapterAuthor, uuid: test.chapterID, sha: null, name: test.requested, favorite: false}) ;
+      });
   }
 
   configureRouter(config, router) {

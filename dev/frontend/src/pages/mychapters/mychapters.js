@@ -2,14 +2,18 @@ import 'fetch';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { bindable } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
+@inject(EventAggregator)
 export class Chapters {
     @bindable unassociated;
-    constructor() {
+    constructor(eventag) {
       this.title = "My Chapters";
       this.chapters = [];
+      this.ea = eventag;
       this.unassociatedChapters = false;
       let username = Cookies.get('username');
 
@@ -83,6 +87,12 @@ export class Chapters {
 
     activate(chapter) {
       console.log(chapter);
+
+      this.new_subscription = this.ea.subscribe('new-chapter', test => {
+          console.log(test);
+          console.log(test.chapterAuthor, test.chapterID, null, test.requested);
+          this.book.chapters.push({author: test.chapterAuthor, uuid: test.chapterID, sha: null, name: test.requested, favorite: false}) ;
+      });
     }
 
     configureRouter(config, router) {

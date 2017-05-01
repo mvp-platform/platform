@@ -98,12 +98,21 @@ export class NewChapter {
     //  }
     }
 
-    activate(author) {
-      console.log(author);
+    userText = '';
+
+
+    submitNewChapter() {
+      //console.log(author);
+
+      var requested = this.userText;
+      var bookAuthor = this.author[0];
+      var bookID = this.author[1];
+      console.log(requested);
+
 
       httpClient.fetch('https://remix.ist/chapters/new', {
         method: 'post',
-        body: JSON.stringify({name: "New Chapter", author: Cookies.get('username')}),
+        body: JSON.stringify({name: requested, author: Cookies.get('username')}),
         headers: {
             'Content-Type': 'application/json',
             'Authorization': this.token
@@ -116,11 +125,6 @@ export class NewChapter {
           console.log(data);
           console.log("Finished With Chapter Creation");
 
-          // var body = {chapters: [[data.author, data.uuid, null]]};
-          // console.log("json = " + JSON.stringify(body));
-
-          let bookAuthor = author.author;
-          let bookID = author.uuid;
           let chapterAuthor = data.author;
           let chapterID = data.uuid;
           let chapterTitle = data.name;
@@ -161,9 +165,6 @@ export class NewChapter {
                     newChapterRequest
                 };
 
-
-
-
                 console.log("Update Book Now!");
 
                 console.log(JSON.stringify(body));
@@ -180,38 +181,40 @@ export class NewChapter {
                 .then(response => response.json())
                 .then(data => {
                     this.book = data;
-                    console.log("bookid = " + bookID + " should be updated with " + chapterID);
                     console.log(data);
+                    this.toast.show('Chapter created successfully!', 5000);
+                    this.ea.publish('new-chapter', {chapterAuthor, chapterID, null, requested, null});
                 });
             });
 
+          }
+          else {
+            console.log("No Book ID Provided");
+            this.toast.show('Chapter created successfully!', 5000);
           }
 
       });
 
 
-
-
-      this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
-        if (this.hidden) {
-          document.getElementById('save-warning').click();
-          this.hidden = false;
-        }
-        this.chapter.scraps.push([scrap.author, scrap.uuid, null, scrap.text]);
-        this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: scrap.author, uuid: scrap.uuid});
-      });
-      this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
-        this.chapter.scraps.splice(parseInt(data.index), 1, [data.author, data.uuid, null, data.text]);
-        this.router.navigateToRoute('PDFViewer', {type: 'scraps', author: data.author, uuid: data.uuid});
-      });
-
     }
 
-    detached() {
-      this.new_subscription.dispose();
-      this.edit_subscription.dispose();
-    }
+    activate(bookID) {
 
+      var author = Cookies.get('username');
+      var bookID = bookID.uuid;
+
+      console.log(author);
+      console.log(bookID);
+
+      this.author = [];
+
+      this.author.push(author);
+
+      if(bookID !== undefined) {
+        this.author.push(bookID);
+      }
+
+    }
     // configureRouter(config, router) {
     //     config.title = 'Chapter Tabs';
     //     config.map([
