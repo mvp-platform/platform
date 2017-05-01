@@ -14,6 +14,8 @@ const loggedInRoutes = [
     { route: 'newchapter', name: 'newchapter', moduleId: './pages/editchapter/newchapter', nav: false, title: 'New Chapter' },
     { route: 'newbook', name: 'newbook', moduleId: './pages/editBook/newbook', nav: false, title: 'New Book' },
 
+    { route: 'favorites', name: 'favorites', moduleId: './pages/favs/favs', nav: true, title: 'Favorites', settings: 'favorite_border' },
+
     { route: 'search', name: 'search', moduleId: './pages/search/mainsearch', nav: true, title: 'Search', settings: 'search' },
     { route: 'profile', name: 'profile', moduleId: './pages/profile', nav: true, title: 'Profile', settings: 'perm_identity' },
     { route: 'settings', name: 'settings', moduleId: './pages/settings', nav: true, title: 'Settings', settings: 'settings' },
