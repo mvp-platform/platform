@@ -64,9 +64,9 @@ const getChapterById = async function (request, reply) {
   const login = await accounts.verifylogin(request);
   if (login.success) {
     let cs = [];
-    for (let c of c.scraps) {
-      c[4] = await mongoutils.isFav("scrap", {author: c[0], uuid: c[1]}, login.username);
-      cs.push(c);
+    for (let s of c.scraps) {
+      s[4] = await mongoutils.isFav("scrap", {author: s[0], uuid: s[1]}, login.username);
+      cs.push(s);
     }
     console.log(cs);
     c.scraps = cs;

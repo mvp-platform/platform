@@ -16,6 +16,25 @@ export class EditChapters {
       this.ea = eventag;
     }
 
+    favorite(thing) {
+      var authToken = "Token " + Cookies.get('token');
+      let method;
+      if (!thing.favorite) {
+        method = 'post';
+        thing.favorite = true;
+      } else {
+        method = 'delete';
+        thing.favorite = false;
+      }
+      // add to favs or remove from favs
+      httpClient.fetch('https://remix.ist/scraps/' + thing.author + '/' + thing.uuid + '/favorite', {
+        method: method,
+        headers: {
+          'Authorization': authToken
+        }
+      });
+    }
+
     updateName = () => {
       this.nameUpdated = true;
       if (this.hidden) {
@@ -35,7 +54,7 @@ export class EditChapters {
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
       if(source.dataset.search) {
-        this.chapter.scraps.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null, source.dataset.text]);
+        this.chapter.scraps.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, sha: null, text: source.dataset.text});
       } else {
         var move = function(array, from, to) {
           array.splice(to, 0, array.splice(from, 1)[0]);
@@ -53,7 +72,7 @@ export class EditChapters {
       var authToken = "Token " + Cookies.get('token');
 
       // have to get rid of the text field to save scraps
-      var scraps_change = this.chapter.scraps.map(function(e) { return [e[0], e[1], e[2]]});
+      var scraps_change = this.chapter.scraps.map(function(e) { return [e.author, e.uuid, e.sha]});
       var body = {scraps: scraps_change};
       if (this.nameUpdated) {
         body.name = this.chapter.name.trim();
@@ -78,11 +97,19 @@ export class EditChapters {
 
         this.chapter = null;
 
-        httpClient.fetch('https://remix.ist/chapters/' + author.author + '/' + author.uuid)
+        httpClient.fetch('https://remix.ist/chapters/' + author.author + '/' + author.uuid, {
+          headers: {
+            'Authorization': "Token " + Cookies.get('token')
+          }})
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                this.original_scraps = data.scraps;
+                data.scraps = [];
+                for (let c of this.original_scraps) {
+                  data.scraps.push({author: c[0], uuid: c[1], sha: c[2], text: c[3], favorite: c[4]});
+                }
                 this.chapter = data;
+                console.log(data);
             });
 
         this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
