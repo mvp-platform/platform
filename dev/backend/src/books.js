@@ -49,6 +49,7 @@ const bookTmpl = `
 const getBookById = async function (request, reply) {
   const b = await book.reconstitute(request.params.author, request.params.id);
   b.chapters = await book.fleshOut(b.chapters);
+  console.log("fleshed: ", b.chapters);
   const login = await accounts.verifylogin(request);
   if (login.success) {
     let cs = [];
