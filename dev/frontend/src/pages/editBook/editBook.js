@@ -130,6 +130,7 @@ export class EditBook {
             { route: ['newchapter'], name: 'newchapter', moduleId: 'pages/editchapter/newchapter', nav: true, title: 'New Chapter' },
             { route: ['mychaptersside'], name: 'mychaptersside', moduleId: 'pages/mychapters/mychaptersside', nav: true, title: 'My Chapters' },
             { route: 'search', name: 'search', moduleId: 'pages/search/search', settings: { type: 'chapter' }, nav: true, title: 'Search' },
+            { route: 'favs', name: 'favs', moduleId: 'pages/favs/favpanel', settings: { type: 'chapter' }, nav: true, title: 'Favorites' },
     ]);
     this.router = router;
   }

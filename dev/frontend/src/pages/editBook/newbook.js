@@ -128,6 +128,7 @@ export class NewBook {
           { route: ['newchapter', 'new/:author/:uuid'], name: 'newscrap', moduleId: 'pages/newchapter/newchapter', nav: false, title: 'New Scrap' },
           { route: ['editchapter', 'edit/:author/:uuid'], name: 'editscrap', moduleId: 'pages/editchapter/editchapter', nav: false, title: 'Edit Scrap' },
           { route: 'search', name: 'search', settings: {type: 'scrap'}, moduleId: 'pages/search/search', nav: true, title: 'Search' },
+          { route: 'favs', name: 'favs', settings: {type: 'scrap'}, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
         ]);
         this.router = router;
     }
