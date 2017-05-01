@@ -203,6 +203,7 @@ const postNewImage = async function (request, reply) {
 
 // /scraps/{author}
 const getScrapsByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/scrap`);
     const results = [];
@@ -211,6 +212,11 @@ const getScrapsByAuthor = async function (request, reply) {
       results.push(b);
     }
     const scraps = await Promise.all(results);
+    if (login.success) {
+      for (let scrap of scraps) {
+        scrap.favorite = await mongoutils.isFav("scrap", scrap, login.username);
+      }
+    }
     return reply(scraps);
   } catch (e) {
     // TODO should return successful but empty for existing user with no scraps

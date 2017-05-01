@@ -17,12 +17,34 @@ export class Scraps {
       this.unassociatedScraps = false;
       let username = Cookies.get('username');
 
-      httpClient.fetch('https://remix.ist/scraps/' + username)
+      httpClient.fetch('https://remix.ist/scraps/' + username, {
+        headers: {
+          'Authorization': authToken
+        }})
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
               this.scraps.push(instance);
           }
+      });
+    }
+
+    favorite(scrap) {
+      var authToken = "Token " + Cookies.get('token');
+      let method;
+      if (!scrap.favorite) {
+        method = 'post';
+        scrap.favorite = true;
+      } else {
+        method = 'delete';
+        scrap.favorite = false;
+      }
+      // add to favs or remove from favs
+      httpClient.fetch('https://remix.ist/scraps/' + scrap.author + '/' + scrap.uuid + '/favorite', {
+        method: method,
+        headers: {
+          'Authorization': authToken
+        }
       });
     }
 
