@@ -4,12 +4,35 @@ import { Cookies } from 'aurelia-plugins-cookies';
 const httpClient = new HttpClient();
 
 export class Books {
+  favorite(book) {
+    var authToken = "Token " + Cookies.get('token');
+    let method;
+    if (!book.favorite) {
+      method = 'post';
+      book.favorite = true;
+    } else {
+      method = 'delete';
+      book.favorite = false;
+    }
+    // add to favs or remove from favs
+    httpClient.fetch('https://remix.ist/books/' + book.author + '/' + book.uuid + '/favorite', {
+      method: method,
+      headers: {
+        'Authorization': authToken
+      }
+    });
+  }
+
   constructor() {
     this.title = "My Books";
     this.books = [];
     const username = Cookies.get('username');
+    const authToken = "Token " + Cookies.get('token');
 
-    httpClient.fetch(`https://remix.ist/books/${username}`)
+    httpClient.fetch(`https://remix.ist/books/${username}`, {
+      headers: {
+        'Authorization': authToken
+      }})
       .then(response => response.json())
       .then((data) => {
         for (const instance of data) {

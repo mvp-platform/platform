@@ -10,6 +10,25 @@ const httpClient = new HttpClient();
 
 @inject(EventAggregator, MdToastService)
 export class EditBook {
+  favorite(thing) {
+    var authToken = "Token " + Cookies.get('token');
+    let method;
+    if (!thing.favorite) {
+      method = 'post';
+      thing.favorite = true;
+    } else {
+      method = 'delete';
+      thing.favorite = false;
+    }
+    // add to favs or remove from favs
+    httpClient.fetch('https://remix.ist/chapters/' + thing.author + '/' + thing.uuid + '/favorite', {
+      method: method,
+      headers: {
+        'Authorization': authToken
+      }
+    });
+  }
+
   constructor(eventag, toast) {
     this.title = "Edit Book";
     this.hidden = true;
@@ -44,7 +63,7 @@ export class EditBook {
     console.log('siblingVM = ' ); console.log( siblingVM);
 
     if(source.dataset.search) {
-      this.book.chapters.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null]);
+      this.book.chapters.splice(parseInt(target.dataset.index), 0, {author: source.dataset.author, uuid: source.dataset.uuid, favorite: source.dataset.favorite, name: source.dataset.name});
     }
     else {
       var move = function(array, from, to) {
@@ -64,7 +83,7 @@ export class EditBook {
     var authToken = "Token " + Cookies.get('token');
 
     // have to get rid of the text field to save chapters
-    var chapters_change = this.book.chapters.map(function(e) { return [e[0], e[1], e[2]]});
+    var chapters_change = this.book.chapters.map(function(e) { return [e.author, e.uuid, e.sha]});
     var body = {chapters: chapters_change};
 
     if (this.nameUpdated) {
@@ -89,9 +108,17 @@ export class EditBook {
 
 
   activate(author) {
-    httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`)
+    httpClient.fetch(`https://remix.ist/books/${author.author}/${author.uuid}`, {
+      headers: {
+        'Authorization': "Token " + Cookies.get('token')
+      }})
             .then(response => response.json())
             .then((data) => {
+              this.original_chapters = data.chapters;
+              data.chapters = [];
+              for (let c of this.original_chapters) {
+                data.chapters.push({author: c[0], uuid: c[1], sha: c[2], name: c[3], favorite: c[4]});
+              }
               this.book = data;
             });
   }

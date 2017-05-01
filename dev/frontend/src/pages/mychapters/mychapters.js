@@ -13,7 +13,10 @@ export class Chapters {
       this.unassociatedChapters = false;
       let username = Cookies.get('username');
 
-      httpClient.fetch('https://remix.ist/chapters/' + username)
+      httpClient.fetch('https://remix.ist/chapters/' + username, {
+        headers: {
+          'Authorization': "Token " + Cookies.get('token')
+        }})
       .then(response => response.json())
       .then(data => {
           for (let instance of data) {
@@ -21,6 +24,25 @@ export class Chapters {
               this.chapters.push(instance);
           }
         });
+    }
+
+    favorite(thing) {
+      var authToken = "Token " + Cookies.get('token');
+      let method;
+      if (!thing.favorite) {
+        method = 'post';
+        thing.favorite = true;
+      } else {
+        method = 'delete';
+        thing.favorite = false;
+      }
+      // add to favs or remove from favs
+      httpClient.fetch('https://remix.ist/chapters/' + thing.author + '/' + thing.uuid + '/favorite', {
+        method: method,
+        headers: {
+          'Authorization': authToken
+        }
+      });
     }
 
     unassociatedChanged(newValue) {

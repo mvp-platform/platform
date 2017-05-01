@@ -55,12 +55,27 @@ const getUnassociatedChapters = async function (request, reply) {
     delete e.count;
     return e;
   });
+  if (login.success) {
+    for (let chapter of unassoc) {
+      chapter.favorite = await mongoutils.isFav("chapter", chapter, login.username);
+    }
+  }
   return reply(unassoc);
 };
 
 const getChapterById = async function (request, reply) {
   const c = await chapter.reconstitute(request.params.author, request.params.id);
   c.scraps = await chapter.fleshOut(c.scraps);
+  const login = await accounts.verifylogin(request);
+  if (login.success) {
+    let cs = [];
+    for (let s of c.scraps) {
+      s[4] = await mongoutils.isFav("scrap", {author: s[0], uuid: s[1]}, login.username);
+      cs.push(s);
+    }
+    console.log(cs);
+    c.scraps = cs;
+  }
   return reply(c);
 };
 
@@ -151,6 +166,7 @@ const postNewChapter = async function (request, reply) {
 
 // /chapters/{author}
 const getChaptersByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   const chapters = [];
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/chapter`);
@@ -162,6 +178,11 @@ const getChaptersByAuthor = async function (request, reply) {
   } catch (e) {
     // TODO should return successful but empty for existing user with no chapters
     return reply({ error: `no chapters for user ${request.params.author} found` }).code(404);
+  }
+  if (login.success) {
+    for (let chapter of chapters) {
+      chapter.favorite = await mongoutils.isFav("chapter", chapter, login.username);
+    }
   }
   return reply(chapters);
 };

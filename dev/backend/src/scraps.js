@@ -5,6 +5,7 @@ const pdf = require('./pdf');
 const fs = require('fs-extra');
 const promisify = require('es6-promisify');
 const lescape = require('escape-latex');
+const mongoutils = require('./mongoutils');
 
 const ensureDir = promisify(fs.mkdirs);
 const writeFile = promisify(fs.writeFile);
@@ -53,6 +54,11 @@ const getUnassociatedScraps = async function (request, reply) {
     delete e.count;
     return e;
   });
+  if (login.success) {
+    for (let scrap of unassoc) {
+      scrap.favorite = await mongoutils.isFav("scrap", scrap, login.username);
+    }
+  }
   return reply(unassoc);
 };
 
@@ -203,6 +209,7 @@ const postNewImage = async function (request, reply) {
 
 // /scraps/{author}
 const getScrapsByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/scrap`);
     const results = [];
@@ -211,9 +218,15 @@ const getScrapsByAuthor = async function (request, reply) {
       results.push(b);
     }
     const scraps = await Promise.all(results);
+    if (login.success) {
+      for (let scrap of scraps) {
+        scrap.favorite = await mongoutils.isFav("scrap", scrap, login.username);
+      }
+    }
     return reply(scraps);
   } catch (e) {
     // TODO should return successful but empty for existing user with no scraps
+    console.log(e);
     return reply({ error: `no scraps for user ${request.params.author} found` }).code(404);
   }
 };

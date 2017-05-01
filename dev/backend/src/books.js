@@ -48,6 +48,16 @@ const bookTmpl = `
 
 const getBookById = async function (request, reply) {
   const b = await book.reconstitute(request.params.author, request.params.id);
+  const login = await accounts.verifylogin(request);
+  if (login.success) {
+    let cs = [];
+    for (let c of b.chapters) {
+      c[4] = await mongoutils.isFav("chapter", {author: c[0], uuid: c[1]}, login.username);
+      cs.push(c);
+    }
+    console.log(cs);
+    b.chapters = cs;
+  }
   return reply(b);
 };
 
@@ -131,13 +141,20 @@ const postNewBook = async function (request, reply) {
 
 // /books/{author}
 const getBooksByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/book`);
     const results = [];
     for (const dir of dirs) {
       results.push(book.reconstitute(request.params.author, dir));
     }
-    return reply(await Promise.all(results));
+    let books = await Promise.all(results);
+    if (login.success) {
+      for (let book of books) {
+        book.favorite = await mongoutils.isFav("book", book, login.username);
+      }
+    }
+    return reply(books);
   } catch (e) {
     // TODO should return successful but empty for existing user with no books
     return reply({ error: `no books for user ${request.params.author} found` }).code(404);

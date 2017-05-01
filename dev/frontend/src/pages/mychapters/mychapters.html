@@ -26,6 +26,10 @@ we created, and we bind viewmodel properties to it.
                               <!-- Edit--><i class="material-icons">mode_edit</i></a>
                             <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
                               <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                            <a if.bind="!chapter.favorite" click.delegate="favorite(chapter)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Add to Favorites">
+                              <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
+                            <a if.bind="chapter.favorite" click.delegate="favorite(chapter)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
+                              <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite</i></a>
                           </p>
                         </div>
                       </md-card>

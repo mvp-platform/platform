@@ -23,18 +23,22 @@
             <md-input class="title-input" onchange.bind="updateName" md-value.bind="chapter.name"></md-input>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
-            <md-card md-title="${scrap[0]}">
+            <md-card md-title="${scrap.author}">
               <div>
-                <p>${scrap[3]}</p>
+                <p>${scrap.text}</p>
                 <p class="buttonOptions">
-                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap[0], uuid: scrap[1]}" md-tooltip="position: bottom; text: Preview Scrap;">
+                  <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
-                  <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap[0], uuid: scrap[1], index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                  <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid, index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
                   <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
-                  <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="https://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
+                  <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="https://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
                     <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                  <a if.bind="!scrap.favorite" click.delegate="favorite(scrap)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Add to Favorites">
+                    <!-- fav--><i id="fav${scrap.author}${scrap.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
+                  <a if.bind="scrap.favorite" click.delegate="favorite(scrap)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
+                    <!-- fav--><i id="fav${scrap.author}${scrap.uuid}-icon" class="on-white material-icons">favorite</i></a>
                 </p>
               </div>
             </md-card>

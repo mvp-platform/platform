@@ -1,3 +1,9 @@
+const isFav = async function (type, obj, userid) {
+  const cursor = await global.db.collection('favorites').find({ userid, type, author: obj.author, uuid: obj.uuid });
+  const isFaved = (await cursor.toArray()).length === 1;
+  return isFaved;
+}
+
 const incRef = async function (author, uuid) {
   await global.db.collection('refs').update({ author, uuid }, { $inc: { count: 1 } });
 };
@@ -25,4 +31,4 @@ const countRefs = async function (old, newRef, user) {
   }
 };
 
-module.exports = { incRef, decRef, countRefs };
+module.exports = { incRef, decRef, countRefs, isFav };
