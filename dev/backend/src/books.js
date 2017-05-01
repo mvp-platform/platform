@@ -55,6 +55,7 @@ const getBookById = async function (request, reply) {
       c[4] = await mongoutils.isFav("chapter", {author: c[0], uuid: c[1]}, login.username);
       cs.push(c);
     }
+    console.log(cs);
     b.chapters = cs;
   }
   return reply(b);
