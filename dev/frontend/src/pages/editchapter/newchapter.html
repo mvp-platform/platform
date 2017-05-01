@@ -34,6 +34,10 @@
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
                   <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
+                  <a if.bind="scrap.sha !== null" class="on-white previewEditLinks" href="#" click.delegate="unpin($index)" md-tooltip="position: bottom; text: Unpin Scrap;">
+                    <!-- Remove--> <i class="material-icons">lock</i></a>
+                  <a if.bind="scrap.sha === null" class="on-white previewEditLinks" href="#" click.delegate="pin($index)" md-tooltip="position: bottom; text: Pin Scrap;">
+                    <!-- Edit--><i class="material-icons">lock_outline</i></a>
                   <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="https://remix.ist/scraps/${scrap[0]}/${scrap[1]}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">
                     <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                 </p>

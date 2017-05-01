@@ -28,6 +28,27 @@ export class NewBook {
       }
     }
 
+    pin(i) {
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+      // get history
+      httpClient.fetch('https://remix.ist/chapters/' + this.book.chapters[parseInt(i)].author + '/' + this.book.chapters[parseInt(i)].uuid + '/history')
+      .then(response => response.json())
+      .then(data => {
+          this.book.chapters[parseInt(i)].sha = data[0][0];
+       });
+    }
+
+    unpin(i) {
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+      this.book.chapters[parseInt(i)].sha = null;
+    }
+
     delete(index) {
       if (this.hidden) {
         document.getElementById('save-warning').click();

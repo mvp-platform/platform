@@ -35,6 +35,27 @@ export class NewChapter {
       this.chapter.scraps.splice(parseInt(index), 1);
     }
 
+    pin(i) {
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+      // get history
+      httpClient.fetch('https://remix.ist/scraps/' + this.chapter.scraps[parseInt(i)].author + '/' + this.chapter.scraps[parseInt(i)].uuid + '/history')
+      .then(response => response.json())
+      .then(data => {
+          this.chapter.scraps[parseInt(i)].sha = data[0][0];
+       });
+    }
+
+    unpin(i) {
+      if (this.hidden) {
+        document.getElementById('save-warning').click();
+        this.hidden = false;
+      }
+      this.chapter.scraps[parseInt(i)].sha = null;
+    }
+
 
     itemDropped(item, target, source, sibling, itemVM, siblingVM) {
       if(source.dataset.search) {

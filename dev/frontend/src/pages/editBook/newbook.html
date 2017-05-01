@@ -33,6 +33,10 @@
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
                   <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
+                  <a if.bind="chapter.sha !== null" class="on-white previewEditLinks" href="#" click.delegate="unpin($index)" md-tooltip="position: bottom; text: Unpin Chapter;">
+                    <!-- Remove--> <i class="material-icons">lock</i></a>
+                  <a if.bind="chapter.sha === null" class="on-white previewEditLinks" href="#" click.delegate="pin($index)" md-tooltip="position: bottom; text: Pin Chapter;">
+                    <!-- Edit--><i class="material-icons">lock_outline</i></a>
                   <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
                     <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
                 </p>
