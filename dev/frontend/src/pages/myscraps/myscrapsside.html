@@ -1,0 +1,28 @@
+<template>
+  <section class="rightTabInstance">
+      <md-navbar>
+        <span class="spacer"><span class="brand-logo">${title}</span></span>
+        <ul class="hide-on-med-and-down right">
+          <md-switch md-label-on="UNUSED SCRAPS" md-label-off="ALL SCRAPS" class="unassoc-switch" md-checked.bind="unassociated"></md-switch>
+        </ul>
+      </md-navbar>
+      </ul>
+      <div class="col-sm-8">
+        <ul md-collapsible>
+          <div class="">
+            <ul class="draggable-header nav">
+              <!-- <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop> -->
+              <li repeat.for="scrap of scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-search="true" data-author="${scrap.author}" data-uuid="${scrap.uuid}"  data-text="${scrap.text}" data-index="${$index}">
+                <md-card md-title="${scrap.name}">
+                  <div>
+                    <p>Scrap: ${$index+1} - ${(scrap.text).substring(0,150) + "..."}</p>
+                  </div>
+                </md-card>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+  </section>
+
+</template>

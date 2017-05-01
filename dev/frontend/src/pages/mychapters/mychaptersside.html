@@ -1,10 +1,5 @@
 <template>
     <require from="resources/elements/pdf-document"></require>
-
-  <!--
-This is just a regular Aurelia viewmodel. We import the pdf-document element that
-we created, and we bind viewmodel properties to it.
--->
   <section class="rightTabInstance">
       <md-navbar>
         <span class="spacer"><span class="brand-logo">${title}</span></span>
@@ -22,14 +17,6 @@ we created, and we bind viewmodel properties to it.
                 <md-card md-title="${chapter.name}">
                   <div>
                     <p>Scraps: ${chapter.scraps.length}</p>
-                    <!-- <p class="buttonOptions">
-                      <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Preview Chapter;">
-                        <i class="material-icons">pageview</i></a>
-                      <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Edit Chapter;">
-                        <i class="material-icons">mode_edit</i></a>
-                      <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/chapters/${chapter.author}/${chapter.uuid}/pdf" md-tooltip="position: bottom; text: Open Chapter Externally;">
-                        <i class="material-icons">open_in_new</i></a>
-                    </p> -->
                   </div>
                 </md-card>
               </li>
