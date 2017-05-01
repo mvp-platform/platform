@@ -36,11 +36,17 @@ export class EditBook {
   }
 
   itemDropped(item, target, source, sibling, itemVM, siblingVM) {
+    console.log('item=' ); console.log( item);
+    console.log('target = ' ); console.log( target);
+    console.log('source = ' ); console.log( source);
+    console.log('sibling = ' ); console.log( sibling);
+    console.log('itemVM = ' ); console.log( itemVM);
+    console.log('siblingVM = ' ); console.log( siblingVM);
 
     if(source.dataset.search) {
-
       this.book.chapters.splice(parseInt(target.dataset.index), 0, [source.dataset.author, source.dataset.uuid, null]);
-    } else {
+    }
+    else {
       var move = function(array, from, to) {
         array.splice(to, 0, array.splice(from, 1)[0]);
       };
@@ -76,7 +82,7 @@ export class EditBook {
     .then(data => {
         console.log(data);
         document.getElementById('save-warning').click();
-        this.toast.show('This book has successfully been updated.', 5000, 'rounded orange');
+        this.toast.show('This book has successfully been updated.', 5000);
      });
   }
 
@@ -95,6 +101,7 @@ export class EditBook {
     config.map([
             { route: ['', ':type/:author/:uuid'], name: 'PDFViewer', moduleId: 'pages/pdfviewer/pdfviewer', nav: true, title: 'PDF Viewer' },
             { route: ['newchapter'], name: 'newchapter', moduleId: 'pages/editchapter/newchapter', nav: true, title: 'New Chapter' },
+            { route: ['mychaptersside'], name: 'mychaptersside', moduleId: 'pages/mychapters/mychaptersside', nav: true, title: 'My Chapters' },
             { route: 'search', name: 'search', moduleId: 'pages/search/search', settings: { type: 'chapter' }, nav: true, title: 'Search' },
     ]);
     this.router = router;

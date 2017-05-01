@@ -73,7 +73,7 @@ export class NewBook {
           console.log(data);
          document.getElementById('save-warning').click();
          this.hidden = true;
-         this.toast.show('A new book has successfully been created!', 5000, 'rounded orange');
+         this.toast.show('A new book has successfully been created!', 5000);
        });
 
     }

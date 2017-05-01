@@ -72,7 +72,7 @@ export class NewChapter {
             console.log(data);
            document.getElementById('save-warning').click();
            this.hidden = true;
-           this.toast.show('A new chapter has successfully been added.', 5000, 'rounded orange');
+           this.toast.show('A new chapter has successfully been added.', 5000);
          });
     //  }
     }
@@ -142,14 +142,6 @@ export class NewChapter {
 
 
 
-                //
-                // booksChapters = this.booksChapters;
-                //
-                // console.log("booksChapters = " + JSON.stringify(booksChapters));
-                // booksChapters.push([chapterAuthor,chapterID,null]);
-                //
-                // var body = {chapters: booksChapters};
-                //
 
                 console.log("Update Book Now!");
 

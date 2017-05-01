@@ -3,14 +3,16 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import {Dragula} from 'aurelia-dragula';
 import {Cookies} from 'aurelia-plugins-cookies';
 import { inject } from 'aurelia-framework';
+import { MdToastService } from 'aurelia-materialize-bridge';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
-@inject(EventAggregator)
+@inject(EventAggregator, MdToastService)
 export class EditChapters {
-    constructor(eventag) {
+    constructor(eventag, toast) {
       this.hidden = true;
+      this.toast = toast;
       this.ea = eventag;
     }
 
@@ -67,7 +69,8 @@ export class EditChapters {
       .then(response => response.json())
       .then(data => {
           console.log(data);
-         document.getElementById('save-warning').click();
+          this.toast.show('Chapter saved successfully!', 5000);
+          document.getElementById('save-warning').click();
        });
     }
 

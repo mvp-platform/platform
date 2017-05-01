@@ -280,6 +280,7 @@ section {
     xmin-height: 800px;
     min-height: 98vh;
     border: 1px solid gray;
+    border-bottom: none;
     xborder-radius: 5px;
     xmargin: 10px;
 }
