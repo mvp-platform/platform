@@ -18,7 +18,7 @@ const loggedInRoutes = [
 
     { route: 'search', name: 'search', moduleId: './pages/search/mainsearch', nav: true, title: 'Search', settings: 'search' },
     { route: 'profile', name: 'profile', moduleId: './pages/profile', nav: true, title: 'Profile', settings: 'person' },
-    { route: 'settings', name: 'settings', moduleId: './pages/settings', nav: true, title: 'Settings', settings: 'settings' },
+    //{ route: 'settings', name: 'settings', moduleId: './pages/settings', nav: true, title: 'Settings', settings: 'settings' },
 ];
 
 const loggedOutRoutes = loggedInRoutes.map(r => ({ route: r.route, redirect: 'login' }));
