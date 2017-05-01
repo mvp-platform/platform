@@ -15,7 +15,11 @@
               <li repeat.for="scrap of scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-search="true" data-author="${scrap.author}" data-uuid="${scrap.uuid}"  data-text="${scrap.text}" data-index="${$index}">
                 <md-card md-title="${scrap.name}">
                   <div>
-                    <p>Scrap: ${$index+1} - ${(scrap.text).substring(0,150) + "..."}</p>
+                    <p if.bind="!scrap.image">${(scrap.text).substring(0,150) + "..."}</p>
+                    <p if.bind="scrap.image">
+                      <a route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
+                          Preview Image</a>
+                    </p>
                   </div>
                 </md-card>
               </li>

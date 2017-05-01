@@ -25,7 +25,12 @@
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
             <md-card md-title="${scrap.author}">
               <div>
-                <p>${scrap.text}</p>
+                <p if.bind="!scrap.image">${scrap.text}</p>
+                <p if.bind="scrap.image">
+                  <a route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
+                  Preview Image
+                  </a>
+                </p>
                 <p class="buttonOptions">
                   <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
