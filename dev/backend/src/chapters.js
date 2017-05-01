@@ -166,7 +166,7 @@ const getChaptersByAuthor = async function (request, reply) {
   }
   if (login.success) {
     for (let chapter of chapters) {
-      book.favorite = await mongoutils.isFav("chapter", chapter, login.username);
+      chapter.favorite = await mongoutils.isFav("chapter", chapter, login.username);
     }
   }
   return reply(chapters);
