@@ -56,7 +56,7 @@ const getUnassociatedScraps = async function (request, reply) {
   });
   if (login.success) {
     for (let scrap of unassoc) {
-      chapter.favorite = await mongoutils.isFav("scrap", scrap, login.username);
+      scrap.favorite = await mongoutils.isFav("scrap", scrap, login.username);
     }
   }
   return reply(unassoc);
