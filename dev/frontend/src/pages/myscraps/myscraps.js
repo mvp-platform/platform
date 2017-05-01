@@ -126,7 +126,7 @@ export class Scraps {
             { route: ['newscrap'], name: 'newscrap', moduleId: 'pages/editscrap/newscrap', nav: true, title: 'New Scrap' },
             { route: ['editscrap', ':author/:uuid'], name: 'editscrap', moduleId: 'pages/editscrap/editscrap', nav: false, title: 'Edit Scrap' },
             { route: 'search', name: 'search', settings: { type: 'scrap', myStuff: true }, moduleId: 'pages/search/search', nav: true, title: 'Search' },
-            { route: ['editTimeline', ':type/:author/:uuid'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
+            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
         ]);
         this.router = router;
     }
