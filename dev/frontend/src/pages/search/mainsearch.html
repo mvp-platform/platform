@@ -20,6 +20,14 @@
                   <p if.bind="hit._type === 'scrap'">${hit._source.text}</p>
                   <p if.bind="hit._type === 'chapter' || hit._type === 'book'">${hit._source.name}</p>
                   <p class="buttonOptions">
+                    <a if.bind="hit._source.author === user && hit._type === 'chapter'" class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Edit;">
+                      <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                    <a if.bind="hit._source.author === user && hit._type === 'scrap'" class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Edit;">
+                      <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                    <a if.bind="hit._source.author === user && hit._type === 'book'" class="on-white previewEditLinks" route-href="route: editbook; params.bind: {author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Edit;">
+                      <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                    <a if.bind="hit._source.author !== user" class="on-white previewEditLinks" href="#" click.delegate="fork(hit)" md-tooltip="position: bottom; text: Fork;">
+                      <!-- Remove--> <i class="material-icons">call_split</i></a>
                      <a  class="on-white previewEditLinks" route-href="route: pdfviewer; params.bind: {type: hit._type + 's', author: hit._source.author, uuid: hit._source.uuid}" md-tooltip="position: bottom; text: Preview;">
                         <!-- Preview --><i class="material-icons">pageview</i></a>
                       <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/${hit._type}s/${hit._source.author}/${hit._source.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">

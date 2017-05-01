@@ -10,6 +10,21 @@ const httpClient = new HttpClient();
 
 @inject(EventAggregator, MdToastService)
 export class EditBook {
+  fork(thing) {
+    // fork
+    var authToken = "Token " + Cookies.get('token');
+    httpClient.fetch('https://remix.ist/chapters/' + thing.author + '/' + thing.uuid + '/fork', {
+      method: 'post',
+      headers: {
+        'Authorization': authToken
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+        thing.author = data.author;
+     });
+  }
+
   favorite(thing) {
     var authToken = "Token " + Cookies.get('token');
     let method;
@@ -26,7 +41,11 @@ export class EditBook {
       headers: {
         'Authorization': authToken
       }
-    });
+    })
+    .then(response => response.json())
+    .then(data => {
+        thing.author = this.author;
+     });
   }
 
   constructor(eventag, toast) {

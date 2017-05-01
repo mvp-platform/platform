@@ -171,6 +171,15 @@ const forkBookbyId = async function (request, reply) {
   }
   const b = await book.reconstitute(request.params.author, request.params.id);
   const bFork = await b.fork(login.username);
+
+  await global.search.create({
+    index: 'mvp',
+    type: 'book',
+    id: `${bFork.author}-${bFork.uuid}`,
+    body: {
+      doc: bFork,
+    },
+  });
   return reply(bFork);
 };
 

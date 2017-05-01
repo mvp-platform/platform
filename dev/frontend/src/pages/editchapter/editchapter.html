@@ -29,8 +29,10 @@
                 <p class="buttonOptions">
                   <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'scraps', author: scrap.author, uuid: scrap.uuid}" md-tooltip="position: bottom; text: Preview Scrap;">
                     <!-- Preview --><i class="material-icons">pageview</i></a>
-                  <a class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid, index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
+                  <a if.bind="scrap.author === chapter.author" class="on-white previewEditLinks" route-href="route: editscrap; params.bind: {author: scrap.author, uuid: scrap.uuid, index: $index}" md-tooltip="position: bottom; text: Edit Scrap;">
                     <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                  <a if.bind="scrap.author !== chapter.author" class="on-white previewEditLinks" href="#" click.delegate="fork(scrap)" md-tooltip="position: bottom; text: Fork Scrap;">
+                    <!-- Remove--> <i class="material-icons">call_split</i></a>
                   <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Scrap From Chapter;">
                     <!-- Remove--> <i class="material-icons">no_sim</i></a>
                   <a class="on-white previewEditLinks" target="_blank" title="Download this Scrap" href="https://remix.ist/scraps/${scrap.author}/${scrap.uuid}/pdf" md-tooltip="position: bottom; text: Open Scrap Externally;">

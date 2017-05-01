@@ -30,7 +30,9 @@
                           <p class="buttonOptions">
                             <a class="on-white previewEditLinks" route-href="route: PDFViewer; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Preview Chapter;">
                               <!-- Preview --><i class="material-icons">pageview</i></a>
-                            <a class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Edit Chapter;">
+                            <a if.bind="chapter.author !== book.author" class="on-white previewEditLinks" href="#" click.delegate="fork(chapter)" md-tooltip="position: bottom; text: Fork Chapter;">
+                              <!-- Remove--> <i class="material-icons">call_split</i></a>
+                            <a if.bind="chapter.author === book.author" class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Edit Chapter;">
                               <!-- Edit--><i class="material-icons">mode_edit</i></a>
                             <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
                               <!-- Remove--> <i class="material-icons">no_sim</i></a>

@@ -195,6 +195,22 @@ const forkChapterById = async function (request, reply) {
   }
   const c = await chapter.reconstitute(request.params.author, request.params.id);
   const cFork = await c.fork(login.username);
+
+  await global.search.create({
+    index: 'mvp',
+    type: 'chapter',
+    id: `${cFork.author}-${cFork.uuid}`,
+    body: {
+      doc: cFork,
+    },
+  });
+  await global.db.collection('refs').insertOne({
+    count: 0,
+    type: 'chapter',
+    name: cFork.name,
+    author: cFork.author,
+    uuid: cFork.uuid,
+  });
   return reply(cFork);
 };
 

@@ -239,6 +239,21 @@ const forkScrapById = async function (request, reply) {
   }
   const s = await scrap.reconstitute(request.params.author, request.params.id);
   const sFork = await s.fork(login.username);
+
+  await global.search.create({
+    index: 'mvp',
+    type: 'scrap',
+    id: `${sFork.author}-${sFork.uuid}`,
+    body: {
+      tags: sFork.tags,
+      image: sFork.image,
+      latex: sFork.latex,
+      author: sFork.author,
+      text: sFork.text,
+      uuid: sFork.uuid,
+    },
+  });
+  await global.db.collection('refs').insertOne({ author: sFork.author, sFork.text, type: 'scrap', uuid: sFork.uuid, count: 0 });
   return reply(sFork);
 };
 

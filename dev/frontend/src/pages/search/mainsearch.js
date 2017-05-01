@@ -11,6 +11,22 @@ export class MainSearch {
 
     constructor() {
       this.title = "Search";
+      this.user = Cookies.get('username');
+    }
+
+    fork(thing) {
+      // fork
+      var authToken = "Token " + Cookies.get('token');
+      httpClient.fetch('https://remix.ist/' + thing._type + 's/' + thing._source.author + '/' + thing._source.uuid + '/fork', {
+        method: 'post',
+        headers: {
+          'Authorization': authToken
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          thing._source.author = data.author;
+       });
     }
 
     activate(params, config, navigationInstruction)  {

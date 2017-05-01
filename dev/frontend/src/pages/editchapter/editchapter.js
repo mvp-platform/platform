@@ -16,6 +16,21 @@ export class EditChapters {
       this.ea = eventag;
     }
 
+    fork(thing) {
+      // fork
+      var authToken = "Token " + Cookies.get('token');
+      httpClient.fetch('https://remix.ist/scraps/' + thing.author + '/' + thing.uuid + '/fork', {
+        method: 'post',
+        headers: {
+          'Authorization': authToken
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          thing.author = data.author;
+       });
+    }
+
     favorite(thing) {
       var authToken = "Token " + Cookies.get('token');
       let method;
