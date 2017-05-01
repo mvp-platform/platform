@@ -11,18 +11,23 @@
 
                             <p value.bind="setAuthor" value="${chapters[0]}" hidden >${chapters[0]}</p>
                             <p value.bind="setChapter" hidden>${chapters[1]}</p>
-                            <md-input md-label="Write your new scrap here" md-value.bind="userText" md-text-area="true" ></md-input>
+                            
+                            <div if.bind="!selectedFile">
+                                <md-input md-label="Write your new scrap here" md-value.bind="userText" md-text-area="true" ></md-input>
+                            </div>
 
-                            <p class="enableLatexPar">
-                              <md-checkbox md-checked.bind="enableLatex">Enable LaTeX?</md-checkbox>
-                            </p>
+                            <md-file disabled.bind="userText.length > 0" md-caption="upload image" view-model.ref="fileInput" md-label-value.bind="labelValue"></md-file>
+                            <div if.bind="!selectedFile">
+                                <p class="enableLatexPar">
+                                <md-checkbox md-checked.bind="enableLatex">Enable LaTeX?</md-checkbox>
+                                </p>
 
-                            <p class="enableLatexPar">
-                              <md-checkbox click.delegate="toggleDisabled()" md-checked.bind="submitTags">Submit Tags?</md-checkbox>
-                            </p>
+                                <p class="enableLatexPar">
+                                <md-checkbox click.delegate="toggleDisabled()" md-checked.bind="submitTags">Submit Tags?</md-checkbox>
+                                </p>
 
-                            <md-input md-label="Submit your Scrap Tags here, delimited by commas" md-value.bind="submitTagsText" md-disabled.bind="disabledValue" md-text-area="true"></md-input>
-
+                                <md-input md-label="Submit your Scrap Tags here, separated by commas" md-value.bind="submitTagsText" md-disabled.bind="disabledValue" md-text-area="true"></md-input>
+                                </div>
                             <button md-button="submit" class="primary-text">Submit</button>
                          </form>
 

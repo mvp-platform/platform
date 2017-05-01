@@ -8,7 +8,7 @@ describe('NewBook module', () => {
         newbook = new NewBook();
     });
 
-    describe('the constructor', () => {
+    describe('the constructor of NewBook', () => {
         it('constructs with a title property of "New Book"', () => {
             expect(newbook.title).toEqual('New Book');
         });
