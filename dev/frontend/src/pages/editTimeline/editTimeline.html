@@ -1,0 +1,13 @@
+<template>
+    <md-navbar>
+        <span class="spacer"><span class="brand-logo">Edit Timeline</span></span>
+    </md-navbar>
+
+    <div class="col-sm-8">
+        <ul class="nav">
+            <li repeat.for="pastEvent of pastEvents" class="scrap ${pastEvent.isActive ? 'active' : ''}">
+                <p>${$index + 1} - ${pastEvent[1]}</p>
+        </ul>
+    </div>
+
+</template>

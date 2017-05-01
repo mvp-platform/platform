@@ -30,6 +30,8 @@ we created, and we bind viewmodel properties to it.
                               <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
                             <a if.bind="chapter.favorite" click.delegate="favorite(chapter)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
                               <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite</i></a>
+                            <a  class="on-white previewEditLinks" route-href="route: editTimeline; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: View History;">
+                              <i class="material-icons">list</i></a>
                           </p>
                         </div>
                       </md-card>

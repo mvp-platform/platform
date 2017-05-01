@@ -177,6 +177,7 @@ export class EditChapters {
             { route: ['myscrapsside'], name: 'myscrapsside', moduleId: 'pages/myscraps/myscrapsside', nav: true, title: 'My Scraps' },
             { route: 'search', name: 'search', settings: { type: "scrap" }, moduleId: 'pages/search/search', nav: true, title: 'Search' },
             { route: 'favs', name: 'favs', settings: { type: 'scrap' }, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
+            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
         ]);
         this.router = router;
     }
