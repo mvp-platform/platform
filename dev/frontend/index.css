@@ -9,6 +9,10 @@ body {
   width: calc(100% - 35px) !important;
 }
 
+#modal {
+  bottom: auto;
+}
+
 .unassoc-switch {
   margin-right: 10px;
   color: white;

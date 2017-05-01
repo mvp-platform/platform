@@ -25,6 +25,30 @@ export class EditBook {
      });
   }
 
+  editchapter(c) {
+    if (this.hidden) {
+      this.router.navigateToRoute('editchapter', c);
+    } else {
+      this.ech = c;
+      this.modal.open();
+    }
+  }
+
+  save() {
+    // save changes and then head out
+    this.saveRearrangements(true);
+  }
+
+  discard() {
+    this.toast.show('Discarding changes to book...', 5000);
+    this.router.navigateToRoute('editchapter', this.ech);
+  }
+
+  cancelChanges() {
+    this.ech = undefined;
+    return;
+  }
+
   favorite(thing) {
     var authToken = "Token " + Cookies.get('token');
     let method;
@@ -96,7 +120,7 @@ export class EditBook {
     }
   }
 
-  saveRearrangements() {
+  saveRearrangements(ec) {
     console.log(this.book);
     var theAuthor = Cookies.get('username');
     var authToken = "Token " + Cookies.get('token');
@@ -122,6 +146,9 @@ export class EditBook {
         document.getElementById('save-warning').click();
         this.hidden = true;
         this.toast.show('This book has successfully been updated.', 5000);
+        if (this.ech) {
+          this.router.navigateToRoute('editchapter', this.ech);
+        }
      });
   }
 

@@ -4,6 +4,18 @@
         <md-navbar>
             <span class="spacer"><span class="brand-logo">${title}</span></span>
         </md-navbar>
+        <div>
+        <div id="modal" md-modal md-modal.ref="modal">
+          <div class="modal-content">
+            <h4>Unsaved changes</h4>
+            <p>Before you can edit a chapter, you need to save or discard any changes you've made to the book. Do you want to save now?</p>
+
+            <a click.delegate="save()" md-button md-waves="color: accent;" class="modal-action modal-close">Save Now</a>
+            <a click.delegate="discard()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Discard Changes</a>
+            <a click.delegate="cancelChanges()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Cancel</a>
+          </div>
+        </div>
+      </div>
         <div class="collapsible-basic-use">
             <div class="col-sm-8">
               <ul md-collapsible>
@@ -32,7 +44,7 @@
                               <!-- Preview --><i class="material-icons">pageview</i></a>
                             <a if.bind="chapter.author !== book.author" class="on-white previewEditLinks" href="#" click.delegate="fork(chapter)" md-tooltip="position: bottom; text: Fork Chapter;">
                               <!-- Remove--> <i class="material-icons">call_split</i></a>
-                            <a if.bind="chapter.author === book.author" class="on-white previewEditLinks" route-href="route: editchapter; params.bind: {author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: Edit Chapter;">
+                            <a if.bind="chapter.author === book.author" class="on-white previewEditLinks" href="#" click.delegate="editchapter({author: chapter.author, uuid: chapter.uuid})" md-tooltip="position: bottom; text: Edit Chapter;">
                               <!-- Edit--><i class="material-icons">mode_edit</i></a>
                             <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
                               <!-- Remove--> <i class="material-icons">no_sim</i></a>
