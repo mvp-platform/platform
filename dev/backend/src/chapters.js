@@ -61,6 +61,16 @@ const getUnassociatedChapters = async function (request, reply) {
 const getChapterById = async function (request, reply) {
   const c = await chapter.reconstitute(request.params.author, request.params.id);
   c.scraps = await chapter.fleshOut(c.scraps);
+  const login = await accounts.verifylogin(request);
+  if (login.success) {
+    let cs = [];
+    for (let c of c.scraps) {
+      c[4] = await mongoutils.isFav("scrap", {author: c[0], uuid: c[1]}, login.username);
+      cs.push(c);
+    }
+    console.log(cs);
+    c.scraps = cs;
+  }
   return reply(c);
 };
 
