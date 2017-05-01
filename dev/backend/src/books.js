@@ -131,15 +131,18 @@ const postNewBook = async function (request, reply) {
 
 // /books/{author}
 const getBooksByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/book`);
     const results = [];
     for (const dir of dirs) {
       results.push(book.reconstitute(request.params.author, dir));
     }
-    let books = await Promise.all(results));
-    for (let book of books) {
-      book.favorite = await mongoutils.isFav("book", book);
+    let books = await Promise.all(results);
+    if (login.success)
+      for (let book of books) {
+        book.favorite = await mongoutils.isFav("book", book, login.username);
+      }
     }
     return reply(books);
   } catch (e) {

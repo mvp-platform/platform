@@ -1,5 +1,5 @@
-const isFav = async function (type, obj) {
-  const cursor = await global.db.collection('favorites').find({ userid: user, type, author, uuid });
+const isFav = async function (type, obj, userid) {
+  const cursor = await global.db.collection('favorites').find({ userid, type, author: obj.author, uuid: obj.uuid });
   const isFaved = (await cursor.toArray()).length === 1;
   return isFaved;
 }
