@@ -151,6 +151,7 @@ const postNewChapter = async function (request, reply) {
 
 // /chapters/{author}
 const getChaptersByAuthor = async function (request, reply) {
+  const login = await accounts.verifylogin(request);
   const chapters = [];
   try {
     const dirs = await readdir(`${global.storage + request.params.author}/chapter`);
