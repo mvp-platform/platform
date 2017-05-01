@@ -120,6 +120,7 @@ export class EditBook {
     .then(data => {
         console.log(data);
         document.getElementById('save-warning').click();
+        this.hidden = true;
         this.toast.show('This book has successfully been updated.', 5000);
      });
   }

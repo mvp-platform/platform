@@ -104,6 +104,7 @@ export class EditChapters {
       .then(data => {
           console.log(data);
           this.toast.show('Chapter saved successfully!', 5000);
+          this.hidden = true;
           document.getElementById('save-warning').click();
        });
     }
