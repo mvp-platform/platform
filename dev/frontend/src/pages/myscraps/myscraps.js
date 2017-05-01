@@ -16,6 +16,7 @@ export class Scraps {
       this.scraps = [];
       this.unassociatedScraps = false;
       let username = Cookies.get('username');
+      const authToken = "Token " + Cookies.get('token');
 
       httpClient.fetch('https://remix.ist/scraps/' + username, {
         headers: {

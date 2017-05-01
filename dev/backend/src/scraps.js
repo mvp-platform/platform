@@ -220,6 +220,7 @@ const getScrapsByAuthor = async function (request, reply) {
     return reply(scraps);
   } catch (e) {
     // TODO should return successful but empty for existing user with no scraps
+    console.log(e);
     return reply({ error: `no scraps for user ${request.params.author} found` }).code(404);
   }
 };
