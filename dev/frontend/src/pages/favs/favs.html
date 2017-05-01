@@ -1,0 +1,41 @@
+<template>
+    <section class="leftSection">
+      <md-navbar>
+          <span class="spacer"><span class="brand-logo">Favorites</span></span>
+      </md-navbar>
+      <div class="col-sm-8">
+          <ul class="nav">
+              <li repeat.for="hit of hits" data-search="true" data-author="${hit.author}" data-uuid="${hit.uuid}" data-text="${hit.text}"  data-name="${hit.name}" class="drag-source ${hit.isActive ? 'active' : ''}">
+                <md-card md-title="${hit.type}: ${hit.author}" class="search-card">
+                  <p if.bind="hit.type === 'scrap'">${hit.text}</p>
+                  <p if.bind="hit.type === 'chapter' || hit.type === 'book'">${hit.name}</p>
+                  <p class="buttonOptions">
+                     <a  class="on-white previewEditLinks" route-href="route: pdfviewer; params.bind: {type: hit.type + 's', author: hit.author, uuid: hit.uuid}" md-tooltip="position: bottom; text: Preview;">
+                        <!-- Preview --><i class="material-icons">pageview</i></a>
+                      <a class="on-white previewEditLinks" target="_blank" href="https://remix.ist/${hit.type}s/${hit.author}/${hit.uuid}/pdf" md-tooltip="position: bottom; text: Open Externally;">
+                        <!-- &#8599;--> <i class="material-icons">open_in_new</i></a>
+                      <a if.bind="!hit.favorite" click.delegate="favorite(hit)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Add to Favorites">
+                        <!-- fav--><i id="fav${thing.author}${thing.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
+                      <a if.bind="hit.favorite" click.delegate="favorite(hit)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
+                        <!-- fav--><i id="fav${hit.author}${hit.uuid}-icon" class="on-white material-icons">favorite</i></a>
+                  </p>
+                </md-card>
+              </li>
+              <br>
+              <!-- <md-card class="search-card" md-title=":(" if.bind="(hits.length === 0) && (searchedAtLeastOnce === true)">No results found.</md-card> -->
+          </ul>
+      </div>
+    </section>
+    <section class="rightSection">
+      <div class="col-sm-8">
+        <md-navbar>
+          <ul class="hide-on-med-and-down right">
+            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                <a class="nav-link" href.bind="row.href">${row.title}</a>
+            </li>
+          </ul>
+        </md-navbar>
+      </div>
+    <router-view></router-view>
+    </section>
+</template>
