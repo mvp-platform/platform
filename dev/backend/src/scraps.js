@@ -5,6 +5,7 @@ const pdf = require('./pdf');
 const fs = require('fs-extra');
 const promisify = require('es6-promisify');
 const lescape = require('escape-latex');
+const mongoutils = require('./mongoutils');
 
 const ensureDir = promisify(fs.mkdirs);
 const writeFile = promisify(fs.writeFile);
