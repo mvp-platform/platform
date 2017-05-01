@@ -55,6 +55,11 @@ const getUnassociatedChapters = async function (request, reply) {
     delete e.count;
     return e;
   });
+  if (login.success) {
+    for (let chapter of unassoc) {
+      chapter.favorite = await mongoutils.isFav("chapter", chapter, login.username);
+    }
+  }
   return reply(unassoc);
 };
 
