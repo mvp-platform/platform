@@ -150,13 +150,13 @@ export class EditChapters {
             });
 
         this.new_subscription = this.ea.subscribe('new-scrap', scrap => {
-            this.chapter.scraps.push([scrap.author, scrap.uuid, null, scrap.text]);
+            this.chapter.scraps.push({ author: scrap.author, uuid: scrap.uuid, sha: null, text: scrap.text, favorite: false, image: false });
             this.router.navigateToRoute('PDFViewer', { type: 'scraps', author: scrap.author, uuid: scrap.uuid });
         });
         this.edit_subscription = this.ea.subscribe('edit-scrap', data => {
             console.log("RECEIVED EDITED SCRAP");
             console.log(data);
-            this.chapter.scraps.splice(parseInt(data.index), 1, [data.author, data.uuid, null, data.text]);
+            this.chapter.scraps.splice(parseInt(data.index), 1, { author: data.author, uuid: data.uuid, sha: null, text: data.text, favorite: this.chapter.scraps[parseInt(data.index)].favorite, image: false });
             console.log(this.chapter.scraps);
             this.router.navigateToRoute('PDFViewer', { type: 'scraps', author: data.author, uuid: data.uuid });
         });
