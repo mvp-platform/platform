@@ -106,7 +106,7 @@ export class Chapters {
       this.new_subscription = this.ea.subscribe('new-chapter', new_chapter => {
           console.log(new_chapter);
           console.log(new_chapter.chapterAuthor, new_chapter.chapterID, null, new_chapter.requested);
-          //this.chapters.push({author: new_chapter.chapterAuthor, uuid: new_chapter.chapterID, sha: null, name: new_chapter.requested, favorite: false}) ;
+          this.chapters.push({author: new_chapter.chapterAuthor, uuid: new_chapter.chapterID, sha: null, name: new_chapter.requested, favorite: false}) ;
       });
     }
 

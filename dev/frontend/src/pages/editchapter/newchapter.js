@@ -133,6 +133,11 @@ export class NewChapter {
           console.log(bookID);
           console.log(chapterID);
 
+          if(bookID == undefined)
+          {
+            this.ea.publish('new-chapter', {chapterAuthor, chapterID, null, requested, null});
+          }
+
           console.log('https://remix.ist/books/' + bookAuthor + '/' + bookID);
 
           if(bookID !== undefined || bookID !== null || bookID !== "")
@@ -191,6 +196,7 @@ export class NewChapter {
           else {
             console.log("No Book ID Provided");
             this.toast.show('Chapter created successfully!', 5000);
+            alert("no book id");
             this.ea.publish('new-chapter', {chapterAuthor, chapterID, null, requested, null});
           }
 
