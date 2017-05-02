@@ -44,8 +44,10 @@
                               <!-- Preview --><i class="material-icons">pageview</i></a>
                             <a if.bind="chapter.author !== book.author" class="on-white previewEditLinks" href="#" click.delegate="fork(chapter)" md-tooltip="position: bottom; text: Fork Chapter;">
                               <!-- Remove--> <i class="material-icons">call_split</i></a>
-                            <a if.bind="chapter.author === book.author" class="on-white previewEditLinks" href="#" click.delegate="editchapter({author: chapter.author, uuid: chapter.uuid})" md-tooltip="position: bottom; text: Edit Chapter;">
+                            <a if.bind="chapter.sha === null && chapter.author === book.author" class="on-white previewEditLinks" href="#" click.delegate="editchapter({author: chapter.author, uuid: chapter.uuid})" md-tooltip="position: bottom; text: Edit Chapter;">
                               <!-- Edit--><i class="material-icons">mode_edit</i></a>
+                            <a if.bind="chapter.sha !== null && chapter.author === book.author" class="on-white previewEditLinks" onclick="return false;" md-tooltip="position: bottom; text: Unpin to Edit!;">
+                              <!-- Edit--><i class="disabled-icon material-icons">mode_edit</i></a>
                             <a class="on-white previewEditLinks" href click.delegate="delete($index)" md-tooltip="position: bottom; text: Remove Chapter From Book;">
                               <!-- Remove--> <i class="material-icons">no_sim</i></a>
                             <a if.bind="chapter.sha !== null" class="on-white previewEditLinks" href="#" click.delegate="unpin($index)" md-tooltip="position: bottom; text: Unpin Chapter;">
@@ -59,7 +61,7 @@
                                 <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
                               <a if.bind="chapter.favorite" click.delegate="favorite(chapter)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
                                 <!-- fav--><i id="fav${chapter.author}${chapter.uuid}-icon" class="on-white material-icons">favorite</i></a>
-                              <a  class="on-white previewEditLinks" route-href="route: editTimeline; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid}" md-tooltip="position: bottom; text: View History;">
+                              <a  class="on-white previewEditLinks" route-href="route: editTimeline; params.bind: {type: 'chapters', author: chapter.author, uuid: chapter.uuid, index: $index, current: chapter.sha}" md-tooltip="position: bottom; text: View History;">
                                 <i class="material-icons">history</i></a>
                           </p>
                         </div>

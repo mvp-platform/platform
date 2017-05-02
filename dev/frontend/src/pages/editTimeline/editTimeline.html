@@ -5,9 +5,15 @@
 
     <div class="col-sm-8">
         <ul class="nav">
-            <li repeat.for="pastEvent of pastEvents" class="scrap ${pastEvent.isActive ? 'active' : ''}">
-                <p>${$index + 1} - ${pastEvent[1]}</p>
-        </ul>
+          <div>
+            <md-collection>
+                <md-collection-item  repeat.for="pastEvent of pastEvents" class="scrap ${pastEvent[0] === params.current ? 'active' : ''} accent-text">
+                  ${$index + 1} - ${pastEvent[1]}
+                 <div class="secondary-content">
+                  <a class="on-white" href click.delegate="pin(pastEvent[0])"><i class="material-icons">place</i></a>
+                </div>
+                </md-collection-item>
+            </md-collection>
     </div>
 
 </template>

@@ -190,6 +190,13 @@ export class EditBook {
             console.log(new_chapter.chapterAuthor, new_chapter.chapterID, null, new_chapter.requested);
             this.book.chapters.push({ author: new_chapter.chapterAuthor, uuid: new_chapter.chapterID, sha: null, name: new_chapter.requested, favorite: false });
         });
+        this.pin_subscription = this.ea.subscribe('pin-chapter', data => {
+            this.book.chapters.splice(parseInt(data.index), 1, { author: data.author, uuid: data.uuid, sha: data.sha, name: "(refresh to see name)", favorite: this.book.chapters[parseInt(data.index)].favorite });
+            if (this.hidden) {
+                document.getElementById('save-warning').click();
+                this.hidden = false;
+            }
+        });
     }
 
     configureRouter(config, router) {
@@ -200,7 +207,7 @@ export class EditBook {
             { route: ['mychaptersside'], name: 'mychaptersside', moduleId: 'pages/mychapters/mychaptersside', nav: true, title: 'My Chapters' },
             { route: 'search', name: 'search', moduleId: 'pages/search/search', settings: { type: 'chapter' }, nav: true, title: 'Search' },
             { route: 'favs', name: 'favs', moduleId: 'pages/favs/favpanel', settings: { type: 'chapter' }, nav: true, title: 'Favorites' },
-            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
+            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid/:current?'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
         ]);
         this.router = router;
     }

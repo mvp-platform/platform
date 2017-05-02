@@ -9,6 +9,10 @@ body {
   width: calc(100% - 35px) !important;
 }
 
+.disabled-icon {
+  color: grey;
+}
+
 #modal {
   bottom: auto;
 }

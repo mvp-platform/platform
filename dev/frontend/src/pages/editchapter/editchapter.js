@@ -160,6 +160,17 @@ export class EditChapters {
             console.log(this.chapter.scraps);
             this.router.navigateToRoute('PDFViewer', { type: 'scraps', author: data.author, uuid: data.uuid });
         });
+        this.pin_subscription = this.ea.subscribe('pin-scrap', data => {
+            console.log(data);
+            console.log(this.chapter.scraps.length);
+            this.chapter.scraps.splice(parseInt(data.index), 1, { author: data.author, uuid: data.uuid, sha: data.sha, text: "(refresh to see text)", favorite: this.chapter.scraps[parseInt(data.index)].favorite, image: false });
+            console.log(this.chapter.scraps);
+            console.log(this.chapter.scraps.length);
+            if (this.hidden) {
+                document.getElementById('save-warning').click();
+                this.hidden = false;
+            }
+        });
 
     }
 
@@ -177,7 +188,7 @@ export class EditChapters {
             { route: ['myscrapsside'], name: 'myscrapsside', moduleId: 'pages/myscraps/myscrapsside', nav: true, title: 'My Scraps' },
             { route: 'search', name: 'search', settings: { type: "scrap" }, moduleId: 'pages/search/search', nav: true, title: 'Search' },
             { route: 'favs', name: 'favs', settings: { type: 'scrap' }, moduleId: 'pages/favs/favpanel', nav: true, title: 'Favorites' },
-            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
+            { route: ['editTimeline', 'editTimeline/:type/:author/:uuid/:current?'], name: 'editTimeline', moduleId: 'pages/editTimeline/editTimeline', nav: false, title: 'Edit Timeline' },
         ]);
         this.router = router;
     }
