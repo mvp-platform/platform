@@ -1,17 +1,7 @@
-# Documents
+# The Many Voices Publishing Platform
 
-Documents for the Textbook Wiki project. 
+![Editing a book](/documents/editbook.png?raw=true)
 
-## compiling
-
-`pdflatex sample.tex`
-
-
-## waffle
-
-[![Stories in Ready](https://badge.waffle.io/CS461-MVP/documents.svg?label=ready&title=Ready)](http://waffle.io/CS461-MVP/documents)
-
-
-## Github Pages
-
-http://cs461-mvp.github.io/mvp_platform/
+The Many Voices Publishing Platform is about empowering professors to create
+content for their classroom without the hassle of dealing with publishers or the
+time sink of writing their own book.
