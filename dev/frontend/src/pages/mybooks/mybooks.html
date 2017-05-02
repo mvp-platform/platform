@@ -28,6 +28,8 @@
                           <!-- fav--><i id="fav${book.author}${book.uuid}-icon" class="on-white material-icons">favorite_border</i></a>
                         <a if.bind="book.favorite" click.delegate="favorite(book)" class="on-white previewEditLinks" href="#" md-tooltip="position: bottom; text: Remove from Favorites">
                           <!-- fav--><i id="fav${book.author}${book.uuid}-icon" class="on-white material-icons">favorite</i></a>
+                        <a  class="on-white previewEditLinks" route-href="route: editTimeline; params.bind: {type: 'books', author: book.author, uuid: book.uuid}" md-tooltip="position: bottom; text: View History;">
+                            <i class="material-icons">history</i></a>
                       </p>
                     </div>
                   </md-card>
