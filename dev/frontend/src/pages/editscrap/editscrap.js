@@ -27,6 +27,66 @@ export class Scraps {
       this.editTags = !this.editTags;
     }
 
+    addBold(){
+      var requested = this.userText;
+      requested += "\\textbf{}";
+      this.userText = requested;
+    }
+
+    addItalic(){
+      var requested = this.userText;
+      requested += "\\emph{ }";
+      this.userText = requested;
+    }
+
+    addUnderline(){
+      var requested = this.userText;
+      requested += "\\underline{}";
+      this.userText = requested;
+    }
+
+    // addHRule(){
+    //   var requested = this.userText;
+    //   requested += "\\hline";
+    //   this.userText = requested;
+    // }
+
+    addSubSection(){
+      var requested = this.userText;
+      requested += "\\subsection{}";
+      this.userText = requested;
+    }
+
+    addSubSubSection(){
+      var requested = this.userText;
+      requested += "\\subsubsection{}";
+      this.userText = requested;
+    }
+
+    addParagraph(){
+      var requested = this.userText;
+      requested += "\\paragraph{}";
+      this.userText = requested;
+    }
+
+    addSpace(){
+      var requested = this.userText;
+      requested += "\\vspace{5pt}";
+      this.userText = requested;
+    }
+
+    addNewPage(){
+      var requested = this.userText;
+      requested += "\\newpage";
+      this.userText = requested;
+    }
+
+    addClearPage(){
+      var requested = this.userText;
+      requested += "\\clearpage";
+      this.userText = requested;
+    }
+
     submitEditScrap() {
         console.log(Cookies.get('data'));
         var theAuthor = Cookies.get('username');

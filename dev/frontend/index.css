@@ -332,6 +332,12 @@ div.book-title-block p a.previewEditLinks {
     margin-right: 2%;
 }
 
+div button.latexButtons {
+  margin: 0.25em;
+  padding:0.25em;
+  display:inline-block;
+}
+
 /* Testing of not styling the first child of the main navigation
 nav#main-header.navbar.navbar-default a:hover
 {

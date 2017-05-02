@@ -6,13 +6,26 @@
                   <li class="${book.isActive ? 'active' : ''}">
                     <md-card>
                       <div>
-
+                          <div>
+                          <button md-button class="primary-text latexButtons" click.delegate="addBold()">Bold</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addItalic()">Italic</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addUnderline()">Underline</button>
+                          <!-- <button md-button class="primary-text" click.delegate="addHRule()">H Rule</button> -->
+                          <button md-button class="primary-text latexButtons" click.delegate="addSubSection()">Subsection</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addSubSubSection()">Subsubsection</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addParagraph()">paragraph</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addSpace()">Vertical Space</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addNewPage()">Newpage</button>
+                          <button md-button class="primary-text latexButtons" click.delegate="addClearPage()">Endpage</button>
+                          </div>
+                          <br>
                           <form role = "form" submit.delegate = "submitNewScrap()">
 
                             <p value.bind="setAuthor" value="${chapters[0]}" hidden >${chapters[0]}</p>
                             <p value.bind="setChapter" hidden>${chapters[1]}</p>
-                            
+
                             <div if.bind="!selectedFile">
+
                                 <md-input md-label="Write your new scrap here" md-value.bind="userText" md-text-area="true" ></md-input>
                             </div>
 

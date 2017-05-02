@@ -1,21 +1,9 @@
 import 'fetch';
-import {
-    HttpClient,
-    json
-} from 'aurelia-fetch-client';
-import {
-    Cookies
-} from 'aurelia-plugins-cookies';
-import {
-    inject,
-    computedFrom
-} from 'aurelia-framework';
-import {
-    MdToastService
-} from 'aurelia-materialize-bridge';
-import {
-    EventAggregator
-} from 'aurelia-event-aggregator';
+import { HttpClient, json } from 'aurelia-fetch-client';
+import { Cookies } from 'aurelia-plugins-cookies';
+import { inject, computedFrom } from 'aurelia-framework';
+import { MdToastService } from 'aurelia-materialize-bridge';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
 let httpClient = new HttpClient();
 
@@ -120,6 +108,66 @@ export class NewScrap {
                 });
         }
         return;
+    }
+
+    addBold(){
+      var requested = this.userText;
+      requested += "\\textbf{}";
+      this.userText = requested;
+    }
+
+    addItalic(){
+      var requested = this.userText;
+      requested += "\\emph{ }";
+      this.userText = requested;
+    }
+
+    addUnderline(){
+      var requested = this.userText;
+      requested += "\\underline{}";
+      this.userText = requested;
+    }
+
+    // addHRule(){
+    //   var requested = this.userText;
+    //   requested += "\\hline";
+    //   this.userText = requested;
+    // }
+
+    addSubSection(){
+      var requested = this.userText;
+      requested += "\\subsection{}";
+      this.userText = requested;
+    }
+
+    addSubSubSection(){
+      var requested = this.userText;
+      requested += "\\subsubsection{}";
+      this.userText = requested;
+    }
+
+    addParagraph(){
+      var requested = this.userText;
+      requested += "\\paragraph{}";
+      this.userText = requested;
+    }
+
+    addSpace(){
+      var requested = this.userText;
+      requested += "\\vspace{5pt}";
+      this.userText = requested;
+    }
+
+    addNewPage(){
+      var requested = this.userText;
+      requested += "\\newpage";
+      this.userText = requested;
+    }
+
+    addClearPage(){
+      var requested = this.userText;
+      requested += "\\clearpage";
+      this.userText = requested;
     }
 
     submitNewScrap() {

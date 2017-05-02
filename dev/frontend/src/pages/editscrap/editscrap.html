@@ -6,6 +6,19 @@
                   <li class="${book.isActive ? 'active' : ''}">
                       <md-card>
                         <div>
+                          <div class="latexButtons">
+                            <button md-button class="primary-text latexButtons" click.delegate="addBold()">Bold</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addItalic()">Italic</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addUnderline()">Underline</button>
+                            <!-- <button md-button class="primary-text" click.delegate="addHRule()">H Rule</button> -->
+                            <button md-button class="primary-text latexButtons" click.delegate="addSubSection()">Subsection</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addSubSubSection()">Subsubsection</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addParagraph()">paragraph</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addSpace()">Vertical Space</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addNewPage()">Newpage</button>
+                            <button md-button class="primary-text latexButtons" click.delegate="addClearPage()">Endpage</button>
+                          </div>
+                          <br>
                           <form role = "form" submit.delegate = "submitEditScrap()">
 
                             <p value.bind="setAuthor" value="${scrap[0]}" hidden >${scrap[0]}</p>
