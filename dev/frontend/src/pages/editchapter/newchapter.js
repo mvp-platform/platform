@@ -197,7 +197,7 @@ export class NewChapter {
             console.log("No Book ID Provided");
             this.toast.show('Chapter created successfully!', 5000);
             alert("no book id");
-            this.ea.publish('new-chapter', {chapterAuthor, chapterID, null, requested, null});
+            //this.ea.publish('new-chapter', {chapterAuthor, chapterID, null, requested, null});
           }
 
       });
