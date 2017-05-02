@@ -127,7 +127,7 @@ const generateScrapPdf = async function (request, reply) {
 const getScrapHistory = async function (request, reply) {
   const s = await scrap.reconstitute(request.params.author, request.params.id);
   const versions = await s.previousVersions();
-  return reply(versions.map(v => [v[0], v[1]])); // remove the Commit object field
+  return reply(versions.map(v => [v[0], v[1], v.committer(), v.date()])); // remove the Commit object field
 };
 
 const postNewScrap = async function (request, reply) {
