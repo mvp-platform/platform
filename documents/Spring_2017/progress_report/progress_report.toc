@@ -1,12 +1,12 @@
 \contentsline {section}{\numberline {1}Revision Log}{2}{section.1}
 \contentsline {section}{\numberline {2}Project Purpose}{2}{section.2}
 \contentsline {section}{\numberline {3}Project Status}{3}{section.3}
-\contentsline {section}{\numberline {4}Remaining Work}{3}{section.4}
-\contentsline {section}{\numberline {5}Problems and Proposed Solutions}{4}{section.5}
-\contentsline {section}{\numberline {6}Steven Term Progress}{5}{section.6}
-\contentsline {subsection}{\numberline {6.1}Weekly Recapping}{5}{subsection.6.1}
-\contentsline {section}{\numberline {7}Evan Term Progress}{5}{section.7}
-\contentsline {subsection}{\numberline {7.1}Weekly Recapping}{5}{subsection.7.1}
-\contentsline {section}{\numberline {8}Josh Term Progress}{5}{section.8}
-\contentsline {subsection}{\numberline {8.1}Weekly Recapping}{5}{subsection.8.1}
-\contentsline {section}{\numberline {9}Conclusion}{5}{section.9}
+\contentsline {section}{\numberline {4}Remaining Work}{4}{section.4}
+\contentsline {section}{\numberline {5}Problems and Proposed Solutions}{5}{section.5}
+\contentsline {section}{\numberline {6}Steven Term Progress}{6}{section.6}
+\contentsline {subsection}{\numberline {6.1}Weekly Recapping}{6}{subsection.6.1}
+\contentsline {section}{\numberline {7}Evan Term Progress}{6}{section.7}
+\contentsline {subsection}{\numberline {7.1}Weekly Recapping}{6}{subsection.7.1}
+\contentsline {section}{\numberline {8}Josh Term Progress}{6}{section.8}
+\contentsline {subsection}{\numberline {8.1}Weekly Recapping}{6}{subsection.8.1}
+\contentsline {section}{\numberline {9}Conclusion}{6}{section.9}

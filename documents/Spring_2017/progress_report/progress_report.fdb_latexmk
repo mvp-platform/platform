@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1494723240 "/Users/yoshie/Coding/mvp_platform/documents/Spring_2017/progress_report/progress_report.tex" "progress_report.pdf" "progress_report" 1494723240
-  "/Users/yoshie/Coding/mvp_platform/documents/Spring_2017/progress_report/progress_report.tex" 1494723239 10022 9c3db3d26e5b76f20950316161ae0629 ""
+["pdflatex"] 1494866081 "/Users/yoshie/Coding/mvp_platform/documents/Spring_2017/progress_report/progress_report.tex" "progress_report.pdf" "progress_report" 1494866082
+  "/Users/yoshie/Coding/mvp_platform/documents/Spring_2017/progress_report/progress_report.tex" 1494866080 14294 2bf749191314778e8837e4d022fb7ab3 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1136768653 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -75,13 +75,13 @@
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "coe_v_spot1.eps" 1494397183 631574 20406a61a6def28d5a3995bffa1852de ""
-  "progress_report.aux" 1494723240 1768 66e0ce76e7897bf343e8e5a63055486d ""
-  "progress_report.out" 1494723240 665 efcedf97a1e3149ed59ba9a73ef4d09c ""
-  "progress_report.tex" 1494723239 10022 9c3db3d26e5b76f20950316161ae0629 ""
-  "progress_report.toc" 1494723240 890 0c3595e7226f9b0dd454a086e1ce3430 ""
+  "progress_report.aux" 1494866082 1768 7cebeb94f6e705fddb1612bd4b5ddd26 ""
+  "progress_report.out" 1494866082 665 efcedf97a1e3149ed59ba9a73ef4d09c ""
+  "progress_report.tex" 1494866080 14294 2bf749191314778e8837e4d022fb7ab3 ""
+  "progress_report.toc" 1494866082 890 086104cc6564b13b52735e984d228a09 ""
   (generated)
   "progress_report.log"
-  "progress_report.out"
-  "progress_report.toc"
   "progress_report.pdf"
+  "progress_report.toc"
+  "progress_report.out"
   "progress_report.aux"
