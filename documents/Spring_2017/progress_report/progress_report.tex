@@ -132,17 +132,17 @@
 
 
 % 8. now you write!
-\section{Revision Log}
+%\section{Revision Log}
 
-\tablehead{}
-\begin{supertabular}{|p{3cm}|p{3cm}|p{3cm}|p{7cm}|}
-\hline
-Name & Change Number & Date & Description of Change
-\\\hline
-Steven Powers & 1 & 2/17/2017 & Finalized Progress Report for half way point through
-		winter term. Fixed spelling mistakes, added code listings, adjusted content, added images.
-\\\hline
-\end{supertabular}
+%\tablehead{}
+%\begin{supertabular}{|p{3cm}|p{3cm}|p{3cm}|p{7cm}|}
+%\hline
+%Name & Change Number & Date & Description of Change
+%\\\hline
+%Steven Powers & 1 & 2/17/2017 & Finalized Progress Report for half way point through
+%		winter term. Fixed spelling mistakes, added code listings, adjusted content, %added images.
+%\\\hline
+%\end{supertabular}
 
 
 \section{Project Purpose}
@@ -167,8 +167,9 @@ an entire textbook around it. \\
 
 \noindent Professors wishing to use this content can then modify it for
 their uses in the classroom. The material will be hosted in such a way
-as to provide the ability to "fork" content, or create content based
-off of it. The platform will provide a way to search for and find content,
+as to provide the ability to "fork" or as we call it, "remix" content. 
+Professors are able to create new work based off another's contribution. 
+The platform will provide a way to search for and find content,
 prioritized by relevance and credibility as determined by other users;
 the most popular material will be shown with the most prominence.
 
@@ -260,8 +261,7 @@ and goals for our meetings with our client, and as a result, winter term we had 
 were able to get a lot more value out of his leadership. This term, we were able to meet with
 our client a handful of times, but unfortunately as he continues his transition into a new job,
 more and more of his time is used up, and as a result we had difficulties finding
-meetings times that work for our both our client and our team. The solution that we have incorporated is being proactive
-about our meetings with our client, and arranging meeting times with his new secretary by email.\\
+meetings times that work for our both our client and our team. The solution that we have incorporated is being proactive about our meetings with our client, and arranging meeting times with his new secretary by email.\\
 
 \noindent Another issue we have ran into this term is that of team member availability.
 With the stolen laptop and class requirements, from time to time a team member or two has been less
@@ -271,10 +271,244 @@ work more the next and the other members can get their classwork finished. This 
 to work hard on work from other classes, while at the same time getting a large amount of
 capstone work done. \\
 
+\noindent In terms of coding, we ran into two major issues that both halted progress for some time. The first was the PDF Viewer for previewing created documents One of the most important features of our project wasn’t working and we were unsure how to go forward to fix the problem. We were able to preview a PDF that we hard coded into our application, but we were unable to provide another PDF for our previewer to use. Our TA Jon suggested we look into alternative routes to satisfy our requirements, such as only providing a way to open the created PDF externally. This isn't ideal and we did not want to use this solution unless absolutely necessary. Early into Spring term, the team got together and put our heads to the task of passing and viewing any PDF that we wanted, and Evan was able to figure it out and allow us to pass PDFs to our viewer. \\
+
+\noindent Our next largest impediment was page routing, one of the sole reasons for using the Aurelia framework. This problem was solved quickly into Spring term, shortly after the PDF viewer issues. However, we were stuck with how to pass around what pages we wanted to display, as well as how to pass around arguments to the desired page. This was solved with the use of colon arguments in the route key value set. We had to bind our values on the origination page, transfer them to the destination page via the router, and then decoded on the destination page, so the page can build the relevant information on activation of the page. \\
+
+
 \newpage
 
-\section{Cool Code Stuff}
+\section{Code Examples}
+\noindent The backend is split into two primary parts. The first, and most difficult part
+of the backend, is the interface library being used to store objects into the
+git repositories and to get them back out. Shown below is a code sample, which
+is fully working today, showing a simple script that creates new scraps,
+chapters, and books, and gets a valid latex document to render from them. 
+Below are two interesting pieces of backend code that allow the user to have 
+a seamless experience combining different scraps, chapters, and books together.
 
+\begin{lstlisting}
+var a = new scrap.Scrap('First sentence of a chapter', 'rambourg');
+await a.save('initial save');
+
+var b = new scrap.Scrap('Second sentence of a chapter', 'rambourg');
+await b.save('initial save');
+
+var ch1 = new chapter.Chapter('First Chapter Name', 'rambourg');
+ch1.addScrap(a);
+ch1.addScrap(b);
+
+await ch1.save('initial save');
+
+var c = new scrap.Scrap('First sentence of another chapter', 'rambourg');
+await c.save('initial save');
+var ch2 = new chapter.Chapter('Another Chapter Title', 'rambourg');
+ch2.addScrap(c);
+await ch2.save('initial save');
+
+var myBook = new Book('My Fav Book Title', 'rambourg');
+myBook.addChapter(ch1);
+myBook.addChapter(ch2);
+
+var bookText = await myBook.getText();
+\end{lstlisting}
+
+\begin{lstlisting}
+var scr = new scrap.Scrap('Brody', 'abc123-def456')
+
+/* reconstitute a chapter from author and id */
+var ch = chapter.reconstitute('Patrick Rambourg', '56c2c2ee')
+var newCh = await ch.fork('Brody')
+
+newCh.addScrap(scr)
+await newCh.save('add new chapter')
+\end{lstlisting} 
+
+\noindent Another piece of interesting code that we want to highlight is the creation of a new scrap. In the code example below, we determine whether this new scrap is going to be appended to an existing chapter, and if so, we need to first return and collect all of the existing scraps associated with that chapter. Once we have the new list of scraps, we need to update the chapter object with the new information.
+
+\begin{lstlisting}
+submitNewScrap() {
+
+	if (this.selectedFile) {
+	this.submitImageScrap();
+	return;
+	}
+	
+	var requested = this.userText;
+	var enableLatex = this.enableLatex;
+	var theAuthor = Cookies.get('username');
+	var theChapter = this.chapters[1];
+	var authToken = "Token " + Cookies.get('token');
+	
+	var submitTags = this.submitTags;
+	var submittedTags = this.submitTagsText;
+	
+	if (theChapter === undefined || theChapter === null || theChapter === "") {
+		if (submitTags) {
+		submittedTags = submittedTags.toString();
+		submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+		submittedTags = submittedTags.replace(/\s/g, '');
+		submittedTags = submittedTags.split(",");
+		}
+		let request = {
+		author: theAuthor,
+		text: requested,
+		latex: enableLatex,
+		tags: submittedTags
+		};
+		
+		//CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
+		var scrapID = '';
+		httpClient.fetch('https://remix.ist/scraps/new', {
+		method: 'post',
+		body: JSON.stringify(request),
+		headers: {
+		'Content-Type': 'application/json',
+		'Authorization': authToken
+		}
+		})
+		.then(response => response.json())
+		.then(data => {
+		var scrapID = data.uuid;
+		this.toast.show('Scrap saved successfully!', 5000);
+		this.ea.publish('new-scrap', data);
+		});
+			} else { //The Chapter Was Provided, so create the scrap and then add it to a chapter.
+			if (submitTags) {
+			submittedTags = submittedTags.toString();
+			submittedTags = submittedTags.replace(/(^,)|(,$)/g, "");
+			submittedTags = submittedTags.replace(/\s/g, '');
+			submittedTags = submittedTags.split(",");
+			}
+		
+			let request = {
+			author: theAuthor,
+			text: requested,
+			latex: enableLatex,
+			tags: submittedTags
+			};
+			
+			//CREATE THE NEW SCRAP AND GET THE NEW SCRAP ID
+			var scrapID = '';
+			httpClient.fetch('https://remix.ist/scraps/new', {
+			method: 'post',
+			body: JSON.stringify(request),
+			headers: {
+			'Content-Type': 'application/json',
+			'Authorization': authToken
+			}
+			})
+			.then(response => response.json())
+			.then(data => {
+			var new_scrap = data;
+			var scrapID = data.uuid;
+			
+			this.scraps = [];
+			var test = [];
+			//GET CHAPTERS SCRAPS
+			httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter)
+			.then(response => response.json())
+			.then(data => {
+			
+			var scraps;
+			this.scraps.push(data);
+			scraps = data.scraps;
+			
+			var newScrapRequest = [];
+			
+			for (var i = 0; i < scraps.length; i++) {
+			newScrapRequest.push([scraps[i][0], scraps[i][1], scraps[i][2]]);
+			}
+			newScrapRequest.push([theAuthor, scrapID, null]);
+			let request2 = {
+			scraps: newScrapRequest
+			};
+			
+			//   UPDATE CHAPTER WITH NEW SCRAPS
+			httpClient.fetch('https://remix.ist/chapters/' + theAuthor + '/' + theChapter, {
+			method: 'post',
+			body: JSON.stringify(request2),
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': authToken
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+				this.toast.show('Scrap saved successfully!', 5000);
+				this.ea.publish('new-scrap', new_scrap);
+				});
+			});
+		});
+	}
+}
+\end{lstlisting}
+
+\newpage
+\section{Project Images}
+
+\noindent This section is dedicated to showing some of the progress that has been made through iteration and user feedback. Starting with our low level prototypes, medium fidelity prototypes, high fidelity prototypes, and finally our finished product. The designs were influenced by user feedback throughout the development process.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/prototype}
+	\caption{Here is one low fidelity prototype that was shown to our client. Dr. Jensen suggested 
+		removing the preview of chapters and scraps to make the interface a little more simple.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/balsamiq}
+	\caption{Here is one medium fidelity prototype, created in balsamiq, that allowed for users to provide feedback about the basic ideas of placement without worrying about finalized plans.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/pdfpreview}
+	\caption{Here is one high fidelity prototype. This was created using basic web HTML and our Aurelia framework and the use of a hard coded PDF to display a document. This was used as a learning exercise.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/login_page}
+	\caption{Here is the final product login page, which uses Google OAuth to abstract our need for security.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/mybooks}
+	\caption{Here is the final product my books page, showing sample textbook data.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/mybooks_preview}
+	\caption{Here is the final product my books page, previewing a textbook.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/editbook}
+	\caption{Here is the final product edit books page, allowing the user to edit chapters within a book.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/editbook_drag}
+	\caption{Here is the final product edit books page, showing the use of drag and drop from a user's chapters.}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=12cm]{images/newscrap}
+	\caption{Here is the final product new scrap page, showing how easy it is for a user to create a new scrap and even enable more advanced features by using LaTeX..}
+\end{figure}
+
+\clearpage
+\newpage
 \section{Conclusion}
+\noindent The Many Voices Publishing Platform has been a great project to work on, bringing each team member outside their comfort zone. Our project has made enormous progress in the last few months that have enabled the platform to arrive on schedule for the Capstone Expo event. The team is proud of the product they have created, especially after the long and sometimes arduous journey from beginning to end.
+
+
 
 \end{document}
