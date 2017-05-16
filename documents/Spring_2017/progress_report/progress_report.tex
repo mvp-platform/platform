@@ -19,7 +19,7 @@
 
 \usepackage{listings}
 \lstdefinelanguage{JavaScript}{
-  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, 
+  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch,
   var, if, in, while, do, else, case, break, addChapter, await},
   morecomment=[s]{/*}{*/},
   morecomment=[l]//,
@@ -30,7 +30,7 @@
 \lstset{%
     % Basic design
     backgroundcolor=\color{editorGray},
-    basicstyle={\small\ttfamily},   
+    basicstyle={\small\ttfamily},
     frame=l,
     % Line numbers
     xleftmargin={0.75cm},
@@ -38,7 +38,7 @@
     stepnumber=5,
     firstnumber=1,
     numberfirstline=true,
-    % Code design   
+    % Code design
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{red}\ttfamily,
     ndkeywordstyle=\color{editorOcher}\bfseries,
@@ -116,11 +116,9 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-		\noindent This document summaries the progress that the Remix team
-		has made on the Many Voices Publishing Platform for the client
-		Dr. Carlos Jensen. Additionally this document provides a week by
-		week summary of work performed, as overviews of progress that has been made
-		throughout Spring Term.
+		\noindent Having finished the initial release version of the Many Voices Publishing Platform,
+    the team has only a few things left on their list of things left before client delivery.
+    The Platform is now usable and demoable in time for the Capstone Expo.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -141,7 +139,7 @@
 \hline
 Name & Change Number & Date & Description of Change
 \\\hline
-Steven Powers & 1 & 2/17/2017 & Finalized Progress Report for half way point through 
+Steven Powers & 1 & 2/17/2017 & Finalized Progress Report for half way point through
 		winter term. Fixed spelling mistakes, added code listings, adjusted content, added images.
 \\\hline
 \end{supertabular}
@@ -178,119 +176,104 @@ the most popular material will be shown with the most prominence.
 
 \section{Project Status}
 
-\noindent The beginning of spring term unfortunatey didn't aid us in starting out strong, 
-as one of the team members had their laptop stolen over the break. This proved as a 
-difficult obstacle to overcome, as we anticipated spring break to be a productive time 
-for the application. Thankfully, after two weeks, we were able to recover the stolen 
-laptop and start working fluently from then on. While this did manage to put us behind
-in a lot of areas, we were able to make a clear plan that we could follow through until 
-we had everything checked off. \\
+\noindent
+One of the team members had their laptop stolen over spring break. This proved a definite setback,
+as we anticipated spring break to be one of our main sprints for the platform. Thankfully,
+we were able to recover the stolen laptop early in the term and start a concerted, unified push
+While this did manage to put us behind slightly, making a clear and detailed issue list
+with due dates helped us get everything done on time. \\
 
-\noindent As for where our project stands now, we managed to meet every one of our requirements. 
+\noindent We managed to meet every one of our requirements.
 The last week before the code freeze proved to be a challenging and time
-consuming period, thankfully the majority of the team was able to dedicate many hours to focusing 
-on finishing the application. While we weren't able to completely utilize everybody on the 
-team due to other classes and obligations, the project satisfactory to our clients expectations.
-As of the code freeze, our project is in a polished beta state. We have a fully running version 
-of our application, but there is still much more needed testing to do. Users have access to most features 
-desired of the full application. \\
+consuming period; thankfully, the majority of the team was able to dedicate almost every waking hour to focusing
+on finishing the platform. Unfortunately, some on the team had various class obligations that made working
+together and working for long hours difficult; however, in the end as a group we
+were able to complete the project satisfactory to our clients expectations.
+By the May 1st code freeze, we had the project in a good "minimum viable product" state, ready for real use.
+The only things left in the development pipeline is user testing and polishing the user interface
+to our client's wishes. \\
 
-\noindent Some of the main functionality for our application is being able to manipulate books, 
-chapters, and scraps. This meant a variety of things had to be in place, such as being able to 
-remove books, chapters, and scraps. The purpose of our application is to make it easy to write 
-and edit books, this means being able to edit individual scraps at the base level. Users are able 
-to upload scraps associated with a chapter, and chapters associated with a book. Users are also 
-able to write scraps that aren't associated with any chapter but can be used later. What all this
-meant for us, is that user would be able to write text, and have it stored in our database as 
-LaTeX. Thanks to one of our team members, the backend is fully able to handle images, text, and 
-special commands (such as bolding). \\
+\noindent The main functionality for our application requires being able to manipulate books,
+chapters, and scraps. This meant a variety of things had to be in place for users to be able to
+actually make use of the platform --- things like creation, editing, rearranging, etc.
+The purpose of the platform is to make it easy to write and edit books.
+The way we have architected the platform, this means being able to edit individual scraps as a base level.
+Scraps can be any image, LaTeX text, or plain text that the user wants. Upon scrap creation,
+these chunks can be associated with a chapter and then that chapter associated to a book. \\
 
-\noindent One of the big requirements for our application was that it would manage user accounts. 
-Users need to have the ability to come back to their unfinished work, and this isn't possible without
-user accounts. Our application uses a 3rd party, single sign on tool by Google to manage. Users are 
-able to sign in with their Google accounts, and manage certain settings about their profile, like 
-their username. When a user creates a book, chapter, or scrap, their name will be associated with it, 
-and they'll be able to search for it under their content. Another factor of authentication that needed 
-to be implemented was that whenever a user makes an API call, they have a have a varified token ID. \\
+\noindent Our application uses oAuth through Google to manage user accounts. This allows
+us to have securely partitioned user accounts, without needing to manage passwords ourselves.
+Instead, upon login, a token is created and sent to the user's browser; this token is stored
+and can be used to authenticate with the server to create a book, chapter, or scrap; to update
+these items; or any other functionality in the system. \\
 
-\noindent Keeping track of a book, chapter, or scrap in terms of history was a requirement specifically 
-asked for by our client. While we weren't able to make the history of an item look similar to the Github
-timeline, we were able to incorporate dates and timestamps of events or changes. A user is able to look 
-through every action done to a book, chapter and scrap. \\
+\noindent Keeping track of the history of books, chapters, and scraps was a specific
+requirement of our client. The history interface that we currently have is a minimum implementation
+that simply shows a linear history of the items; future iterations of the history interface
+will have timestamps and possibly a non-linear history showing forking. \\
 
-\noindent There are other miscellaneous tasks the team focused on to improve general quality of life. 
-Some of these take place as the buttons below certain items that allow users to pin, favorite, and preview.
-"Pinning" an item allows the user to stick to a certain version of that item, making it so that revisions
-aren't applied. This is helpful if you want to lock down certain items the way they are without unwanted 
-changes being applied to them. Favoriting an item lets the user keep track of said item for their own purpose.
-This might look like a chapter being favorited in order to remind the user that they're working on it. 
-Previewing allows the user to just focus on a certain item, whether that be an entire book or an individual 
-scrap. \\
+\noindent There are many other miscellaneous tasks the team focused on to improve general usability.
+Users can pin, favorite, and preview every item. "Pinning" an item allows the user to stick to a certain
+version of that item --- making it so that future revisions aren't automatically applied. This
+is helpful if you want to lock down certain items the way they are without changes being applied to them,
+especially if they are created by some other user of the platform. Favoriting an item adds an item to
+a special list that can then be accessed when creating a book or chapter, or through the main Favorites tab.
+Previewing allows users see exactly what the scrap, chapter, or book looks like at that exact moment
+in the edit process. \\
 
 \noindent
 
-\section{Remaining Work} 
+\section{Remaining Work}
 
-While we were able to accomplish our agreed upon requirements for our client, we weren't able to finish
-many of our stretch goals. This was due to a few complications, which will be discussed later in this
-report. The majority of the goals discussed are focused on the users quality of life, but will also 
-cover whats indicative to our team. This segment will expand upon user feedback, our user manual, and 
-miscellaneous features for the users. \\
+While we were able to accomplish our agreed upon requirements for our client by the
+required deadline, we have many stretch goals in mind that we look forward to working on.
+The majority of the goals discussed are focused on the usability and features our team wants. \\
 
-\noindent Getting thorough and helpful feedback from testers has been a more difficult aspect of the project, as 
-initiating and getting responses from people willing to test has been limited. With the amount of time 
-we've been given, we've been able to incorporate constructive feedback from family, friends, as well 
-as from our client from a professors point of view. This is one area that still needs work and will be
-a focus point in the future. \\
+\noindent Getting thorough and helpful feedback from testers has been one of the more difficult aspects of the project, as
+initiating and getting responses from people willing to test has been limited. With the amount of time
+we've been given, we've been able to incorporate constructive feedback from family, friends, as well
+as from our client, who was able to give feedback from a professors point of view.
+This is one area that still needs work and will be a focus point in the future. \\
 
-\noindent One of the areas our team will focus on in the future in the user manual. The user manual instructs 
-the user on how to user all the features offered by our application. This covers everything from making 
-a book, to changing your display name. We want our user manual to be a helpful guide for new users to get
-acquinted with the site as fast as possible. We'll do this by making the instructions very clear and simple. \\
+\noindent Another main area of focus in the future will be the user manual. The user manual is the accompanying help manual
+that guides the user on how to use the various features offered by our application. The manual could cover
+everything from making a book, to changing your display name. We want our user manual to be a helpful guide for new users to get
+acquainted with the site as fast as possible, and intend to therefore make it as clear and concise as possible. \\
 
-\noindent Some smaller areas we want to implement in the future have to do with the overall look and appeal
-to the application. These include cosmetic and usability features, as well as ways to help give the user
-a better experience overall. An example of a cosmetic feature that needs work on is the ability for textareas 
-to resize automatically. Being able to view PDF's at the level the user wishes is one of the main areas that
-sets our application apart. While we have this feature working at a promising level, we still have several 
-details we want to incorporate. Viewing a PDF in fullscreen, and being able to navigate through the pages 
-easier would areas the PDF viewer could improve. \\
+\noindent Some smaller areas we want to work on in the future involve the overall look and feel of the application.
+These include cosmetic and usability features, as well as ways to help give the user a better overall experience.
+An example of a cosmetic feature that needs work on is the ability for writing areas
+to resize automatically. Our integrated, always-visible PDF previewer is one of the highlights of our
+application, but we currently have no way to preview a PDF in full screen, and the preview pane is relatively small. \\
 
-\noindent The last area that needs to be improved upon is the history feature. As mentioned previously in the
-report, we have a history view model that allows the user to see all changes done to it. For the history model 
-to be complete, we would like to add more information. This would mean including the commiter or the user who 
-performed the specific change. This would help the user get a better understand of who's changing certain 
-features about an item. \\
+\noindent The last area that needs to be improved upon is the history feature. As mentioned previously,
+we have a history view model that allows the user to see all changes done to items. For the history model
+to be complete, we would like to add more information. This would mean including who made the changes,
+and the date/time of the change. This would help the user get a better understand of what has changed. \\
 
 \newpage
 
-\section{Problems and Proposed Solutions} 
+\section{Problems and Proposed Solutions}
 
-\noindent One of the areas that our team wanted to improve on winter term was communication with our client.
-This meant that we needed to come to our meetings with an agenda and clear goals of what we wanted to 
-accomplish. After much discussion as to what was expected, both us and our client were able to arrive at 
-reasonable goals. While our communication has improved with our client, we still have difficulties finding 
-meetings times that work for our client and us. The solution that we have incorporated is being proactive
-about our meetings with our client and doing everything we can to not make it difficult or a hassle.\\
+\noindent A continuing area of issue was client availability. After fall term, we worked out a meeting schedule
+and goals for our meetings with our client, and as a result, winter term we had many more meetings and
+were able to get a lot more value out of his leadership. This term, we were able to meet with
+our client a handful of times, but unfortunately as he continues his transition into a new job,
+more and more of his time is used up, and as a result we had difficulties finding
+meetings times that work for our both our client and our team. The solution that we have incorporated is being proactive
+about our meetings with our client, and arranging meeting times with his new secretary by email.\\
 
-\noindent A problem our group has ran into in the past, as well as currently, is members not always being 
-able to contribute to the project as much as necessary. This has impeded progress in several cases, and 
-has caused the other team members to feel unvalued and unappreciated. Our proposed solution to this problem
-has been having the team members who weren't able to contribute as much take up responsibility for the next
-big project, or give them more task in order to make up for their lack thereof. \\
+\noindent Another issue we have ran into this term is that of team member availability.
+With the stolen laptop and class requirements, from time to time a team member or two has been less
+available during crunch times than preferable. However, whenever possible, we have attempted to
+balance the workload across parts of the project, such that team members who had lots of work one week
+work more the next and the other members can get their classwork finished. This has allowed us all
+to work hard on work from other classes, while at the same time getting a large amount of
+capstone work done. \\
 
 \newpage
 
-\section{Steven Term Progress}
-
-\subsection{Weekly Recapping}
-
-\section{Evan Term Progress}
-
-\subsection{Weekly Recapping}
-
-\section{Josh Term Progress}
-\subsection{Weekly Recapping}
+\section{Cool Code Stuff}
 
 \section{Conclusion}
 
