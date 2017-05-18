@@ -6,6 +6,8 @@ import { MdToastService } from 'aurelia-materialize-bridge';
 
 let httpClient = new HttpClient();
 
+const loginhtml = '<div class="g-signin2" data-onsuccess="signOut()" data-theme="dark"></div>';
+
 @inject(MdToastService)
 export class Profile {
     constructor(toast) {
@@ -45,6 +47,18 @@ export class Profile {
 
     }
 
+    attached() {
+      console.log('activated');
+      gapi.signin2.render('logindiv', {
+        scope: 'profile email',
+        width: 250,
+        height: 50,
+        longtitle: true,
+        theme: 'dark',
+        //onsuccess: onSignIn,
+        onfailure: handleFailure,
+      });
+    }
 
     activate() {
       var username = '';

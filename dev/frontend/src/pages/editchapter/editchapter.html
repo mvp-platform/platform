@@ -2,7 +2,7 @@
     <require from="resources/elements/pdf-document"></require>
     <section class="leftSection">
       <md-navbar>
-          <span class="spacer"><span class="brand-logo">Edit Chapter</span></span>
+          <span class="spacer"><span class="brand-logo">Edit Chapter - ${chapter.name}</span></span>
       </md-navbar>
       <div class="col-sm-8">
       <div class="collapsible-basic-use">
@@ -22,8 +22,9 @@
             <ul class="draggable-header nav">
             <md-input class="title-input" onchange.bind="updateName" md-value.bind="chapter.name"></md-input>
             <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
+            <h5 style="margin-left:0.5em">Scraps of ${chapter.name}</h5>
             <li repeat.for="scrap of chapter.scraps" class="drag-source drop-target scrap ${scrap.isActive ? 'active' : ''}" data-index="${$index}">
-            <md-card md-title="${scrap.author}">
+            <md-card md-title="${$index+1} - Author: ${scrap.author}">
               <div>
                 <p if.bind="!scrap.image">${scrap.text}</p>
                 <p if.bind="scrap.image">
