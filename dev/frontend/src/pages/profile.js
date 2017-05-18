@@ -47,18 +47,52 @@ export class Profile {
 
     }
 
-    attached() {
-      console.log('activated');
-      gapi.signin2.render('logindiv', {
-        scope: 'profile email',
-        width: 250,
-        height: 50,
-        longtitle: true,
-        theme: 'dark',
-        //onsuccess: onSignIn,
-        onfailure: handleFailure,
-      });
+    // let loggedInRoutes = [
+    //     { route: '', redirect: 'mybooks' },
+    // ];
+    //
+    // const loggedOutRoutes = loggedInRoutes.map(r => ({ route: r.route, redirect: 'login' }));
+    // loggedOutRoutes.push({ route: 'login', name: 'login', moduleId: './pages/login/login', nav: false, title: 'Login' });
+
+
+
+    logout() {
+      console.log(Cookies.getAll());
+      console.log('logout');
+      Cookies.removeAll();
+      let test = Cookies.getAll();
+      console.log(test);
+      window.location.reload(true);
+
+      //this.router.navigateToRoute('search');
+
+
     }
+
+    // configureRouter(config, router) {
+    //   //config.map[{ route: 'login', name: 'login', moduleId: './pages/login/login', nav: false, title: 'Login' }];
+    //
+    //   if (Cookies.get('username') === null) {
+    //     config.title = 'MVP';
+    //     config.map(loggedOutRoutes);
+    //     this.router = router;
+    //     return;
+    //   }
+    // }
+
+    // configureRouter(config, router) {
+    //     config.map([
+    //         { route: '',  name: 'mybooks',  moduleId: './mybooks' },
+    //     ]);
+    //     this.router = router;
+    //
+    //     if (Cookies.get('username') === null) {
+    //       config.title = 'MVP';
+    //       config.map(loggedOutRoutes);
+    //       this.router = router;
+    //       return;
+    //     }
+    // }
 
     activate() {
       var username = '';
@@ -88,4 +122,6 @@ export class Profile {
       });
 
     }
+
+
 }
