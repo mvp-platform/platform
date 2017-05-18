@@ -1,5 +1,7 @@
 # The Many Voices Publishing Platform
 
+![Travis](https://travis-ci.org/CS461-MVP/mvp_platform.svg?branch=master)
+
 ![Editing a book](/documents/editbook.png?raw=true)
 
 The Many Voices Publishing Platform is about empowering professors to create
