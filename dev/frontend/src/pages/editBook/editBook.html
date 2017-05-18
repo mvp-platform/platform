@@ -2,7 +2,7 @@
     <require from="resources/elements/pdf-document"></require>
     <section class="leftSection">
         <md-navbar>
-            <span class="spacer"><span class="brand-logo">${title}</span></span>
+            <span class="spacer"><span class="brand-logo">${title} - ${book.name}</span></span>
         </md-navbar>
         <div>
         <div id="modal" md-modal md-modal.ref="modal">
@@ -35,8 +35,9 @@
                     <ul class="draggable-header nav">
                       <md-input class="title-input" onchange.bind="updateName" md-value.bind="book.name"></md-input>
                       <dragula-and-drop drop-fn.call="itemDropped(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>
+                      <h5 style="margin-left:0.5em">Chapters of ${book.name}</h5>
                       <li repeat.for="chapter of book.chapters" class="drag-source drop-target chapter ${chapter.isActive ? 'active' : ''}" data-index="${$index}">
-                      <md-card md-title="${chapter.name}">
+                      <md-card md-title="${$index+1} - ${chapter.name}">
                         <div>
                           <p>Author: ${chapter.author}</p>
                           <p class="buttonOptions">
