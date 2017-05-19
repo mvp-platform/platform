@@ -57,12 +57,14 @@ export class Profile {
 
 
     logout() {
-      console.log(Cookies.getAll());
-      console.log('logout');
       Cookies.removeAll();
-      let test = Cookies.getAll();
-      console.log(test);
-      window.location.reload(true);
+      gapi.load('auth2', function() {
+        gapi.auth2.init().then(function() {
+          gapi.auth2.getAuthInstance().signOut().then(function() {
+            window.location.reload(true);
+          });
+        });
+      });
 
       //this.router.navigateToRoute('search');
 
