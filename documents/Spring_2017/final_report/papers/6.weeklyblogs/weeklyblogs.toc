@@ -1,0 +1,205 @@
+\contentsline {section}{\numberline {1}Fall}{4}
+\contentsline {subsection}{\numberline {1.1}Week 3}{4}
+\contentsline {subsubsection}{\numberline {1.1.1}Steven}{4}
+\contentsline {subsubsection}{\numberline {1.1.2}Evan}{4}
+\contentsline {subsubsection}{\numberline {1.1.3}Josh}{4}
+\contentsline {subsection}{\numberline {1.2}Week 4}{5}
+\contentsline {subsubsection}{\numberline {1.2.1}Steven}{5}
+\contentsline {subsubsection}{\numberline {1.2.2}Evan}{5}
+\contentsline {subsubsection}{\numberline {1.2.3}Josh}{5}
+\contentsline {subsection}{\numberline {1.3}Week 5}{6}
+\contentsline {subsubsection}{\numberline {1.3.1}Steven}{6}
+\contentsline {subsubsection}{\numberline {1.3.2}Evan}{6}
+\contentsline {subsubsection}{\numberline {1.3.3}Josh}{6}
+\contentsline {subsection}{\numberline {1.4}Week 6}{6}
+\contentsline {subsubsection}{\numberline {1.4.1}Steven}{6}
+\contentsline {subsubsection}{\numberline {1.4.2}Evan}{7}
+\contentsline {subsubsection}{\numberline {1.4.3}Josh}{7}
+\contentsline {subsection}{\numberline {1.5}Week 7}{8}
+\contentsline {subsubsection}{\numberline {1.5.1}Steven}{8}
+\contentsline {subsection}{\numberline {1.6}Week 8}{8}
+\contentsline {subsubsection}{\numberline {1.6.1}Steven}{8}
+\contentsline {subsubsection}{\numberline {1.6.2}Evan}{9}
+\contentsline {subsubsection}{\numberline {1.6.3}Josh}{9}
+\contentsline {section}{\numberline {2}Winter}{9}
+\contentsline {subsection}{\numberline {2.1}Week 1}{9}
+\contentsline {subsubsection}{\numberline {2.1.1}Steven}{9}
+\contentsline {paragraph}{\numberline {2.1.1.1} PROGRESS}{9}
+\contentsline {paragraph}{\numberline {2.1.1.2}PROBLEMS}{9}
+\contentsline {paragraph}{\numberline {2.1.1.3}PLAN}{9}
+\contentsline {subsubsection}{\numberline {2.1.2}Evan}{10}
+\contentsline {subsubsection}{\numberline {2.1.3}Josh}{10}
+\contentsline {subsection}{\numberline {2.2}Week 2}{10}
+\contentsline {subsubsection}{\numberline {2.2.1}Steven}{10}
+\contentsline {paragraph}{\numberline {2.2.1.1}PROBLEMS}{10}
+\contentsline {paragraph}{\numberline {2.2.1.2}PROGRESS}{10}
+\contentsline {paragraph}{\numberline {2.2.1.3}PLAN}{10}
+\contentsline {subsubsection}{\numberline {2.2.2}Evan}{10}
+\contentsline {subsubsection}{\numberline {2.2.3}Josh}{10}
+\contentsline {subsection}{\numberline {2.3}Week 3}{11}
+\contentsline {subsubsection}{\numberline {2.3.1}Steven}{11}
+\contentsline {paragraph}{\numberline {2.3.1.1}PROBLEMS}{11}
+\contentsline {paragraph}{\numberline {2.3.1.2}PROGRESS}{11}
+\contentsline {paragraph}{\numberline {2.3.1.3}PLAN}{11}
+\contentsline {subsubsection}{\numberline {2.3.2}Evan}{11}
+\contentsline {subsubsection}{\numberline {2.3.3}Josh}{11}
+\contentsline {subsection}{\numberline {2.4}Week 4}{11}
+\contentsline {subsubsection}{\numberline {2.4.1}Steven}{11}
+\contentsline {paragraph}{\numberline {2.4.1.1}PROBLEMS}{11}
+\contentsline {paragraph}{\numberline {2.4.1.2}PROGRESS}{12}
+\contentsline {paragraph}{\numberline {2.4.1.3}PLAN}{12}
+\contentsline {subsubsection}{\numberline {2.4.2}Evan}{12}
+\contentsline {subsubsection}{\numberline {2.4.3}Josh}{12}
+\contentsline {subsection}{\numberline {2.5}Week 5}{12}
+\contentsline {subsubsection}{\numberline {2.5.1}Steven}{12}
+\contentsline {paragraph}{\numberline {2.5.1.1}PROGRESS}{12}
+\contentsline {paragraph}{\numberline {2.5.1.2}PROBLEMS}{12}
+\contentsline {paragraph}{\numberline {2.5.1.3}PLAN}{13}
+\contentsline {subsubsection}{\numberline {2.5.2}Evan}{13}
+\contentsline {subsubsection}{\numberline {2.5.3}Josh}{13}
+\contentsline {subsection}{\numberline {2.6}Week 6}{13}
+\contentsline {subsubsection}{\numberline {2.6.1}Steven}{13}
+\contentsline {paragraph}{\numberline {2.6.1.1}PROGRESS}{13}
+\contentsline {paragraph}{\numberline {2.6.1.2}PLAN}{13}
+\contentsline {paragraph}{\numberline {2.6.1.3}PROBLEMS}{13}
+\contentsline {subsubsection}{\numberline {2.6.2}Evan}{13}
+\contentsline {subsubsection}{\numberline {2.6.3}Josh}{14}
+\contentsline {subsection}{\numberline {2.7}Week 7}{14}
+\contentsline {subsubsection}{\numberline {2.7.1}Steven}{14}
+\contentsline {paragraph}{\numberline {2.7.1.1}PROGRESS}{14}
+\contentsline {paragraph}{\numberline {2.7.1.2}PROBLEMS}{14}
+\contentsline {paragraph}{\numberline {2.7.1.3}PLAN}{14}
+\contentsline {subsubsection}{\numberline {2.7.2}Evan}{14}
+\contentsline {subsubsection}{\numberline {2.7.3}Josh}{14}
+\contentsline {subsection}{\numberline {2.8}Week 8}{15}
+\contentsline {subsubsection}{\numberline {2.8.1}Steven}{15}
+\contentsline {paragraph}{\numberline {2.8.1.1}PROGRESS}{15}
+\contentsline {paragraph}{\numberline {2.8.1.2}PLAN}{15}
+\contentsline {paragraph}{\numberline {2.8.1.3}PROGRESS}{15}
+\contentsline {paragraph}{\numberline {2.8.1.4}PLAN}{15}
+\contentsline {paragraph}{\numberline {2.8.1.5}PROBLEMS}{15}
+\contentsline {subsubsection}{\numberline {2.8.2}Evan}{15}
+\contentsline {subsubsection}{\numberline {2.8.3}Josh}{15}
+\contentsline {subsection}{\numberline {2.9}Week 9}{16}
+\contentsline {subsubsection}{\numberline {2.9.1}Steven}{16}
+\contentsline {paragraph}{\numberline {2.9.1.1}PROGRESS}{16}
+\contentsline {paragraph}{\numberline {2.9.1.2}PROBLEMS}{16}
+\contentsline {paragraph}{\numberline {2.9.1.3}PLAN}{16}
+\contentsline {subsubsection}{\numberline {2.9.2}Evan}{16}
+\contentsline {subsubsection}{\numberline {2.9.3}Josh}{16}
+\contentsline {subsection}{\numberline {2.10}Week 10}{16}
+\contentsline {subsubsection}{\numberline {2.10.1}Steven}{16}
+\contentsline {paragraph}{\numberline {2.10.1.1}PROGRESS}{16}
+\contentsline {paragraph}{\numberline {2.10.1.2}PLAN}{17}
+\contentsline {paragraph}{\numberline {2.10.1.3}PROBLEMS}{17}
+\contentsline {subsubsection}{\numberline {2.10.2}Evan}{17}
+\contentsline {subsubsection}{\numberline {2.10.3}Josh}{17}
+\contentsline {subsection}{\numberline {2.11}Week 11}{17}
+\contentsline {subsubsection}{\numberline {2.11.1}Steven}{17}
+\contentsline {paragraph}{\numberline {2.11.1.1}PROGRESS}{17}
+\contentsline {paragraph}{\numberline {2.11.1.2}PLAN}{17}
+\contentsline {paragraph}{\numberline {2.11.1.3}PROBLEMS}{17}
+\contentsline {subsubsection}{\numberline {2.11.2}Evan}{17}
+\contentsline {subsubsection}{\numberline {2.11.3}Josh}{18}
+\contentsline {section}{\numberline {3}Spring}{18}
+\contentsline {subsection}{\numberline {3.1}Week 1}{18}
+\contentsline {subsubsection}{\numberline {3.1.1}Steven}{18}
+\contentsline {paragraph}{\numberline {3.1.1.1}PROGRESS}{18}
+\contentsline {paragraph}{\numberline {3.1.1.2}PROBLEMS}{18}
+\contentsline {paragraph}{\numberline {3.1.1.3}PLAN}{18}
+\contentsline {subsubsection}{\numberline {3.1.2}Evan}{18}
+\contentsline {paragraph}{\numberline {3.1.2.1}PROGRESS}{18}
+\contentsline {paragraph}{\numberline {3.1.2.2}PROBLEMS}{18}
+\contentsline {paragraph}{\numberline {3.1.2.3}PLAN}{19}
+\contentsline {subsubsection}{\numberline {3.1.3}Josh}{19}
+\contentsline {paragraph}{\numberline {3.1.3.1}PROGRESS}{19}
+\contentsline {paragraph}{\numberline {3.1.3.2}PROBLEMS}{19}
+\contentsline {paragraph}{\numberline {3.1.3.3}PLAN}{19}
+\contentsline {subsection}{\numberline {3.2}Week 2}{19}
+\contentsline {subsubsection}{\numberline {3.2.1}Steven}{19}
+\contentsline {paragraph}{\numberline {3.2.1.1}Progress}{19}
+\contentsline {paragraph}{\numberline {3.2.1.2}Problems}{19}
+\contentsline {paragraph}{\numberline {3.2.1.3}Plans}{19}
+\contentsline {subsubsection}{\numberline {3.2.2}Evan}{19}
+\contentsline {paragraph}{\numberline {3.2.2.1}Progress}{19}
+\contentsline {paragraph}{\numberline {3.2.2.2}Problems}{20}
+\contentsline {paragraph}{\numberline {3.2.2.3}Plans}{20}
+\contentsline {subsubsection}{\numberline {3.2.3}Josh}{20}
+\contentsline {paragraph}{\numberline {3.2.3.1}Progress}{20}
+\contentsline {paragraph}{\numberline {3.2.3.2}Problems}{20}
+\contentsline {paragraph}{\numberline {3.2.3.3}Plans}{20}
+\contentsline {subsection}{\numberline {3.3}Week 3}{20}
+\contentsline {subsubsection}{\numberline {3.3.1}Steven}{20}
+\contentsline {paragraph}{\numberline {3.3.1.1}PROGRESS}{20}
+\contentsline {paragraph}{\numberline {3.3.1.2}PROBLEMS}{20}
+\contentsline {paragraph}{\numberline {3.3.1.3}PLAN}{21}
+\contentsline {subsubsection}{\numberline {3.3.2}Evan}{21}
+\contentsline {paragraph}{\numberline {3.3.2.1}PROGRESS}{21}
+\contentsline {paragraph}{\numberline {3.3.2.2}PROBLEMS}{21}
+\contentsline {paragraph}{\numberline {3.3.2.3}PLAN}{21}
+\contentsline {subsubsection}{\numberline {3.3.3}Josh}{21}
+\contentsline {paragraph}{\numberline {3.3.3.1}PROGRESS}{21}
+\contentsline {paragraph}{\numberline {3.3.3.2}PROBLEMS}{21}
+\contentsline {paragraph}{\numberline {3.3.3.3}PLAN}{22}
+\contentsline {subsection}{\numberline {3.4}Week 4}{22}
+\contentsline {subsubsection}{\numberline {3.4.1}Steven}{22}
+\contentsline {paragraph}{\numberline {3.4.1.1}PROBLEMS}{22}
+\contentsline {paragraph}{\numberline {3.4.1.2}PROGRESS}{22}
+\contentsline {paragraph}{\numberline {3.4.1.3}PLAN}{22}
+\contentsline {subsubsection}{\numberline {3.4.2}Evan}{22}
+\contentsline {paragraph}{\numberline {3.4.2.1}PROGRESS}{22}
+\contentsline {paragraph}{\numberline {3.4.2.2}PROBLEMS}{22}
+\contentsline {paragraph}{\numberline {3.4.2.3}PLANS}{22}
+\contentsline {subsubsection}{\numberline {3.4.3}Josh}{23}
+\contentsline {paragraph}{\numberline {3.4.3.1}PROGRESS}{23}
+\contentsline {paragraph}{\numberline {3.4.3.2}PROBLEMS}{23}
+\contentsline {paragraph}{\numberline {3.4.3.3}PLAN}{23}
+\contentsline {subsection}{\numberline {3.5}Week 5}{23}
+\contentsline {subsubsection}{\numberline {3.5.1}Steven}{23}
+\contentsline {paragraph}{\numberline {3.5.1.1}Progress}{23}
+\contentsline {paragraph}{\numberline {3.5.1.2}Problems}{23}
+\contentsline {paragraph}{\numberline {3.5.1.3}Plan}{23}
+\contentsline {subsubsection}{\numberline {3.5.2}Evan}{23}
+\contentsline {paragraph}{\numberline {3.5.2.1}Progress}{23}
+\contentsline {paragraph}{\numberline {3.5.2.2}Problems}{24}
+\contentsline {paragraph}{\numberline {3.5.2.3}Plan}{24}
+\contentsline {subsubsection}{\numberline {3.5.3}Josh}{24}
+\contentsline {paragraph}{\numberline {3.5.3.1}Progress}{24}
+\contentsline {paragraph}{\numberline {3.5.3.2}Problems}{24}
+\contentsline {paragraph}{\numberline {3.5.3.3}Plan}{24}
+\contentsline {subsection}{\numberline {3.6}Week 6}{24}
+\contentsline {subsubsection}{\numberline {3.6.1}Steven}{24}
+\contentsline {paragraph}{\numberline {3.6.1.1}Progress}{24}
+\contentsline {paragraph}{\numberline {3.6.1.2}Problems}{24}
+\contentsline {paragraph}{\numberline {3.6.1.3}Plan}{25}
+\contentsline {subsubsection}{\numberline {3.6.2}Evan}{25}
+\contentsline {subsubsection}{\numberline {3.6.3}Josh}{25}
+\contentsline {paragraph}{\numberline {3.6.3.1}Progress}{25}
+\contentsline {paragraph}{\numberline {3.6.3.2}Problems}{25}
+\contentsline {paragraph}{\numberline {3.6.3.3}Plan}{25}
+\contentsline {subsection}{\numberline {3.7}Week 7}{25}
+\contentsline {subsubsection}{\numberline {3.7.1}Steven}{25}
+\contentsline {paragraph}{\numberline {3.7.1.1}Progress}{25}
+\contentsline {paragraph}{\numberline {3.7.1.2}Problems}{25}
+\contentsline {paragraph}{\numberline {3.7.1.3}Plan}{25}
+\contentsline {subsubsection}{\numberline {3.7.2}Evan}{25}
+\contentsline {paragraph}{\numberline {3.7.2.1}Progress}{25}
+\contentsline {paragraph}{\numberline {3.7.2.2}Problems}{26}
+\contentsline {paragraph}{\numberline {3.7.2.3}Plan}{26}
+\contentsline {subsubsection}{\numberline {3.7.3}Josh}{26}
+\contentsline {paragraph}{\numberline {3.7.3.1}Progress}{26}
+\contentsline {paragraph}{\numberline {3.7.3.2}Problems}{26}
+\contentsline {paragraph}{\numberline {3.7.3.3}Plan}{26}
+\contentsline {subsection}{\numberline {3.8}Week 8}{26}
+\contentsline {subsubsection}{\numberline {3.8.1}Steven}{26}
+\contentsline {paragraph}{\numberline {3.8.1.1}Progress}{26}
+\contentsline {paragraph}{\numberline {3.8.1.2}Problems}{27}
+\contentsline {paragraph}{\numberline {3.8.1.3}Plan}{27}
+\contentsline {subsubsection}{\numberline {3.8.2}Evan}{27}
+\contentsline {paragraph}{\numberline {3.8.2.1}Progress}{27}
+\contentsline {paragraph}{\numberline {3.8.2.2}Problems}{28}
+\contentsline {paragraph}{\numberline {3.8.2.3}Plan}{28}
+\contentsline {subsubsection}{\numberline {3.8.3}Josh}{28}
+\contentsline {paragraph}{\numberline {3.8.3.1}Progress}{28}
+\contentsline {paragraph}{\numberline {3.8.3.2}Problems}{29}
+\contentsline {paragraph}{\numberline {3.8.3.3}Plan}{29}

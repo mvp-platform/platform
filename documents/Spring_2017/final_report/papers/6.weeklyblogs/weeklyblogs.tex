@@ -1,0 +1,770 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{comment}
+\usepackage{bigstrut}
+\usepackage{geometry}
+\usepackage{supertabular}
+\usepackage{tabu}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Remix}
+\def \CapstoneTeamNumber{		61}
+\def \GroupMemberOne{			Josh Matteson}
+\def \GroupMemberTwo{			Steven Powers}
+\def \GroupMemberThree{			Evan Tschuy}
+\def \CapstoneProjectName{		Many Voices Platform}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Carlos Jensen}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{
+	%Problem Statement
+	%Requirements Document
+	%Technology Review
+	%Design Document
+	Final Report Blog Posts
+}
+
+\newcommand{\NameSigPair}[1]{\par
+	\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+	\par\vspace{-12pt} \textit{\tiny\noindent
+		\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+% file1.pdf: pages  1- 3
+% file2.pdf: pages  4- 9
+% file3.pdf: pages 10-18
+
+\newcommand{\addsection}[3]{\addtocontents{toc}{\protect\contentsline{section}{\protect\numberline{#1}#2}{#3}}}
+\newcommand{\addsubsection}[3]{\addtocontents{toc}{\protect\contentsline{subsection}{\protect\numberline{#1}#2}{#3}}}
+
+
+\pagestyle{fancy}
+\fancyfoot[C]{BLOGS--\thepage}
+
+\begin{document}
+	
+\begin{titlepage}
+	\pagenumbering{gobble}
+	\begin{singlespace}
+		\includegraphics[height=4cm]{../../coe_v_spot1}
+		\hfill
+		% 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+		%\includegraphics[height=4cm]{CompanyLogo}
+		\par\vspace{.2in}
+		\centering
+		\scshape{
+			\huge CS Capstone \DocType \par
+			{\large\today}\par
+			\vspace{.5in}
+			\textbf{\Huge\CapstoneProjectName}\par
+			\vfill
+			{\large Prepared for}\par
+			\Huge \CapstoneSponsorCompany\par
+			\vspace{5pt}
+			{\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+			{\large Prepared by }\par
+			Group\CapstoneTeamNumber\par
+			% 5. comment out the line below this one if you do not wish to name your team
+			\CapstoneTeamName\par
+			\vspace{5pt}
+			{\Large
+				\NameSigPair{\GroupMemberOne}\par
+				\NameSigPair{\GroupMemberTwo}\par
+				\NameSigPair{\GroupMemberThree}\par
+			}
+			\vspace{20pt}
+		}
+		\begin{abstract}
+			% 6. Fill in your abstract
+			\noindent The culmination of blog posts created during the development of the Many
+			Voices Publishing Platform by Team Remix; Josh Matteson, Steven Powers, and Evan Tschuy 
+			for Dr. Carlos Jensen. 
+		\end{abstract}
+	\end{singlespace}
+\end{titlepage}
+\pagenumbering{arabic}
+\tableofcontents
+\section{Fall}
+
+\subsection{Week 3}
+\subsubsection{Steven}
+
+This week was crazy! Getting our problem statement ironed out took a little longer than we anticipated. Mainly getting my teammates to be able to commit to working on the documents and revisions so we could meet the assignment criteria. Josh was able to meet with me on the 14th. Josh and I continued with my draft of the problem statement and the two of us created the blog platform. It was stressful, but we were able to get everything signed and turned in on time, thankfully.
+
+Last week we met with our client for the first time and layed the plans for the MVP platform as a whole, including long term goals of actually processing the formatting of documents.
+
+For next week I am not sure what to expect, I do know that at the end of the month we have our project requirements documents coming up. 
+
+\subsubsection{Evan}
+
+I definitely had a major lack of time this week. I worked a little bit on some of our documents, like parts of the draft problem statement, but unfortunately was unable to meet in person with my teammates except for small amounts after classes. This week, we start TA meetings and, since the crazy orchestra rehearsal schedules are over, I should have a lot more time in the evening for homework, which frees up daytime hours for any necessary meetings with our client Carlos and with the group.
+
+\subsubsection{Josh}
+
+Getting Everything finalized was quite a stretch this week, me and Steven had to power through getting our project webpage set up. We also had to get our Problem Statement signed by everybody in the group as well as our client. Next week, we are planning on figuring out a time for our team to meet consistently, as well as figure out user stories. We ran into some problems this week just trying to get everybody to sign our Problem Statement on time. Another problem we ran into was getting a hold of our client on time. Thankfully, we got everything finished and turned in on time. We'll hopefully be more on top of things next week.
+
+\subsection{Week 4}
+\subsubsection{Steven}
+
+Trying to get a head in terms of our class work has proved difficult. We haven't heard from our client, but he is busy, so that is understandable. We are attempting to get his feedback on our problem statement as well as involve him in the requirements document creation.
+
+Last week we completed the first submission of our problem statement document but we need to revise it for the coming week. We still don't have specific feedback but we are working on revising it anyways.
+
+For next week I am not sure what to expect, hopefully we are able to involve our client in the documentation creation process and continue as a cohesive group and complete these milestones on time.
+
+\subsubsection{Evan}
+
+Client communication was a big theme for us this week, with his feedback necessary for us to move forward on our problem statement and helpful for our requirements docs. We were able to meet with our TA and work out a timeslot for that, which is awesome.
+
+For this coming week, the revised problem statement and client req documents are the most important things in the pipeline. Hopefully we'll be able to get client feedback and get those docs done! 
+
+\subsubsection{Josh}
+
+This week we mostly worked on figuring out a time that was going to work for all of us. I think we finally have a solidified time. We also figured out quite a lot of ideas about the tools we could use to design the online application. 
+
+Next week, we need to revise our problem statement as well as start working on our Client Requirements Document. Overall, we weren't able to accomplish much this week, but that had a lot to do with the fact that our client hasn't really been responding to us. We now have a real wiki which is awesome.
+\subsection{Week 5}
+\subsubsection{Steven}
+
+This week we were tasked with revising and turning in our problem statement. This was worked on by Josh and I and turned in by Evan. We also began work on the requirements document which has been intimidating! There has been so much stuff to cover.
+
+Next week we have to complete a final draft of our requirements document and then have our client review it and sign it. 
+
+\subsubsection{Evan}
+
+This week we got the revised problem statement signed and turned in. We began work on the requirements, which is a massive effort! I split out a bunch of user stories while we were working on the requirements doc together, and we'll be putting those into the document the following year.
+
+This following week, we'll be getting the final requirements document done and turned in. This week is where I've been pulling more of my own weight, though I still have a bit of a ways to go.
+
+\subsubsection{Josh}
+
+This week, we managed to get ahold of our client and get him to sign our revised Problem Statement. We previously were having quite a bit of trouble getting ahold of him because he's been traveling. We also managed to all work together on our Requirements Document, which has been one of the few times we've all been able to work find times in our schedule to do it together (even though it was over the internet). 
+
+Next week we need to get our client to sign our Requirements Document, which hopefully won't be to much of an issue. Thankfully this week has flown a little more smoothly in terms of our team working together, and hopefully it can continue this way for the rest of the term.
+\subsection{Week 6}
+\subsubsection{Steven}
+
+This week: I made lots revisions to the requirements document, and then integrated the changes that Evan and Josh made to the document. I also attended Dr. Winters writing session and asked about documentation formatting and the like. I also revised our Problem Statement and heard from Dr. Winters that we can resubmit documents once they have been corrected to receive a regrading. This will hopefully prevent us from receiving another 82/100.
+I also sent two drafts to our client, with 48 hours notice each time, but neither document has been opened as of this time.
+
+Problems: Our requirements document has slight differences in the formatting compared to the IEEE 830 format specification, though our TA Jon Dodge and Dr. Winters feel that the document looks great. 
+
+I emailed our client a draft on Monday, and received no response by Wednesday.
+
+I emailed our client a draft on Wednesday, and as of this time have not received a response nor has our client opened the Requirements document via DocuSign. This is greatly concerning, but also understandable because he is traveling right now.
+
+Next Week:
+I am hoping that we can get an extension for the signature of our requirements document, as at this time I do not feel that we will have a signature from our client.
+
+I need to speak with my team about contacting our client for another meeting to try and get communication ironed out to prevent these large gaps in communication.
+
+\subsubsection{Evan}
+
+This week, we did finished requirements document. After meeting with our TA, we polished it and removed sections where specific wording could lead to unnecessary constraints, and we sent it off to our client with the required 48 hours notice. He luckily did get it back, just barely in time for turn-in. 
+
+In terms of problems, the only main problem I currently see is client communication. It could be going a little smoother in terms of feedback time, as currently it's mostly send -> wait 48 hours -> get a signature just in time. 
+
+This coming week, I'm heading to the bay area via a camping roadtrip, so I'll not be online as much as would be good. My hope is that I can get enough done early in the week to compensate for the trip; luckily, I'll be back online and able to work by Friday evening giving my plenty of time before the Monday deadline.
+
+\subsubsection{Josh}
+
+This week was difficult because I had rather large assignments being due at midnight, on nights where we needed to revise our Requirements Document and get it emailed to our client. We managed to finish the revising of the Requirements Document and get it signed just a couple of hours before it was due.
+
+Our Client hasn't been very responsive to our emails, and we're running into quite a bit of trouble just trying to communicate with him in general. We've had quite a few questions about the platform, but haven't been able to get the proper feedback we need from our client. Hopefully this will change as we continue into the nitty-gritty parts of the project.
+
+This next week shouldn't be too much of a problem, as we've gotten most of the big documents out of the way. Unfortunately, we still haven't figured out a time for all of us to meet weekly. I want to bring this up next class meeting, because us meeting once a week for a fixed amount of time is important. My teammates really pulled through this week because I was so busy with other schoolwork, so shout out to them.
+\subsection{Week 7}
+\subsubsection{Steven}
+
+This week:
+This week I began working on the Technology Review for our project. I still have more work to do however, as I have a lot more to do on this. I also made major revisions to our requirements document, for better document performance and stability. I made changes that were suggested by Jon Dodge and also reworded some portions of the document for better readability.
+
+Next Week:
+Next week I will continue on the Technology Review for the early portion of the week and continue to revise and update our past documents. I will also contact our client again about a possible meeting for a few points of clarification. 
+
+Problems:
+Adding bibliography entries for the requirements document proved way more difficult than I anticipated. Having previous experience with BibTeX, I assumed it would be smooth sailing. It turns out I was using square brackets instead of curly braces as the primary identifier. Once I fixed that, I had to trace a few other errors. Additionally I didn't add the Abstract to our document, so that needs to occur as well.
+\subsection{Week 8}
+\subsubsection{Steven}
+
+This week:
+This week I continued working on the Technology Review for our project. I made some formatting changes to make our document cleaner, within the Latex document and the appearance on the PDF. We also began planning on the design document and what that will entail.
+
+Next Week:
+Next week I will continue on the Design Document, we still have a few concerns about our technologies, as to be expected, as we haven't started on the implementation portion yet. I will also contact our client again about a possible meeting for a few points of clarification. 
+
+Problems:
+Keeping in touch with our client has been difficult. With our client traveling or otherwise unavailable has let us slip out of communication. We need to do better on this front.
+
+\subsubsection{Evan}
+
+This week, I worked with the rest of the group to finish the tech review. Afterwards, Steven made some changes to make it a little better, so shoutout to him! Next week is thanksgiving, so I might try to get some things done on the design doc while up with family in Portland. Our client hasn't been the most available, so we're pushing forward with the information available to us.
+
+\subsubsection{Josh}
+
+This week we cracked down on our Technology Review, and managed to get some extra time to compensate for other homework due those days. I still haven't learned LaTeX as well as I want to, but under the circumstances, I think it went okay. Steven managed to go over some formatting errors that happened for our tables, which made things look quite a bit better. 
+
+The following week is Thanksgiving week, so we won't have very much time on campus to be able to get everything done. This means that we need to crack down when we get back after the short break. We're going to start working more on implementation.
+
+We're still running into problems with contacting our client. I wasn't able to do a whole section on the technology review because I needed more clarification from him, but we haven't been able to get a meeting with him in since the first month. Another problem was not being able to use LaTeX that well, but hopefully it'll go smoother in the future as I've learned a bit about it this week.
+
+
+
+\section{Winter}
+
+
+\subsection{Week 1}
+	\subsubsection{Steven}
+	\paragraph{ PROGRESS}
+	For this week we were getting back into the groove of things after Winter break. Josh and I were able to meet with Carlos the week prior and talked about arranging meetings going forward each week.
+	
+	\paragraph{PROBLEMS}
+	We weren't able to get a whole lot of work done this week, but we planned for meeting each week at least a few hours a couple days of the week so we can continue making progress. 
+	
+	\paragraph{PLAN}
+	We plan to meet next week and work on the framework and user stories.
+	
+	\subsubsection{Evan}
+	
+	This week, we're not really working on too much. We'll be meeting with Carlos in about a week and a half, which will hopefully give us an opportunity to solidify what he wants, versus what we've been designing. 
+	
+	In the mean time, I worked on some of the book management backend over break. I'll continue working on that in my free time.
+	
+	\subsubsection{Josh}
+	The very end of the break, we were able to get a meeting with Carlos to clear up some possible fallout from the previous term. While we were able to get confirmation on some of the technologies we are using, we didn't sort out a few in the backend. We were able to, however, figure when we could meet with him the following weeks after he moved into his new office. This means we won't be meeting with him for at least two weeks.
+	
+	As far as figuring out user stories and possible work we could be doing, we managed to develop a game plan of how we can divide and conquer most of it.
+\subsection{Week 2}
+	\subsubsection{Steven}
+	
+	\paragraph{PROBLEMS}
+	This week we began our weekly meetings, though our client had to cancel meeting for the first two weeks.
+	
+	\paragraph{PROGRESS}
+	We also setup our meetings with Jon, which was actually pretty difficult to find a time that worked for all four of our schedules.
+	
+	\paragraph{PLAN}
+	We plan to continue working on the User Stories and Framework so we are able to make progress towards a working prototype.
+	
+	\subsubsection{Evan}
+	
+	This week we set up meetings with Jon and I've fleshed out the required API for the backend. Barring issues, I'm going to be implementing that for the next few weeks.
+	
+	\subsubsection{Josh}
+	Our group managed to meet this week and accomplish setting up the basic architecture of the application. Me and Steven are moving forward with Aurelia and are doing are best to get it configured. 
+\subsection{Week 3}
+	\subsubsection{Steven}
+	\paragraph{PROBLEMS}
+	This week we were to begin our weekly meetings with our client. Our client recently transferred positions and our weekly appointment was discarded. This resulted in our weekly time slot being given away, so now we have to find a new time (planned for 9:00AM Mondays). Our client also wants to only meet every other week rather than weekly now...
+	
+	\paragraph{PROGRESS}
+	We talked over the past terms documents and possible upcoming documents that we would be seeing in the class and that we should be focusing on development throughout this term.
+	
+	We worked on the backend system and testing of the include and input commands with our setup (which seems to be working well!). We also looked into security practices to protect our LaTeX documents from succumbing to common exploits (escaping the document and accessing the shell).
+	
+	\paragraph{PLAN}
+	We also worked on getting the framework up and running (TS Lint has been giving us some issues, so we might go with straight typescript without LINT and go to JavaScript with Lint.
+	
+	\subsubsection{Evan}
+	
+	This week Carlos cancelled due to calendar migration issues, so we've rescheduled for next week at 9am. Hopefully that'll work out...
+	
+	I'm working on getting that backend still moving forward. 
+	
+	\subsubsection{Josh}
+	The major changes this week had to do with our client switching his availability to once every two weeks, this hasn't been too much of a problem yet. 
+	
+	The backend has been progressing with Evan, and me and Steven got a semi working version of the Javascript framework working for Aurelia. Me and Even were able to meet this week briefly to discuss progress.
+\subsection{Week 4}
+	\subsubsection{Steven}
+	\paragraph{PROBLEMS}
+	No Specific Problems This Week.
+	
+	\paragraph{PROGRESS}
+	This week we met with Dr. Jensen and discussed the back-end of the system as well as some plans for how to model the front end of the system.
+	
+	Dr. Jensen suggested using low fidelity / medium fidelity to receive feedback from users instead of focusing on getting to high fidelity and having users review that as they will be less critical of the whole system and instead focus on pixel alignment.
+	
+	\paragraph{PLAN}
+	Josh and I need to get more work done on Aurelia and get a basic user interface up and running and try working towards in page rendering of the resulting PDF from the back end system.
+	
+	\subsubsection{Evan}
+	This week we got to meet with Dr Jensen about the state of the backend system (which is my primary domain) and the front-end design, which Steven is planning on drawing some rough prototypes for.
+	
+	My plan for the next few days is to work on more backend integration, including getting the textbook to render properly.
+	
+	\subsubsection{Josh}
+	We finally got the ball rolling this week because we were able to meet with Dr. Jensen. This led to discussion about work flow designs with a low fidelity goal. 
+	
+	Me and Steven got a fully working version of Aurelia working on a local server, and now we're working on the the basic layout. 
+	
+	Evan has still been making good progress on the backend, and was able to show Dr. Jensen the basic foundation of the backend. 
+\subsection{Week 5}
+	\subsubsection{Steven}
+	
+	\paragraph{PROGRESS}
+	This week was a week we had off from meeting with Dr. Jensen, we used this time to work on developing some of the required features that we need. This included Josh and I working on the PDF in browser rendering with Aurelia. Josh finished this task up separately.
+	
+	I worked on Prototype development to have Dr. Jensen review and provide feedback on during next weeks meeting. 
+	
+	\paragraph{PROBLEMS}
+	I wasn't able to get as many prototypes drawn as I would have liked, but there is still a good chunk of design that Dr. Jensen could critique.
+	
+	\paragraph{PLAN}
+	Next week I plan to show Dr. Jensen our designs and take in any feedback he might have. I also plan to work on revising all of our documents and get them placed into our OneNote document that I have prepared for our group.
+	
+	
+	
+	\subsubsection{Evan}
+	We didn't meet with Carlos this week, as we've made those every-other. Instead, we used the time to polish existing features we'd already worked on, and write new frontend and backend features. Personally, I got textbook rendering working, which was annoyingly difficult, but it's finally done!
+	
+	At our next meeting, we're primarily going to show Carlos our frontend prototype designs to get feedback on user flow, interface direction, and the like.
+	
+	\subsubsection{Josh}
+	Me and Steven started working on a PDF viewer by following a guide online. This led to some good progress as far as knowledge for the two of us. We have our meeting with Dr. Jensen this week, and we want to have this done before showing him. 
+	
+	Steven worked on prototypes and I branched off into finishing the pdfviewer demo. 
+\subsection{Week 6}
+	\subsubsection{Steven}
+	
+	\paragraph{PROGRESS}
+	This week we met with Dr. Jensen and he had lots of feedback about our designs, mainly in ways to simplify the interface for the users while also making it easier to develop. We talked about rendering the PDF only when needed (as in active editing) instead of constantly. We also talked about the possibility of using a tabbed system to only render when the user wants to, which will reduce our server calls.
+	
+	\paragraph{PLAN}
+	I plan to continue working on our document revisions, as well as our Progress Report materials (video, presentation materials, and report), which will mainly summarize the previous terms work and provide an overview of our progress this term.
+	
+	\paragraph{PROBLEMS}
+	Something that will be better next week is availability, as this week has a lot of midterms for various classes.
+	
+	\subsubsection{Evan}
+	After our meeting with Carlos, we were able to refine our vision for the interface. He mainly stressed making it simpler, and making it less duplicative. We now have an idea around how the user will go about editing a scrap, editing a chapter, etc., and when to render PDFs.
+	
+	This week is mainly going to be capstone assignments -- the revised documents and the video summary.
+	
+	\subsubsection{Josh}
+	Our meeting with Dr. Jensen went very well, he gave us constructive feedback on our designs and we were able to demo the front of the application to him. Me and Steven are going to continue working on the pdfviewer and integrating it into the application. 
+	
+	We also need to work on a progress report, which will be in the form of a video with edits from last time. We're going to demo our front end as well as our back end for this. It's due on Friday, and with Valentine's Day in the middle, it might be difficult to accomplish everything without the use of an all nighter.
+\subsection{Week 7}
+	\subsubsection{Steven}
+	\paragraph{PROGRESS}
+	We didn't meet with Dr. Jensen this week and instead spent some time working on our user stories and projects for going forward. 
+	
+	\paragraph{PROBLEMS}
+	Josh and I need to get together more so we can work through a lot of the front end user projects and make some headway on the design so any minor tweaks to the prototypes will result in minor changes to the design.
+	
+	\paragraph{PLAN}
+	I do feel we are a little behind, but next week we are planning on going through API calls from the frontend to the backend and vice versa to make this planning stage a little better.
+	
+	\subsubsection{Evan}
+	
+	After not meeting with Dr Jensen this week, we were able to hammer out user stories for the future. We have a lot to work on but honestly at this point I feel comfortable we will be able to get all of this done on time.
+	
+	\subsubsection{Josh}
+	No meeting with Dr. Jensen this week, but we were able to hammer out all our user stories and figure out what we need for both the front end and the backend. As far as the front end goes, I feel like me and Steven still have quite a lot to accomplish, but hopefully we'll jump on that soon.
+\subsection{Week 8}
+	\subsubsection{Steven}
+	
+	\paragraph{PROGRESS}
+	This week we went through all of our anticipated API calls from the frontend to the backend systems. Having these API calls is important, as it allows for Evan to implement the functionality we need for the frontend while Josh and I make progress on the frontend goals. 
+	
+	\paragraph{PLAN}
+	Josh and I plan on getting together to work on implementing the Aurelia router, which will allow us to have a single page application. 
+	
+	\paragraph{PROGRESS}
+	Our client is happy with the progress we have been making as well. We ran through some user testing with Carlos and he had lots of feedback as we continue to iterate on our designs. 
+	
+	\paragraph{PLAN}
+	This is something I plan to work on through the rest of the term so we can continue our user testing and integrate their feedback.
+	
+	
+	\paragraph{PROBLEMS}
+	No Specific Problems This Week.
+	
+	\subsubsection{Evan}
+	This week I made sure everyone made it to our group meeting on time, as it was necessary for all of us to go over API calls for me to build on the backend. This is the contract between me and the frontend that lets me know exactly what to write. Carlos is happy with our progress, and after going over Steven's mock interfaces with him, we feel good about the direction the frontend and backend are going.
+	
+	\subsubsection{Josh}
+	As far as our meeting this week, we had good success with all we got done for Dr. Jensen. We showed all our layout prototypes, and he seemed happy with the results. 
+	
+	This week we were able to meet up and completely go over the API calls and backend requirements, which set us up really nice moving forward. Because of this meeting, me and Steven now understand what we need to accomplish and make available as soon as we get the chance. 
+	
+	As far as the progress Steven and I have made on the frontend, we are planning to meet together this week to work on implementing a router (enables us to switch between pages without refreshing).
+\subsection{Week 9}
+	\subsubsection{Steven}
+	\paragraph{PROGRESS}
+	This week consisted of Josh and I spending time together and working through getting the Aurelia router integrated. We were able to do so, but we had a few issues with getting the application to work on another machine besides Josh's computer. We plan to work through this during our team meeting, as having the application only work on one computer is not ideal. 
+	
+	\paragraph{PROBLEMS}
+	Josh and I also worked on Aurelia tabs, for tabbed browsing on our one page application, but ran into some issues getting  everything working.
+	
+	\paragraph{PLAN}
+	We plan to continue working on this next week and hope to have it working by finals week. We have a meeting with our client next week and will talk about the Aurelia router and Aurelia tabs.
+	
+	\subsubsection{Evan}
+	Unfortunately, I was fairly busy this week. I wasn't able to get a lot done, but was able to meet with Steven and Josh while they were getting the frontend set up to work on both of their machines. I was able to help debug a little. 
+	
+	\subsubsection{Josh}
+	Steven and I were finally able to get a good amount of work in today covering the front end. We worked on implementing the router and trying to get basic tab functionality working, unfortunately we weren't able to the tabs working. This is a big accomplishment for us non-the-less. Carlos asked me to start thinking critically about an algorithm for recompiling latex into a PDF, so I'm going to start thinking and doing research on that topic before we meet again. 
+\subsection{Week 10}
+	\subsubsection{Steven}
+	\paragraph{PROGRESS}
+	For the tenth week of the term, I worked with Evan and Josh to get the Aurelia project running on my Hackintosh machine so we can continue to develop now that we are using the one page application, which requires the Aurelia project to be running. Before this I was able to make changes and simply refresh the page. This has been a minor inconvenience, but the router is worth it.
+	
+	\paragraph{PLAN}
+	For our meeting with Carlos last week, we decided to skip a meeting next week, as we all would be busy with Finals, himself included. We plan to start again first week of Spring term. 
+	
+	Next week I don't envision having a lot of time to dedicate to the project beyond documentation for the progress report and the video. I plan to work through Spring break however so we can continue to make progress.
+	
+	\paragraph{PROBLEMS}
+	No Specific Problems This Week.
+	
+	\subsubsection{Evan}
+	Finally the term is coming to a close! We've decided to put off our next meeting to the first week of spring break. At this point we're overloaded with other projects and don't anticipate having time to work on the technical part of the project, but we will be able to get together to build the final presentation done soon.
+	
+	\subsubsection{Josh}
+	This is the last week of the term, and unfortunately we weren't really able to accomplish more from last week because of finals coming to a close. We also decided not to meet with Carlos this week in order to give us more time to bring something deliverable to the next meeting. Spring break is finally here! (sorta)
+\subsection{Week 11}
+	\subsubsection{Steven}
+	\paragraph{PROGRESS}
+	For finals week we did not meet as a group for application development because of other classes and studying getting in the way. We have communicated as a team about our individual progress however. We were able to come together to work on our progress report video together so we could get it turned in on time.
+	
+	\paragraph{PLAN}
+	Continue working on the application during spring break.
+	
+	\paragraph{PROBLEMS}
+	No Specific Problems This Week.
+	
+	\subsubsection{Evan}
+	This week has been mostly the progress report. We have successfully finished the videos and I managed to finish my progress report this afternoon. Can't wait til next term!
+	
+	\subsubsection{Josh}
+
+\section{Spring}
+\subsection{Week 1}
+	\subsubsection{Steven}
+	
+	\paragraph{PROGRESS}
+	For the first week of the term I made a lot of progress on the frontend development, changing our current implementation to match more of our prototypes: vertical menu layout as well as page skeletons for each of our router pages. I also made modifications to our PDF viewer, as it was appearing much too zoomed in for my liking. I am also working on making additional page changes and building our bare-bones scrap editor. Josh and I will need to work with Evan to join the backend to the frontend.
+	
+	\paragraph{PROBLEMS}
+	During Spring break, Josh's laptop was stolen from his home. Thankfully it has since been recovered, but it has put us behind just a little because we are having to get his system up and running again. Thankfully we had a recent commit from his machine so we didn't lose too much completed work. This did however put a damper on getting together over break to make big leaps and bounds during this 'free' time, as Josh had to get in contact with the police that had recovered his laptop. Josh hopes to recover his laptop from the police impound this week.
+	
+	\paragraph{PLAN}
+	Next week we plan to work on our Page Tabs implementation again, as it is important to our design. I plan to finish up working on the page skeletons and scrap editor page if I am not able to do so with the remaining time of this week. Additionally next week will consist of working on the various page views.
+	
+	
+	\subsubsection{Evan}
+	
+	\paragraph{PROGRESS}
+	This week I sat down with Steven and Josh to hammer out exact dates we want specific functionality finished. This will give me deadlines to aim for over the next month. For this first week of the term, my goal was to go from a tiny Node script that could respond "hello world" to a multi-file, properly set up Node application that wraps the already-written library I worked on over winter term. It's currently possible to do things like create a book, edit a book [metadata or adding chapters by id], get the book's history, and generate a PDF of the book.
+	
+	\paragraph{PROBLEMS}
+	Josh's laptop got stolen! Obviously having one member of our team out of commission during April is not ideal. He's working on getting that resolved, though, and I'm confident the frontend team will be able to get back on track. I've offered to help anywhere needed. Personally, this past week has actually been one of the smoothest sailing I've had in a while for this project.
+	
+	\paragraph{PLAN}
+	Next up is the things required for the next due date of the frontend: by April 10, I plan to support the creation/update/history/PDF generation of scrap objects. I'll also need to get the ability to list a user's books.
+	
+	\subsubsection{Josh}
+	
+	\paragraph{PROGRESS}
+	Not a considerable amount of work was able to be done on my part this week, and unfortunately it didn't go to well in the client meeting. The rest of my group was able get some good work done on the backend and front end. 
+	
+	\paragraph{PROBLEMS}
+	My laptop got stolen over spring break, and that drastically set me back. I've been working to get it back and up and running again. I will have a lot to catch up on when I finally get it working again, as my laptop had the correct working environment.
+	
+	\paragraph{PLAN}
+	The plan for the rest of this week is to get everything working and discuss with my team what we can be planning and getting ready for when I can use my laptop again. I think everything should go a little more smooth from then on. Our plan is to write out every task from now until it's completely finished.
+	
+\subsection{Week 2}
+	\subsubsection{Steven}
+	
+	\paragraph{Progress}
+	This week Josh and I made a lot of progress on our development and were able to check off a lot of our design goals from our Trello front end project management dashboard. These include some of the different collection pages. Additionally we are close on our implementation of the scrap editor, though sending to the backend has not been achieved.
+	
+	
+	\paragraph{Problems}
+	User authentication and login is currently not setup and instead we are currently providing the user in the URL to specify which user information to retrieve. Currently we are using postman for hosting our "database" so we will need to fix that at a future date.
+	
+	
+	\paragraph{Plans}
+	Josh and I plan to get together this weekend and continue to cross off different tasks together, and next week continue working together as a team and prepare our poster draft two.
+	
+	
+	\subsubsection{Evan}
+	
+	\paragraph{Progress}
+	This week we made a lot of progress on the backend and frontend! I've written up entire spec documents for detailing POST and GET endpoint routes, return values, POST bodies, etc. I've made it possible to do anything that is on the frontend trello before their due date. 
+	
+	\paragraph{Problems}
+	I have yet to get authentication working. It's on my to-do list at top priority, but it involves setting up a MongoDB instance to manage the conversion between Google oAuth tokens and our own login tokens. I'm not worried about it, though, and I'm sure I'll be able to get that done soon.
+	
+	\paragraph{Plans}
+	Currently, my TODO has two main parts:
+	
+	1) version pinning
+	
+	2) things requiring a MongoDB instance. That's things like favorites, login, unassociated items, etc.
+	
+	Those are on the plate for next week. In the week after that, my plan is to do search.
+	
+	\subsubsection{Josh}
+	
+	
+	\paragraph{Progress}
+	Thankfully, this week was much more productive that previous weeks. I had my laptop and Steven and I were able to make make progress on our goals and user stories. These include some of the different collection pages. Right now we're working on finishing the skeleton for the pages.
+	
+	
+	\paragraph{Problems}
+	We don't have a real data base that we're working with as of yet, because we're still experimenting with backend calls. We don't have any real talk from the frontend to the backend. 
+	
+	\paragraph{Plans}
+	This weekend, Steven and I will be working through more of our frontend stuff. It's looking like Friday's will be major work days for the three of us. This is much needed as we have a lot do to in the next couple of days.
+	
+\subsection{Week 3}
+	\subsubsection{Steven}
+	
+	\paragraph{PROGRESS}
+	This week we made a lot of progress in terms of raw development. Evan was able to put some fresh eyes onto the parameter passing issue, so we were able to get the my books pages into a much better position. Currently I have a semi-working edit chapter page. I also made a lot of progress with the my chapters page, so now you can preview a given chapter from a book. I am working on bringing the same progress to the my scraps page, so we can preview a scrap.
+	
+	\paragraph{PROBLEMS}
+	This week our client scheduled over our meeting time so we were unable to meet with him. We planned to show our poster draft and seek changes and / or approval. Editchapter is having some issues at the moment, because of how we are passing around the parameters.
+	
+	\paragraph{PLAN}
+	We plan to attempt to meet with our client next week, we are worried about this because there is only a few days before the deadline, as the deadline has been moved forward a few days.
+	
+	\subsubsection{Evan}
+	
+	\paragraph{PROGRESS}
+	
+	This week I successfully integrated authentication into the application using a Mongo backend. This required the entire Mongo setup along with it, which was a relatively major undertaking. It is now set up on our staging server, though, which is good news. This will allow me to much more quickly write favoriting and unassociated document tracking, both of which are going to use the Mongo database.
+	
+	I also have search now working. Every object update sends an updated copy of itself to an instance of Elasticsearch, which then can be queried to find books and chapters based on their names, and scraps based on their text.
+	
+	\paragraph{PROBLEMS}
+	
+	Currently, everything seems smooth sailing. The main issue at this point is the amount of time that we have left to complete the project, but so far, if I keep my pace, I know the backend will get done on time and that if Steven and Josh keep their pace, we'll have a frontend that can be shown off with it. 
+	
+	\paragraph{PLAN}
+	
+	Currently I have the documents stored in Elasticsearch but need to expose a search API that the frontend can use. That's on the plate for this weekend, along with finishing favoriting and perhaps unassociated objects. 
+	
+	This will leave me with:
+	
+	1) version pinning
+	2) forking
+	
+	\subsubsection{Josh}
+	
+	\paragraph{PROGRESS}
+	This past week has had substantial work done for everyone in the group, me and Steven have been working a lot with routes and tabs, as well as the layout of the page more. A major roadblock that we had was not getting one of our sub-routes to work properly with passing an argument to it. Evan was then able to help us with it and managed to fix the problem. Now we're able to finish the rest of the editors and work towards finishing the project.
+	
+	\paragraph{PROBLEMS}
+	As mentioned earlier, Steven and I got caught up on managing the sub-routes with a parameter. This took us both a lot of time which meant we couldn't really focus our time on anything else. Another problem that we ran into was our client rescheduling on us and we couldn't get feedback and other things done because of that. 
+	
+	\paragraph{PLAN}
+	This next week we all plan to meet A LOT in order to accomplish all our goals. Being as the code freeze is in little over a week, we have a lot to get done first before then. We will finishing all of our editors, integrate a drag and drop feature, and a few other things.
+\subsection{Week 4}
+	\subsubsection{Steven}
+	
+	\paragraph{PROBLEMS}
+	This week we have been having problems with simply having enough time to get everything done. Having spent so much time on capstone these past few weeks, while making good progress towards our goals, has put other classes on the back-burner.
+	
+	\paragraph{PROGRESS}
+	Last week and especially this week, we have made a ton of progress now that our blockers have been dealt with. Having learned how Aurelia handles routes and child routes differently has unlocked our ability to develop the more extreme features of our application. We are in the final stretches for being feature complete, and once that is finished, we plan to focus on bug fixes and testing of our application from top to bottom. 
+	
+	\paragraph{PLAN}
+	If we have additional time after these two tasks, we plan to add more functionality in terms of stretch goals and anything else we can think of before the code freeze. After the code freeze we plan on continuing to work on the application for our client.
+	
+	\subsubsection{Evan}
+	
+	\paragraph{PROGRESS}
+	
+	We did it! Almost. We've made massive progress, and I think by Monday we will have a deliverable to be... proud isn't the right word, but acceptable! I worked hard on getting things like Edit Chapter working, integrating with Search, de-duplication of Search pages, etc. I also integrating logins, so now users have a fancy welcome page and login button before they can access their content. I also got drag-and-drop working, which is super fancy. 
+	
+	\paragraph{PROBLEMS}
+	
+	We have three days left. Yikes. I've been doing mostly entirely capstone, so I'm now full up with other homework to do, which is now weighing down. I'm happy with how much I've done at this point, though, and I'm confident that I've given my teammates enough of a boost that they're fine with me spending this time on other things. I've still got several tasks on our issue tracker, which I'm still planning on getting done, so I'm feeling good.
+	
+	\paragraph{PLANS}
+	
+	My main issue left on our Trello is favoriting: how do users add a favorite? Where do they see their favorites? That kind of thing. I also have a few backend issues to resolve if I have the time. Other than that, it's mostly just pushing ahead to our deadline.
+	
+	\subsubsection{Josh}
+	
+	\paragraph{PROGRESS}
+	This week, the team made major progress with accomplishing the user stories that we set out. I mainly focused on the search engine on the frontend, which Evan had already set up on the backend. The rest of my team has been working consistently on the application editors, as well as the CSS and login. I haven't been a little behind because of other classes needing attention, but thankfully Steven and Evan have been working thoroughly regardless. We met with Dr. Jensen on Tuesday and were able to get our poster signed as well as show him the incredible progress we've made on the app. He seemed very pleased, although he did mention a few improvements that we've since been working on. 
+	
+	\paragraph{PROBLEMS}
+	As mentioned above, I've been swamped with other homework. I'm trying to work as much as possible on everything so I can have the weekend to fully focus on senior capstone with the rest of my group. 
+	
+	\paragraph{PLAN}
+	This next week I plan to integrate unit test into our application. After this I plan to make a majority of the test for our application. I will also be helping wherever possible on other parts of the application.
+\subsection{Week 5}
+	\subsubsection{Steven}
+	\paragraph{Progress}
+	We have made it through most of development and are feature complete. We plan to continue making tweaks and improvements where we can going forward however. Evan and I were able to get the remaining issues completed while Josh had to deal with other classes / events.
+	
+	\paragraph{Problems}
+	We have again lost our scheduled meeting time through no fault of our own. So instead of meeting Mondays at 1:00PM, which worked for everyone on the team, we now have to find ANOTHER new time that works for all of us, as well as Carlos... In terms of the project, we had some problems mainly with finding the time to work on the project.
+	
+	\paragraph{Plan}
+	I plan to continue working on the Wired reviews for Friday. I interviewed Courtney Bonn of the Calvary Corvallis iOS and Android applications about her project. After that I plan to work on our Midterm progress report and video. 
+	
+	
+	\subsubsection{Evan}
+	
+	\paragraph{Progress}
+	
+	We're done! Finally done with the programming portion. There are perhaps a few things to cleanup on the frontend but we're more or less done. The work was finished up mostly by Steven and I and we managed to all meet on Monday to finish up straggling issues.
+	
+	\paragraph{Problems}
+	
+	At this point, my "problems" are moreso doing all of the assignments that got put off for capstone. There's also the WIRED doc and the midterm video we need to do, so I'm working on my WIRED thing due today. We're considering what needs tweaking on our site between now and expo, but it shouldn't be too much. 
+	
+	\paragraph{Plan}
+	
+	Right now, it's mostly sitting tight until we get assignment specifications for the video. Other than that, we're pretty much just doing our individual WIRED articles, so nothing group work wise.
+	
+	\subsubsection{Josh}
+	
+	\paragraph{Progress}
+	This week, the team managed to get all of our required features completed. I was assigned to getting a working timeline implemented, and making scraps able to upload images. I was also tasked with implementing a pretty view for our application, but I also had a report due that night and so I wasn't able to get the last task done. The other two I was able to complete fully however. 
+	
+	\paragraph{Problems}
+	We are having continued problems with scheduling time to meet with Carlos, as everything we have scheduled lately has fallen through on his part. Last weekend, I was unfortunately caught in the middle of other important obligations that landed on the most important weekend of our senior capstone. I was able to get most of the requirements assignment to me done, but I didn't struggle a little with the last task and getting my other homework done. Thankfully my team was able to carry the rest of the responsibilities. 
+	
+	\paragraph{Plan}
+	Now all we have left is preparing for expo and getting our midterm report in on time. We'll be finalizing tweeks for our client in the mean time.
+\subsection{Week 6}
+	\subsubsection{Steven}
+	
+	\paragraph{Progress}
+	This week we did not focus on the application and instead we have been focusing on our report and presentation. Expo is coming up and we have been preparing for this and plans for next week. Our client has found a time that works for him that allows us to make up the meeting after it was cancelled. 
+	
+	\paragraph{Problems}
+	We were unable to meet with Carlos last week, and this week due to our meeting time being given away. We are working on scheduling another meeting and getting our progress report and presentation completed.
+	
+	\paragraph{Plan}
+	This weekend and Monday we plan to continue working on our progress report and presentation so it is ready for Monday night.
+	
+	\subsubsection{Evan}
+	
+	\subsubsection{Josh}
+	
+	\paragraph{Progress}
+	
+	This week, not a whole lot was accomplished in terms of the application. Our team has mainly been focused on getting details about our report and presentation figured out. We didn't meet this week, as we didn't really have much to go over or discuss. I've been working on the report more to make up for my inability to help as much as the others during the final days of the code freeze.
+	
+	\paragraph{Problems}
+	
+	Still haven't been able to meet with Carlos, so hopefully that won't fall through again. No other real problems this week.
+	
+	\paragraph{Plan}
+	
+	The plan as of today is to get as much of the project and presentation done myself until I meet with the rest of my group tomorrow to finalize our presentation and go over everything. Expo is getting closer, so we will also be prepping for that.
+\subsection{Week 7}
+	\subsubsection{Steven}
+	
+	\paragraph{Progress}
+	We met with Carlos this week and were able to show all of the progress that we have made over the time between our last meeting. Carlos was very pleased with our progress and only had a few changes to suggest before demonstrating our application at expo.
+	
+	\paragraph{Problems}
+	We have a few changes to make to the application, as well as the implementation of Travis CI (Continuous Integration). The logout button has been causing some issues as well, as we are having trouble activating the logout with the API. Currently we clear the cookies and reload the page.
+	
+	\paragraph{Plan}
+	We will continue working on all changes that we have planned and continue to add additional features where we can.
+	
+	Josh and Evan plan to take a look at the logout button, so it may be working before expo!
+	
+	
+	\subsubsection{Evan}
+	
+	\paragraph{Progress}
+	
+	We finally were able to meet with our capstone sponsor, Dr Carlos Jensen, one last time before Expo. We showed him all of the progress we had made in the significant time since our previous meeting. He was very happy with what he saw, though he did have a few pain points that he brought up.
+	
+	\paragraph{Problems}
+	
+	There were a few issues that Carlos pointed out that we had to spend some time fixing. In addition, we made a final push to get things like TravisCI, a continuous integration platform, up and running. This allows us to automatically have our tests run every time we push, which allows us to catch issues faster.
+	
+	\paragraph{Plan}
+	
+	Expo on the 19th! And then we're finishing up mostly the required capstone documents. There's a decent chance we'll be finishing some polish for Carlos, too, just for good measure, but nothing too groundbreaking.
+	
+	\subsubsection{Josh}
+	
+	\paragraph{Progress}
+	This week, we were finally able to get a meeting with Carlos, this included us showing him all our progress and him having suggestions on what we should implement in order to get ready for expo. The rest of this week has been dedicated to figuring out travisCI for our continuous integration, and preparing for expo. We are finally ready and will hopefully have our application working at 100% for the demo. 
+	
+	\paragraph{Problems}
+	We are having trouble with TravisCI, as it only seems to be working on my computer and not everyone else's. So I'll be working on that and hopefully getting it working soon. Steven has been working on getting a logout button for our application, and hopefully we'll have that all up and running. 
+	\paragraph{Plan}
+	After expo, we just need to continue working on what we have left. This week is crazy with every other class having due dates, so hopefully we'll all be able to balance our homework and what we have left for this class. 
+\subsection{Week 8}
+	\subsubsection{Steven}
+	
+	\paragraph{Progress}
+	I enjoyed working on this project, when we weren't stressed about deadlines and documentation. I feel that our project has turned out quite well, especially for the problems we had at the beginning of the year. I feel our application is unique and works well. I walked around Expo and realized that many teams did not complete their projects unfortunately. This made me feel better about my position however. I didn't like going in blind to some of the technologies of our application. This did however help with connecting with my teammates. 
+	
+	I learned a lot of backend technologies while working with Evan, as well as I learned a lot about different JavaScript frameworks like Aurelia while working with both Josh and Evan. Even though they had not worked with this specific framework, they have had experience with other frameworks that work in similar ways. I would say that this is the biggest technical skill I am taking away from this project. I also gained a lot of experience with performing managerial duties and making sure the project was advancing to meet certain deadlines.
+	
+	I feel that I will me using my skills as a manager, JavaScript framework skills, and web development skills as a whole in the future.
+	
+	
+	\paragraph{Problems}
+	If I was the client for this project I would be satisfied with the work completed, but I wouldn't be satisfied with the communication that took place. I am not satisfied as a student and developer of this project. Communication played a big part of this project and without having an ample supply of it, we were often left wondering how to proceed and discouraged the team from jumping in with both feet. 
+	
+	\paragraph{Plan}
+	
+	In the future, if I were to continue working on this project I would feel that a more organized backend that supports scalability at an increased rate would be beneficial. I also feel that if we had more time we would get to performing long term user studies and make modifications to he user interface to make it more intuitive. We throw a lot of options at the user without introducing them slowly. Another good future implementation would be creating a tutorial system that walks the user through the creation of a scrap, chapter, and book, as well as the other features of the application.
+	
+	If I were to redo this project again, I would tell myself to start working on the larger portions of the application sooner. Having to figure out the big pieces before we could advance to the next tasks resulted in not much getting done at the beginning of development. Once these big pieces were completed, at least enough to continue with development everything else fell into place. 
+	
+	\subsubsection{Evan}
+	
+	\paragraph{Progress}
+	
+	It has been a crazy year. Going into the project, I was never 100% sure what was on the other side. Would I finish the project? Would I have good groupmates, or bad ones? I didn't get any of the projects I selected, so I was nervous about it from the get-go. Looking back on the year, though, I'm pretty happy with how we did. I would tell myself to make it less crazy -- we pushed to go above and beyond and make an application that was truly modern. This was overkill. However, it did happily lead to probably the best skill I've gained over the year. I'm now confident in modern web application development, with modern frameworks and needs siloing. 
+	
+	I learned a lot from my teammates this year. Communicating my exact goals for my portions of the project, and how to fit them in with their portions, was a main issue I had to consciously work on. Speaking of communication, we managed to go from barely meeting fall term to frequent meetings in early spring term. I believe that this was critical for delivering a product that he would like -- I know if I were him, I would definitely be smiling upon the result. It delivered a much cleaner and usable platform that I think many groups would have been capable of. I liked the ability to stretch my web dev muscles and develop the platform as quick as possible nearing the due date.
+	
+	\paragraph{Problems}
+	
+	If I were our client, my main concern would have been communication. In the end, though, we worked that out, and delivered a product to his specifications. I think that it looked rough for a few weeks, but in the end, we delivered a product that I am proud of and that I would be happy accepting if I were the project client. I have no real complaints about the project overall, save the general capstone document avalanche. The avalanche is excessive and was **nothing** but a **huge** timewaste. I learned nothing from doing the documents and would be perfectly happy printing out a copy of every document I worked on and using it on my next camping trip as starter.
+	
+	\paragraph{Plan}
+	
+	In the future, I see myself using the web skills for any of my one-off personal projects. I'm not planning to go into web development, but I also see the software architecture skills potentially being of use in the future. In the future, if our client were to continue the project into the next year, I would most want to see the document storage module overhauled, and perhaps the user interface could undergo user studies and a minor flow overhaul. However, I'm happy with where the project wound up and think we have achieved a good "minimum viable product" release. 
+	
+	\subsubsection{Josh}
+	
+	\paragraph{Progress}
+	
+	Overall, I really enjoyed certain aspects of working on this project. My group mates were helpful and informative in areas where I wasn't, and we all balanced each other out pretty well. I think if I had to redo this project from fall term, I would start much much earlier on the heavy portions. I feel like I do this with a lot of my projects, but this one specifically could have been done with a lot less stress involved had we gotten a better head start. I think it's something that would have helped out the rest of my classes as well.
+	
+	By far the biggest skill I've learned over this period of time is my web development skill. I already had a good understanding of how everything worked from a basic point of view, but this project has definitely increased and pushed my knowledge. I think I can look at web applications and understand them from a more advanced level now.
+	
+	One of the skills I see myself using in the future is handling group assignments and how to delegate work among everybody. Fall term was a big learning process for everyone, and we didn't mean nearly as much as we should have. Thankfully by Spring term we were able to work more progressively.
+	
+	What I really enjoyed about the project was knowing exactly what we had to do and then just carrying out the plan. It's always frustrating when you're scrambling for something productive to do and not being able to have everything set up ahead of time. What I wasn't a huge fan of about senior capstone is that the hardest part of it happens in the best time of the year. This also could have probably been prevented had I prepared a little better.
+	
+	I learned that my teammates have a lot of valuable knowledge in different areas than me, and this ended up being crucial to the success of our application. I learned that my teammates are pretty reliable as well.
+	
+	\paragraph{Problems}
+	
+	I think that if I was my client, I'd be a little shocked at the progress that our team made in a short amount of time at the end. One of the biggest problems we ran into was poor communication between our client and us, and this lead to very little knowledge of how far a long we were with the project. I'm sure that he was frustrated with us at points, but if I were my client, I would be very thrilled with how it turned out. 
+	
+	\paragraph{Plan}
+	
+	If I were to continue working on the project through the following year, I would start by doing way way more testing. Our application didn't have nearly as much testing done to it than was necessary. I think this was pretty troublesome when we started finishing the application. After thorough testing, I think I would start focusing on user feedback and implementing that better.
+
+
+\end{document}

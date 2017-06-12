@@ -1,0 +1,177 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{comment}
+\usepackage{bigstrut}
+\usepackage{geometry}
+\usepackage{supertabular}
+\usepackage{tabu}
+
+\usepackage{url}
+\usepackage{subfiles}
+
+
+
+\usepackage{fancyhdr}
+
+
+\usepackage{color}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.67, 0} % #007C00 -> rgb(0, 124, 0)
+
+\usepackage{listings}
+\lstdefinelanguage{JavaScript}{
+	morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch,
+		var, if, in, while, do, else, case, break, addChapter, await},
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morestring=[b]",
+	morestring=[b]'
+}
+
+\lstset{%
+	% Basic design
+	backgroundcolor=\color{editorGray},
+	basicstyle={\small\ttfamily},
+	frame=l,
+	% Line numbers
+	xleftmargin={0.75cm},
+	numbers=left,
+	stepnumber=5,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red}\ttfamily,
+	ndkeywordstyle=\color{editorOcher}\bfseries,
+	stringstyle=\color{editorGreen},
+	% Code
+	language=JavaScript,
+	alsodigit={.:;},
+	tabsize=2,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=true,
+	extendedchars=true,
+	breaklines=true
+}
+
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Remix}
+\def \CapstoneTeamNumber{		61}
+\def \GroupMemberOne{			Josh Matteson}
+\def \GroupMemberTwo{			Steven Powers}
+\def \GroupMemberThree{			Evan Tschuy}
+\def \CapstoneProjectName{		Many Voices Platform}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Carlos Jensen}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{
+	%Problem Statement
+	%Requirements Document
+	%Technology Review
+	%Design Document
+	Final Report
+}
+
+\newcommand{\NameSigPair}[1]{\par
+	\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+	\par\vspace{-12pt} \textit{\tiny\noindent
+		\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+% file1.pdf: pages  1- 3
+% file2.pdf: pages  4- 9
+% file3.pdf: pages 10-18
+
+\newcommand{\addsection}[3]{\addtocontents{toc}{\protect\contentsline{section}{\protect\numberline{#1}#2}{#3}}}
+\newcommand{\addsubsection}[3]{\addtocontents{toc}{\protect\contentsline{subsection}{\protect\numberline{#1}#2}{#3}}}
+
+
+\pagestyle{fancy}
+\fancyfoot[C]{FIN--\thepage}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\pagenumbering{gobble}
+		\begin{singlespace}
+			\includegraphics[height=4cm]{coe_v_spot1}
+			\hfill
+			% 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+			%\includegraphics[height=4cm]{CompanyLogo}
+			\par\vspace{.2in}
+			\centering
+			\scshape{
+				\huge CS Capstone \DocType \par
+				{\large\today}\par
+				\vspace{.5in}
+				\textbf{\Huge\CapstoneProjectName}\par
+				\vfill
+				{\large Prepared for}\par
+				\Huge \CapstoneSponsorCompany\par
+				\vspace{5pt}
+				{\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+				{\large Prepared by }\par
+				Group\CapstoneTeamNumber\par
+				% 5. comment out the line below this one if you do not wish to name your team
+				\CapstoneTeamName\par
+				\vspace{5pt}
+				{\Large
+					\NameSigPair{\GroupMemberOne}\par
+					\NameSigPair{\GroupMemberTwo}\par
+					\NameSigPair{\GroupMemberThree}\par
+				}
+				\vspace{20pt}
+			}
+			\begin{abstract}
+				% 6. Fill in your abstract
+				\noindent The culmination of documents created during the development of the Many
+				Voices Publishing Platform by Team Remix; Josh Matteson, Steven Powers, and Evan Tschuy 
+				for Dr. Carlos Jensen. Details of the implementation, technologies, and requirements are
+				included in this document.
+			\end{abstract}
+		\end{singlespace}
+	\end{titlepage}
+
+
+
+\pagenumbering{arabic}
+\tableofcontents
+
+% Construct contents
+\addsection{1}{File 1-1}{1}
+\addsubsection{1.1}{File 1-1.1}{2}
+\addsection{2}{File 1-2}{3}
+\addsection{3}{File 2-1}{4}
+\addsubsection{3.1}{File 2-1.1}{7}
+\addsubsection{3.2}{File 2-1.2}{8}
+\addsection{4}{File 2-2}{9}
+\addsection{5}{File 3-1}{10}
+\addsubsection{5.1}{File 3-1.1}{10}
+\addsubsection{5.2}{File 3-1.2}{11}
+\addsubsection{5.3}{File 3-1.3}{12}
+\addsection{6}{File 3-2}{17}
+\addsubsection{6.1}{File 3-2.1}{18}
+\addsubsection{6.2}{File 3-2.2}{18}
+
+\newpage
+\section{Introduction}
+The Many Voices Publishing Platform was requested by Dr. Carlos Jensen, who is now the Associate Dean of Undergraduate Programs
+and Associate Professor at Oregon State University. This project was requested because textbook creation is very difficult, 
+and costly, both in time and money that the author has to spend working on their writing. The importance of this project is 
+that having a platform that enables professors to create the textbooks they want by combining and modifying materials already 
+in existence, or by creating their own that will be added to the available materials for all users. The client for this project
+was also the person that requested the project, Dr. Carlos Jensen. The development team consists of Josh Matteson, Steven Powers
+and Evan Tschuy. During development of the platform, Josh Matteson focused on frontend development, Steven Powers focused on 
+documentation, management, and frontend development, and Evan Tschuy focused on the backend development of the platform, but also 
+stepped in to work on other aspects of the project when available. Dr. Jensen remained relatively hands off during development, 
+only stepping in to provide feedback about questions brought up through development.
+
+
+\end{document}

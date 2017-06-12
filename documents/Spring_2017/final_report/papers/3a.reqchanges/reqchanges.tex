@@ -1,0 +1,75 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+
+\usepackage{supertabular}
+\usepackage{tabu}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyfoot[C]{REQCHANGE--\thepage}
+\begin{document}
+\section{What Requirements Changed?}
+
+Throughout development of the Many Voices Publishing Platform, only a few changes were made throughout development that strayed from the original requirements and planning.
+
+\begin{flushleft}
+	\tablehead{}
+	\begin{supertabular}{|p{0.5cm}|p{3cm}|p{5.5cm}|p{7cm}|}
+		\hline
+		 & Requirement & Description of What Happened & Comments
+		\\\hline
+		1 & Operated via website & The product is to be operated via a website for wide availability and use & A website was used to demonstrate and allow for users to use the product.
+		\\\hline
+		2 & Provide tools needed for textbook creation & The product will give the tools necessary for individual professors to create the textbook they need to match their desires & The product provides a variety of tools that facilitate the creation of a textbook with new or already existing materials that the user can combine in any way they see fit.
+		\\ \hline
+		3 & Document creation service & The product will be a document construction service  &  The product allows for the creation of documents.
+		\\ \hline
+		4 & Use of pre-existing materials & The product will allow for the creation of a textbook out of pre-existing materials (chapters / scraps), by searching and selecting from a list & The product allows for the use of pre-existing materials by searching and selecting. Also included is the ability to drag and drop selection.
+		\\ \hline
+		5 & LaTeX Support & The product will support the use of LaTeX within scraps & The product allows the user to enable LaTeX support when creating / editing a scrap.
+		\\ \hline
+		6 & Media Support & The product will support the use of media, such as images or perhaps video content & The product supports the use of images when creating a scrap.
+		\\ \hline
+		7 & Modern Design Paradigms & The product will be graphically driven by using a design philosophy such as Google's Material Design & The product employs the use of Materialize for the graphical user interface.
+		\\ \hline
+		8 & Security Barrier & The inter-process communication should be handled in a generic way that provides a high-security barrier, preventing malicious users from accessing other, non-specified applications & The product uses Google OAuth for user login and transmission of data and the product runs within a container, preventing external manipulation.
+		\\ \hline
+		9 & Will be a fork of Ward Cunningham's Federated Wiki & The product will use Ward Cunningham's Federated Wiki as the starting point for development & The product does not use Ward Cunningham's Federated Wiki as the base starting point. During development, a lot or problems surfaced from the lack of polish and features present within the Federated Wiki. Development started from the ground up instead.
+		\\ \hline
+		10 & Database & The product will use a database such as CouchDB 2.0, PostgresSQL, etc  & The product features a backend Mongo Database.
+		\\ \hline
+		11 & Passwords & Passwords shall be stored in a securely hashed, non-reversible method, such that infiltration of the product by an unauthorized third party will not be able to result in the theft of user passwords & The product does not store any user passwords in any regards, and relies on Google OAuth for user authentication instead.
+		\\ \hline
+		12 & Performance \& Compatibility & The product shall aim for 100 simultaneous users, as well as 95\% uptime and usability. Additionally maintain 99.99\% accessibility from major browsers & The final product does not promise specific response times, browser compatibility percentages, but maintains compatibility with the major web browsers.
+		\\ \hline
+		13 & Training Materials & The product will not feature any additional training materials beyond limited help screens built into the software and accompanying user manual & The product features tool tips instead of help screens.
+		\\ \hline
+		
+		14 & Web Frontend using JavaScript & The product will use a JavaScript or JavaScript variant for the web frontend & The product uses the Aurelia JavaScript framework for the frontend.
+		\\ \hline
+		
+		15 & User Interfaces & The product will use Angular2 for a Single Page Application or similar variant & The product uses Aurelia for the single page application instead of Angular2.
+		\\ \hline
+		
+		16 & Compile A Book & Ability to compile a book, with search functionality for finding existing textbooks, ability to duplicate and edit existing textbooks, and add a new blank textbook & The product allows the user to search for existing materials, including textbooks, the ability to remix (fork and duplicate) a book, and create a new textbook.
+		\\ \hline
+		
+		17 & Textbook Compilation Interface & Ability to edit / create a new chapter, a 'table of contents' view with access to editing. Button to add new scrap to a chapter, ability to search scraps, and user-friendly interface to add scrap to the desired location. & The product features a way edit and create new chapters, view a books 'table of contents' that allows the user to quickly edit or create a new chapter, and within editing a chapter, being able to edit or create a new scrap. The user also has the ability to arrange the chapters / scraps in the order they please. The product also features a user-friendly interface.
+		\\ \hline
+		
+		18 & Search & The product will feature a way to search for relevant materials based on keyword, author, tag, field, ranked by relevance and/or community voting. Scrap, Chapter, Textbook searching & The product features a way to search for relevant materials based on keywords within a material, specific words applied with tags, that are automatically ranked by relevance. Being able to search by author is limited, because the end user is able to change their username. 
+		\\ \hline
+		
+		19 & Publishing Interface & The product will support the ability to save the textbook as a PDF / send the textbook to the printer. & The product features a way to preview the textbook in browser at the click of a button, or the user can view the textbook externally with the viewer of their choice. This allows the user to print the textbook if they desire.
+		\\ \hline
+		
+		20 & Scrap Editor & The product will feature a 'pretty' view for adding formatted text, media, etc, to a scrap, and a 'raw' view for managing scrap ordering. Additionally tag management for a scrap. & The product features the ability to add LaTeX formatted text, or upload and add an image to a scrap. There is no 'pretty' and 'raw' view and instead both are seamlessly integrated.
+		\\ \hline
+		
+			4 & REQ & Description & 
+		\\ \hline
+	\end{supertabular}
+\end{flushleft}
+
+
+\end{document}

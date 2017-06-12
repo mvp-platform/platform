@@ -1,0 +1,58 @@
+\contentsline {section}{\numberline {1}Technology Review}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Introduction}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Steven Powers}{1}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}User Interface Tools}{1}{subsubsection.1.2.1}
+\contentsline {paragraph}{\numberline {1.2.1.1}Goals}{1}{paragraph.1.2.1.1}
+\contentsline {paragraph}{\numberline {1.2.1.2}Evaluation Criteria}{2}{paragraph.1.2.1.2}
+\contentsline {paragraph}{\numberline {1.2.1.3}Option Comparison}{3}{paragraph.1.2.1.3}
+\contentsline {paragraph}{\numberline {1.2.1.4}Discussion}{4}{paragraph.1.2.1.4}
+\contentsline {paragraph}{\numberline {1.2.1.5}Selection}{4}{paragraph.1.2.1.5}
+\contentsline {subsubsection}{\numberline {1.2.2}User Login \& Authentication}{5}{subsubsection.1.2.2}
+\contentsline {paragraph}{\numberline {1.2.2.1}Goals}{5}{paragraph.1.2.2.1}
+\contentsline {paragraph}{\numberline {1.2.2.2}Evaluation Criteria}{5}{paragraph.1.2.2.2}
+\contentsline {paragraph}{\numberline {1.2.2.3}Option Comparison}{6}{paragraph.1.2.2.3}
+\contentsline {paragraph}{\numberline {1.2.2.4}Discussion}{7}{paragraph.1.2.2.4}
+\contentsline {paragraph}{\numberline {1.2.2.5}Selection}{7}{paragraph.1.2.2.5}
+\contentsline {subsubsection}{\numberline {1.2.3}Interface Design}{8}{subsubsection.1.2.3}
+\contentsline {paragraph}{\numberline {1.2.3.1}Goals}{8}{paragraph.1.2.3.1}
+\contentsline {paragraph}{\numberline {1.2.3.2}Evaluation Criteria}{8}{paragraph.1.2.3.2}
+\contentsline {paragraph}{\numberline {1.2.3.3}Option Comparison}{9}{paragraph.1.2.3.3}
+\contentsline {paragraph}{\numberline {1.2.3.4}Discussion}{10}{paragraph.1.2.3.4}
+\contentsline {paragraph}{\numberline {1.2.3.5}Selection}{10}{paragraph.1.2.3.5}
+\contentsline {subsection}{\numberline {1.3}Josh Matteson}{11}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Testing}{11}{subsubsection.1.3.1}
+\contentsline {paragraph}{\numberline {1.3.1.1}Goals}{11}{paragraph.1.3.1.1}
+\contentsline {paragraph}{\numberline {1.3.1.2}Evaluation Criteria}{12}{paragraph.1.3.1.2}
+\contentsline {paragraph}{\numberline {1.3.1.3}Option Comparison}{13}{paragraph.1.3.1.3}
+\contentsline {paragraph}{\numberline {1.3.1.4}Discussion}{14}{paragraph.1.3.1.4}
+\contentsline {paragraph}{\numberline {1.3.1.5}Selection}{14}{paragraph.1.3.1.5}
+\contentsline {subsubsection}{\numberline {1.3.2}Revision Control Software}{15}{subsubsection.1.3.2}
+\contentsline {paragraph}{\numberline {1.3.2.1}Goals}{15}{paragraph.1.3.2.1}
+\contentsline {paragraph}{\numberline {1.3.2.2}Evaluation Criteria}{16}{paragraph.1.3.2.2}
+\contentsline {paragraph}{\numberline {1.3.2.3}Option Comparison}{17}{paragraph.1.3.2.3}
+\contentsline {paragraph}{\numberline {1.3.2.4}Discussion}{18}{paragraph.1.3.2.4}
+\contentsline {paragraph}{\numberline {1.3.2.5}Selection}{18}{paragraph.1.3.2.5}
+\contentsline {subsubsection}{\numberline {1.3.3}Database}{19}{subsubsection.1.3.3}
+\contentsline {paragraph}{\numberline {1.3.3.1}Goals}{19}{paragraph.1.3.3.1}
+\contentsline {paragraph}{\numberline {1.3.3.2}Evaluation Criteria}{20}{paragraph.1.3.3.2}
+\contentsline {paragraph}{\numberline {1.3.3.3}Option Comparison}{21}{paragraph.1.3.3.3}
+\contentsline {paragraph}{\numberline {1.3.3.4}Discussion}{22}{paragraph.1.3.3.4}
+\contentsline {paragraph}{\numberline {1.3.3.5}Selection}{22}{paragraph.1.3.3.5}
+\contentsline {subsection}{\numberline {1.4}Evan Tschuy}{23}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Server Back-end}{23}{subsubsection.1.4.1}
+\contentsline {paragraph}{\numberline {1.4.1.1}Evaluation Criteria}{24}{paragraph.1.4.1.1}
+\contentsline {paragraph}{\numberline {1.4.1.2}Option Comparison}{25}{paragraph.1.4.1.2}
+\contentsline {paragraph}{\numberline {1.4.1.3}Discussion}{26}{paragraph.1.4.1.3}
+\contentsline {paragraph}{\numberline {1.4.1.4}Selection}{26}{paragraph.1.4.1.4}
+\contentsline {subsubsection}{\numberline {1.4.2}Text Formatting}{27}{subsubsection.1.4.2}
+\contentsline {paragraph}{\numberline {1.4.2.1}Evaluation Criteria}{28}{paragraph.1.4.2.1}
+\contentsline {paragraph}{\numberline {1.4.2.2}Option Comparison}{28}{paragraph.1.4.2.2}
+\contentsline {paragraph}{\numberline {1.4.2.3}Discussion}{29}{paragraph.1.4.2.3}
+\contentsline {paragraph}{\numberline {1.4.2.4}Selection}{29}{paragraph.1.4.2.4}
+\contentsline {subsubsection}{\numberline {1.4.3}Password Storage}{30}{subsubsection.1.4.3}
+\contentsline {paragraph}{\numberline {1.4.3.1}Evaluation Criteria}{31}{paragraph.1.4.3.1}
+\contentsline {paragraph}{\numberline {1.4.3.2}Option Comparison}{32}{paragraph.1.4.3.2}
+\contentsline {paragraph}{\numberline {1.4.3.3}Discussion}{33}{paragraph.1.4.3.3}
+\contentsline {paragraph}{\numberline {1.4.3.4}Selection}{33}{paragraph.1.4.3.4}
+\contentsline {subsection}{\numberline {1.5}Conclusion}{34}{subsection.1.5}
+\contentsline {section}{References}{35}{section*.2}
