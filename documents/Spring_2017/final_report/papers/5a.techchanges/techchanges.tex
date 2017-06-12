@@ -6,7 +6,51 @@
 \usepackage{fancyhdr}
 
 \pagestyle{fancy}
-\fancyfoot[C]{FIN--\thepage}
+\fancyfoot[C]{TECHCHANGE--\thepage}
 \begin{document}
-\noindent Did you change your mind about any technologies? What had to change? 
+\section{What Technologies Changed?}
+
+Throughout development of the Many Voices Publishing Platform, only a few changes were made throughout development that strayed from the original technology review.
+
+\begin{flushleft}
+	\tablehead{}
+	\begin{supertabular}{|p{0.5cm}|p{3cm}|p{5.5cm}|p{7cm}|}
+		\hline
+		 & Technology & Description of What Happened & Comments
+		\\\hline
+		
+		1 & User Interface Tools & The use of this technology will aid in the development of the user interface, allowing for a beautiful and scalable user interface will help users interact with the platform more easily & Originally the development team decided to use Angular2 as the JavaScript framework and early into development the development team switched to Aurelia as the JavaScript framework to develop the user interface with. 
+		\\\hline
+		
+		2 & User Login \& Authentication & User Login and Authentication is important for the application and using a quick implementation of a login system with PHP and SQL to verify account information would be quick to implement. & The development team decided to instead use Google OAuth for user login and authentication as it would allow the heavy lifting to be performed by Google and prevent the development team from worrying about password security.
+		\\\hline
+		
+		3 & Interface Design & The design philosophy chosen for the application is important for development and the development team decided to use User Centered Design because users are very important for this application  & The development team used User Centered Design throughout development and worked towards integrating user feedback into the development process. User feedback sessions were organized with friends and family, as well as minorly with the client Dr. Carlos Jensen.
+		\\\hline
+		
+		4 & Testing & Testing of application procedures and functions is important because ensuring proper functionality is needed for large applications and performing quality assurance is important.  & The development team wanted to integrate Jasmine for integration and application testing ended up using a combination of Jasmine and Travis Continuous Integration.
+		\\\hline
+		
+		5 & Revision Control Software & Revision Control Software is an important part of any software project and any technology that is used to control revision history is better than nothing. & The development team used Git for all revision control purposes as each member was at least somewhat familiar with the technology.
+		\\\hline
+		
+		6 & Database & Having an understandable, well built database can aid in the flow of building an application as well as delivery & During the original technology review we decided to use SQL Server from Microsoft. MongoDB ended up being our database system as it is OpenSource and easy to implement.
+		\\\hline
+		
+		7 & Server Backend & The server is an important aspect of any application. If Ward Cunningham's Federated Wiki is used for the project base, the development team would be using NodeJS & The development team decided to use NodeJS as it has an expansive ecosystem, and allows us to use a common language between the front and backend systems.
+		\\\hline
+		
+		8 & Text Formatting & Deciding which text formatting material is another important aspect of the project & The development team originally decided to use HTML as formatting for our scraps. Through development we decided to use raw text and enable the use of LaTeX commands within that raw text to provide the functionality that we need.
+		\\\hline
+		
+		9 & Password Storage & Password storage is a very important aspect of user accounts, and often is one that is brought up in news for the wrong reasons. & Early into development the team decided to put off user accounts till a good portion of the application was completed. The team decided to use Google OAuth instead of using any off the shelf encryption or password storage solutions, negating the use of this technology.
+		\\\hline
+		
+		
+		%4 & REQ & Description & 
+		%\\ \hline
+	\end{supertabular}
+\end{flushleft}
+
+
 \end{document}
