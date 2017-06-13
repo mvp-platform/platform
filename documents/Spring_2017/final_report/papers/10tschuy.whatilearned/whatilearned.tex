@@ -3,20 +3,75 @@
 \usepackage{supertabular}
 
 \usepackage{fancyhdr}
+\usepackage{csquotes}
 
 \pagestyle{fancy}
-\fancyfoot[C]{DESIGNCHANGE--\thepage}
+\fancyfoot[C]{TSCHUY - WHAT I LEARNED --- \thepage}
+\setlength\parindent{0pt}
+
 \begin{document}
 \section{What I Learned: Evan Tschuy}
 
+At times fun, at times incredibly frustrating, the last year of capstone has been
+a great opportunity for me to get a look at the perils of project management, and
+dig into creating a technical product from nothing.
+
 \subsection{What technical information did I learn?}
 
-\subsection{What non-technical information did you learn?}
+On a technical level, the project can be broken down into several sections:
 
-\subsection{What have you learned about project work?}
+\begin{itemize}
+	\item a NodeJS backend:
+	\begin{itemize}
+		\item direct interactions with ElasticSearch
+		\item a custom-written library for interacting with \verb|git| repositories
+		\item 3rd-party authentication integration with Google
+	\end{itemize}
+	\item a frontend:
+	\begin{itemize}
+		\item a single-page application using Aurelia
+		\item Materialize for user interface items
+	\end{itemize}
+\end{itemize}
 
-\subsection{What have you learned about project management?}
+Every single one of these sections was its own learning experience for me. In the
+past, I have written web applications for work. These generally tended to be fairly
+self-contained, with simple user interfaces that would fit in well with the year 2009. \\
 
-\subsection{What have you learned about working in teams?}
+Instead, this project was hyper-modern. We purposefully chose a single-page application
+backed by a modern backend, a complicated datastore, and a powerful, real-world
+search engine. All of these things were new to me, and being exposed to them has
+prepared me in the event I decide to continue creating web applications.
+
+\subsection{What non-technical information did I learn?}
+
+Some people will need pushing to get things done. There's no way around that, and
+so it is simply necessary to know when to push and how. It is necessary all throughout
+the year to make tradeoffs in who does what, when, and why.
+
+\subsection{What have I learned about project work?}
+
+It is easier if you just accept that some people put in less effort. After weighing
+how much I wanted to finish the project and how much recognition I would get from
+my group, my peers, the school, and others, I simply went ahead and did parts that
+we had earlier divvied up otherwise. The other option would simply have been to
+let the project go uncompleted, which I was not alright with.
+
+\subsection{What have I learned about project management?}
+
+I think that what I learned about project management can be summed up in one small line:
+
+\begin{displayquote}
+Divide up work early, and check progress often. Readjust as needed.
+\end{displayquote}
+
+\subsection{What have I learned about working in teams?}
+
+Working in teams is a give and take situation. For parts of a project where you
+are the most technically familiar, it is often a good idea to take on that section
+while someone else works on things they are more familiar with. On the other hand,
+if you have a little more free time, it can be good to instead work together on
+both sections, so that you can learn what they know and they can learn what you
+know.
 
 \end{document}
