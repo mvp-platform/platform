@@ -1,0 +1,97 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+
+\usepackage{supertabular}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyfoot[C]{PRODDOC--\thepage}
+\begin{document}
+\section{Project Documentation}
+
+\subsection{How does it work?}
+
+
+\subsubsection{Project Structure}
+
+The overall structure of our project relies heavily on JavaScript. Our backend is built on a NodeJS, which handles data to and from a MongoDB database. Our frontend is comprised of Aurelia, which is a JavaScript framework used for single page applications. All three of these components make up the structure of our application, and are constantly being used by each other.
+
+\subsubsection{Theory of Operation}
+
+The MVP Platform is an online application, so navigating to the website is the first step. A user can then sign in using their Google Account, at which point they'll be able to use our application. The whole of our application works in a simple manner, as all a user has to do to get started is click on the "new book" button on the main page. Users can also fork a book on the website if they wish to work off somebody elses work. The next step is to start creating chapters, and then individual scraps from those. A user can add images, paragraphs, or other work to a scrap. The option to take others' scraps and chapters is available as well. When the book is finished, having it reviewed and printed are the only parts left to accomplish.
+
+\subsection{Hardware \& Software Requirements}
+
+\subsubsection{Hardware Prerequisites}
+
+\noindent The MVP Platform is a web application with search and user functionalities requiring a database. As such, it requires a decently powerful machine.
+
+\noindent The platform has been successfully used on a machine with 
+
+\subsubsection{Software Prerequisites}
+
+To begin setup of the MVP Platform, there are a few things that need to be installed.
+
+\begin{itemize}
+	\item \href{https://docs.npmjs.com/getting-started/installing-node}{NodeJS and NPM}: NodeJS is the runtime for the application itself, and NPM is the package manager included with it for installing 3rd-party libraries.
+	\item \href{https://docs.mongodb.com/manual/installation/}{MongoDB}: This is the database used to store things like user favorites and login tokens.
+	\item \href{https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html}{ElasticSearch}: this is the search engine behind the search feature.
+\end{itemize}
+
+
+\subsection{Installation Instructions}
+
+\subsubsection{Setup}
+
+\begin{enumerate}
+	\item Clone the source code: \\
+	\hspace*{1.5em}\verb|$ git clone https://github.com/CS461-MVP/mvp_platform.git |
+	\item Move to the source code directory: \\
+	\hspace*{1.5em}\verb|$ cd mvp_platform/dev|
+	\item Install all scrap library dependencies: \\
+	\hspace*{1.5em}\verb|$ cd scrapjs && npm install && cd ..|
+	\item Install all backend Node dependencies: \\
+	\hspace*{1.5em}\verb|$ cd backend && npm install |
+\end{enumerate}
+
+\subsubsection{Running the backend}
+
+To run the server, simply run:
+
+\verb|$ npm start| \\
+
+\noindent This will start the server running on localhost, port 8000. To verify that the server is running, in another terminal window run:
+
+\verb|$ curl http://localhost:8000| \\
+
+\noindent This will return a 404, as there is no root page, if the server is successfully running.
+
+\subsubsection{Running the frontend}
+
+The frontend is a static, single-page webapp. To serve this, a standard \verb|nginx| or \verb|Apache| static file server is recommended; alternatively, for testing, the pages can be served with Python's built-in HTTP server:
+
+\begin{verbatim}
+$ cd /path/to/clone/mvp_platform/dev/frontend
+$ python -m SimpleHTTPServer 8080
+\end{verbatim}
+
+\noindent The website may now be visited at \verb|http://localhost:8080|.
+
+\subsubsection{Deploying for Production}
+
+For detailed instructions regarding setting up \verb|Nginx|, creating a service, and setting up a reverse proxy, please find the nearest sysadmin. Such a setup is outside of the scope of this documentation. In brief:
+
+\begin{enumerate}
+	\item Create a service that runs the backend as shown above. 
+	\item Install \verb|nginx|. 
+	\item Create a configuration file that:
+	\begin{itemize}
+		\item Create a rule that matches requests sent to \verb|/accounts, /login, /favorites, /books,| \\ \verb|/chapters, /scraps, /images, /search, /users|. In this rule, \href{https://www.nginx.com/resources/admin-guide/reverse-proxy/}{reverse proxy} the request to the instance of the platform running on port 8000.
+		\item For all other requests, serve static files from \verb|/dev/frontend|.
+	\end{itemize}
+	\item Restart \verb|nginx| to put the rule into effect.
+	
+\end{enumerate}
+
+
+\end{document}

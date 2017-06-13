@@ -8,9 +8,7 @@
 \fancyfoot[C]{DESIGNCHANGE--\thepage}
 \begin{document}
 \section{What Design Decisions Changed?}
-
 Throughout development of the Many Voices Publishing Platform, only a few changes were made throughout development that strayed from the original requirements and planning.
-
 \begin{flushleft}
 	\tablehead{}
 	\begin{supertabular}{|p{0.5cm}|p{3cm}|p{5.5cm}|p{7cm}|}
@@ -27,7 +25,7 @@ Throughout development of the Many Voices Publishing Platform, only a few change
 		\\\hline
 		5 & Passwords must be salted and hashed & Instead of passwords, tokens are used. Tokens are hashed but not salted to allow for token lookup directly. & Tokens do not need to be salted, as they are already unique to the service and leaking a token does not harm user security. Tokens are stored salted, and so still require a large amount of computation to break a single token.
 		\\\hline
-		6 & Use a SQL database for user data & Instead of a SQL database, a document storage database was used. & Using a document storage database made sense, since the data we were storing was already created as document-style JSON objects. Storing these and retrieving these as JSON simplified the marshalling to and from SQL statements would have required.
+		6 & Use a SQL database for user data & Instead of a SQL database, a document storage database was used. & Using a document storage database made sense, since the data we were storing was already created as document-style JSON objects. 
 		\\ \hline
 	\end{supertabular}
 \end{flushleft}
